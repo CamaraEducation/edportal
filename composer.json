@@ -1,0 +1,19 @@
+{
+    "name": "actech/dyf",
+    "description": "Dynamic Framework is  PHP a starter kit with a collection of utility tools to ease the php development process, i.e. pretty URLs, pretty error handler, etc.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Abdulbasit Rubeiyya",
+            "email": "abdulbasitsultan4@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "duncan3dc/blade": "^4.11",
+        "vlucas/phpdotenv": "^5.3",
+        "filp/whoops": "^2.14",
+        "snipworks/php-smtp": "^2.0",
+        "ddeboer/imap": "^1.12"
+    }
+}
