@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+._*
+.env
+
+# Composer files
+/cache/
+
+wiki.md
+
+# local test environment
+/test/
+docker-build.sh
+docker-bash.sh
+docker-run.sh
+docker-rm.sh
+release.sh
+test.php
