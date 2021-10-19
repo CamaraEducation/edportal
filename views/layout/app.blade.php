@@ -10,59 +10,62 @@
 		<meta name="description" content="{{$_ENV['DESCRIPTION']}}">
 		<!-- please do not remove this section -->
 
-		<!-- Favicons -->
-		<link href="/assets/img/favicon.png" rel="icon">
-		<link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-		<!-- Google Fonts -->
-		<style type="text/css">
-			body {
-			background-color: #eee;
-			}
-			body, h1, p {
-			font-family: "Helvetica Neue", "Segoe UI", Segoe, Helvetica, Arial, "Lucida Grande", sans-serif;
-			font-weight: normal;
-			margin: 0;
-			padding: 0;
-			text-align: center;
-			}
-			.container {
-			margin-left:  auto;
-			margin-right:  auto;
-			margin-top: 177px;
-			max-width: 1170px;
-			padding-right: 15px;
-			padding-left: 15px;
-			}
-			.row:before, .row:after {
-			display: table;
-			content: " ";
-			}
-			.col-md-6 {
-			width: 50%;
-			}
-			.col-md-push-3 {
-			margin-left: 25%;
-			}
-			h1 {
-			font-size: 48px;
-			font-weight: 300;
-			margin: 0 0 20px 0;
-			}
-			.lead {
-			font-size: 21px;
-			font-weight: 200;
-			margin-bottom: 20px;
-			}
-			p {
-			margin: 0 0 10px;
-			}
-			a {
-			color: #3282e6;
-			text-decoration: none;
-			}
-		</style>
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">		
+		@css('/assets/vendor/chartist/css/chartist.min.css')
+		@css('/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')
+		@css('/assets/vendor/owl-carousel/owl.carousel.css')
+		@css('/assets/css/style.css')
+
 	</head>
-	<body>
-		@yield('content')
+	<body data-typography="HelveticaNeue" data-theme-version="light" data-layout="horizontal" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sibebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_12">
+		<div id="preloader">
+			<div class="sk-three-bounce">
+				<div class="sk-child sk-bounce1"></div>
+				<div class="sk-child sk-bounce2"></div>
+				<div class="sk-child sk-bounce3"></div>
+			</div>
+		</div>
+		
+		<div id="main-wrapper">
+
+			<!-- logo banner -->
+			<div class="nav-header">
+				<a href="index.html" class="brand-logo">
+					<img src="/assets/img/logo.png" alt="logo" width="150px"/>
+				</a>
+				<div class="nav-control">
+					<div class="hamburger">
+						<span class="line"></span><span class="line"></span><span class="line"></span>
+					</div>
+				</div>
+			</div>
+
+			@include('layout.chatbox')
+			@include('layout.topbar')
+			@include('layout.sidebar')
+			@yield('content')
+
+			<div class="footer">
+				<div class="copyright">
+					<p>© {{date('Y')}} Camara Education | All rights Reserved 2021</p>
+				</div>
+			</div>
+		</div>
+		
+		@js('/assets/vendor/global/global.min.js') 
+		@js('/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') 
+		@js('/assets/vendor/chart.js/Chart.bundle.min.js') 
+		@js('/assets/vendor/peity/jquery.peity.min.js') 
+		@js('/assets/vendor/apexchart/apexchart.js') 
+		@js('/assets/js/dashboard/dashboard-1.js') 
+		@js('/assets/vendor/owl-carousel/owl.carousel.js')
+		@if (!isset($_COOKIE['loaded']))
+			@php setcookie('loaded', 'true', time() + (86400 * 30), "/");
+			header("Refresh:1"); @endphp
+			@else
+				@js('/assets/js/custom.min.js')
+		@endif
+		@js('/assets/js/deznav-init.js') 
+		@js('/assets/js/demo.js') -->
 	</body>
 </html>
