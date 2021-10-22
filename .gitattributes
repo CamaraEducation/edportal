@@ -1,2 +1,2 @@
-assets/* linguist-vendored
-cache/* linguist-vendored
+/assets/* linguist-vendored
+/cache/* linguist-vendored
