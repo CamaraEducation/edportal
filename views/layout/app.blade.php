@@ -15,6 +15,7 @@
 		@css('/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')
 		@css('/assets/vendor/owl-carousel/owl.carousel.css')
 		@css('/assets/css/style.css')
+		@css('/assets/css/custom.css')
 
 	</head>
 	<body data-typography="HelveticaNeue" data-theme-version="light" data-layout="horizontal" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sibebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_12">
@@ -31,7 +32,7 @@
 			<!-- logo banner -->
 			<div class="nav-header">
 				<a href="index.html" class="brand-logo">
-					<img src="/assets/img/logo.png" alt="logo" width="150px"/>
+					<img src="/assets/img/logo.png" alt="logo" width="200px"/>
 				</a>
 				<div class="nav-control">
 					<div class="hamburger">
