@@ -73,11 +73,12 @@
 @import url(../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 :root {
-  --primary: #eb8153;
-  --secondary: #6418C3;
+  --primary: #81BC00;;
+  --secondary: #943265;
   --primary-hover: #e66025;
   --primary-light: #fbe5dc;
   --primary-dark: #943911;
+  --accent: #191e3a;
   --rgba-primary-1: rgba(235, 129, 83, 0.1);
   --rgba-primary-2: rgba(235, 129, 83, 0.2);
   --rgba-primary-3: rgba(235, 129, 83, 0.3);
@@ -26666,10 +26667,9 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
       .card-tabs .nav-tabs.style-2 .nav-item .nav-link {
         padding: 5px 10px; } }
 
-.currency-icon {
+.vector-icon {
   margin-top: -65px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
-  border-radius: 100%;
+  border-radius: 10%;
   -webkit-transition: all 0.5s;
   -ms-transition: all 0.5s;
   transition: all 0.5s; }
