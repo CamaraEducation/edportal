@@ -180,7 +180,7 @@
                     </li>
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                            <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                            <img src="/assets/img/favicon.png" width="20" alt=""/>
                             <div class="header-info">
                                 <span>Johndoe</span>
                                 <small>Super Admin</small>
