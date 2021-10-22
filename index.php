@@ -61,6 +61,10 @@ Route::add('/home', function() {
     return Blade::render('home');
 });
 
+Route::add('/users', function() {
+    return Blade::render('users');
+});
+
 
 /****************************************************
  *                 AUTHENTICATICATION               *
