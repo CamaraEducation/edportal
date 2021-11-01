@@ -21,15 +21,7 @@
                     <span class="nav-text">Applications</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="app-profile.html">Users</a></li>
-                </ul>
-            </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-077-menu-1"></i>
-                    <span class="nav-text">Miscellaneous</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="app-profile.html">Users</a></li>
+                    <li><a href="app-profile.html"></a></li>
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -45,11 +37,11 @@
                     <span class="nav-text">Administration</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="app-profile.html">Profile</a></li>
+                    <li><a href="/applications">Applications</a></li>
                 </ul>
             </li>
             <li>
-                <a class="ai-icon" href="/home" aria-expanded="false">
+                <a class="ai-icon" href="https://camtics.camara.org" aria-expanded="false">
                     <i class="flaticon-144-layout"></i>
                     <span class="nav-text">Support</span>
                 </a>
