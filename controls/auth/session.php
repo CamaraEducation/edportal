@@ -17,4 +17,17 @@ class Session{
         return $_SESSION;
     }
 
+    public static function auth($role=''){
+        if(isset($_SESSION)){
+            header('Location: /login');
+        }
+        if($role != ''){
+            if($role != 'admin'){
+                header('Location: /');
+            }elseif($role != 'teacher' or $role !='admin'){
+                header('Location: /');
+            }
+        }
+    }
+
 }
