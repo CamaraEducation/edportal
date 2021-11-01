@@ -24,6 +24,7 @@ $whoops->register();
  *****************************************************/
 
 use control\Authorize;
+use control\Session;
 use core\Route;
 use duncan3dc\Laravel\Blade;
 //use Snipworks\Smtp\Email;
@@ -54,6 +55,7 @@ Blade::addPath(views.'/public');
  ****************************************************/
 
 Route::add('/', function() {
+    //Session::auth();
     return Blade::render("welcome");
 });
 
