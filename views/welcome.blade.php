@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title', 'Camara EdPortal')
-@section('content')		
+@section('content')
         <div class="content-body">
 			<div class="container-fluid">
 				<div class="row">
