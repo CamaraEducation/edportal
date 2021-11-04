@@ -22,7 +22,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input required class="form-control" name="email" type="email" placeholder="Email Address">
+                            <input required class="form-control" name="email" type="text" placeholder="Email or Username ">
                         </div>
                     </div>
                     <div class="form-group password-field">
