@@ -4,3 +4,26 @@ h2{
 h4{
     color: #191e3a;
 }
+
+.bootstrap-select .btn {
+    border: 1px solid #EEEEEE !important;
+    background-color: transparent !important;
+    font-weight: 400;
+    color: #7e7e7e !important;
+    font-size: 11px !important;
+}
+
+.pad-1{
+    padding: 1rem;
+}
+
+@media(max-width:1024px){
+    img.logo-big{
+        display: none !important;
+    }
+}
+@media(min-width:1024px){
+    img.logo-small{
+        display: none !important;
+    }
+}
