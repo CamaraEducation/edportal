@@ -10,12 +10,14 @@
 		<meta name="description" content="{{$_ENV['DESCRIPTION']}}">
 		<!-- please do not remove this section -->
 
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">		
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.png">		
 		@css('/assets/vendor/chartist/css/chartist.min.css')
 		@css('/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')
 		@css('/assets/vendor/owl-carousel/owl.carousel.css')
 		@css('/assets/css/style.css')
 		@css('/assets/css/custom.css')
+
+		@yield('header')
 
 	</head>
 	<body data-typography="HelveticaNeue" data-theme-version="light" data-layout="horizontal" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sibebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_12">
@@ -32,7 +34,8 @@
 			<!-- logo banner -->
 			<div class="nav-header">
 				<a href="index.html" class="brand-logo">
-					<img src="/assets/img/logo.png" alt="logo" width="200px"/>
+					<img class="logo-small" src="/assets/img/favicon.png" alt="logo" width="50"/>
+					<img class="logo-big" src="/assets/img/logo.png" alt="logo" width="200px"/>
 				</a>
 				<div class="nav-control">
 					<div class="hamburger">
@@ -67,6 +70,8 @@
 				@js('/assets/js/custom.min.js')
 		@endif
 		@js('/assets/js/deznav-init.js') 
-		@js('/assets/js/demo.js') -->
+		@js('/assets/js/demo.js')
+
+		@yield('footer')
 	</body>
 </html>
