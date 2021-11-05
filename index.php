@@ -48,6 +48,7 @@ define('cache', 	'cache');
 Blade::addPath(views.'/auth');
 Blade::addPath(views.'/errors');
 Blade::addPath(views.'/public');
+Blade::addPath(views.'/admin');
 
 /****************************************************
  *              YOU CAN DEFINE YOUR ROUTES          *
@@ -55,12 +56,20 @@ Blade::addPath(views.'/public');
  ****************************************************/
 
 Route::add('/', function() {
-    //Session::auth();
+    Session::auth();
     return Blade::render("welcome");
 });
 
-Route::add('/home', function() {
-    return Blade::render('home');
+Route::add('/add/app', function() {
+    return Blade::render('apps');
+});
+
+Route::add('/view/app', function() {
+    return Blade::render('apps');
+});
+
+Route::add('/view/app/([0-9]*)', function($id) {
+    return Blade::render('project');
 });
 
 Route::add('/users', function() {
@@ -85,10 +94,6 @@ Route::add('/authorize/([a-z]*)', function($page) {
 
 Route::add('/login', function() {
     return Blade::render("login");
-});
-
-Route::add('/register', function() {
-    return Blade::render("register");
 });
 
 Route::add('/reset', function() {
