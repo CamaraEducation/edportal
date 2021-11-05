@@ -11,7 +11,7 @@
         <ul class="metismenu" id="menu">
             <li class="nav-label first">Main Menu</li>
             <li>
-                <a class="ai-icon" href="/home" aria-expanded="false">
+                <a class="ai-icon" href="/" aria-expanded="false">
                     <i class="flaticon-144-layout"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
@@ -37,7 +37,7 @@
                     <span class="nav-text">Administration</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/applications">Applications</a></li>
+                    <li><a href="/add/app">Applications</a></li>
                 </ul>
             </li>
             <li>
