@@ -74,9 +74,6 @@
                     <div class="mt-10 mb-6 text-center">
                         
                     </div>
-                    <div class="text-center mt-10">
-                        Don't have an account? <a href="/register">Register here</a>
-                    </div>
                 </form>
             </div>
         </div>
