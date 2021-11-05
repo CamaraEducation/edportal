@@ -18,7 +18,7 @@ class Session{
     }
 
     public static function auth($role=''){
-        if(isset($_SESSION)){
+        if(!isset($_SESSION)){
             header('Location: /login');
         }
         if($role != ''){
