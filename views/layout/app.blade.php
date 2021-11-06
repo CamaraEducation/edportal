@@ -1,3 +1,4 @@
+@php load_classphp('../../controls') @endphp
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,16 +9,13 @@
 		<title>@yield('title')</title>
 		<meta content="{{$_ENV['AUTHOR']}}" name="description">
 		<meta name="description" content="{{$_ENV['DESCRIPTION']}}">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.png">
 		<!-- please do not remove this section -->
-
-		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.png">		
-		@css('/assets/vendor/chartist/css/chartist.min.css')
+	
+		@yield('header')
 		@css('/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')
-		@css('/assets/vendor/owl-carousel/owl.carousel.css')
 		@css('/assets/css/style.css')
 		@css('/assets/css/custom.css')
-
-		@yield('header')
 
 	</head>
 	<body data-typography="HelveticaNeue" data-theme-version="light" data-layout="horizontal" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sibebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_12">
@@ -57,12 +55,9 @@
 		</div>
 		
 		@js('/assets/vendor/global/global.min.js') 
-		@js('/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') 
-		@js('/assets/vendor/chart.js/Chart.bundle.min.js') 
-		@js('/assets/vendor/peity/jquery.peity.min.js') 
-		@js('/assets/vendor/apexchart/apexchart.js') 
+		@js('/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')
+		@js('/assets/vendor/peity/jquery.peity.min.js')
 		@js('/assets/js/dashboard/dashboard-1.js') 
-		@js('/assets/vendor/owl-carousel/owl.carousel.js')
 		@if (!isset($_COOKIE['loaded']))
 			@php setcookie('loaded', 'true', time() + (86400 * 30), "/");
 			header("Refresh:1"); @endphp
