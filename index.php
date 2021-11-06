@@ -49,6 +49,7 @@ Blade::addPath(views.'/auth');
 Blade::addPath(views.'/errors');
 Blade::addPath(views.'/public');
 Blade::addPath(views.'/admin');
+Blade::addPath('core');
 
 /****************************************************
  *              YOU CAN DEFINE YOUR ROUTES          *
@@ -66,7 +67,7 @@ Route::add('/', function() {
  ****************************************************/
 
 Route::add('/apps', function() {
-	echo json_encode(AppsControl::fetch());
+	echo json_encode(AppsControl::app(1));
 });
 
 Route::add('/add/app', function() {
@@ -74,7 +75,7 @@ Route::add('/add/app', function() {
 },['get', 'post']);
 
 Route::add('/view/app/([0-9]*)', function($id) {
-	return Blade::render('project');
+	return Blade::render('project', ['id' => $id]);
 });
 
 Route::add('/create/app', function() {
@@ -86,19 +87,19 @@ Route::add('/create/app', function() {
  *                 THE VIDEO ROUTES       		   	*
  *                STARTING FROM HERE                *
  ****************************************************/
-Route::add('/videos', function() {
-	return Blade::render('videos');
+Route::add('/video', function() {
+	return Blade::render('video.list');
 });
 
-Route::add('/view/video/([0-9]*)/([A-Za-z\-]*)', function($id) {
-	return Blade::render('project');
+Route::add('/view/video/([0-9]*)/([A-Za-z\-]*)', function($id, $title) {
+	return Blade::render('video.view', ['id' => $id, 'title'=> $title]);
 });
 
-Route::add('/add/videos', function() {
-	return Blade::render('project');
+Route::add('/add/video', function() {
+	return Blade::render('video.create');
 });
 
-Route::add('/create/videos', function() {
+Route::add('/create/video', function() {
 	VideosControl::create();
 }, 'post');
 
