@@ -1,4 +1,3 @@
-@php load_classphp('../../controls') @endphp
 <!DOCTYPE html>
 <html>
 	<head>
