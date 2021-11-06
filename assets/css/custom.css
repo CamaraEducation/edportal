@@ -1,3 +1,5 @@
+@import "video.css";
+
 h2{
     color: #81BC00;
 }
@@ -17,13 +19,58 @@ h4{
     padding: 1rem;
 }
 
+#over img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 50px;
+}
+
+img.play:hover {
+    -webkit-animation:spin 0.2s linear 1;
+    -moz-animation:spin 0.2s linear 1;
+    animation:spin 0.2s linear 1;
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+
 @media(max-width:1024px){
     img.logo-big{
         display: none !important;
     }
 }
+
 @media(min-width:1024px){
     img.logo-small{
         display: none !important;
+    }
+}
+
+@media(max-width:1199px){
+    .col-xl-3.video-card {
+        width: 33%;
+    }
+}
+
+@media(max-width:730px){
+    .col-xl-3.video-card {
+        width: 49%;
+    }
+}
+
+@media(max-width:500px){
+    .col-xl-3.video-card {
+        width: 100%;
     }
 }
