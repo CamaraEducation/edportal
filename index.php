@@ -27,7 +27,6 @@ use control\Authorize;
 use control\Session;
 use core\Route;
 use duncan3dc\Laravel\Blade;
-//use Snipworks\Smtp\Email;
 
 include 'core/Route.php';
 include 'core/Loader.php';
@@ -43,6 +42,7 @@ define('controls',	'controls');
 define('app',	    'core');
 define('views',		'views');
 define('cache', 	'cache');
+define('upload',    'upload/');
 
 // Define views global paths
 Blade::addPath(views.'/auth');
@@ -56,24 +56,59 @@ Blade::addPath(views.'/admin');
  ****************************************************/
 
 Route::add('/', function() {
-    Session::auth();
-    return Blade::render("welcome");
+	Session::auth();
+	return Blade::render("welcome");
+});
+
+/****************************************************
+ *                  THE APPS ROUTES       		   	*
+ *                STARTING FROM HERE                *
+ ****************************************************/
+
+Route::add('/apps', function() {
+	echo json_encode(AppsControl::fetch());
 });
 
 Route::add('/add/app', function() {
-    return Blade::render('apps');
-});
-
-Route::add('/view/app', function() {
-    return Blade::render('apps');
-});
+	return Blade::render('admin.apps');
+},['get', 'post']);
 
 Route::add('/view/app/([0-9]*)', function($id) {
-    return Blade::render('project');
+	return Blade::render('project');
 });
 
+Route::add('/create/app', function() {
+	AppsControl::create();
+}, 'post');
+
+
+/****************************************************
+ *                 THE VIDEO ROUTES       		   	*
+ *                STARTING FROM HERE                *
+ ****************************************************/
+Route::add('/videos', function() {
+	return Blade::render('videos');
+});
+
+Route::add('/view/video/([0-9]*)/([A-Za-z\-]*)', function($id) {
+	return Blade::render('project');
+});
+
+Route::add('/add/videos', function() {
+	return Blade::render('project');
+});
+
+Route::add('/create/videos', function() {
+	VideosControl::create();
+}, 'post');
+
+/****************************************************
+ *                 THE USER ROUTES       		   	*
+ *                STARTING FROM HERE                *
+ ****************************************************/
+
 Route::add('/users', function() {
-    return Blade::render('users');
+	return Blade::render('users');
 });
 
 
@@ -82,26 +117,26 @@ Route::add('/users', function() {
  *             DO NOT CHANGE THIS SECTION           *
  ****************************************************/
 Route::add('/authorize/([a-z]*)', function($page) {
-    switch ($page){
-        case 'register' : Authorize::register(); break;
-        case 'login'    : Authorize::login(); break;
-        case 'reset'    : break;
-        case 'verify'   : break;
-        default:
-            header('Location: /404');
-    }
+	switch ($page){
+		case 'register' : Authorize::register(); break;
+		case 'login'    : Authorize::login(); break;
+		case 'reset'    : break;
+		case 'verify'   : break;
+		default:
+			header('Location: /404');
+	}
 }, 'post');
 
 Route::add('/login', function() {
-    return Blade::render("login");
+	return Blade::render("login");
 });
 
 Route::add('/reset', function() {
-    return Blade::render("reset");
+	return Blade::render("reset");
 });
 
 Route::add('/notice/([a-z]*)', function($page) {
-    return Blade::render("notice", ['page'=>$page]);
+	return Blade::render("notice", ['page'=>$page]);
 });
 
 /****************************************************
@@ -110,11 +145,11 @@ Route::add('/notice/([a-z]*)', function($page) {
  ****************************************************/
 
 Route::pathNotFound(function($path) {
-    echo Blade::render("404", ['path' => $path]);
+	echo Blade::render("404", ['path' => $path]);
 });
 
 Route::methodNotAllowed(function($path, $method) {
-    echo Blade::render("405", ['method' => $method]);
+	echo Blade::render("405", ['method' => $method]);
 });
 
 
@@ -123,12 +158,12 @@ Route::methodNotAllowed(function($path, $method) {
  *                  USE THIS SECTION                *
  ****************************************************/ 
 Route::add('/routes', function() {
-    $routes = Route::getAll();
-    echo '<ul>';
-    foreach ($routes as $route) {
-        echo '<li>'.$route['expression'].' ('.$route['method'].')</li>';
-    }
-    echo '</ul>';
+	$routes = Route::getAll();
+	echo '<ul>';
+	foreach ($routes as $route) {
+		echo '<li>'.$route['expression'].' ('.$route['method'].')</li>';
+	}
+	echo '</ul>';
 });
 
 // Run the Router with the given Basepath
