@@ -1,9 +1,10 @@
+@php $app = AppsControl::app($id); @endphp
 @extends('layout.app')
 @section('title', 'create App')
 @section('header')
 	<style>
 		.photo-content .cover-photo {
-			background: url(/upload/apps/cover.jpg);
+			background: url($app['banner']}});
 			background-size: cover;
 			background-position: center;
 			min-height: 250px;
@@ -24,22 +25,8 @@
                                 <div class="profile-info">
 									<div class="profile-details">
 										<div class="profile-name px-3 pt-2">
-											<!-- application name -->
-											<h4 class="text-primary mb-0">wikipedia</h4>
+											<h4 class="text-primary mb-0">{{$app['name']}}</h4>
 										</div>
-										<!--div class="profile-email px-2 pt-2">
-											<h4 class="text-muted mb-0">info@example.com</h4>
-											<p>Email</p>
-										</div>
-										<div class="dropdown ml-auto">
-											<a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
-											<ul class="dropdown-menu dropdown-menu-right">
-												<li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i> View profile</li>
-												<li class="dropdown-item"><i class="fa fa-users text-primary mr-2"></i> Add to close friends</li>
-												<li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Add to group</li>
-												<li class="dropdown-item"><i class="fa fa-ban text-primary mr-2"></i> Block</li>
-											</ul>
-										</div-->
 									</div>
                                 </div>
                             </div>
@@ -74,23 +61,11 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xl-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="profile-blog">
-											<h5 class="text-primary d-inline">Today Highlights</h5>
-											<img src="images/profile/1.jpg" alt="" class="img-fluid mt-4 mb-4 w-100">
-											<h4><a href="post-details.html" class="text-black">Darwin Creative Agency Theme</a></h4>
-											<p class="mb-0">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-12">
+							<!--div class="col-xl-12">
 								<div class="card">
 									<div class="card-body">
 										<div class="profile-news">
-											<h5 class="text-primary d-inline">Suggested Topics</h5>
+											<h5 class="text-primary d-inline">Related Projects</h5>
 											<div class="media pt-3 pb-3">
 												<img src="images/profile/5.jpg" alt="image" class="mr-3 rounded" width="75">
 												<div class="media-body">
@@ -115,7 +90,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div-->
 						</div>
                     </div>
                     <div class="col-xl-8">
@@ -134,8 +109,7 @@
                                                 <div class="profile-about-me">
                                                     <div class="pt-4 border-bottom-1 pb-3">
                                                         <h4 class="text-primary">Application Description</h4>
-                                                        <p class="mb-2">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</p>
-                                                        <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+                                                        <p class="mb-2">{{$app['description']}}</p>
                                                     </div>
                                                 </div>
                                             </div>
