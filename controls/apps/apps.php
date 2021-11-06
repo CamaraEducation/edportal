@@ -23,5 +23,13 @@ class AppsControl{
            echo 'something wrong';
         }
     }
+
+    public static function app($id){
+        $sql = "SELECT * FROM apps WHERE id = '$id'";
+        $sql = mysqli_query(conn(), $sql);
+        $app = mysqli_fetch_assoc($sql);
+
+        return $app;
+    }
 }
 ?>
