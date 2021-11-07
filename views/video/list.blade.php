@@ -1,17 +1,16 @@
-@extends('layout.app')
+    @extends('layout.app')
 @section('title', 'Videos')
 @section('header')
-<style>
-    .video-bg{
-        background: url(/upload/apps/cover.jpg) center no-repeat;
-        height: 200px;
-        width: 100%;
-    }
-    .video-card{
-        border-radius: 1rem;    
-    }
-</style>
-    
+    <style>
+        .video-bg{
+            background: url(/upload/apps/cover.jpg) center no-repeat;
+            height: 200px;
+            width: 100%;
+        }
+        .video-card{
+            border-radius: 1rem;    
+        }
+    </style>    
 @endsection
 @section('header')
     
