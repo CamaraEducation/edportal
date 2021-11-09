@@ -31,6 +31,11 @@ img.play:hover {
     -moz-animation:spin 0.2s linear 1;
     animation:spin 0.2s linear 1;
 }
+
+.preview{
+    height: 150px !important;
+}
+
 @-moz-keyframes spin { 
     100% { -moz-transform: rotate(360deg); } 
 }
@@ -43,7 +48,6 @@ img.play:hover {
         transform:rotate(360deg); 
     } 
 }
-
 
 @media(max-width:1024px){
     img.logo-big{
