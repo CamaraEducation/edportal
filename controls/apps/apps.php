@@ -18,7 +18,7 @@ class AppsControl{
 
         $sql = "INSERT INTO apps VALUES (DEFAULT, '$app_name', '$app_type', '$app_path', '$description', '$banner')";
         if(mysqli_query(conn(), $sql)){
-            header('Location: /apps');
+            header('Location: /');
         }else{
            echo 'something wrong';
         }
