@@ -1,4 +1,5 @@
 <?php
+$_SESSION['id'] = 1;
 function load_classphp($directory) {
 	if(is_dir($directory)) {
 		$scan = scandir($directory);
@@ -13,6 +14,33 @@ function load_classphp($directory) {
 			}
 		}
 	}
+}
+
+function span_count($time){
+	$time = array_map('intval', explode(':', $time));
+	if($time['0']>0){
+		if($time[0]>24){
+			$time = intval($time[0]/24); 
+            $interval = $time>1 ? ' days ago' : ' day ago';
+		}elseif($time[0]>730){
+			$time = intval($time[0]/730); 
+            $interval = $time>1 ? ' month ago' : ' months ago';
+		}elseif($time[0]>8760){
+			$time = intval($time[0]/8760); 
+            $interval = $time>1 ? ' year ago' : ' years ago';
+		}else{
+        	$time = intval($time[0]); 
+            $interval = $time>1 ? ' hours ago' : ' hour ago';
+        }
+	}elseif($time[1]>0){
+		$time = $time[1]; 
+		$interval = $time>1 ? ' minutes ago' : ' minute ago';
+	}else{
+		$time = $time[2];
+		$interval = ' seconds ago';
+	}
+
+	return $time.$interval;
 }
 
 function config($conf){
