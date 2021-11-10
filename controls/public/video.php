@@ -1,9 +1,5 @@
 <?php
 class VideosControl{
-	public static function count(){
-		
-	}
-
 	public static function get($id){
 		$sql = "SELECT *, TIMEDIFF(CURRENT_TIMESTAMP, created) AS span FROM video WHERE id = '$id'";
 		$sql = mysqli_query(conn(), $sql);
