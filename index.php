@@ -104,6 +104,26 @@ Route::add('/create/video', function() {
 }, 'post');
 
 /****************************************************
+ *                 THE DOCS ROUTES       		   	*
+ *                STARTING FROM HERE                *
+ ****************************************************/
+Route::add('/document', function() {
+	return Blade::render('document.list');
+});
+
+Route::add('/view/document/([0-9]*)/([A-Za-z\-]*)', function($id, $title) {
+	return Blade::render('document.view', ['id' => $id, 'title'=>$title]);
+});
+
+Route::add('/add/document', function() {
+	return Blade::render('document.create');
+});
+
+Route::add('/create/document', function() {
+	DocsControl::create();
+}, 'post');
+
+/****************************************************
  *                 THE USER ROUTES       		   	*
  *                STARTING FROM HERE                *
  ****************************************************/
