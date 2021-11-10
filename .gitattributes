@@ -1,2 +1,9 @@
 /assets/* linguist-vendored
 /cache/* linguist-vendored
+*.css linguist-detectable=false
+*.js linguist-detectable=false
+error.js linguist-detectable=true
+custom.js linguist-detectable=true
+custom.css linguist-detectable=true
+document.css linguist-detectable=true
+video.css linguist-detectable=true
