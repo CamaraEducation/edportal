@@ -21,8 +21,8 @@
                     <span class="nav-text">Applications</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/videos">Video</a></li>
-                    <li><a href="/docs">Publication</a></li>
+                    <li><a href="/video">Video</a></li>
+                    <li><a href="/document">Publication</a></li>
                     @php $application = AppsControl::fetch() @endphp
                     @foreach ($application as $app)
                     <li><a href="/view/app/{{$app['id']}}">{{$app['name']}}</a></li>   
@@ -47,6 +47,12 @@
                         <ul aria-expanded="false">
                             <li><a href="/stats/video">statistics</a></li>
                             <li><a href="/add/video">Upload</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void()">Publications</a>
+                        <ul aria-expanded="false">
+                            <li><a href="/stats/document">statistics</a></li>
+                            <li><a href="/add/document">Upload</a></li>
                         </ul>
                     </li>
                 </ul>
