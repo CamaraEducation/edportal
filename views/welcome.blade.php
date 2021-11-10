@@ -8,7 +8,7 @@
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="card card-coin">
 						<div class="card-body text-center">
-							<img src="/assets/img/pc.png" class="mb-3 vector-icon" width="80" height="80">
+							<img src="/assets/img/pc.png" class="mb-3 vector-icon" width="70" height="70">
 							<h2 class="text-black mb-2 font-w600">118,471
 							</h2>
 							<h4 class="mb-0 fs-14">
@@ -20,7 +20,7 @@
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="card card-coin">
 						<div class="card-body text-center">
-							<img src="/assets/img/school.png" class="mb-3 vector-icon" width="80" height="80">
+							<img src="/assets/img/school.png" class="mb-3 vector-icon" width="70" height="70">
 							<h2 class="text-black mb-2 font-w600">11,943</h2>
 							<h4 class="mb-0 fs-13">
 								Schools Supplied
@@ -31,7 +31,7 @@
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="card card-coin">
 						<div class="card-body text-center">
-							<img src="/assets/img/teacher.png" class="mb-3 vector-icon" width="80" height="80">
+							<img src="/assets/img/teacher.png" class="mb-3 vector-icon" width="70" height="70">
 							<h2 class="text-black mb-2 font-w600">60,648</h2>
 							<p class="mb-0 fs-14">
 								Teachers Trained
@@ -42,7 +42,7 @@
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="card card-coin">
 						<div class="card-body text-center">
-							<img src="/assets/img/students.png" class="mb-3 vector-icon" width="80" height="80">
+							<img src="/assets/img/students.png" class="mb-3 vector-icon" width="70" height="70">
 							<h2 class="text-black mb-2 font-w600">3,751,749</h2>
 							<h4 class="mb-0 fs-14">
 								Children Impacted
@@ -51,6 +51,61 @@
 					</div>
 				</div>
 			</div>
+
+			
+			<div class="row">
+				<div class="col-xl-3 col-sm-6 m-t35">
+					<div class="card card-coin">
+						<div class="card-body text-center">
+							<img src="/assets/img/video.png" class="mb-3 vector-icon" width="70" height="70">
+							<h2 class="text-black mb-2 font-w600">
+								{{StatsController::count_video()}}
+							</h2>
+							<h4 class="mb-0 fs-14">
+								Videos
+							</h4>	
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-sm-6 m-t35">
+					<div class="card card-coin">
+						<div class="card-body text-center">
+							<img src="/assets/img/folder.png" class="mb-3 vector-icon" width="70" height="70">
+							<h2 class="text-black mb-2 font-w600">
+								{{StatsController::count_document()}}
+							</h2>
+							<h4 class="mb-0 fs-13">
+								Documents
+							</h4>	
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-sm-6 m-t35">
+					<div class="card card-coin">
+						<div class="card-body text-center">
+							<img src="/assets/img/apps.png" class="mb-3 vector-icon" width="70" height="70">
+							<h2 class="text-black mb-2 font-w600">4</h2>
+							<p class="mb-0 fs-14">
+								Systems
+							</p>	
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-sm-6 m-t35">
+					<div class="card card-coin">
+						<div class="card-body text-center">
+							<img src="/assets/img/man.png" class="mb-3 vector-icon" width="70" height="70">
+							<h2 class="text-black mb-2 font-w600">
+								{{StatsController::count_user()}}
+							</h2>
+							<h4 class="mb-0 fs-14">
+								Users
+							</h4>	
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<div class="row">
 				<div class="col-xl-9 col-xxl-8">
 					<div class="card">
