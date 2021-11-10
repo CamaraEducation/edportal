@@ -1,6 +1,6 @@
-@php 
-	$title = str_replace("-"," ",$title);
+@php
 	$video = $videos = VideosControl::get($id);
+	LogsController::log_video_view($id);
 @endphp
 @extends('layout.app')
 @section('title', $title)
@@ -21,7 +21,7 @@
 								  </svg>
 								</div>
 								<center>
-									<video controls class="video" id="video" preload="metadata" poster="{{$video['thumbnail']}}">
+									<video controls class="video" id="video" preload="metadata" poster="{{$video['thumbnail']}}" autoplay>
 										<source src="{{$video['source']}} " type="video/mp4" /> 
 									</video>
 								</center>
