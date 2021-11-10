@@ -15,7 +15,7 @@
 						</div>
 						<div class="card-body">
 							<div class="basic-form">
-								<form id="add_app" name="add_app" action="/create/app" method="POST" onsubmit="return submitted()">
+								<form id="add_app" name="add_app" action="/create/app" method="POST" enctype='multipart/form-data' onsubmit="return submitted()">
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label>App Name</label>
