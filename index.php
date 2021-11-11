@@ -128,9 +128,21 @@ Route::add('/create/document', function() {
  *                STARTING FROM HERE                *
  ****************************************************/
 
-Route::add('/users', function() {
-	return Blade::render('users');
+Route::add('/users/([a-z]*)', function($type) {
+	return Blade::render('user.list', ['type'=>$type]);
 });
+
+Route::add('/view/user/([0-9]*)/([A-Za-z\-]*)', function($id) {
+	return Blade::render('user.view', ['id' => $id]);
+});
+
+Route::add('/add/user', function() {
+	return Blade::render('user.create');
+});
+
+Route::add('/create/user', function() {
+	UsersControl::create();
+}, 'post');
 
 
 /****************************************************
