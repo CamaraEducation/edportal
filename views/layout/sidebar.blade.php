@@ -34,7 +34,13 @@
                     <span class="nav-text">Management</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="users">Users</a></li>
+                    <li><a href="javascript:void()">Users</a>
+                        <ul aria-expanded="false">
+                            <li><a href="/users/student">Students</a></li>
+                            <li><a href="/users/staff">Staff</a></li>                            
+                            <li><a href="/add/user">Create</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
