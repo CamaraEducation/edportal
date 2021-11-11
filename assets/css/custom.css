@@ -7,6 +7,14 @@ h4{
     color: #191e3a;
 }
 
+h2.card-title.mb-2.text-primary {
+    padding: 10px 0 0px 10px;
+    font-weight: bold;
+    font-size: large;
+}
+
+input:disabled {cursor: not-allowed;}
+
 .bootstrap-select .btn {
     border: 1px solid #EEEEEE !important;
     background-color: transparent !important;
