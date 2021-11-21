@@ -25,7 +25,7 @@
                     <li><a href="/document">Publication</a></li>
                     @php $application = AppsControl::fetch() @endphp
                     @foreach ($application as $app)
-                    <li><a href="/view/app/{{$app['id']}}">{{$app['name']}}</a></li>   
+                    <li><a href="/view/app/{{$app['id']}}/{{$app['name']}}">{{$app['name']}}</a></li>   
                     @endforeach
                 </ul>
             </li>
