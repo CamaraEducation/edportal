@@ -1,8 +1,4 @@
 <?php
-namespace control;
-
-use mysqli;
-
 class Authorize{
 	//register user
 	public static function register(){
