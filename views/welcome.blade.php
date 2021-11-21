@@ -51,7 +51,6 @@
 					</div>
 				</div>
 			</div>
-
 			
 			<div class="row">
 				<div class="col-xl-3 col-sm-6 m-t35">
@@ -111,7 +110,7 @@
 					<div class="card">
 						<div class="card-header border-0 flex-wrap pb-0">
 							<div class="mb-3">
-								<h4 class="fs-20 text-black">Camara Education Portal</h4>
+								<h2 class="card-title mb-2 text-primary">Camara Education Portal</h2>
 							</div>
 						</div>
 						<div class="card-body pb-2 px-3">
