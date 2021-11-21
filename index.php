@@ -23,8 +23,6 @@ $whoops->register();
  *       APPLICATION ENVIRONMENTS AND CONSTANTS      *
  *****************************************************/
 
-use control\Authorize;
-use control\Session;
 use core\Route;
 use duncan3dc\Laravel\Blade;
 
@@ -57,7 +55,6 @@ Blade::addPath('core');
  ****************************************************/
 
 Route::add('/', function() {
-	Session::auth();
 	return Blade::render("welcome");
 });
 
@@ -74,7 +71,7 @@ Route::add('/add/app', function() {
 	return Blade::render('admin.apps');
 },['get', 'post']);
 
-Route::add('/view/app/([0-9]*)', function($id) {
+Route::add('/view/app/([0-9]*)/([a-z]*)', function($id) {
 	return Blade::render('project', ['id' => $id]);
 });
 
@@ -123,6 +120,10 @@ Route::add('/create/document', function() {
 	DocsControl::create();
 }, 'post');
 
+Route::add('/book', function() {
+	return Blade::render("welcome");
+});
+
 /****************************************************
  *                 THE USER ROUTES       		   	*
  *                STARTING FROM HERE                *
@@ -143,6 +144,15 @@ Route::add('/add/user', function() {
 Route::add('/create/user', function() {
 	UsersControl::create();
 }, 'post');
+
+
+/****************************************************
+ *                 THE APIS ROUTES       		   	*
+ *                STARTING FROM HERE                *
+ ****************************************************/
+Route::add('/api/live', function() {
+	LogsController::log_live_time();
+}, ['get', 'post']);
 
 
 /****************************************************
@@ -197,6 +207,11 @@ Route::add('/routes', function() {
 		echo '<li>'.$route['expression'].' ('.$route['method'].')</li>';
 	}
 	echo '</ul>';
+});
+
+Route::add('/session', function() {
+	echo '<pre>';
+	print_r($_SESSION);
 });
 
 // Run the Router with the given Basepath
