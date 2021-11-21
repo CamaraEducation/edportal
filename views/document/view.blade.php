@@ -1,6 +1,5 @@
 @php
 	$doc = DocsControl::get($id);
-	//LogsController::log_video_view($id);
 @endphp
 @extends('layout.app')
 @section('title', $doc['name'])
@@ -101,26 +100,6 @@
 											</div>
 										</div>
 									</div>
-									<!-- Modal -->
-									<div class="modal fade" id="replyModal">
-										<div class="modal-dialog modal-dialog-centered" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title">Post Reply</h5>
-													<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-												</div>
-												<div class="modal-body">
-													<form>
-														<textarea class="form-control" rows="4">Message</textarea>
-													</form>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Reply</button>
-												</div>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -140,7 +119,7 @@
 	<script type="text/javascript">
 
 		var template = {
-		  html: '/book',
+		  html: '/assets/vendor/flipjs/templates/book.html',
 		  links: [{
 			rel: 'stylesheet',
 			href: '/assets/vendor/flipjs/css/font-awesome.min.css'
