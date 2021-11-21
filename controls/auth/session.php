@@ -1,8 +1,4 @@
 <?php
-namespace control;
-
-use mysqli;
-
 class Session{
     public static function init($user){
         $user   = strtolower($user);
@@ -19,13 +15,15 @@ class Session{
     }
 
     public static function auth($role=''){
-        if(!isset($_SESSION)){
-            header('Location: /login');
+        if(!empty($_SESSION)){
+            header('Location: /');
         }
         if($role != ''){
-            if($role != 'admin'){
+            if($role > '1'){
                 header('Location: /');
-            }elseif($role != 'teacher' or $role !='admin'){
+            }elseif($role > 4){
+                header('Location: /');
+            }elseif($role > 5){
                 header('Location: /');
             }
         }
