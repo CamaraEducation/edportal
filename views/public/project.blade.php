@@ -4,7 +4,7 @@
 @section('header')
 	<style>
 		.photo-content .cover-photo {
-			background: url($app['banner']}});
+			background: url({{$app['banner']}});
 			background-size: cover;
 			background-position: center;
 			min-height: 250px;
@@ -54,43 +54,13 @@
 													</div>
 												</div>
 												<div class="mt-4"> 
-													<a href="javascript:void(0);" class="btn btn-primary mb-1">Visit App</a>
+													<a href="/{{$app['path']}}" class="btn btn-primary mb-1">Visit App</a>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!--div class="col-xl-12">
-								<div class="card">
-									<div class="card-body">
-										<div class="profile-news">
-											<h5 class="text-primary d-inline">Related Projects</h5>
-											<div class="media pt-3 pb-3">
-												<img src="images/profile/5.jpg" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-											<div class="media pt-3 pb-3">
-												<img src="images/profile/6.jpg" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-											<div class="media pt-3 pb-3">
-												<img src="images/profile/7.jpg" alt="image" class="mr-3 rounded" width="75">
-												<div class="media-body">
-													<h5 class="m-b-5"><a href="post-details.html" class="text-black">Collection of textile samples</a></h5>
-													<p class="mb-0">I shared this on my fb wall a few months back, and I thought.</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div-->
 						</div>
                     </div>
                     <div class="col-xl-8">
@@ -116,11 +86,11 @@
                                             <div id="profile-settings" class="tab-pane fade">
                                                 <div class="pt-3">
                                                     <div class="settings-form">
-                                                        <h4 class="text-primary">Account Setting</h4>
+                                                        <h4 class="text-primary">Application Setting</h4>
                                                         <form>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6">
-                                                                    <label>Email</label>
+                                                                    <label>App Name</label>
                                                                     <input type="email" placeholder="Email" class="form-control">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
