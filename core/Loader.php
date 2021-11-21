@@ -1,5 +1,4 @@
 <?php
-$_SESSION['id'] = 1;
 function load_classphp($directory) {
 	if(is_dir($directory)) {
 		$scan = scandir($directory);
@@ -63,6 +62,30 @@ function theme(){
 	setcookie('logo_src', 'images/logo-white.png', time() + (180), "/");
 	setcookie('navheaderBg', 'color_2', time() + (180), "/");
 	setcookie('typography', 'HelveticaNeue', time() + (180), "/");
+}
+
+function account($data){
+	if(!empty($_SESSION)){
+		return $_SESSION[$data];
+	}else{
+		return 'none';
+	}
+}
+
+function role(){
+	if(!empty($_SESSION)){
+		switch($_SESSION['user_role']){
+			case 0: return 'Super Administrator';	break;
+			case 1: return 'Administrator';			break;
+			case 2: return 'Head of School';		break;
+			case 3: return 'Dep. H. School';		break;
+			case 4: return 'Academic'; 				break;
+			case 5: return 'Teacher'; 				break;
+			default: return 'Student'; 
+		}
+	}else{
+		return 'none';
+	}
 }
 
 if (!isset($_COOKIE['loaded'])){
