@@ -4,19 +4,17 @@ class Category{
 
     }
 
-    public static function fetch($type = 'video'){
+    public static function fetch($type = 'subject'){
         switch($type){
-            case 'video':
-                $sql = "SELECT * FROM video_category ORDER BY name";
+            case 'subject':
+                $sql = "SELECT * FROM subjects ORDER BY name";
                 $sql = mysqli_query(conn(), $sql); break;
-            case 'doc':
-                $sql = "SELECT * FROM doc_category ORDER BY name";
+            case 'class':
+                $sql = "SELECT * FROM classes ORDER BY name";
                 $sql = mysqli_query(conn(), $sql);
             break;
         }
-
-            return mysqli_fetch_all($sql, MYSQLI_ASSOC);
-
+        return mysqli_fetch_all($sql, MYSQLI_ASSOC);
     }
 
     public static function create(){
