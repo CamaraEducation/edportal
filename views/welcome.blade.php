@@ -4,6 +4,8 @@
 @section('content')
 	<div class="content-body">
 		<div class="container-fluid">
+			
+			<h2 class="card-title mb-2 text-primary">Camara Statistics</h3>
 			<div class="row">
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="card card-coin">
@@ -52,6 +54,8 @@
 				</div>
 			</div>
 			
+			
+			<h2 class="card-title mb-2 text-primary">Portal Statistics</h3>
 			<div class="row">
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="card card-coin">
@@ -121,7 +125,7 @@
 				<div class="col-xl-3 col-xxl-4">
 					<div class="card">
 						<div class="card-header border-0 pb-0">
-							<h4 class="fs-20 text-black">News & Information</h4>
+							<h2 class="card-title mb-2 text-primary">News & Information</h2>
 						</div>
 						<div class="card-body widget-media ">
 							<ul class="timeline">
