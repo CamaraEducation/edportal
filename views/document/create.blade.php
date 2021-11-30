@@ -21,18 +21,24 @@
 											<input type="text" name="title" id="title" class="form-control" placeholder="document title i.e. think fast & slow" >
 										</div>
 										<div class="form-group col-md-6">
-											<label>Category</label>
+											<label>Class</label>
 											<select name="category" id="category" class="form-control default-select" >
-												<option value="" hidden>select Document category</option>    
-                                                @php $categories = Category::fetch('doc') @endphp
+												<option value="" hidden>select class category</option>    
+                                                @php $categories = Category::fetch() @endphp
                                                 @foreach ($categories as $category)
                                                     <option value="{{$category['id']}}">{{$category['name']}}</option>
                                                 @endforeach
 											</select>
 										</div>
 										<div class="form-group col-md-6">
-											<label>Author</label>
-											<input type="text" name="author" id="author" class="form-control" placeholder="enter authors separated by coma ie J.k Fito, Femina" >
+											<label>Subject</label>
+											<select name="class" id="class" class="form-control default-select" >
+												<option value="" hidden>select subject category</option>    
+                                                @php $categories = Category::fetch('class') @endphp
+                                                @foreach ($categories as $category)
+                                                    <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                                @endforeach
+											</select>
 										</div>
 										<div class="form-group col-md-6">
 											<label>Document Type</label>
