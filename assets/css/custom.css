@@ -1,13 +1,13 @@
 @import "./video.css";
 
 h2{
-    color: #81BC00;
+    color: #81BC00; 
 }
 h4{
     color: #191e3a;
 }
 
-h2.card-title.mb-2.text-primary {
+.card-title.text-primary {
     padding: 10px 0 0px 10px;
     font-weight: bold;
     font-size: large;
