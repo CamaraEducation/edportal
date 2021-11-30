@@ -21,9 +21,9 @@
 											<input type="text" name="title" id="title" class="form-control" placeholder="video title i.e. Big buck bunny" >
 										</div>
 										<div class="form-group col-md-6">
-											<label>Category</label>
+											<label>Subject</label>
 											<select name="category" id="category" class="form-control default-select" >
-												<option value="" hidden>select video category</option>    
+												<option value="" hidden>select subject category</option>    
                                                 @php $categories = Category::fetch() @endphp
                                                 @foreach ($categories as $category)
                                                     <option value="{{$category['id']}}">{{$category['name']}}</option>
@@ -31,8 +31,14 @@
 											</select>
 										</div>
 										<div class="form-group col-md-6">
-											<label>Tags</label>
-											<input type="text" name="tags" id="tags" class="form-control" placeholder="enter tags separated by coma ie tie, shop, etc" >
+											<label>Class</label>
+											<select name="class" id="class" class="form-control default-select" >
+												<option value="" hidden>select class</option>    
+                                                @php $categories = Category::fetch('class') @endphp
+                                                @foreach ($categories as $category)
+                                                    <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                                @endforeach
+											</select>
 										</div>
 										<div class="form-group col-md-6">
 											<label>Thumbnail / Poster</label>
