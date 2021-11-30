@@ -17,13 +17,13 @@ class VideosControl{
 	public static function create(){
 		$title	  = mysqli_real_escape_string(conn(), $_POST['title']);
 		$category = mysqli_real_escape_string(conn(), $_POST['category']);
-		$tags 	  = mysqli_real_escape_string(conn(), $_POST['tags']);
+		$class 	  = mysqli_real_escape_string(conn(), $_POST['class']);
 		$description = mysqli_real_escape_string(conn(), $_POST['description']);
 
 		$banner = '/' . FileUploader::upload($file = 'thumbnail', $dir = 'video/cover/');
 		$video  = '/' . FileUploader::upload($file = 'video', $dir = 'video/source/' );
 
-		$sql = "INSERT INTO video (title, description, thumbnail, source, tags, category) VALUES ('$title', '$description', '$banner', '$video', '$tags', '$category')";
+		$sql = "INSERT INTO video (title, description, thumbnail, source, class, category) VALUES ('$title', '$description', '$banner', '$video', '$class', '$category')";
 		if(mysqli_query(conn(), $sql)){
 			header('Location: /video');
 		}else{
