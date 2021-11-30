@@ -1,18 +1,16 @@
-
-
 var themeOptionArr = {
-			typography: '',
+			typography: 'HelveticaNeue',
 			version: '',
-			layout: '',
-			primary: '',
-			headerBg: '',
-			navheaderBg: '',
-			sidebarBg: '',
-			sidebarStyle: '',
-			sidebarPosition: '',
-			headerPosition: '',
-			containerLayout: '',
-			direction: '',
+			layout: 'horizontal',
+			primary: 'color_12',
+			headerBg: 'color_13',
+			navheaderBg: 'color_2',
+			sidebarBg: 'color_1',
+			sidebarStyle: 'icon-hover',
+			sidebarPosition: 'fixed',
+			headerPosition: 'fixed',
+			containerLayout: 'full',
+			direction: 'ltr',
 		};
 		
 		
