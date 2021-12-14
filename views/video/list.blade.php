@@ -1,4 +1,4 @@
-    @extends('layout.app')
+@extends('layout.app')
 @section('title', 'Videos')
 @section('header')
     <style>
