@@ -17,14 +17,14 @@ class DocsControl{
 	public static function create(){
 		$title	  = mysqli_real_escape_string(conn(), $_POST['title']);
 		$category = mysqli_real_escape_string(conn(), $_POST['category']);
-		$author	  = mysqli_real_escape_string(conn(), $_POST['author']);
+		$class	  = mysqli_real_escape_string(conn(), $_POST['class']);
 		$type	  = mysqli_real_escape_string(conn(), $_POST['type']);
 		$description = mysqli_real_escape_string(conn(), $_POST['description']);
 
 		$banner = '/' . FileUploader::upload($file = 'thumbnail', $dir = 'docs/cover/');
 		$doc	= '/' . FileUploader::upload($file = 'document', $dir = 'docs/source/' );
 
-		$sql = "INSERT INTO document (name, description, thumbnail, source, publisher, category, type) VALUES ('$title', '$description', '$banner', '$doc', '$author', '$category', '$type')";
+		$sql = "INSERT INTO document (name, description, thumbnail, source, class, category, type) VALUES ('$title', '$description', '$banner', '$doc', '$class', '$category', '$type')";
 		if(mysqli_query(conn(), $sql)){
 			header('Location: /document');
 		}else{
