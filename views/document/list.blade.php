@@ -1,7 +1,11 @@
 @extends('layout.app')
 @section('title', 'Publication')
 @section('header')
-    @css('/assets/css/document')    
+    @css('/assets/css/document')   
+    @css('/assets/vendor/flipper/wow_book.css')     
+    @js('/assets/vendor/flipper/jquery-1.7.1.min.js')
+    @js('/assets/vendor/flipper/pdf.combined.min.js')
+    @js('/assets/vendor/flipper/wow_book.min.js')
 @endsection
 @section('header')
     
@@ -20,10 +24,14 @@
                 </div>                    
                 @endforeach
             </div>
+            
+            @foreach ($documents as $doc)
+            <div id="{{str_replace(' ', '-', $doc['name'])}}"></div>
+            @endforeach
         </div>
-    </div>    
+    </div>  
 @endsection
 
 @section('footer')
-    
+
 @endsection
