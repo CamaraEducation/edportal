@@ -44,6 +44,10 @@ img.play:hover {
     height: 150px !important;
 }
 
+p.card-title.mb-2.text-secondary {
+    padding-left: 10px;
+}
+
 @-moz-keyframes spin { 
     100% { -moz-transform: rotate(360deg); } 
 }
