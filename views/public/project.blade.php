@@ -41,20 +41,21 @@
 									<div class="card-body">
 										<div class="profile-statistics">
 											<div class="text-center">
+                                                @php  $visits = StatsController::count_app_visits(); @endphp
 												<h4 class="text-primary mb-0 pad-1">Visitor Statistic</h4>
 												<div class="row">
 													<div class="col">
-														<h3 class="m-b-0">1500</h3><span>All Time</span>
+														<h3 class="m-b-0">{{$visits['all_time']}}</h3><span>All Time</span>
 													</div>
 													<div class="col">
-														<h3 class="m-b-0">340</h3><span>This Month</span>
+														<h3 class="m-b-0">{{$visits['month_time']}}</h3><span>This Month</span>
 													</div>
 													<div class="col">
-														<h3 class="m-b-0">57</h3><span>Today</span>
+														<h3 class="m-b-0">{{$visits['today']}}</h3><span>Today</span>
 													</div>
 												</div>
 												<div class="mt-4"> 
-													<a href="/{{$app['path']}}" class="btn btn-primary mb-1">Visit App</a>
+													<a href="/live/app/{{$app['id']}}/{{str_replace(' ','-',$app['name'])}}" class="btn btn-primary mb-1">Visit App</a>
 												</div>
 											</div>
 										</div>
@@ -71,8 +72,8 @@
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link active show">Description</a>
                                             </li>
-                                            <li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Setting</a>
-                                            </li>
+                                            <!--li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Setting</a>
+                                            </li-->
                                         </ul>
                                         <div class="tab-content">
                                             <div id="about-me" class="tab-pane fade active show">
