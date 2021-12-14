@@ -6,6 +6,7 @@
 # Composer files
 /cache/
 /views/zenix.dexignzone.com/
+/apps/
 
 /node_modules/
 /reserved/
