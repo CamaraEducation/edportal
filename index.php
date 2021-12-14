@@ -71,8 +71,12 @@ Route::add('/add/app', function() {
 	return Blade::render('admin.apps');
 },['get', 'post']);
 
-Route::add('/view/app/([0-9]*)/([a-z]*)', function($id) {
+Route::add('/view/app/([0-9]*)/([a-z\-]*)', function($id) {
 	return Blade::render('project', ['id' => $id]);
+});
+
+Route::add('/live/app/([0-9]*)/([a-z\-]*)', function($id) {
+	return Blade::render('apps.live', ['id' => $id]);
 });
 
 Route::add('/create/app', function() {
@@ -96,8 +100,25 @@ Route::add('/add/video', function() {
 	return Blade::render('video.create');
 });
 
+Route::add('/stats/video', function() {
+	return Blade::render('video.stats');
+});
+
 Route::add('/create/video', function() {
 	VideosControl::create();
+}, 'post');
+
+/****************************************************
+ *            THE NOTES & NOTICCE ROUTES        	*
+ *               STARTING FROM HERE                *
+ ****************************************************/
+
+Route::add('/create/notice', function() {
+	return Blade::render('notice.create');
+});
+
+Route::add('/add/notice', function() {
+	Notice::create();
 }, 'post');
 
 /****************************************************
@@ -108,7 +129,7 @@ Route::add('/document', function() {
 	return Blade::render('document.list');
 });
 
-Route::add('/view/document/([0-9]*)/([A-Za-z\-]*)', function($id, $title) {
+Route::add('/view/document/([0-9]*)/([A-Za-z\-\&\,]*)', function($id, $title) {
 	return Blade::render('document.view', ['id' => $id, 'title'=>$title]);
 });
 
@@ -120,9 +141,13 @@ Route::add('/create/document', function() {
 	DocsControl::create();
 }, 'post');
 
-Route::add('/book', function() {
-	return Blade::render("welcome");
+Route::add('/notes', function() {
+	return Blade::render("");
 });
+
+Route::add('/add/notes', function() {
+	return Blade::render("notes.create");
+},['get', 'post']);
 
 /****************************************************
  *                 THE USER ROUTES       		   	*
@@ -152,6 +177,10 @@ Route::add('/create/user', function() {
  ****************************************************/
 Route::add('/api/live', function() {
 	LogsController::log_live_time();
+}, ['get', 'post']);
+
+Route::add('/log/app', function() {
+	LogsController::log_app_visit();
 }, ['get', 'post']);
 
 
