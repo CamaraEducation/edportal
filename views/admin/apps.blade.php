@@ -55,7 +55,7 @@
 	</div>
 @endsection
 @section('footer')
-	<script src="/assets/vendor/toastr/js/toastr.min.js"></script>
+	@js('/assets/vendor/toastr/js/toastr.min.js')
 	<script>
 		function submitted(){
 			toastr.warning("Please stay put the Application is being added to the system", "Please Wait", {
@@ -63,7 +63,7 @@
 				newestOnTop: !0, progressBar: !0, preventDuplicates: !0, onclick: null,
 				showDuration: "300", hideDuration: "1000", extendedTimeOut: "1000", showEasing: "swing",
 				hideEasing: "linear", showMethod: "fadeIn", hideMethod: "fadeOut", tapToDismiss: !1
-		});	
+			});	
 		}
 	</script>
 
