@@ -17,7 +17,7 @@
                     <li><a href="/document">Publication</a></li>
                     @php $application = AppsControl::fetch() @endphp
                     @foreach ($application as $app)
-                    <li><a href="/view/app/{{$app['id']}}/{{$app['name']}}">{{$app['name']}}</a></li>   
+                    <li><a href="/view/app/{{$app['id']}}/{{str_replace(' ','-',$app['name'])}}">{{$app['name']}}</a></li>   
                     @endforeach
                 </ul>
             </li>
@@ -32,6 +32,9 @@
                             <li><a href="/users/staff">Staff</a></li>                            
                             <li><a href="/add/user">Create</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="/create/notice">Announcement</a>
                     </li>
                 </ul>
             </li>
