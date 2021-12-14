@@ -21,9 +21,9 @@
 											<input type="text" name="title" id="title" class="form-control" placeholder="document title i.e. think fast & slow" >
 										</div>
 										<div class="form-group col-md-6">
-											<label>Class</label>
+											<label>Subject</label>
 											<select name="category" id="category" class="form-control default-select" >
-												<option value="" hidden>select class category</option>    
+												<option value="" hidden>select subject category</option>    
                                                 @php $categories = Category::fetch() @endphp
                                                 @foreach ($categories as $category)
                                                     <option value="{{$category['id']}}">{{$category['name']}}</option>
@@ -31,9 +31,9 @@
 											</select>
 										</div>
 										<div class="form-group col-md-6">
-											<label>Subject</label>
+											<label>Class</label>
 											<select name="class" id="class" class="form-control default-select" >
-												<option value="" hidden>select subject category</option>    
+												<option value="" hidden>select class category</option>    
                                                 @php $categories = Category::fetch('class') @endphp
                                                 @foreach ($categories as $category)
                                                     <option value="{{$category['id']}}">{{$category['name']}}</option>
