@@ -88,13 +88,13 @@ function role(){
 	}
 }
 
-if (!isset($_COOKIE['loaded'])){
-	setcookie('loaded', 'true', time() + (86400 * 30), "/");
-	header("Refresh:1");	
-}
-
 require_once 'Configuration.php';
 require_once 'Notices.php';
 load_classphp('controls');
 theme();
+
+if (!isset($_COOKIE['loaded'])){
+	setcookie('loaded', 'true', time() + (86400 * 30), "/");
+	header("Refresh:1");	
+}
 ?>
