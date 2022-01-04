@@ -18,11 +18,11 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label>Title</label>
-											<input type="text" name="title" id="title" class="form-control" placeholder="video title i.e. Big buck bunny" >
+											<input type="text" name="title" id="title" class="form-control" placeholder="video title i.e. Big buck bunny" required>
 										</div>
 										<div class="form-group col-md-6">
 											<label>Subject</label>
-											<select name="category" id="category" class="form-control default-select" >
+											<select name="category" id="category" class="form-control default-select" required>
 												<option value="" hidden>select subject category</option>    
                                                 @php $categories = Category::fetch() @endphp
                                                 @foreach ($categories as $category)
@@ -32,7 +32,7 @@
 										</div>
 										<div class="form-group col-md-6">
 											<label>Class</label>
-											<select name="class" id="class" class="form-control default-select" >
+											<select name="class" id="class" class="form-control default-select" required>
 												<option value="" hidden>select class</option>    
                                                 @php $categories = Category::fetch('class') @endphp
                                                 @foreach ($categories as $category)
@@ -41,13 +41,17 @@
 											</select>
 										</div>
 										<div class="form-group col-md-6">
-											<label>Thumbnail / Poster</label>
-											<input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*" required>
-										</div>
+											<label>Tags</label>
+											<input type="text" name="tags" id="tags" class="form-control" placeholder="separated by coma i.e. horses, linux, etc" required>
+										</div>										
 									</div>
 
                                     <div class="form-row">
-										<div class="form-group col-md-12">
+										<div class="form-group col-md-6">
+											<label>Thumbnail / Poster</label>
+											<input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*" required>
+										</div>
+										<div class="form-group col-md-6">
 											<label>Video File</label>
 											<input type="file" name="video" id="videoUpload" class="form-control" required accept="video/*">
 										</div>
@@ -83,7 +87,7 @@
 				newestOnTop: !0, progressBar: !0, preventDuplicates: !0, onclick: null,
 				showDuration: "300", hideDuration: "1000", extendedTimeOut: "1000", showEasing: "swing",
 				hideEasing: "linear", showMethod: "fadeIn", hideMethod: "fadeOut", tapToDismiss: !1
-		});	
+			});	
 		}
 
         document.getElementById("videoUpload").onchange = function(event) {
