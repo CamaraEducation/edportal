@@ -100,5 +100,10 @@ class StatsController{
 	}
 
 
+public static function count_live_time(){
+	
+}
+
+
 }
 ?>
