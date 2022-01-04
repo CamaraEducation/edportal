@@ -5,7 +5,7 @@
 @extends('layout.app')
 @section('title', $title)
 @section('header')    
-
+	@css('/assets/vendor/toastr/css/toastr.min')
 @endsection
 @section('content')
 	<div class="content-body">
@@ -130,22 +130,24 @@
 												<h4 class="text-primary mb-0 pad-1">Video Statistic</h4>
 												<div class="row">
 													<div class="col">
-														<h3 class="m-b-0">15</h3>
-														<span>Likes</span>
+														<h3 class="m-b-0">{{VideosControl::video_activity($id)}}</h3>
+														<span>Bookmarks</span>
 													</div>
 													<div class="col">
-														<h3 class="m-b-0">3</h3>
-														<span>Dislikes</span>
-													</div>
-													<div class="col">
-														<h3 class="m-b-0">57</h3>
-														<span>View</span>
+														<h3 class="m-b-0">{{VideosControl::views($id)}}</h3>
+														<span>ViewS</span>
 													</div>
 												</div>
-												<div class="mt-4"> 
-													<a href="javascript:void(0);" class="btn btn-primary mb-1">
-														<i class="fa fa-thumbs-up"></i> Like</a>
-													<a href="javascript:void(0);" class="btn btn-primary mb-1">Dislike</a>
+												<div class="mt-4">
+													@if (VideosControl::video_bookmark($id) == 0)
+														<a href="javascript:void(0);" class="btn btn-secondary mb-1" onclick="return log_video_activity('save')">
+															<i class="flaticon-381-bookmark"></i> Bookmark
+														</a>
+													@else
+														<a href="javascript:void(0);" class="btn btn-primary mb-1" onclick="return log_video_activity('dsave')">
+															<i class="flaticon-381-bookmark"></i> Saved
+														</a>
+													@endif
 												</div>
 											</div>
 										</div>
@@ -162,8 +164,8 @@
 										<ul class="nav nav-tabs">
 											<li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link active show">Description</a>
 											</li>
-											<li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Setting</a>
-											</li>
+											<!--li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Setting</a>
+											</li-->
 										</ul>
 										<div class="tab-content">
 											<div id="about-me" class="tab-pane fade active show">
@@ -259,5 +261,29 @@
 		</div>
 @endsection
 @section('footer')
-	<script src="/assets/js/videos.js"></script>
+	@js('/assets/js/videos.js')
+	@js('/assets/vendor/toastr/js/toastr.min.js')
+	<script>
+		function log_video_activity(action){
+
+				var action	  = action;
+				var user_id	  = "{{$_SESSION['id']}}";
+				var video_id  = "{{$id}}";
+
+				//alert(uri +' | '+ app_id +' | '+ user_id);
+				$.post("/test.php", {
+					action	: action,
+					user_id	: user_id,
+					video_id : video_id
+				},
+				function(data, status){
+					toastr.success(data, "Activity Recorded", {
+						positionClass: "toast-top-right", timeOut: 5e3, closeButton: !0, debug: !1,
+						newestOnTop: !0, progressBar: !0, preventDuplicates: !0, onclick: null,
+						showDuration: "300", hideDuration: "1000", extendedTimeOut: "1000", showEasing: "swing",
+						hideEasing: "linear", showMethod: "fadeIn", hideMethod: "fadeOut", tapToDismiss: !1
+					});
+				});
+			}
+	</script>
 @endsection
