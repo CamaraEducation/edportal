@@ -1,5 +1,6 @@
 @if (!empty($_SESSION))
-@php LogsController::log_page_visit(); @endphp
+@php LogsController::log_page_visit(); 
+@endphp
 <!DOCTYPE html>
 <html>
 	<head>
@@ -69,16 +70,18 @@
 		@js('/assets/js/demo.js')
 
 		<script>
-			/*function myFunc(){
-				endTime = new Date();
-				$.ajax({
-					url:'addDur.php',
-					method:'POST',
-					data:{
-				  		duration:endTime - startTime,
-					}
-			  	});
-			}*/
+			var uri = '{{$_SERVER["REQUEST_URI"]}}';
+			function log_live_time(){
+				$.post("/log/time", {
+					uri: uri
+				},
+				function(data, status){
+					console.log(data);
+				});
+			}
+			setInterval(function(){
+				log_live_time()
+			}, 3200);
 		</script>
 
 		@yield('footer')
