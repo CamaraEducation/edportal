@@ -10,11 +10,14 @@ class Session{
         foreach(mysqli_fetch_assoc($data) as $key=>$value){
 			$_SESSION[$key] = $value;
 		}
+        
+        LogsController::log_log_activity();
 
         return $_SESSION;
     }
 
     public static function auth($role=''){
+        self::check();
         if(!empty($_SESSION)){
             header('Location: /');
         }
@@ -27,6 +30,18 @@ class Session{
                 header('Location: /');
             }
         }
+    }
+
+    // static function that kills a session if there is no activity within 10 minutes
+    public static function check(){
+        if(isset($_SESSION['identifier']) && $_SESSION['identifier'] + 600 < $_SERVER['REQUEST_TIME']){
+            self::destroy();
+        }
+    }
+
+    public static function destroy(){
+        session_destroy();
+        header('Location: /');
     }
 
 }
