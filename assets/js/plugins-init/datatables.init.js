@@ -46,7 +46,7 @@
 (function($) {
     "use strict"
     //example 1
-    var table = $('#example').DataTable({
+    var table = $('.data-table').DataTable({
         createdRow: function ( row, data, index ) {
            $(row).addClass('selected')
         } ,
