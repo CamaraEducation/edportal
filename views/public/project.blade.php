@@ -48,7 +48,7 @@
 														<h3 class="m-b-0">{{$visits['all_time']}}</h3><span>All Time</span>
 													</div>
 													<div class="col">
-														<h3 class="m-b-0">{{$visits['month_time']}}</h3><span>This Month</span>
+														<h3 class="m-b-0">{{$visits['monthly']}}</h3><span>This Month</span>
 													</div>
 													<div class="col">
 														<h3 class="m-b-0">{{$visits['today']}}</h3><span>Today</span>
