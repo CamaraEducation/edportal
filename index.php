@@ -83,6 +83,10 @@ Route::add('/create/app', function() {
 	AppsControl::create();
 }, 'post');
 
+Route::add('/stats/app', function() {
+	return Blade::render('apps.stats');
+});
+
 
 /****************************************************
  *                 THE VIDEO ROUTES       		   	*
@@ -141,6 +145,10 @@ Route::add('/create/document', function() {
 	DocsControl::create();
 }, 'post');
 
+Route::add('/stats/document', function() {
+	return Blade::render('document.stats');
+});
+
 Route::add('/notes', function() {
 	return Blade::render("");
 });
@@ -172,16 +180,25 @@ Route::add('/create/user', function() {
 
 
 /****************************************************
- *                 THE APIS ROUTES       		   	*
+ *                 THE LOGS ROUTES       		   	*
  *                STARTING FROM HERE                *
  ****************************************************/
-Route::add('/api/live', function() {
+Route::add('/log/time', function() {
 	LogsController::log_live_time();
 }, ['get', 'post']);
 
 Route::add('/log/app', function() {
 	LogsController::log_app_visit();
 }, ['get', 'post']);
+
+Route::add('/log/video', function() {
+	LogsController::log_video_activity();
+}, ['get', 'post']);
+
+Route::add('/test', function() {
+	echo '<pre>';
+	print_r(VideosControl::popular());
+});
 
 
 /****************************************************
