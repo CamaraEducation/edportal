@@ -27,6 +27,10 @@ input:disabled {cursor: not-allowed;}
     padding: 1rem;
 }
 
+.space{
+    padding: 1rem;
+}
+
 #over img {
     margin-left: auto;
     margin-right: auto;
