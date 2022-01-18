@@ -228,6 +228,11 @@ Route::add('/notice/([a-z]*)', function($page) {
 	return Blade::render("notice", ['page'=>$page]);
 });
 
+Route::add('/logout', function() {
+	session_destroy();
+	header('Location: /');
+});
+
 /****************************************************
  *                ERROR PAGES 404, 405              *
  *             DO NOT CHANGE THIS SECTION           *
