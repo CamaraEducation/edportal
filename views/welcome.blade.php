@@ -135,12 +135,26 @@
 					</div>
 				</div>
 				<div class="col-xl-3 col-xxl-4">
-					<div class="card">
-						<div class="card-header border-0 pb-0">
-							<h2 class="card-title mb-2 text-primary pad-2">Camara Education Portal</h2>
+					<div class="row">
+						<div class="card col-sm-12">
+							<div class="card-header border-0 pb-0">
+								<h2 class="card-title mb-2 text-primary pad-2">Camara Education Portal</h2>
+							</div>
+							<div class="card-body pb-2 px-3">
+								<p>Camara Education is a charity that provides computers, teacher training and innovative learning programmes to schools across Africa. We exist because we believe the world would be a better place if all young people were empowered through innovative education to create the life they want to lead.</p>
+							</div>
 						</div>
-						<div class="card-body pb-2 px-3">
-							<p>Camara Education is a charity that provides computers, teacher training and innovative learning programmes to schools across Africa. We exist because we believe the world would be a better place if all young people were empowered through innovative education to create the life they want to lead.</p>
+						<div class="card col-sm-12">
+							<div class="card-header border-0 pb-0">
+								<h2 class="card-title mb-2 text-primary pad-2">System Live Time</h2>
+							</div>
+							<div class="card-body pb-2 px-3">
+								@php $livetime = StatsController::count_live_time() @endphp
+								<h6>Today 		: {{TimeController::convert_sec_min_hrs($livetime['today']/1000)}}</h6>
+								<h6>This Month  : {{TimeController::convert_sec_min_hrs($livetime['monthly']/1000)}}</h6>
+								<h6>This Year 	: {{TimeController::convert_sec_min_hrs($livetime['all_time']/1000)}}</h6>
+								<div class="space"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -163,11 +177,6 @@
 <script>
 (function($) {
     "use strict" 
-
-	
-	/* function draw() {
-		
-	} */
 
  var dzSparkLine = function(){
 	let draw = Chart.controllers.line.__super__.draw; //draw shadow
@@ -239,20 +248,6 @@
 		},
 		
 		resize:function(){
-			// barChart1();	
-			// barChart2();
-			// barChart3();	
-			// lineChart1();	
-			// lineChart2();		
-			// lineChart3();
-			// lineChart03();
-			// areaChart1();
-			// areaChart2();
-			// areaChart3();
-			// radarChart();
-			// pieChart();
-			// doughnutChart(); 
-			// polarChart(); 
 		}
 	}
 
