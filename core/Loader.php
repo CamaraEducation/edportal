@@ -88,6 +88,10 @@ function role(){
 	}
 }
 
+function viewer(){
+	return $_SESSION['user_role'];
+}
+
 require_once 'Configuration.php';
 require_once 'Notices.php';
 load_classphp('controls');
