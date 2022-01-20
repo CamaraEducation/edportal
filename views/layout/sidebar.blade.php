@@ -22,9 +22,7 @@
                 </ul>
             </li>
             @if (viewer() == 1)
-                @include('layout.menu.admin')
-            @elseif (viewer() == 2)
-                                
+                @include('layout.menu.admin')                                
             @endif
             
             <li>
