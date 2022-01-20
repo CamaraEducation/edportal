@@ -38,13 +38,11 @@ class Authorize{
 			$data = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 			if($data['user_pass'] == $pass){
 				Session::init($user);
-				setcookie('notice', 'df_log_200', time() + (180), "/");
+				echo 200;
 			}
 		}else{
-			setcookie('notice', 'df_log_201', time() + (180), "/");
+			echo 201;
 		}
-
-		header('Location: /notice/auth');
 
 	}
 
