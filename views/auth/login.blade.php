@@ -22,7 +22,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input required class="form-control" name="email" type="text" placeholder="Email or Username ">
+                            <input required class="form-control" name="email" id="login_id" type="text" placeholder="Email or Username ">
                         </div>
                     </div>
                     <div class="form-group password-field">
@@ -39,7 +39,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <input required class="form-control" name="password" type="password" placeholder="Password">
+                            <input required class="form-control" name="password" id="password" type="password" placeholder="Password">
                             <div class="input-group-append cursor-pointer">
                                 <span class="input-group-text">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16">
@@ -58,18 +58,18 @@
                     </div>
                     <div class="row mt-6 mb-6">
                         <div class="col-6 d-flex align-items-center">
-                            <div class="custom-control custom-checkbox">
+                            <!--div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="cb1">
                                 <label class="custom-control-label" for="cb1">Remember me
                                 </label>
-                            </div>
+                            </div-->
                         </div>
                         <div class="col-6 text-right">
                             <a href="/reset">Forgot password?</a>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary btn-block">Login</button>
+                        <button type="button" id="login" class="btn btn-primary btn-block">Login</button>
                     </div>
                     <div class="mt-10 mb-6 text-center">
                         
@@ -78,4 +78,33 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $('#login').click(function(){
+            var login_id = $('[name=email]').val();
+            var password = $('#password').val();
+            if(login_id != '' && password != ''){
+                $.ajax({
+                    type: "POST",
+                    url: '/authorize/login',
+                    data: {
+                        email : $('#login_id').val(),
+                        password : $('#password').val()
+                    },
+                    success: function(data){
+                        if(data == 200){
+                            toastr["success"]("Successfully loged in to the system", "Please Wait")
+                            window.location.href = "/";
+                        } else{
+                            toastr["error"]("Please make sure the credentials provided are correct", "Wrong Credentials")
+                        }
+                    }
+                });
+            }else{
+                toastr["warning"]("One or more form field is empty, All fields are required", "Empty Fields")
+            }
+        });
+    </script>
 @endsection
