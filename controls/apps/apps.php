@@ -16,7 +16,7 @@ class AppsControl{
 
         $banner = '/' . FileUploader::upload($file='thumbnail', $dir='apps/');
 
-        $sql = "INSERT INTO apps VALUES (DEFAULT, '$app_name', '$app_type', '$app_path', '$description', '$banner')";
+        $sql = "INSERT INTO apps VALUES (DEFAULT, '$app_name', '$app_type', '$app_path', '$description', '$banner', DEFAULT)";
         if(mysqli_query(conn(), $sql)){
             header('Location: /');
         }else{
