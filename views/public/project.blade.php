@@ -41,7 +41,7 @@
 									<div class="card-body">
 										<div class="profile-statistics">
 											<div class="text-center">
-                                                @php  $visits = StatsController::count_app_visits(); @endphp
+                                                @php  $visits = StatsController::count_app_visit($id); @endphp
 												<h4 class="text-primary mb-0 pad-1">Visitor Statistic</h4>
 												<div class="row">
 													<div class="col">
