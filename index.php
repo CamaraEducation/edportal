@@ -178,6 +178,10 @@ Route::add('/create/user', function() {
 	UsersControl::create();
 }, 'post');
 
+Route::add('/account', function() {
+	return Blade::render('user.profile');
+});
+
 
 /****************************************************
  *                 THE LOGS ROUTES       		   	*
