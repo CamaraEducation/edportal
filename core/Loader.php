@@ -75,12 +75,8 @@ function account($data){
 function role(){
 	if(!empty($_SESSION)){
 		switch($_SESSION['user_role']){
-			case 0: return 'Super Administrator';	break;
-			case 1: return 'Administrator';			break;
-			case 2: return 'Head of School';		break;
-			case 3: return 'Dep. H. School';		break;
-			case 4: return 'Academic'; 				break;
-			case 5: return 'Teacher'; 				break;
+			case 1: return 'Administrator';	break;
+			case 2: return 'Teacher';		break;
 			default: return 'Student'; 
 		}
 	}else{
