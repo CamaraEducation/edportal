@@ -32,12 +32,9 @@
 											<label>User Role</label>
 											<select name="role" id="role" class="form-control default-select" >
 												<option value="" hidden>select User Type</option>
-                                                <option value="1">Technician</option>
-												<option value="2">Head of School</option>
-												<option value="3">Dep. Head of School</option>
-                                                <option value="4">Academic</option>
-                                                <option value="5">Teacher</option>
-                                                <option value="6">Student</option>
+                                                <option value="1">Administrator</option>
+                                                <option value="2">Teacher</option>
+                                                <option value="3">Student</option>
 											</select>
 										</div>
 									</div>
