@@ -23,7 +23,8 @@
             </li>
             @if (viewer() == 1)
                 @include('layout.menu.admin')
-            @else @if             
+            @elseif (viewer() == 2)
+
             @endif
             
             <li>
