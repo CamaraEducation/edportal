@@ -79,6 +79,14 @@ class StatsController{
 		FROM app_visits";
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
+	
+	public static function count_app_visit($id){
+	    $sql = "SELECT COUNT(id) AS all_time, 
+			(SELECT COUNT(id) FROM app_visits WHERE app='$id' AND MONTH(TIME) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
+			(SELECT COUNT(id) FROM app_visits WHERE app='$id' AND DATE(TIME) = DATE(CURRENT_TIMESTAMP)) AS today
+		FROM app_visits WHERE app='$id'";
+		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
+	}
 
 	/* visualize specific users activity
 	public static function count_user_activity(){
