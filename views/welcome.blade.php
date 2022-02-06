@@ -37,9 +37,9 @@
 						<div class="card-body text-center">
 							<img src="/assets/img/teacher.png" class="mb-3 vector-icon" width="70" height="70">
 							<h2 class="text-black mb-2 font-w600">60,648</h2>
-							<p class="mb-0 fs-14">
+							<h4 class="mb-0 fs-14">
 								Teachers Trained
-							</p>	
+							</h4>	
 						</div>
 					</div>
 				</div>
@@ -164,7 +164,7 @@
 @endsection	
 @section('footer') 
 @js('/assets/vendor/chart.js/Chart.bundle.min.js')
-@js('/assets/js/plugins-init/chartjs-init.js')
+<!--@js('/assets/js/plugins-init/chartjs-init.js')-->
 
 @php $user_activity = StatsController::count_users_activity(); 
     $max = max($user_activity);
