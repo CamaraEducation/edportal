@@ -262,8 +262,7 @@
 																	<label class="custom-control-label" for="gridCheck"> Check me out</label>
 																</div>
                                                             </div>
-                                                            <button class="btn btn-primary" type="submit">Sign
-                                                                in</button>
+                                                            <button class="btn btn-primary" type="submit">Sign in</button>
                                                         </form>
                                                     </div>
                                                 </div>
