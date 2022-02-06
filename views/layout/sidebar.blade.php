@@ -10,21 +10,26 @@
             </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="flaticon-077-menu-1"></i>
-                    <span class="nav-text">Applications</span>
+                    <span class="nav-text">Utilities</span>
                 </a>
                 <ul aria-expanded="false">
+                    <li><a href="javascript:void()">Applications</a>
+                        <ul aria-expanded="false">
+                            @php $application = AppsControl::fetch() @endphp
+                            @foreach ($application as $app)
+                            <li><a href="/view/app/{{$app['id']}}/{{str_replace(' ','-',$app['name'])}}">{{$app['name']}}</a></li>   
+                            @endforeach
+                        </ul>
+                    </li>
                     <li><a href="/video">Video</a></li>
-                    <li><a href="/document">Publication</a></li>
-                    @php $application = AppsControl::fetch() @endphp
-                    @foreach ($application as $app)
-                    <li><a href="/view/app/{{$app['id']}}/{{str_replace(' ','-',$app['name'])}}">{{$app['name']}}</a></li>   
-                    @endforeach
+                    <li><a href="/document">Documents</a></li>
+                    
                 </ul>
             </li>
             @if (viewer() == 1)
                 @include('layout.menu.admin')
             @elseif (viewer() == 2)
-
+                @include('layout.menu.admin')
             @endif
             
             <li>
