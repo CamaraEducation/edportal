@@ -22,9 +22,9 @@ class LogsController{
 		$duration = 2900;
 		$sql= "UPDATE page_visit SET live = live+'$duration' WHERE uri = '$page' AND visitor = '$user' AND identifier = '$sess'";
 		if(mysqli_query(conn(), $sql)){
-			echo 'recorded';
+			echo json_encode(array('status' => 'success'));
 		}else{
-			echo 'not recorded';
+			echo json_encode(array('status' => 'error'));
 		}
 	}
 
@@ -56,8 +56,16 @@ class LogsController{
 				if(mysqli_query(conn(), $log)){ echo 'video removed from your bookmark list'; }
 				else{echo 'This video was not found in your Bookmarks';} break;
 			default:
-				echo 'error';
+				echo json_encode(array('status' => 'error'));
 		}
+	}
+
+	public static function log_doc_visit($id){
+		$page = '';
+		$user = $_SESSION['id'];
+		$sess = $_SESSION['sess_id'];
+		$log = "INSERT INTO doc_views VALUES (DEFAULT, '$id', '$user', '$sess', '$page', DEFAULT)";
+		mysqli_query(conn(), $log);
 	}
 
 	public static function log_log_activity(){
