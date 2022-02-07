@@ -184,9 +184,10 @@ Route::add('/account', function() {
 
 
 /****************************************************
- *                 THE LOGS ROUTES       		   	*
+ *             LOGS, STATS & ANALYTICS      		*
  *                STARTING FROM HERE                *
  ****************************************************/
+
 Route::add('/log/time', function() {
 	LogsController::log_live_time();
 }, ['get', 'post']);
@@ -198,6 +199,40 @@ Route::add('/log/app', function() {
 Route::add('/log/video', function() {
 	LogsController::log_video_activity();
 }, ['get', 'post']);
+
+Route::add('/log/doc', function() {
+	
+}, ['get', 'post']);
+
+Route::add('/analytics/general', function() {
+	
+});
+
+Route::add('/analytics/video', function() {
+	
+});
+
+Route::add('/analytics/document', function() {
+	
+});
+
+
+/****************************************************
+ *                	  MISCALENOUS       		   	*
+ *                STARTING FROM HERE                *
+ ****************************************************/
+
+Route::add('/search/portal', function() {
+	echo "hello world";
+});
+
+Route::add('/update/portal', function() {
+	return Blade::render('system.update');
+});
+
+Route::add('/export/portal', function() {
+	return Blade::render('system.export');
+});
 
 Route::add('/test', function() {
 	echo '<pre>';
@@ -243,10 +278,12 @@ Route::add('/logout', function() {
  ****************************************************/
 
 Route::pathNotFound(function($path) {
+	header('HTTP/1.0 404 Not Found');
 	echo Blade::render("404", ['path' => $path]);
 });
 
 Route::methodNotAllowed(function($path, $method) {
+	header('HTTP/1.0 405 Method Not Allowed');
 	echo Blade::render("405", ['method' => $method]);
 });
 
