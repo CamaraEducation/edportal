@@ -44,9 +44,9 @@
         </li>
         <li><a href="javascript:void()">System</a>
             <ul aria-expanded="false">
-                <li><a href="/users/student">Update</a></li>
+                <li><a href="/update/portal">Update</a></li>
                 <!--li><a href="/users/staff">Staff</a></li-->                            
-                <li><a href="/add/user">Export Data</a></li>
+                <li><a href="/export/portal">Export Data</a></li>
             </ul>
         </li>
     </ul>
