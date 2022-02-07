@@ -1,4 +1,7 @@
-@php $doc = DocsControl::get($id); @endphp
+@php 
+	$doc = DocsControl::get($id); 
+	LogsController::log_doc_visit($id);
+@endphp
 @extends('layout.app')
 @section('title', $doc['name'])
 
@@ -135,8 +138,6 @@
 			        // }
 			        book.showLightbox();
 			    }
-			
-			
 			});
 		</script>
 @endsection
