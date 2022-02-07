@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
-                    <div class="input-group search-area right d-lg-inline-flex d-none">
+                    <div class="input-group search-area right d-lg-inline-flex d-none search-box">
                         <input type="text" class="form-control" placeholder="Find something here...">
                         <div class="input-group-append">
                             <span class="input-group-text">
@@ -11,9 +11,9 @@
                                     <i class="flaticon-381-search-2"></i>
                                 </a>
                             </span>
-                        </div>
-                    </div>
-                </div>
+                        </div>                     
+                    </div>   
+                </div>                
                 <ul class="navbar-nav header-right main-notification">
                     <li class="nav-item dropdown notification_dropdown">
                         <a class="nav-link bell dz-theme-mode" href="#">
