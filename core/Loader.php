@@ -43,9 +43,9 @@ function span_count($time){
 }
 
 function config($conf){
-	if($conf = 'all'){
-		$env = $_ENV;
-	}else{ $env = $_ENV[strtoupper($conf)]; }
+	if($conf = 'all'){ $env = $_ENV;
+		}else{ $env = $_ENV[strtoupper($conf)]; 
+	}
 	return $env;
 }
 
@@ -92,9 +92,4 @@ require_once 'Configuration.php';
 require_once 'Notices.php';
 load_classphp('controls');
 theme();
-
-if (!isset($_COOKIE['loaded'])){
-	setcookie('loaded', 'true', time() + (86400 * 30), "/");
-	header("Refresh:1");	
-}
 ?>
