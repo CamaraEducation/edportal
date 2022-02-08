@@ -83,6 +83,7 @@
 @section('scripts')
     <script>
         $('#login').click(function(){
+            $("#login").attr("disabled", true);
             var login_id = $('[name=email]').val();
             var password = $('#password').val();
             if(login_id != '' && password != ''){
@@ -99,11 +100,13 @@
                             window.location.href = "/";
                         } else{
                             toastr["error"]("Please make sure the credentials provided are correct", "Wrong Credentials")
+                            $("#login").removeAttr("disabled");
                         }
                     }
                 });
             }else{
                 toastr["warning"]("One or more form field is empty, All fields are required", "Empty Fields")
+                $("#login").removeAttr("disabled");
             }
         });
     </script>
