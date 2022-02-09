@@ -17,17 +17,17 @@
         </li>
         <li><a href="javascript:void()">Publications</a>
             <ul aria-expanded="false">
-                <li><a href="/stats/document">statistics</a></li>
+                <!--li><a href="/stats/document">statistics</a></li-->
                 <li><a href="/add/document">Upload</a></li>
             </ul>
         </li>
-        <li><a href="javascript:void()">Analytics</a>
+        <!--li><a href="javascript:void()">Analytics</a>
             <ul aria-expanded="false">
                 <li><a href="/analytics/general">General</a></li>
                 <li><a href="/analytics/video">Videos</a></li>
                 <li><a href="/analytics/document">Documents</a></li>
             </ul>
-        </li>
+        </li-->
     </ul>
 </li>
 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

@@ -30,7 +30,7 @@
         </li>
         <li><a href="javascript:void()">Publications</a>
             <ul aria-expanded="false">
-                <li><a href="/stats/document">statistics</a></li>
+                <!--li><a href="/stats/document">statistics</a></li-->
                 <li><a href="/add/document">Upload</a></li>
             </ul>
         </li>
