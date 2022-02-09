@@ -236,7 +236,7 @@ Route::add('/export/portal', function() {
 
 Route::add('/test', function() {
 	echo '<pre>';
-	print_r(VideosControl::popular());
+	print_r($_SERVER);
 });
 
 
