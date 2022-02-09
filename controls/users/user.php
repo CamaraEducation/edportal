@@ -25,5 +25,17 @@ class UsersControl{
         $sql = "DELETE FROM users WHERE id='$id'";
         mysqli_query(conn(), $sql) ? header('Location: /users') : 'something is wrong';
     }
+
+    public static function fetch_user_data($id){
+        $sql = "SELECT * FROM userdata WHERE user_id = '$id'";
+        return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
+    }
+
+    public static function fetch_data($id, $value, $type){
+        if ($type == 'data'){ $user = UsersControl::fetch_user_data($id);}
+            else{ $user = UsersControl::get($id); 
+        }
+        return $user[$value];
+    }
 }
 ?>
