@@ -95,9 +95,11 @@
         </script>        
         @php flush(); ob_flush(); @endphp
 		<div class="wrapper">
-            <pre>@php $exec = shell_exec('sudo git reset --hard HEAD'); echo $exec; flush(); ob_flush(); @endphp</pre>
-            <pre>@php $exec = shell_exec('sudo git stash'); echo $exec; flush(); ob_flush(); @endphp</pre>
-            <pre>@php $exec = shell_exec('sudo git pull origin main'); echo $exec; flush(); ob_flush(); @endphp</pre>
+            <ul>
+                <li><pre>@php $exec = shell_exec('sudo git reset --hard HEAD'); echo $exec; flush(); ob_flush(); @endphp</pre></li>
+                <li><pre>@php $exec = shell_exec('sudo git stash'); echo $exec; flush(); ob_flush(); @endphp</pre></li>
+                <li><pre>@php $exec = shell_exec('sudo git pull origin main'); echo $exec; flush(); ob_flush(); @endphp</pre></li>
+            </ul>
 		</div>
 
         <script>
