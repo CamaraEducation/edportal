@@ -37,7 +37,7 @@
 			<a href="/" class="w3-bar-item w3-hide-small pad-top w3-right">Home</a>
 		</div>
 		<div class="wrapper">
-			<iframe src="/apps/{{$app['path']}}" id="myFrame" onload="log_app_visit()">
+			<iframe src="/apps/{{$app['path']}}" id="myFrame" onload="log_app_visit()" sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
 			</iframe>
 		</div>
 		@js('/assets/js/jquery36.min')
@@ -51,7 +51,7 @@
 				//elmnt.style.display = "none";
 				//elmnt.outerHTML = iframe.contentWindow.location.href;
 				//alert(iframe.contentWindow.location.href);
-				var uri     = iframe.contentWindow.location.href;
+				var uri     = iframe.contentWindow.location.pathname;
 				var app_id  = "{{$id}}";
 				var user_id = "{{$_SESSION['id']}}";
 
