@@ -133,7 +133,7 @@ Route::add('/document', function() {
 	return Blade::render('document.list');
 });
 
-Route::add('/view/document/([0-9]*)/([A-Za-z\-\&\,]*)', function($id, $title) {
+Route::add('/view/document/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id, $title) {
 	return Blade::render('document.view', ['id' => $id, 'title'=>$title]);
 });
 
