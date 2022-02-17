@@ -71,7 +71,7 @@ Route::add('/add/app', function() {
 	return Blade::render('admin.apps');
 },['get', 'post']);
 
-Route::add('/view/app/([0-9]*)/([a-z\-]*)', function($id) {
+Route::add('/view/app/([0-9]*)/([a-zA-Z0-9_.-]*)', function($id) {
 	return Blade::render('project', ['id' => $id]);
 });
 
