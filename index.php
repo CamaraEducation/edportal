@@ -75,7 +75,7 @@ Route::add('/view/app/([0-9]*)/([a-zA-Z0-9_.-]*)', function($id) {
 	return Blade::render('project', ['id' => $id]);
 });
 
-Route::add('/live/app/([0-9]*)/([A-Za-z\-\&\,]*)', function($id) {
+Route::add('/live/app/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id) {
 	return Blade::render('apps.live', ['id' => $id]);
 });
 
