@@ -17,17 +17,20 @@
             <div class="row">
                 @php $documents = DocsControl::fetch(); @endphp
                 @foreach ($documents as $doc)
-                <div class="col-sm-2">
+                <div class="col-lg-2 col-md-4 col-sm-3">
+                    <center>
                     <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}">
                         <img class="img-skew" src="{{$doc['thumbnail']}}" alt="">
                     </a>
+                    <h6 class="">{{$doc['name']}}</h6>
+                    </center>
                 </div>                    
                 @endforeach
             </div>
             
-            @foreach ($documents as $doc)
-            <div id="{{str_replace(' ', '-', $doc['name'])}}"></div>
-            @endforeach
+            <!--@ foreach ($documents as $doc)
+            <div id="{ {str_replace(' ', '-', $doc['name'])}}"></div>
+            @ endforeach-->
         </div>
     </div>  
 @endsection
