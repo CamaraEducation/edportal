@@ -75,7 +75,7 @@ Route::add('/view/app/([0-9]*)/([a-zA-Z0-9_.-]*)', function($id) {
 	return Blade::render('project', ['id' => $id]);
 });
 
-Route::add('/live/app/([0-9]*)/([a-z\-]*)', function($id) {
+Route::add('/live/app/([0-9]*)/([A-Za-z\-\&\,]*)', function($id) {
 	return Blade::render('apps.live', ['id' => $id]);
 });
 
@@ -166,7 +166,7 @@ Route::add('/users/([a-z]*)', function($type) {
 	return Blade::render('user.list', ['type'=>$type]);
 });
 
-Route::add('/view/user/([0-9]*)/([A-Za-z\-]*)', function($id) {
+Route::add('/view/user/([0-9]*)/([A-Za-z\-\&\,]*)', function($id) {
 	return Blade::render('user.view', ['id' => $id]);
 });
 
