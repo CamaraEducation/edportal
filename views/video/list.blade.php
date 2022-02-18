@@ -23,14 +23,14 @@
                 @php $videos = VideosControl::fetch(); @endphp
                 <div class="col-xl-3 video-card">
                     <div class="card mb-3">
-                        <div id="over" class="video-bg" alt="Card image cap" style="background: url({{$video['thumbnail']}}) center no-repeat;">
+                        <div id="over" class="video-bg" alt="Card image cap" style="background: url('/assets/img/ict.png') center no-repeat;">
                             <a href="/view/video/ict">
                                 <img class="play" src="/assets/img/play.png" alt="play">
                             </a>
                         </div>
                         <div class="card-header">
-                            <a href="/view/video/{{$video['id']}}/{{str_replace(' ', '-', $video['title'])}}">
-                                <h5 class="card-title">{{$video['title']}}</h5>
+                            <a href="/view/video/ict">
+                                <h5 class="card-title">ICT CLUB VIDEOS</h5>
                             </a>
                         </div>
                         <div class="card-footer">
