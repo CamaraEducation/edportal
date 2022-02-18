@@ -96,6 +96,10 @@ Route::add('/video', function() {
 	return Blade::render('video.list');
 });
 
+Route::add('/view/video/ict', function($id, $title) {
+	return Blade::render('video.view', ['id' => $id, 'title'=> $title]);
+});
+
 Route::add('/view/video/([0-9]*)/([A-Za-z\-]*)', function($id, $title) {
 	return Blade::render('video.view', ['id' => $id, 'title'=> $title]);
 });
