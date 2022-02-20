@@ -178,8 +178,17 @@ Route::add('/add/user', function() {
 	return Blade::render('user.create');
 });
 
+Route::add('/import/user', function() {
+	return Blade::render('user.import');
+});
+
 Route::add('/create/user', function() {
 	UsersControl::create();
+}, 'post');
+
+Route::add('/create/users', function() {
+	echo '<pre>';
+	UsersImport::students();
 }, 'post');
 
 Route::add('/account', function() {
@@ -239,8 +248,10 @@ Route::add('/export/portal', function() {
 });
 
 Route::add('/test', function() {
-	echo '<pre>';
-	print_r($_SERVER);
+	//echo '<pre>';
+	//print_r(connection_status());
+
+	echo is_connected();
 });
 
 
