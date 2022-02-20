@@ -12,7 +12,8 @@
                     <div class="mr-auto mb-sm-0 mb-3">
                         <h2 class="card-title mb-2 text-primary">Users Listing</h2>
                     </div>
-                    <a href="javascript:void(0);" class="btn btn-info">+ Add User</a>
+                    <a href="/add/user" class="btn btn-info">+ Add User</a> &nbsp;
+                    <a href="/import/user" class="btn btn-info">+ Import User</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
