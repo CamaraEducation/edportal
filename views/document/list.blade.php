@@ -17,12 +17,12 @@
             <div class="row">
                 @php $documents = DocsControl::fetch(); @endphp
                 @foreach ($documents as $doc)
-                <div class="col-lg-2 col-md-4 col-sm-3">
+                <div class="col-lg-2 col-md-4 col-sm-3 col-xs-6">
                     <center>
-                    <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}">
-                        <img class="img-skew" src="{{$doc['thumbnail']}}" alt="">
-                    </a>
-                    <h6 class="">{{$doc['name']}}</h6>
+                        <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}">
+                            <img class="img-skew" src="{{$doc['thumbnail']}}" alt="">
+                        </a>
+                        <h6 class="">{{$doc['name']}}</h6>
                     </center>
                 </div>                    
                 @endforeach
