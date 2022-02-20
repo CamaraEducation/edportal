@@ -33,15 +33,6 @@
                                 <h5 class="card-title">ICT CLUB VIDEOS</h5>
                             </a>
                         </div>
-                        <div class="card-footer">
-                            <p class="card-text d-inline">
-                                <i class="fa fa-eye"></i> 
-                                {{VideosControl::views($video['id'])}}
-                            </p>
-                            <a href="javascript:void(0);" class="card-link float-right">
-                                {{span_count($video['span'])}}
-                            </a>
-                        </div>
                     </div>
                 </div>
                 @foreach ($videos as $video)
