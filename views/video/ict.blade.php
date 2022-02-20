@@ -41,18 +41,18 @@
 		</div>
 		@js('/assets/js/jquery36.min')
 		<script>
-			/*console.log('{{$app['name']}}');
+			// console.log('{ {$app['name']}}');
 			
 			function log_app_visit(){
-				//alert(window.location.href);
+				/*//alert(window.location.href);
 				var iframe = document.getElementById("myFrame");
 				//var elmnt = iframe.contentWindow.document.getElementsByTagName("img")[0];
 				//elmnt.style.display = "none";
 				//elmnt.outerHTML = iframe.contentWindow.location.href;
 				//alert(iframe.contentWindow.location.href);
 				var uri     = iframe.contentWindow.location.pathname;
-				var app_id  = "{{$id}}";
-				var user_id = "{{$_SESSION['id']}}";
+				var app_id  = "{ {$id}}";
+				var user_id = "{ {$_SESSION['id']}}";
 
 				//alert(uri +' | '+ app_id +' | '+ user_id);
 				$.post("/log/app", {
@@ -62,7 +62,7 @@
 				},
 				function(data, status){
 					//alert("Data: " + data + "\nStatus: " + status);
-				});
-			}*/
+				}); */
+			}
 		</script>
 </html>
