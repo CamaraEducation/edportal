@@ -19,44 +19,32 @@ class UsersImport{
                     foreach ($Reader as $Row){
 
                         if($i > 0 or $Row[0] == 'REG ID'){continue;}
-                        //print_r($Row);
-                        //$username = Row[0], $fname = Row[1], $lname = Row[2], $gender = Row[3], $year = Row[4], $class = Row[5]
                         
-                        $pass = 123456; $role = 6;
                         $username   = mysqli_real_escape_string(conn(), $Row[0]);
                         $fname      = mysqli_real_escape_string(conn(), $Row[1]);
                         $lname      = mysqli_real_escape_string(conn(), $Row[2]);
                         $gender     = mysqli_real_escape_string(conn(), $Row[3]);
                         $year       = mysqli_real_escape_string(conn(), $Row[4]);
                         $class      = mysqli_real_escape_string(conn(), $Row[5]);
-
-
-                        /*
             
-                        if (!empty($class_id) || !empty($term_id) || !empty($student_id)|| !empty($form) || !empty($stream)) {
-                            $query = "insert into class_students(class_id,term_id,student_id,form,stream) values ('".$class_id."','".$term_id."','".$student_id."','".$form."','".$stream."')";
-                            $result = mysqli_query(conn(), $query);
-                        
-                            if (!empty($result)) {
-                                echo "<script>
-                                        alert (\"students have been succesfully uploaded\");
-                                        //window.location.pathname = \"/include/projects.php\"
-                                    </script>";
-                                
-                            } else {
-                                echo "<script>
-                                        alert (\"Excell file failed to be uploaded\");
-                                        //window.location.pathname = \"/include/projects.php\"
-                                    </script>";
+                        if (!empty($username) and !empty($fname) and !empty($lname) and !empty($gender) and !empty($year) and !empty($class)) {
+                            $query = "INSERT INTO users (id, username, first_name, last_name, user_gender) VALUES (DEFAULT, '$username', '$fname', '$lname', '$gender')";
+                            if(mysqli_query(conn(), $query)){
+                                $query = "INSERT INTO userdata (user_id, user_class, user_age) VALUES ('$username', '$class', '$year')";
+                                if(mysqli_query(conn(), $query)){
+                                    header("Location: /users/student" );
+                                }
+                            }else{
+                                echo 'error occured';
                             }
-                        } */
+                        }else{
+                            echo "field missing";
+                        }
                     } 
                 
                 }
-            }
-            else
-            {
-                    return "Invalid File Type. Upload Excel File.";
+            }else {
+                return "Invalid File Type. Upload Excel File.";
             }
         }
     }
