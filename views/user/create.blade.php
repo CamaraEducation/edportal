@@ -49,10 +49,11 @@
 										</div>
 										<div class="form-group col-md-6">
 											<label>Password</label>
-											<input type="text" name="pass" id="pass" class="form-control" value="123456" disabled>
+											<input type="text" class="form-control" value="123456" disabled>
+											<input type="text" name="pass" id="pass" value="123456" hidden>
 										</div>
 									</div>
-									<button type="submit" id="submit" class="btn btn-primary">Upload</button>
+									<button style="margin: auto;" type="submit" id="submit" class="btn btn-primary">Create User</button>
 								<form>
 							</div>
 						</div>
