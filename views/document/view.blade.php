@@ -34,8 +34,8 @@
 										<ul class="nav nav-tabs">
 											<li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link active show">Description</a>
 											</li>
-											<li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Statistics</a>
-											</li>
+											<!--li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Statistics</a>
+											</li-->
 										</ul>
 										<div class="tab-content">
 											<div id="about-me" class="tab-pane fade active show">
