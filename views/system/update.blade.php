@@ -95,7 +95,7 @@
         </script>        
         @php flush(); ob_flush(); @endphp
 		<div class="wrapper">
-            @if (PHP_OS == 'WINNT')
+            @if (PHP_OS_FAMILY == 'Windows')
                 <pre>@php $exec = shell_exec('git reset --hard HEAD'); echo $exec; flush(); ob_flush(); @endphp</pre>
                 <pre>@php $exec = shell_exec('git stash'); echo $exec; flush(); ob_flush(); @endphp</pre>
                 <pre>@php $exec = shell_exec('git pull origin main'); echo $exec; flush(); ob_flush(); @endphp</pre>
