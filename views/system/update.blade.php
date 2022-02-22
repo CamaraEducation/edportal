@@ -95,9 +95,15 @@
         </script>        
         @php flush(); ob_flush(); @endphp
 		<div class="wrapper">
-            <pre>@php $exec = shell_exec('sudo git reset --hard HEAD'); echo $exec; flush(); ob_flush(); @endphp</pre>
-            <pre>@php $exec = shell_exec('sudo git stash'); echo $exec; flush(); ob_flush(); @endphp</pre>
-            <pre>@php $exec = shell_exec('sudo git pull origin main'); echo $exec; flush(); ob_flush(); @endphp</pre>
+            @if (PHP_OS == 'WINNT')
+                <pre>@php $exec = shell_exec('git reset --hard HEAD'); echo $exec; flush(); ob_flush(); @endphp</pre>
+                <pre>@php $exec = shell_exec('git stash'); echo $exec; flush(); ob_flush(); @endphp</pre>
+                <pre>@php $exec = shell_exec('git pull origin main'); echo $exec; flush(); ob_flush(); @endphp</pre>
+            @else
+                <pre>@php $exec = shell_exec('sudo git reset --hard HEAD'); echo $exec; flush(); ob_flush(); @endphp</pre>
+                <pre>@php $exec = shell_exec('sudo git stash'); echo $exec; flush(); ob_flush(); @endphp</pre>
+                <pre>@php $exec = shell_exec('sudo git pull origin main'); echo $exec; flush(); ob_flush(); @endphp</pre>
+            @endif
 		</div>
 
         <script>
