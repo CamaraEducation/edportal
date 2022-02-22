@@ -17,14 +17,14 @@
         }
     </style>
 	<body>
-		<div class="bg-dark">
+		<div class="bg-dark" style="position:fixed; width:100%; top:0">
 			<a href="/" ><img src="/assets/img/logo.png" style="height: 60px"></a>
 			<a class="btn btn-success float-right export" onclick="exportReportToExcel(this)">
                 <i class="fa fa-upload"></i>
                 Export
             </a>
 		</div>
-		<div class="wrapper">
+		<div class="wrapper" style="padding-top:10px;">
             @php 
                 $school = Portal::configs();
                 $applytics = array_merge(PortalExport::apps(), PortalExport::video(), PortalExport::doc());
