@@ -28,12 +28,9 @@ class UsersImport{
                         $class      = mysqli_real_escape_string(conn(), $Row[5]);
             
                         if (!empty($username) and !empty($fname) and !empty($lname) and !empty($gender) and !empty($year) and !empty($class)) {
-                            $query = "INSERT INTO users (id, username, first_name, last_name, user_gender) VALUES (DEFAULT, '$username', '$fname', '$lname', '$gender')";
+                            $query = "INSERT INTO users (id, username, first_name, last_name, user_gender, user_class, user_age) VALUES (DEFAULT, '$username', '$fname', '$lname', '$gender', '$class', '$year')";
                             if(mysqli_query(conn(), $query)){
-                                $query = "INSERT INTO userdata (user_id, user_class, user_age) VALUES ('$username', '$class', '$year')";
-                                if(mysqli_query(conn(), $query)){
-                                    header("Location: /users/student" );
-                                }
+                                header("Location: /users/student" );
                             }else{
                                 echo 'error occured';
                             }

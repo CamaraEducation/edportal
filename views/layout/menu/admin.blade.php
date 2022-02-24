@@ -42,12 +42,6 @@
                 <li><a href="/add/user">Create</a></li>
             </ul>
         </li>
-        <li><a href="javascript:void()">Classes</a>
-            <ul aria-expanded="false">
-                <li><a href="/view/class">View</a></li>                         
-                <li><a href="/add/class">Create</a></li>
-            </ul>
-        </li>
         <li><a href="javascript:void()">System</a>
             <ul aria-expanded="false">
                 <li><a href="/update/portal">Update</a></li>                           

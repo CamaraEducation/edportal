@@ -34,7 +34,7 @@
 												<option value="" hidden>select User Type</option>
                                                 <option value="1">Administrator</option>
                                                 <option value="2">Teacher</option>
-                                                <option value="3">Student</option>
+                                                <option value="6">Student</option>
 											</select>
 										</div>
 									</div>
@@ -53,7 +53,7 @@
 													@if ($category['id'] == 999)
 														<option value="null">NOT A CANDIDATE</option>
 													@else
-														<option value="{{$category['id']}}">{{$category['name']}}</option>
+														<option value="{{$category['name']}}">{{$category['name']}}</option>
 													@endif
                                                 @endforeach
 											</select>

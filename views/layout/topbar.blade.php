@@ -45,10 +45,10 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="/account" class="dropdown-item ai-icon">
+                            <!--a href="/account" class="dropdown-item ai-icon">
                                 <i class="fa fa-user"></i>
                                 <span class="ml-2">Profile </span>
-                            </a>
+                            </a-->
                             <a href="/logout" class="dropdown-item ai-icon">
                                 <i class="fa fa-lock"></i>
                                 <span class="ml-2">Logout </span>
