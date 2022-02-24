@@ -38,6 +38,27 @@
 											</select>
 										</div>
 									</div>
+									
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<label>Year of Birth</label>
+											<input type="text" name="yob" id="yob" class="form-control" placeholder="ie. Year of Birth eg. 2000">
+										</div>
+										<div class="form-group col-md-6">
+											<label>Class</label>
+											<select name="class" id="class" class="form-control default-select">
+												<option value="" hidden>select class category</option>    
+                                                @php $categories = Category::fetch('class') @endphp
+                                                @foreach ($categories as $category)
+													@if ($category['id'] == 999)
+														<option value="null">NOT A CANDIDATE</option>
+													@else
+														<option value="{{$category['id']}}">{{$category['name']}}</option>
+													@endif
+                                                @endforeach
+											</select>
+										</div>
+									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label>User Gender</label>
