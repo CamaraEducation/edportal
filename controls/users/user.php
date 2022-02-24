@@ -17,7 +17,7 @@ class UsersControl{
 
     public static function create(){
         foreach($_POST as $key => $value){ $$key = mysqli_real_escape_string(conn(), $value); } $pass = md5($pass);
-        $sql = "INSERT INTO users (username, first_name, last_name, user_role, user_pass, user_gender, user_class, user_age) VALUES ('$username', '$fname', '$lname', '$role', '$pass', '$class', '$yob')";
+        $sql = "INSERT INTO users (username, first_name, last_name, user_role, user_pass, user_gender, user_class, user_age) VALUES ('$username', '$fname', '$lname', '$role', '$pass', '$gender', '$class', '$yob')";
         if(mysqli_query(conn(), $sql)){
             header("Location: /");
         }
