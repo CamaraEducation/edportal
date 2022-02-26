@@ -134,7 +134,11 @@ Route::add('/add/notice', function() {
  *                STARTING FROM HERE                *
  ****************************************************/
 Route::add('/document', function() {
-	return Blade::render('document.list');
+	return Blade::render('document.subject');
+});
+
+Route::add('/document/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id) {
+	return Blade::render('document.list', ['id' => $id]);
 });
 
 Route::add('/view/document/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id, $title) {
@@ -248,10 +252,7 @@ Route::add('/export/portal', function() {
 });
 
 Route::add('/test', function() {
-	//echo '<pre>';
-	//print_r(connection_status());
-
-	echo is_connected();
+	print_r(SubjectsController::content('doc'));
 });
 
 
