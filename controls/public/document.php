@@ -7,8 +7,8 @@ class DocsControl{
 		return mysqli_fetch_assoc($sql);
 	}
 
-	public static function fetch(){
-		$sql = "SELECT *, TIMEDIFF(CURRENT_TIMESTAMP, created) AS span FROM document ORDER BY id DESC";
+	public static function fetch($category){
+		$sql = "SELECT *, TIMEDIFF(CURRENT_TIMESTAMP, created) AS span FROM document WHERE category = '$category' ORDER BY id DESC";
 		$sql = mysqli_query(conn(), $sql);
 
 		return mysqli_fetch_all($sql, MYSQLI_ASSOC);
