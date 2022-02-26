@@ -9,7 +9,7 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.png">
 		<title>Export Data</title>
 		@css('/assets/css/style')
-        <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
+        @js('/assets/js/ttexcel')
 	</head>
     <style>
         .export{
@@ -40,6 +40,7 @@
                         <th hidden>Country</th>
                         <th>applet</th>
                         <th>type</th>
+                        <th>class</th>
                         <th>age</th>
                         <th>role</th>
                         <th>date</th>
@@ -55,8 +56,9 @@
                             <td hidden>{{$school['country']}}</td>
                             <td>{{$analytic['title']}}</td>
                             <td>{{$analytic['con_type']}}</td>
+                            <td>{{UsersControl::fetch_data($analytic['visitor'], 'user_class', 'data')}}</td>
                             <td>{{$analytic['age'] - UsersControl::fetch_data($analytic['visitor'], 'user_age', 'data')}}</td>
-                            <td>{{role(UsersControl::fetch_data($analytic['visitor'], 'user_role', 'main'))}}</td>
+                            <td>{{get_user_role(UsersControl::fetch_data($analytic['visitor'], 'user_role', 'main'))}}</td>
                             <td>{{$analytic['time']}}</td>
                         </tr>
                     @endforeach
@@ -73,6 +75,7 @@
                         <th hidden>country</th>
                         <th>uri</th>
                         <th>identifier</th>
+                        <th>class</th>
                         <th>age</th>
                         <th>role</th>
                         <th>time</th>
@@ -88,9 +91,10 @@
                             <td hidden>{{$school['region']}}</td>
                             <td hidden>{{$school['country']}}</td>
                             <td>{{$analytic['uri']}}</td>
-                            <td>{{$analytic['identifier']}}</td>                            
+                            <td>{{$analytic['identifier']}}</td>
+                            <td>{{UsersControl::fetch_data($analytic['visitor'], 'user_class', 'data')}}</td>                          
                             <td>{{$analytic['age'] - UsersControl::fetch_data($analytic['visitor'], 'user_age', 'data')}}</td>
-                            <td>{{role(UsersControl::fetch_data($analytic['visitor'], 'user_role', 'main'))}}</td>
+                            <td>{{get_user_role(UsersControl::fetch_data($analytic['visitor'], 'user_role', 'main'))}}</td>
                             <td>{{$analytic['live']}}</td>
                             <td>{{$analytic['time']}}</td>
                         </tr>
