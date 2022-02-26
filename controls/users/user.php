@@ -29,7 +29,7 @@ class UsersControl{
     }
 
     public static function fetch_user_data($id){
-        $sql = "SELECT * FROM userdata WHERE user_id = '$id'";
+        $sql = "SELECT * FROM users WHERE id='$id'";
         return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
     }
 
