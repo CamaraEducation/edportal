@@ -21,4 +21,12 @@ function is_connected(){
 	return $is_conn;
 }
 
+function get_user_role($id){
+	switch($id){
+		case 1: return 'Administrator';	break;
+		case 2: return 'Teacher';		break;
+		default: return 'Student'; 
+	}
+}
+
 ?>
