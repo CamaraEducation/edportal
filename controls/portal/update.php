@@ -12,8 +12,8 @@ class PortalUpdate{
 		)
 		COLLATE='latin1_swedish_ci'";
 
-		if(mysqli_query(conn(), $sql)){ echo "<b>SUCCESS:</b> The data sync table has been succesfully created";
-			}else{ echo "<b style='color:brown'>FAILED:</b> The data sync table has been succesfully created";
+		if(mysqli_query(conn(), $sql)){ echo "<b>SUCCESS:</b> The data sync table has been succesfully created</b><br>";
+			}else{ echo "<b style='color:brown'>FAILED:</b> The data sync table could not be created</b><br>";
 		}
 
 
@@ -21,8 +21,8 @@ class PortalUpdate{
 		ADD COLUMN `thumb` VARCHAR(50) NULL DEFAULT '/upload/subject/thumb/def.jpg' AFTER `name`,
 		ADD COLUMN `cover` VARCHAR(50) NULL DEFAULT '/upload/subject/cover/def.png' AFTER `thumb`";
 
-		if(mysqli_query(conn(), $sql)){ echo "<b>SUCCESS:</b> Table subject was succesfully updated";
-			}else{ echo "<b style='color:brown'>FAILED:</b> Could not update table subject";
+		if(mysqli_query(conn(), $sql)){ echo "<b>SUCCESS:</b> Table subject was succesfully updated</b><br>";
+			}else{ echo "<b style='color:brown'>FAILED:</b> Could not update table subject</b><br>";
 		}
 		
 		echo "THE UPDATE IS COMPLETE";
