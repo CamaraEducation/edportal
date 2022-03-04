@@ -29,4 +29,19 @@ function get_user_role($id){
 	}
 }
 
+function getFileCount($path) {
+	$size = 0;
+	$ignore = array('.','..','cgi-bin','.DS_Store', '.htaccess', '*.png', '*.jpg', '*.jpeg');
+	$files = scandir($path);
+	foreach($files as $t) {
+		if(in_array($t, $ignore)) continue;
+		if (is_dir(rtrim($path, '/') . '/' . $t)) {
+			$size += getFileCount(rtrim($path, '/') . '/' . $t);
+		} else {
+			$size++;
+		}   
+	}
+	return $size;
+}
+
 ?>
