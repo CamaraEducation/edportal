@@ -48,5 +48,8 @@
                 <li><a href="/export/portal">Export Data</a></li>
             </ul>
         </li>
+        <li>
+            <a href="/configure/portal">Configuration</a>
+        </li>
     </ul>
 </li>
