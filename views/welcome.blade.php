@@ -68,7 +68,7 @@
 								</span>
 								<div class="media-body text-white text-right">
 									<p class="mb-1">Videos</p>
-									<h3 class="text-white">{{StatsController::count_video()}}</h3>
+									<h3 class="text-white">{{getFileCount(upload.'video/')-StatsController::count_document()}}</h3>
 								</div>
 							</div>
 						</div>
