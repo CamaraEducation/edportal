@@ -28,6 +28,7 @@ use duncan3dc\Laravel\Blade;
 
 include 'core/Route.php';
 include 'core/Loader.php';
+ConfigsController::check();
 
 
 /*****************************************************
@@ -251,9 +252,18 @@ Route::add('/export/portal', function() {
 	return Blade::render('system.export');
 });
 
-Route::add('/test', function() {
-	print_r(SubjectsController::content('doc'));
+Route::add('/configure/portal', function() {
+	return Blade::render('system.config');
 });
+
+Route::add('/change/configs', function() {
+	ConfigsController::update();
+}, ['get', 'post']);
+
+Route::add('/test', function() {
+	ConfigsController::check();
+	//print_r($_SESSION);
+}, ['get', 'post']);
 
 
 /****************************************************
@@ -285,7 +295,7 @@ Route::add('/notice/([a-z]*)', function($page) {
 
 Route::add('/logout', function() {
 	session_destroy();
-	header('Location: /');
+	header('Location: /login');
 });
 
 /****************************************************
