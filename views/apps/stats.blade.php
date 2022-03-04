@@ -86,7 +86,7 @@
 								<!--span class="badge badge-success d-sm-inline-block d-none">Compeleted</span-->
 							</div>
 							<p class="mb-4">{{substr($app['description'], 0, 130)}} ...</p>
-							<div class="row mb-4">
+							<!--div class="row mb-4">
 								<div class="col-sm-6 mb-sm-0 mb-3 d-flex">
 									<div class="dt-icon bgl-info mr-3">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,7 +110,7 @@
 										<p class="mb-0 pt-1 font-w500 text-black">2021-{{rand(11,12)}}-{{rand(1,16)}}</p>
 									</div>
 								</div>
-							</div>
+							</div-->
 						</div>
 					</div>
 				</div>  
