@@ -63,6 +63,10 @@ p.card-title.mb-2.text-secondary {
     bottom: 0;
 }
 
+.block{
+    display: block;
+}
+
 @-moz-keyframes spin { 
     100% { -moz-transform: rotate(360deg); } 
 }
