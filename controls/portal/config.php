@@ -1,8 +1,10 @@
 <?php
 class ConfigsController{
     public static function get($name){
-        $sql = "SELECT * FROM config WHERE name='$name'";
-        return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
+        $sql = "SELECT * FROM config";
+        $data =  mysqli_fetch_assoc(mysqli_query(conn(), $sql));
+
+        return $data[$name];
     }
 
     public static function update(){
