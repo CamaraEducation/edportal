@@ -13,9 +13,17 @@
                     <span class="nav-text">Utilities</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="javascript:void()">Applications</a>
+                    <li><a href="javascript:void()">ICT Tools</a>
                         <ul aria-expanded="false">
-                            @php $application = AppsControl::fetch() @endphp
+                            @php $application = AppsControl::fetch('ict') @endphp
+                            @foreach ($application as $app)
+                            <li><a href="/view/app/{{$app['id']}}/{{str_replace(' ','-',$app['name'])}}">{{$app['name']}}</a></li>   
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void()">Educational Repository</a>
+                        <ul aria-expanded="false">
+                            @php $application = AppsControl::fetch('rep') @endphp
                             @foreach ($application as $app)
                             <li><a href="/view/app/{{$app['id']}}/{{str_replace(' ','-',$app['name'])}}">{{$app['name']}}</a></li>   
                             @endforeach
@@ -23,7 +31,14 @@
                     </li>
                     <li><a href="/video">Video</a></li>
                     <li><a href="/document">Documents</a></li>
-                    
+                </ul>
+            </li>
+            <li><a href="javascript:void()" class="has-arrow ai-icon">Systems</a>
+                <ul aria-expanded="false">
+                    @php $application = AppsControl::fetch('sys') @endphp
+                    @foreach ($application as $app)
+                    <li><a href="/view/app/{{$app['id']}}/{{str_replace(' ','-',$app['name'])}}">{{$app['name']}}</a></li>   
+                    @endforeach
                 </ul>
             </li>
             @if (viewer() == 1)
@@ -33,7 +48,7 @@
             @endif
             
             <li>
-                <a class="ai-icon" href="https://camtics.camara.org" aria-expanded="false">
+                <a class="ai-icon" href="/support" aria-expanded="false">
                     <i class="flaticon-049-copy"></i>
                     <span class="nav-text">Support</span>
                 </a>
