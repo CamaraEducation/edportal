@@ -260,11 +260,18 @@ Route::add('/change/configs', function() {
 	ConfigsController::update();
 }, ['get', 'post']);
 
-Route::add('/test', function() {
-	ConfigsController::check();
-	//print_r($_SESSION);
+Route::add('/support', function() {
+	return Blade::render('system.support');
 }, ['get', 'post']);
 
+Route::add('/test', function() {
+	return Blade::render('system.sync');
+}, ['get', 'post']);
+
+Route::add('/test2', function() {
+	echo '<pre>';
+	print_r(json_decode($_POST['adata'], true));
+}, ['get', 'post']);
 
 /****************************************************
  *                 AUTHENTICATICATION               *
