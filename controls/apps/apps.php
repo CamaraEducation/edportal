@@ -1,9 +1,19 @@
 <?php
 class AppsControl{
-    public static function fetch(){
-        $sql = "SELECT * FROM apps";
-        $sql = mysqli_query(conn(), $sql);
-        $apps = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+    public static function fetch($id){
+        if($id == 'sys'){
+            $sql = "SELECT * FROM apps WHERE `type`='sys'";
+            $sql = mysqli_query(conn(), $sql);
+            $apps = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+        }else if($id == 'rep'){
+            $sql = "SELECT * FROM apps WHERE `type`='rep'";
+            $sql = mysqli_query(conn(), $sql);
+            $apps = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+        }else{
+            $sql = "SELECT * FROM apps WHERE `type`='app'";
+            $sql = mysqli_query(conn(), $sql);
+            $apps = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+        }
 
         return $apps;
     }
