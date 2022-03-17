@@ -25,8 +25,9 @@
 											<label>App type</label>
 											<select name="app_type" id="app_type" class="form-control default-select" >
 												<option value="" hidden>select app type</option>
-												<option valaue='hosted'>Hosted</option>
-												<option value="linked">Linked</option>
+												<option valaue='sys'>System</option>
+												<option value="app">ICT Tool</option>												
+												<option value="rep">Educational Repository</option>
 											</select>
 										</div>
 										<div class="form-group col-md-6">
