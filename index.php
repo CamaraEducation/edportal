@@ -252,6 +252,26 @@ Route::add('/search/portal', function() {
 	echo "hello world";
 });
 
+Route::add('/update/portal/([a-z]*)', function($type) {
+	switch($type){
+		case 'stash':
+			if(PHP_OS_FAMILY == 'Windows'){ $stash = shell_exec('git stash'); echo "<pre>" .$stash. "</pre>";
+				}else{ $stash = shell_exec('sudo git stash');  echo "<pre>" .$stash. "</pre>";
+			}
+		break;
+
+		case 'pull':
+			if(PHP_OS_FAMILY == 'Windows'){ $pull = shell_exec('git pull origin main'); echo "<pre>" .$pull. "</pre>";
+				}else{ $pull = shell_exec('sudo git pull origin main');  echo "<pre>" .$pull. "</pre>";
+			}
+		break;
+
+		case 'apply': PortalUpdate::init(); break;
+
+		default: break;
+	}
+},['get', 'post']);
+
 Route::add('/update/portal', function() {
 	return Blade::render('system.update');
 });
