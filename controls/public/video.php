@@ -7,12 +7,13 @@ class VideosControl{
 		return mysqli_fetch_assoc($sql);
 	}
 
-	public static function fetch(){
-		$sql = "SELECT *, TIMEDIFF(CURRENT_TIMESTAMP, created) AS span FROM video ORDER BY id DESC";
+	public static function fetch($category){
+		$sql = "SELECT *, TIMEDIFF(CURRENT_TIMESTAMP, created) AS span FROM video WHERE category = '$category' ORDER BY id DESC";
 		$sql = mysqli_query(conn(), $sql);
 
 		return mysqli_fetch_all($sql, MYSQLI_ASSOC);
 	}
+	
 
 	public static function create(){
 		$title	  = mysqli_real_escape_string(conn(), $_POST['title']);
