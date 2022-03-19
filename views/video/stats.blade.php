@@ -17,7 +17,7 @@
 							<div class="card-body text-center">
 								<img src="/assets/img/video.png" class="mb-3 vector-icon" width="70" height="70">
 								<h2 class="text-black mb-2 font-w600">
-									{{StatsController::count_video()}}
+									{{getFileCount(upload.'video/')-StatsController::count_video()}}
 								</h2>
 								<h4 class="mb-0 fs-14">
 									Videos Available
