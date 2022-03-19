@@ -22,7 +22,7 @@
 								<img src="/assets/img/school.png" class="mb-3 vector-icon" width="80" height="80">
 								<h2 class="text-black mb-2 font-w600">11,943</h2>
 								<h4 class="mb-0 fs-13">
-									Schools Supplied
+									Schools Supported
 								</h4>	
 							</div>
 						</div>
@@ -44,7 +44,7 @@
 								<img src="/assets/img/students.png" class="mb-3 vector-icon" width="80" height="80">
 								<h2 class="text-black mb-2 font-w600">3,751,749</h2>
 								<h4 class="mb-0 fs-14">
-									Children Impacted
+									Learners Impacted
 								</h4>	
 							</div>
 						</div>
