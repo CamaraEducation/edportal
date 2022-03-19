@@ -16,21 +16,21 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label>First Name</label>
-											<input type="text" name="fname" id="fname" class="form-control" placeholder="First Name eg. Hamisi">
+											<input type="text" name="fname" id="fname" class="form-control" placeholder="First Name eg. Hamisi" required>
 										</div>
 										<div class="form-group col-md-6">
 											<label>Last Name</label>
-											<input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name eg. John">
+											<input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name eg. John" required>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label>Username / id Number</label>
-											<input type="text" name="username" id="username" class="form-control" placeholder="ie. registration id eg. ST001, T4743 etc." >
+											<input type="text" name="username" id="username" class="form-control" placeholder="ie. registration id eg. ST001, T4743 etc." required>
 										</div>
 										<div class="form-group col-md-6">
 											<label>User Role</label>
-											<select name="role" id="role" class="form-control default-select" >
+											<select name="role" id="role" class="form-control default-select" required>
 												<option value="" hidden>select User Type</option>
                                                 <option value="1">Administrator</option>
                                                 <option value="2">Teacher</option>
@@ -46,7 +46,7 @@
 										</div>
 										<div class="form-group col-md-6">
 											<label>Class</label>
-											<select name="class" id="class" class="form-control default-select">
+											<select name="class" id="class" class="form-control default-select" required>
 												<option value="" hidden>select class category</option>    
                                                 @php $categories = Category::fetch('class') @endphp
                                                 @foreach ($categories as $category)
@@ -62,7 +62,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label>User Gender</label>
-											<select name="gender" id="gender" class="form-control default-select" >
+											<select name="gender" id="gender" class="form-control default-select" required>
 												<option value="" hidden>select User Gender</option>
                                                 <option value="male">male</option>
 												<option value="female">female</option>
