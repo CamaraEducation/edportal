@@ -9,7 +9,7 @@ class SubjectsController{
         if($type=='doc'){
             $sql = "SELECT DISTINCT category FROM document ORDER BY category ASC";
         }else{
-            //
+            $sql = "SELECT DISTINCT category FROM video ORDER BY category ASC";
         }
         return mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
     }
