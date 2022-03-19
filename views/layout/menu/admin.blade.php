@@ -9,7 +9,7 @@
                 <li><a href="/add/app">Add</a></li>
             </ul>
         </li>
-        <li><a href="javascript:void()">video</a>
+        <li><a href="javascript:void()">Video</a>
             <ul aria-expanded="false">
                 <li><a href="/stats/video">statistics</a></li>
                 <li><a href="/add/video">Upload</a></li>
