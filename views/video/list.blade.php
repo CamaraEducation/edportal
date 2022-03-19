@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Publication')
+@section('title', 'Video list')
 @section('header')
 <style>
 	.subject-card {
