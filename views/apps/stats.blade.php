@@ -67,7 +67,7 @@
 					</div>
 				</div>
 			<div class="row">
-				@php $application = AppsControl::fetch() @endphp
+				@php $application = AppsControl::fetch_all() @endphp
                 @foreach ($application as $app)
                 <div class="col-xl-4 col-lg-12">
 					<div class="card project-card">
