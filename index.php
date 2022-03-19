@@ -105,6 +105,10 @@ Route::add('/view/video/ubongo', function() {
 	return Blade::render('video.ubongo');
 });
 
+Route::add('/video/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id) {
+	return Blade::render('document.list', ['id' => $id]);
+});
+
 Route::add('/view/video/([0-9]*)/([A-Za-z\-]*)', function($id, $title) {
 	return Blade::render('video.view', ['id' => $id, 'title'=> $title]);
 });
