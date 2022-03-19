@@ -141,7 +141,7 @@
 								<h2 class="card-title mb-2 text-primary pad-2">Camara Education Portal</h2>
 							</div>
 							<div class="card-body pb-2 px-3">
-								<p>Camara Education is a charity that provides computers, teacher training and innovative learning programmes to schools across Africa.</p>
+								<p>Camara Education is a non-profit international education organisation dedicated to utilising ICT to improve educational outcomes.</p>
 								<br>
 								<p>Camara Education portal is an offline educational tools container that aims to provide ease of access to different educational resources and tools</p>
 							</div>

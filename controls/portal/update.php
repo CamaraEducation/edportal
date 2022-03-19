@@ -33,12 +33,15 @@ class PortalUpdate{
 					break;
 
 				case '121':
-					// do nothing
-					 
+					$sql = "UPDATE config SET last='122'";
+					if(mysqli_query(conn(), $sql)){ echo "<b>SUCCESS:</b> CUpdated to Version 1.2.2</b><br>";
+						}else{ echo "<b style='color:brown'>FAILED:</b> Update to version 1.2.2 Failed</b><br>";
+					}
+					break;
+				default:
+					echo "THE UPDATE IS COMPLETE";
 			}
 		}
-		
-		echo "THE UPDATE IS COMPLETE";
  	}
 }
 ?>
