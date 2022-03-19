@@ -78,7 +78,7 @@
                                 <div class="custom-tab-1">
                                     <div class="tab-content">
                                         <div id="my-posts" class="tab-pane fade active show">
-                                            <h5 class="text-primary" style="padding-bottom:1rem">Books and viduments</h5>
+                                            <h5 class="text-primary" style="padding-bottom:1rem">Videos</h5>
                                             <div class="row">
                                                 @php $video = vidsControl::fetch($id); @endphp
                                                 @foreach ($video as $vid)
