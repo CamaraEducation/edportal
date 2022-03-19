@@ -38,7 +38,7 @@
 				@php $id = $subjects['category']; $subject = SubjectsController::get($id); @endphp
 				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 					<div class="subject-card" style="background:url({{$subject['cover']}})">
-						<a href="/document/{{$subject['id']}}/{{str_replace(' ', '-', $subject['name'])}}">
+						<a href="/video/{{$subject['id']}}/{{str_replace(' ', '-', $subject['name'])}}">
 							<div class="subject-banner row">
 								<div class="col-md-3 col-sm-3 col-xs-3">
 									<img class="subject-img" src="{{$subject['thumb']}}" alt="">
