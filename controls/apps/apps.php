@@ -22,6 +22,8 @@ class AppsControl{
         $sql = "SELECT * FROM apps WHERE";
         $sql = mysqli_query(conn(), $sql);
         $apps = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+
+        return $apps;
     }
 
     public static function create(){
