@@ -35,6 +35,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-3 video-card">
+                    <div class="card mb-3">
+                        <div id="over" class="video-bg" alt="Card image cap" style="background: url('/assets/img/ubongo.png') center no-repeat;">
+                            <a href="/view/video/ict">
+                                <img class="play" src="/assets/img/play.png" alt="play">
+                            </a>
+                        </div>
+                        <div class="card-header">
+                            <a href="/view/video/ict">
+                                <h5 class="card-title">UBONGO KIDS</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 @foreach ($videos as $video)
                 <div class="col-xl-3 video-card">
                     <div class="card mb-3">
