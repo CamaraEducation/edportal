@@ -51,6 +51,34 @@
 					</div>
 				</div>
 				@endforeach
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="subject-card" style="background:url('assets/img/ict.png')">
+						<a href="/view/video/ict">
+							<div class="subject-banner row">
+								<div class="col-md-3 col-sm-3 col-xs-3">
+									<img class="subject-img" src="assets/img/ict.png" alt="">
+								</div>
+								<div class="col-md-9 col-sm-9 col-xs-9">
+									<h4 class="subject-title text-primary">ICT CLUB</h4>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div class="subject-card" style="background:url('assets/img/ubongo.png')">
+						<a href="/view/video/ubongo">
+							<div class="subject-banner row">
+								<div class="col-md-3 col-sm-3 col-xs-3">
+									<img class="subject-img" src="assets/img/ubongo.png" alt="">
+								</div>
+								<div class="col-md-9 col-sm-9 col-xs-9">
+									<h4 class="subject-title text-primary">UBONGO KIDS</h4>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>  
