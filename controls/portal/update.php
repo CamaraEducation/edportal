@@ -39,7 +39,7 @@ class PortalUpdate{
 					}
 					break;
 				default:
-					echo "THE UPDATE IS COMPLETE";
+				echo "THE UPDATE IS COMPLETE";
 			}
 		}
  	}
