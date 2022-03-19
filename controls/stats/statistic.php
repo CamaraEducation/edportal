@@ -88,6 +88,26 @@ class StatsController{
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
 
+	public static function count_doc_view(){
+		$sql = "SELECT COUNT(id) AS all_time, 
+			(SELECT COUNT(id) FROM video_views WHERE MONTH(TIME) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
+			(SELECT COUNT(id) FROM video_views WHERE DATE(TIME) = DATE(CURRENT_TIMESTAMP)) AS today
+		FROM video_views";
+		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
+	}
+
+
+	public static function popular_docs(){
+		$sql = "SELECT doc_id, COUNT(id) as total FROM doc_views GROUP BY doc_id ORDER BY COUNT(id) DESC LIMIT 50";
+		return mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
+	}
+
+	public static function ghost_docs(){
+		$sql = "SELECT doc_id, COUNT(id) as total FROM doc_views GROUP BY doc_id ORDER BY COUNT(id) DESC LIMIT 50";
+		return mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
+	}
+
+
 	/* visualize specific users activity
 	public static function count_user_activity(){
 		$sql = "SELECT user, COUNT(id) as total FROM log_activity GROUP BY user ORDER BY COUNT(id) DESC LIMIT 50";
