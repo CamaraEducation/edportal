@@ -27,7 +27,7 @@
 							<img src="/assets/img/school.png" class="mb-3 vector-icon" width="70" height="70">
 							<h2 class="text-black mb-2 font-w600">11,943</h2>
 							<h4 class="mb-0 fs-13">
-								Schools Supplied
+								Schools Supported
 							</h4>	
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 							<img src="/assets/img/students.png" class="mb-3 vector-icon" width="70" height="70">
 							<h2 class="text-black mb-2 font-w600">3,751,749</h2>
 							<h4 class="mb-0 fs-14">
-								Children Impacted
+								Learners Impacted
 							</h4>	
 						</div>
 					</div>
@@ -68,7 +68,7 @@
 								</span>
 								<div class="media-body text-white text-right">
 									<p class="mb-1">Videos</p>
-									<h3 class="text-white">{{getFileCount(upload.'video/')-StatsController::count_document()}}</h3>
+									<h3 class="text-white">{{getFileCount(upload.'video/')-StatsController::count_video()}}</h3>
 								</div>
 							</div>
 						</div>
