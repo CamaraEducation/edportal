@@ -67,7 +67,7 @@
 				<div class="col-sm-6">
 					<div class="card">
 						<div class="card-header">
-							<h2 class="card-title mb-2 text-primary">Document Statistics/h2>
+							<h2 class="card-title mb-2 text-primary">Document Statistics</h2>
 							<p class="card-title mb-2 text-secondary">...</p>
 						</div>
 						<div class="card-body">

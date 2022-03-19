@@ -18,7 +18,7 @@ class DocsControl{
 		$popular = StatsController::popular_docs(); $no = 0;
 		foreach($popular as $doc){
 			$id = $doc['doc_id'];
-			$sql = "select title, thumbnail from document where id = '$id'";
+			$sql = "select name as title, thumbnail from document where id = '$id'";
 			$pop[$no] = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 			$pop[$no]['views'] = $doc['total'];  $no++;
 		}
@@ -29,7 +29,7 @@ class DocsControl{
 		$obscured = StatsController::ghost_docs(); $no = 0;
 		foreach($obscured as $doc){
 			$id = $doc['doc_id'];
-			$sql = "select title, thumbnail from document where id = '$id'";
+			$sql = "select name as title, thumbnail from document where id = '$id'";
 			$obs[$no] = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 			$obs[$no]['views'] = $doc['total'];  $no++;
 		}
