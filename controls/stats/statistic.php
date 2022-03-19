@@ -103,7 +103,7 @@ class StatsController{
 	}
 
 	public static function ghost_docs(){
-		$sql = "SELECT doc_id, COUNT(id) as total FROM doc_views GROUP BY doc_id ORDER BY COUNT(id) DESC LIMIT 50";
+		$sql = "SELECT doc_id, COUNT(id) as total FROM doc_views GROUP BY doc_id ORDER BY COUNT(id) ASC LIMIT 50";
 		return mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
 	}
 
