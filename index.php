@@ -94,7 +94,7 @@ Route::add('/stats/app', function() {
  *                STARTING FROM HERE                *
  ****************************************************/
 Route::add('/video', function() {
-	return Blade::render('video.list');
+	return Blade::render('video.subject');
 });
 
 Route::add('/view/video/ict', function() {
