@@ -81,14 +81,28 @@
                                             <h5 class="text-primary" style="padding-bottom:1rem">Videos</h5>
                                             <div class="row">
                                                 @php $video = vidsControl::fetch($id); @endphp
-                                                @foreach ($video as $vid)
-                                                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-                                                    <div class="subject-card" style="background:url({{$vid['thumbnail']}})">
-                                                        <a href="/view/video/{{$vid['id']}}/{{str_replace(' ', '-', $vid['name'])}}" title="{{$vid['name']}}">                        
-                                                        <div class="subject-banner row">
-                                                            <h6 class="subject-title text-primary">{{$vid['name']}}</h6>
+                                                @foreach ($videos as $video)
+                                                <div class="col-xl-3 video-card">
+                                                    <div class="card mb-3">
+                                                        <div id="over" class="video-bg" alt="Card image cap" style="background: url({{$video['thumbnail']}}) center no-repeat;">
+                                                            <a href="/view/video/{{$video['id']}}/{{str_replace(' ', '-', $video['title'])}}">
+                                                                <img class="play" src="/assets/img/play.png" alt="play">
+                                                            </a>
                                                         </div>
-                                                        </a>
+                                                        <div class="card-header">
+                                                            <a href="/view/video/{{$video['id']}}/{{str_replace(' ', '-', $video['title'])}}">
+                                                                <h5 class="card-title">{{$video['title']}}</h5>
+                                                            </a>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <p class="card-text d-inline">
+                                                                <i class="fa fa-eye"></i> 
+                                                                {{VideosControl::views($video['id'])}}
+                                                            </p>
+                                                            <a href="javascript:void(0);" class="card-link float-right">
+                                                                {{span_count($video['span'])}}
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 @endforeach
