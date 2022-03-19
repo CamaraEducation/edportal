@@ -35,7 +35,7 @@
             </li>
             <li><a href="javascript:void()" class="has-arrow ai-icon">Systems</a>
                 <ul aria-expanded="false">
-                    <li><a href="//camara.portal:5065">Camara Learning Studio</a></li>
+                    <li><a href="//camara.portal:8085">Camara Learning Studio</a></li>
                     <li><a href="//camara.portal/sms">School Management System</a></li>
                 </ul>
             </li>
