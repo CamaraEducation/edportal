@@ -80,7 +80,7 @@
                                         <div id="my-posts" class="tab-pane fade active show">
                                             <h5 class="text-primary" style="padding-bottom:1rem">Videos</h5>
                                             <div class="row">
-                                                @php $video = VideosControl::fetch($id); @endphp
+                                                @php $videos = VideosControl::fetch($id); @endphp
                                                 @foreach ($videos as $video)
                                                 <div class="col-xl-3 video-card">
                                                     <div class="card mb-3">
