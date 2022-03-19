@@ -17,6 +17,12 @@ class AppsControl{
 
         return $apps;
     }
+    
+    public static function fetch_all(){
+        $sql = "SELECT * FROM apps WHERE";
+        $sql = mysqli_query(conn(), $sql);
+        $apps = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+    }
 
     public static function create(){
         $app_name = mysqli_real_escape_string(conn(), $_POST['app_name']);
