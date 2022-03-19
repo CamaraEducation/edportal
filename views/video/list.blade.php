@@ -24,7 +24,7 @@
                 <div class="col-xl-3 video-card">
                     <div class="card mb-3">
                         <div id="over" class="video-bg" alt="Card image cap" style="background: url('/assets/img/ict.png') center no-repeat;">
-                            <a href="/view/video/ict">
+                            <a href="/view/video/ubongo">
                                 <img class="play" src="/assets/img/play.png" alt="play">
                             </a>
                         </div>
