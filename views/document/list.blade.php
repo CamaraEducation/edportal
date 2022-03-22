@@ -95,7 +95,11 @@
                                                         </a>
                                                     </div>
                                                     <center>
-                                                    <div class="actions">
+                                                    <div class="actions" 
+                                                        @if (viewer() != 1))
+                                                           style='display:none'; 
+                                                        @endif
+                                                    >
                                                         <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}" class="btn btn-primary">
                                                             <i class="fa fa-eye text-white"></i>
                                                         </a>

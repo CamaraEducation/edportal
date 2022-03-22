@@ -100,7 +100,12 @@
                                                                 <i class="fa fa-eye"></i> 
                                                                 {{VideosControl::views($video['id'])}}
                                                             </p>
-                                                            <a href="javascript:void(0);" class="card-link float-right" onclick="return delete_video('{{$video_id}}')">
+                                                            <a href="javascript:void(0);" class="card-link float-right" 
+                                                                onclick="return delete_video('{{$video_id}}')"
+                                                                @if (viewer() != 1))
+                                                                    style='display:none'; 
+                                                                @endif
+                                                            >
                                                                 <i class="fa fa-trash text-red"></i>
                                                             </a>
                                                             <p class="card-text d-inline float-right">
