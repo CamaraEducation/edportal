@@ -82,7 +82,8 @@
                                             <div class="row">
                                                 @php $videos = VideosControl::fetch($id); @endphp
                                                 @foreach ($videos as $video)
-                                                <div class="col-xl-3 video-card">
+                                                @php $video_id = $video['id'] @endphp
+                                                <div class="col-xl-3 video-card" id="video-{{$video_id}}">
                                                     <div class="card mb-3">
                                                         <div id="over" class="video-bg" alt="Card image cap" style="background: url({{$video['thumbnail']}}) center no-repeat;">
                                                             <a href="/view/video/{{$video['id']}}/{{str_replace(' ', '-', $video['title'])}}">
@@ -99,9 +100,12 @@
                                                                 <i class="fa fa-eye"></i> 
                                                                 {{VideosControl::views($video['id'])}}
                                                             </p>
-                                                            <a href="javascript:void(0);" class="card-link float-right">
-                                                                {{span_count($video['span'])}}
+                                                            <a href="javascript:void(0);" class="card-link float-right" onclick="return delete_video('{{$video_id}}')">
+                                                                <i class="fa fa-trash text-red"></i>
                                                             </a>
+                                                            <p class="card-text d-inline float-right">
+                                                                {{span_count($video['span'])}} &nbsp;
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,5 +124,25 @@
 @endsection
 
 @section('footer')
+<script>
+function delete_video(id){
+    confirm('Are you sure you want to delete this video?');
 
+    if(confirm){
+        $.ajax({
+            url: '/delete/video/'+id,
+            type: 'GET',
+            success: function(data){
+                if(data == 'deleted'){
+                    $('#video-'+id).remove();
+                }
+            }
+        });
+    }else{
+        console.log('not deleted');
+    }
+
+}
+
+</script>
 @endsection
