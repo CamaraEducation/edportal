@@ -28,6 +28,18 @@
 		bottom: 4px;
         text-align: center;
 	}
+
+    .actions{
+        position: absolute;
+        top: 40%;
+        left: 20%;
+        width:60%;
+        border-radius: 10px;
+    }
+
+    .action-btn{
+
+    }
 </style>
 @endsection
 
@@ -55,15 +67,6 @@
                                         <h4 class="text-muted mb-0">---</h4>
                                         <p></p>
                                     </div>
-                                    <!--div class="dropdown ml-auto">
-                                        <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns: xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
-                                        < ul class="dropdown-menu dropdown-menu-right">
-                                            <li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i> View profile</li>
-                                            <li class="dropdown-item"><i class="fa fa-users text-primary mr-2"></i> Add to close friends</li>
-                                            <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Add to group</li>
-                                            <li class="dropdown-item"><i class="fa fa-ban text-primary mr-2"></i> Block</li>
-                                        </ul>
-                                    </div-->
                                 </div>
                             </div>
                         </div>
@@ -82,7 +85,8 @@
                                             <div class="row">
                                                 @php $documents = DocsControl::fetch($id); @endphp
                                                 @foreach ($documents as $doc)
-                                                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                                                @php $doc_id = $doc['id'] @endphp
+                                                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" id="doc-{{$doc_id}}">
                                                     <div class="subject-card" style="background:url({{$doc['thumbnail']}})">
                                                         <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}">                        
                                                         <div class="subject-banner row">
@@ -90,6 +94,16 @@
                                                         </div>
                                                         </a>
                                                     </div>
+                                                    <center>
+                                                    <div class="actions">
+                                                        <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}" class="btn btn-primary">
+                                                            <i class="fa fa-eye text-white"></i>
+                                                        </a>
+                                                        <a class="btn btn-danger" onclick="return doc_delete('{{$doc_id}}')">
+                                                            <i class="fa fa-trash text-white"></i>
+                                                        </a>
+                                                    </div>
+                                                    </center>
                                                 </div>
                                                 @endforeach
                                             </div>
@@ -106,5 +120,24 @@
 @endsection
 
 @section('footer')
-
+<script>
+    function doc_delete(id){
+        confirm('Are you sure you want to delete this document?');
+    
+        if(confirm){
+            $.ajax({
+                url: '/delete/document/'+id,
+                type: 'GET',
+                success: function(data){
+                    if(data == 'deleted'){
+                        $('#doc-'+id).remove();
+                    }
+                }
+            });
+        }else{
+            console.log('not deleted');
+        }    
+    }
+    
+    </script>
 @endsection
