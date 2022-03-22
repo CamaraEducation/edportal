@@ -77,5 +77,14 @@ class VideosControl{
 
 		return $sql['bookmark'];
 	}
+
+	public static function delete($id){
+		$sql = "DELETE FROM video WHERE id = '$id'";
+		if(mysqli_query(conn(), $sql)){
+			echo 'deleted';
+		}else{
+		   echo 'something wrong';
+		}
+	}
 }
 ?>
