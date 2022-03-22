@@ -61,5 +61,14 @@ class DocsControl{
 
 		return $doc['views'];
 	}
+
+	public static function delete($id){
+		$sql = "DELETE FROM document WHERE id = '$id'";
+		if(mysqli_query(conn(), $sql)){
+			echo 'deleted';
+		}else{
+		   echo 'something wrong';
+		}
+	}
 }
 ?>
