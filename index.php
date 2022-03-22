@@ -125,6 +125,10 @@ Route::add('/create/video', function() {
 	VideosControl::create();
 }, 'post');
 
+Route::add('/delete/video/([0-9]*)', function($id) {
+	VideosControl::delete($id);
+},['get', 'post']);
+
 /****************************************************
  *            THE NOTES & NOTICCE ROUTES        	*
  *               STARTING FROM HERE                *
@@ -165,6 +169,10 @@ Route::add('/create/document', function() {
 Route::add('/stats/document', function() {
 	return Blade::render('document.stats');
 });
+
+Route::add('/delete/document/([0-9]*)', function($id) {
+	DocsControl::delete($id);
+},['get', 'post']);
 
 Route::add('/notes', function() {
 	return Blade::render("");
