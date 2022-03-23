@@ -105,13 +105,13 @@
                     if(data != ''){
                         $('#log').append('<li>Installing Changes</li>');
                         $('#progress').append(data);
+                        $('#update').html('Update Complete');
                     }
                 }
             });
-        }, 1000);
+        }, 3000);
 
         //enable the button
-        $('#update').html('Update Complete');
         $('#update').prop('disabled', false);
 
     });
