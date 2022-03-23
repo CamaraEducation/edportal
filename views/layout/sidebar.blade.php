@@ -35,9 +35,9 @@
             </li>
             <li><a href="javascript:void()" class="has-arrow ai-icon">Systems</a>
                 <ul aria-expanded="false">
-                    <li><a href="//camara.portal:8085">Camara Learning Studio</a></li>
-                    <li><a href="//smis.camara.site">School Management System</a></li>
-                    <li><a href="//localhost:3000">Kiwix</a></li>
+                    <li><a href="//camara.portal:8085" target='_blank'>Camara Learning Studio</a></li>
+                    <li><a href="//smis.camara.site" target='_blank'>School Management System</a></li>
+                    <li><a href="//camara.portal:3000" target='_blank'>Kiwix</a></li>
                 </ul>
             </li>
             @if (viewer() == 1)
