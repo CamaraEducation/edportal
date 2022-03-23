@@ -67,45 +67,47 @@
         $('#log').append('<li>Starting Update</li>');
         $('#progress').append('<pre>Commencing update</pre>');
         
-        sleep(1000);
-        $('#log').append('<li>Stashing Changes</li>');
-
-        $.ajax({
-            url: '/update/portal/stash',
-            type: 'POST',
-            data: x,
-            success: function(data){
-                if(data != ''){
-                    $('#progress').append(data);
+        setTimeout(() => {
+            $('#log').append('<li>Stashing Changes</li>');
+            $.ajax({
+                url: '/update/portal/stash',
+                type: 'POST',
+                data: x,
+                success: function(data){
+                    if(data != ''){
+                        $('#progress').append(data);
+                    }
                 }
-            }
-        });
+            });
+        }, 1000);
 
-        sleep(1000);
-        $('#log').append('<li>Pulling Changes/li>');
-        $.ajax({
-            url: '/update/portal/pull',
-            type: 'POST',
-            data: x,
-            success: function(data){
-                if(data != ''){
-                    $('#progress').append(data);
+        setTimeout(() => {
+            $('#log').append('<li>Pulling Changes</li>');
+            $.ajax({
+                url: '/update/portal/pull',
+                type: 'POST',
+                data: x,
+                success: function(data){
+                    if(data != ''){
+                        $('#progress').append(data);
+                    }
                 }
-            }
-        });
+            });
+        }, 1000);
 
-        sleep(1000);
-        $('#log').append('<li>Installing Changes</li>');
-        $.ajax({
-            url: '/update/portal/apply',
-            type: 'POST',
-            data: x,
-            success: function(data){
-                if(data != ''){
-                    $('#progress').append(data);
+        setTimeout(() => {
+            $('#log').append('<li>Installing Changes</li>');
+            $.ajax({
+                url: '/update/portal/apply',
+                type: 'POST',
+                data: x,
+                success: function(data){
+                    if(data != ''){
+                        $('#progress').append(data);
+                    }
                 }
-            }
-        });
+            });
+        }, 1000);
 
         //enable the button
         $('#update').html('Update Complete');
