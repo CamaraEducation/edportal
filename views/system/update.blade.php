@@ -112,6 +112,7 @@
 
         //enable the button
         $('#update').html('Update Complete');
+        $('#update').prop('disabled', false);
 
     });
 </script>
