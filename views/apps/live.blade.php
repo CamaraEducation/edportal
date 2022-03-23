@@ -12,22 +12,22 @@
 		@css('/assets/css/bootstrap')
 		<style>
 			iframe {
-			width: 100%;
-			height: 90vh;
-			border: 0;
+				width: 100%;
+				height: 90vh;
+				border: 0;
 			}
 			/* hide body scrollbar */
 			body::-webkit-scrollbar {
-			display: none
+				display: none
 			}
 			.pad-top{
-			padding-top:26px !important;
+				padding-top:26px !important;
 			}
 			a{
-			text-decoration: none;
+				text-decoration: none;
 			}
 			a:hover{
-			color: aliceblue;
+				color: aliceblue;
 			}
 		</style>
 	</head>
@@ -45,17 +45,11 @@
 			console.log('{{$app['name']}}');
 			
 			function log_app_visit(){
-				//alert(window.location.href);
 				var iframe = document.getElementById("myFrame");
-				//var elmnt = iframe.contentWindow.document.getElementsByTagName("img")[0];
-				//elmnt.style.display = "none";
-				//elmnt.outerHTML = iframe.contentWindow.location.href;
-				//alert(iframe.contentWindow.location.href);
 				var uri     = iframe.contentWindow.location.pathname;
 				var app_id  = "{{$id}}";
 				var user_id = "{{$_SESSION['id']}}";
 
-				//alert(uri +' | '+ app_id +' | '+ user_id);
 				$.post("/log/app", {
 					uri: uri, 
 					app_id: app_id, 
@@ -65,5 +59,22 @@
 					//alert("Data: " + data + "\nStatus: " + status);
 				});
 			}
+			
+			function log_live_time(){
+				var iframe = document.getElementById("myFrame");
+				var uri     = iframe.contentWindow.location.pathname;
+				
+				$.post("/log/time", {
+					uri: uri
+				},
+				function(data, status){
+					//console.log(data);
+				});
+			}
+			
+			setInterval(function(){
+				log_live_time()
+			}, 3200);
+			
 		</script>
 </html>
