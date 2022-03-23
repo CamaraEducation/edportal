@@ -151,7 +151,15 @@
 								<h2 class="card-title mb-2 text-primary pad-2">System Live Time</h2>
 							</div>
 							<div class="card-body pb-2 px-3">
-								@php $livetime = StatsController::count_live_time() @endphp
+								@if(viewer() == 1)
+									@php $livetime = StatsController::count_live_time();
+									$user_activity = StatsController::count_users_activity();  
+									@endphp
+								@else
+									@php $livetime = StatsController::count_user_time($_SESSION['id']);
+									$user_activity = StatsController::count_user_activity($_SESSION['id']); 
+									@endphp
+								@endif
 								<h6>Today 		: {{TimeController::convert_sec_min_hrs($livetime['today']/1000)}}</h6>
 								<h6>This Month  : {{TimeController::convert_sec_min_hrs($livetime['monthly']/1000)}}</h6>
 								<h6>This Year 	: {{TimeController::convert_sec_min_hrs($livetime['all_time']/1000)}}</h6>
@@ -168,7 +176,7 @@
 @js('/assets/vendor/chart.js/Chart.bundle.min.js')
 <!--@js('/assets/js/plugins-init/chartjs-init.js')-->
 
-@php $user_activity = StatsController::count_users_activity(); 
+@php  
     $max = max($user_activity);
     if($max < 250){ $max = 250;
         }else if($max < 500){ $max = 500;
