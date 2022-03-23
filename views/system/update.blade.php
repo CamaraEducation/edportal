@@ -68,13 +68,13 @@
         $('#progress').append('<pre>Commencing update</pre>');
         
         setTimeout(() => {
-            $('#log').append('<li>Stashing Changes</li>');
             $.ajax({
                 url: '/update/portal/stash',
                 type: 'POST',
                 data: x,
                 success: function(data){
                     if(data != ''){
+                        $('#log').append('<li>Stashing Changes</li>');
                         $('#progress').append(data);
                     }
                 }
@@ -82,13 +82,13 @@
         }, 1000);
 
         setTimeout(() => {
-            $('#log').append('<li>Pulling Changes</li>');
             $.ajax({
                 url: '/update/portal/pull',
                 type: 'POST',
                 data: x,
                 success: function(data){
                     if(data != ''){
+                        $('#log').append('<li>Pulling Changes</li>');
                         $('#progress').append(data);
                     }
                 }
@@ -96,13 +96,13 @@
         }, 1000);
 
         setTimeout(() => {
-            $('#log').append('<li>Installing Changes</li>');
             $.ajax({
                 url: '/update/portal/apply',
                 type: 'POST',
                 data: x,
                 success: function(data){
                     if(data != ''){
+                        $('#log').append('<li>Installing Changes</li>');
                         $('#progress').append(data);
                     }
                 }
