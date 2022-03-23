@@ -80,7 +80,7 @@
 				});
 			}
 			setInterval(function(){
-				log_live_time()
+				//log_live_time()
 			}, 3200);
 		</script>
 
