@@ -306,7 +306,7 @@ Route::add('/test', function() {
 
 Route::add('/test2', function() {
 	echo '<pre>';
-	print_r(json_decode($_POST['adata'], true));
+	print_r($_SESSION);
 }, ['get', 'post']);
 
 /****************************************************
