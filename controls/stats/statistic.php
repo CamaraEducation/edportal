@@ -108,16 +108,18 @@ class StatsController{
 	}
 
 
-	/* visualize specific users activity
-	public static function count_user_activity(){
-		$sql = "SELECT user, COUNT(id) as total FROM log_activity GROUP BY user ORDER BY COUNT(id) DESC LIMIT 50";
-		return mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
-	}*/
+	public static function count_user_activity($id){
+		for($i=1; $i<=12; $i++){
+			$sql = "SELECT COUNT(id) as logs FROM log_activity WHERE MONTH(created) = $i AND YEAR(created)=YEAR(NOW()) AND `user`='$id'";
+			$sql = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
+			$data[] = $sql['logs'];
+		}
+
+		return $data;
+	}
 
 	//visualize general user activity
 	public static function count_users_activity(){
-		//$sql = "SELECT MONTH(created), COUNT(id) as logs FROM log_activity WHERE YEAR(created)=YEAR(NOW()) GROUP BY MONTH(created) ORDER BY MONTH(created)";
-		//return mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
 		for($i=1; $i<=12; $i++){
 			$sql = "SELECT COUNT(id) as logs FROM log_activity WHERE MONTH(created) = $i AND YEAR(created)=YEAR(NOW())";
 			$sql = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
@@ -125,6 +127,14 @@ class StatsController{
 		}
 
 		return $data;
+	}
+
+	public static function count_user_time($id){
+		$sql = "SELECT SUM(live) AS all_time, 
+				(SELECT SUM(live) FROM page_visit WHERE MONTH(TIME) = MONTH(CURRENT_TIMESTAMP) AND  visitor = '$id') AS monthly,
+				(SELECT SUM(live) FROM page_visit WHERE DATE(TIME) = DATE(CURRENT_TIMESTAMP) AND visitor = '$id') AS today
+			FROM page_visit WHERE YEAR(TIME) = YEAR(CURRENT_TIMESTAMP) AND `visitor`='$id'";
+		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
 
 	public static function count_live_time(){
