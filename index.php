@@ -56,7 +56,11 @@ Blade::addPath('core');
  ****************************************************/
 
 Route::add('/', function() {
-	return Blade::render("welcome");
+	if(isset($_SESSION['id'])) {
+		return Blade::render("welcome");
+	} else {
+		Route::redirect('/login');
+	}
 });
 
 /****************************************************
