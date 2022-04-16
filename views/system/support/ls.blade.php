@@ -5,15 +5,15 @@
             <ul class="pad-half bold">
                 <li>
                     <i class="fa fa-building"></i> : 
-                    <span class="italic">Kurasini, Engaruka St.</span>
+                    <span class="italic">c/o Sisters of the Holy Family,</span>
                 </li>
                 <li>
                     <i class="fa fa-location-arrow"></i> :                    
-                    <span class="italic">Dar es Salaam, Tanzania</span>
+                    <span class="italic">Orpen Road, Old Europa,</span>
                 </li>
                 <li>
                     <i class="fa fa-envelope"></i> :                     
-                    <span class="italic">Post Box 13484</span>
+                    <span class="italic">Maseru, Lesotho</span>
                 </li>
             </ul>
             <div class="space"></div>
@@ -26,15 +26,15 @@
             <ul class="pad-half bold">
                 <li>
                     <i class="fa fa-phone-square"></i> : 
-                    <span class="italic">255 (0) 758-396-600</span>
+                    <span class="italic">+266 59742979</span>
                 </li>
                 <li>
                     <i class="fa fa-envelope"></i> :                    
-                    <span class="italic" mail-to="tanzania@camara.org">tanzania@camara.org</span>
+                    <span class="italic" mail-to="lesotho@camara.org">lesotho@camara.org</span>
                 </li>
                 <li>
                     <i class="fa fa-safari"></i> :                     
-                    <span class="italic" ><a class="text-primary" href="//camara.or.tz">camara.or.tz</a></span>
+                    <span class="italic" ><a class="text-primary" href="//camara.or.tz">camara.org/lesotho</a></span>
                 </li>
             </ul>
             <div class="space"></div>
@@ -47,28 +47,8 @@
             <center>
                 <div class="row">
                     <div class="col">
-                        <a href="https://www.facebook.com/CamaraEducation/">
+                        <a href="https://www.facebook.com/CamaraLesotho/">
                             <img src="/assets/icons/socials/fb.png" width="60px" alt="facebook">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.instagram.com/camaraeducationtanzania/?hl=en">
-                            <img src="/assets/icons/socials/insta.png" width="60px" alt="Instagram">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.linkedin.com/company/camara-education-tanzania">
-                            <img src="/assets/icons/socials/in.png" width="60px" alt="Linkedin">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="https://twitter.com/CamaraTanzania">
-                            <img src="/assets/icons/socials/twitter.png" width="60px" alt="twitter">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="https://wa.me/255758396600">
-                            <img src="/assets/icons/socials/wa.png" width="60px" alt="whatsapp">
                         </a>
                     </div>
                 </div>
@@ -87,7 +67,7 @@
                 </p>
             </div>
             <div class="col-md-6">
-                <img src="/upload/team/tz.webp" style="padding-top: 10px; border-radius: 15px; width:100%" alt="camtics">
+                <img src="/upload/team/lt.webp" style="padding-top: 10px; border-radius: 15px; width:100%" alt="camtics">
             </div>
         </div>
     </div>
