@@ -66,6 +66,8 @@
 		)
 	));
 
-	$result = file_get_contents('http://sync.test/api/portal/sync', null, $context);
+	$result = file_get_contents(sync_conn(), null, $context);
 	var_dump($result);
+
+	SysSyncController::update($sync['max']);
 @endphp

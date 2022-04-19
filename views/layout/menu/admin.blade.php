@@ -46,6 +46,7 @@
             <ul aria-expanded="false">
                 <li><a href="/update/portal">Update</a></li>                           
                 <li><a href="/export/portal">Export Data</a></li>
+                <li><a href="/configure/sync">Connections</a></li>
             </ul>
         </li>
         <li>
