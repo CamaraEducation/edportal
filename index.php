@@ -304,13 +304,8 @@ Route::add('/support', function() {
 	return Blade::render('system.support');
 }, ['get', 'post']);
 
-Route::add('/test', function() {
+Route::add('/sync', function() {
 	return Blade::render('system.sync');
-}, ['get', 'post']);
-
-Route::add('/test2', function() {
-	echo '<pre>';
-	print_r($_SESSION);
 }, ['get', 'post']);
 
 /****************************************************
