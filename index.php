@@ -296,6 +296,18 @@ Route::add('/configure/portal', function() {
 	return Blade::render('system.config');
 });
 
+Route::add('/configure/sync', function() {
+	return Blade::render('system.connect');
+});
+
+Route::add('/configure/sync/([a-z]*)', function($data) {
+	if($data == 'sync'){
+		return Blade::render('system.connect.connsum');
+	}else{
+		return Blade::render('system.connect.nmsdata');
+	}
+});
+
 Route::add('/change/configs', function() {
 	ConfigsController::update();
 }, ['get', 'post']);
@@ -306,6 +318,11 @@ Route::add('/support', function() {
 
 Route::add('/sync', function() {
 	return Blade::render('system.sync');
+}, ['get', 'post']);
+
+
+Route::add('/test', function() {
+	echo sync_conn();
 }, ['get', 'post']);
 
 /****************************************************
