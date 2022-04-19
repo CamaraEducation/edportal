@@ -28,7 +28,11 @@ class SysSyncController{
 	}
 
 	public static function check(){
+		if(is_connected() == true){
 
+		}else if(is_connected() == true){
+
+		}
 	}
 
 	//fetch all data usage statistics
