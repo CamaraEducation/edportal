@@ -12,8 +12,8 @@ function conn(){
 
 // Test internet connection
 // TODO : Camara SyncDB to be used for this
-function is_connected(){
-	$connected = @fsockopen("www.example.com", 80); 
+function is_connected($url = "www.example.com"){
+	$connected = @fsockopen($url, 80); 
 	if ($connected){ $is_conn = true;  fclose($connected);
 		}else{ $is_conn = false; //action in connection failure
 	}
