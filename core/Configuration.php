@@ -12,13 +12,38 @@ function conn(){
 
 // Test internet connection
 // TODO : Camara SyncDB to be used for this
-function is_connected($url = "www.example.com"){
-	$connected = @fsockopen($url, 80); 
-	if ($connected){ $is_conn = true;  fclose($connected);
-		}else{ $is_conn = false; //action in connection failure
+function is_connected($url = ''){
+
+	if(empty($url)){
+		$server = [$_ENV['SYNC_SERVER'], $_ENV['SYNC_ALTER1'], $_ENV['SYNC_ALTER2']];
+		foreach($server as $url){
+			$conn = @fsockopen($url, 80);
+			if($conn){
+				fclose($conn);
+				return true;
+			}
+		}
+	}else{
+		$conn = @fsockopen($url, 80);
+		if($conn){
+			fclose($conn);
+			return true;
+		}
 	}
 
-	return $is_conn;
+	return false;
+}
+
+function sync_conn(){
+	if(is_connected($_ENV['SYNC_SERVER']) == true){
+		return $_ENV['SYNC_SERVER'];
+	}elseif(is_connected($_ENV['SYNC_ALTER1']) == true){
+		return $_ENV['SYNC_ALTER1'];
+	}elseif(is_connected($_ENV['SYNC_ALTER2']) == true){
+		return $_ENV['SYNC_ALTER2'];
+	}else{
+		die('connection could not be established');
+	}
 }
 
 function get_user_role($id){
