@@ -322,7 +322,7 @@ Route::add('/sync', function() {
 
 
 Route::add('/test', function() {
-	echo sync_conn();
+	echo 'test';
 }, ['get', 'post']);
 
 /****************************************************
