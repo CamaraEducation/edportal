@@ -12,7 +12,9 @@ class ConfigsController{
         $sql = "UPDATE config SET 
             school = '$school', ownership = '$ownership', category='$level', region='$region', country='$country'
             WHERE 1
-        "; if(mysqli_query(conn(), $sql)){ echo 'success';}
+        "; if(mysqli_query(conn(), $sql)){
+            header("Location: /");
+        }
     }
 
     public static function check(){

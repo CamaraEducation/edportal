@@ -44,11 +44,11 @@
                                             <span>Ownership Category</span>
                                         </label>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="ownership" type="radio" id="inlineCheckbox1" value="public">
+                                            <input class="form-check-input" name="ownership" type="radio" id="inlineCheckbox1" value="public" required>
                                             <label class="form-check-label">Public School</label>
                                           </div>
                                           <div class="form-check">
-                                            <input class="form-check-input" name="ownership" type="radio" id="inlineCheckbox2" value="private">
+                                            <input class="form-check-input" name="ownership" type="radio" id="inlineCheckbox2" value="private" required>
                                             <label class="form-check-label">Private School</label>
                                           </div>
                                     </div>
@@ -58,15 +58,15 @@
                                             <small class="text-danger text-block">Check all that apply</small>
                                         </label>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_pri" value="primary">
+                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_pri" value="primary" required>
                                             <label class="form-check-label">Primary School</label>
                                           </div>
                                           <div class="form-check">
-                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_sec" value="secondary">
+                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_sec" value="secondary" required>
                                             <label class="form-check-label" for="inlineCheckbox2">Secondary School</label>
                                           </div>
                                           <div class="form-check">
-                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_col" value="college">
+                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_col" value="college" required>
                                             <label class="form-check-label">Higher Learning</label>
                                         </div>
                                     </div>
