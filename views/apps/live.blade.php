@@ -30,6 +30,7 @@
 				color: aliceblue;
 			}
 		</style>
+		<base target="_parent">
 	</head>
 	<body>
 		<div class="w3-bar w3-black">
