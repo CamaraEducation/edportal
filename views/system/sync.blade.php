@@ -78,3 +78,10 @@
 
 	$result = curl_exec($ch);
 	if (curl_errno($ch)) {
+		echo 'Error:' . curl_error($ch);
+	}
+	curl_close($ch);
+
+	print_r($result);
+	
+@endphp
