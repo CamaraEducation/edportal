@@ -28,4 +28,22 @@
 @section('footer')
     @js('/assets/vendor/datatables/js/jquery.dataTables.min.js')
     @js('/assets/js/plugins-init/datatables.init.js')
+
+    <script>
+        function user_delete(id){
+        var text = confirm('Are you sure you want to delete this document?');
+    
+        if(text == true){
+            $.ajax({
+                url: '/delete/user/'+id,
+                type: 'GET',
+                success: function(data){
+                    $('#'+id).remove();
+                }
+            });
+        }else{
+            console.log('not deleted');
+        }  
+    }
+    </script>
 @endsection
