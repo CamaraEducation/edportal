@@ -37,7 +37,6 @@
                 <ul aria-expanded="false">
                     <li><a href="//camara.portal:8085" target='_blank'>Camara Learning Studio</a></li>
                     <li><a href="//smis.camara.site" target='_blank'>School Management System</a></li>
-                    <li><a href="//camara.portal:3000" target='_blank'>Kiwix</a></li>
                 </ul>
             </li>
             @if (viewer() == 1)
