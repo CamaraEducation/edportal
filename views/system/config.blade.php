@@ -58,15 +58,15 @@
                                             <small class="text-danger text-block">Check all that apply</small>
                                         </label>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_pri" value="primary" required>
+                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_pri" value="primary">
                                             <label class="form-check-label">Primary School</label>
                                           </div>
                                           <div class="form-check">
-                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_sec" value="secondary" required>
+                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_sec" value="secondary">
                                             <label class="form-check-label" for="inlineCheckbox2">Secondary School</label>
                                           </div>
                                           <div class="form-check">
-                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_col" value="college" required>
+                                            <input class="form-check-input" name="level[]" type="checkbox" id="level_col" value="college">
                                             <label class="form-check-label">Higher Learning</label>
                                         </div>
                                     </div>
