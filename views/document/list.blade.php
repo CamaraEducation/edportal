@@ -126,9 +126,9 @@
 @section('footer')
 <script>
     function doc_delete(id){
-        confirm('Are you sure you want to delete this document?');
+        var text = confirm('Are you sure you want to delete this document?');
     
-        if(confirm){
+        if(text == true){
             $.ajax({
                 url: '/delete/document/'+id,
                 type: 'GET',

@@ -131,9 +131,9 @@
 @section('footer')
 <script>
 function delete_video(id){
-    confirm('Are you sure you want to delete this video?');
+    var text = confirm('Are you sure you want to delete this video?');
 
-    if(confirm){
+    if(text == true){
         $.ajax({
             url: '/delete/video/'+id,
             type: 'GET',
