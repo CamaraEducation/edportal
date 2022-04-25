@@ -195,6 +195,10 @@ Route::add('/users/([a-z]*)', function($type) {
 	return Blade::render('user.list', ['type'=>$type]);
 });
 
+Route::add('/delete/user/([0-9]*)', function($id) {
+	UsersControl::delete($id);
+});
+
 Route::add('/view/user/([0-9]*)/([A-Za-z\-\&\,]*)', function($id) {
 	return Blade::render('user.view', ['id' => $id]);
 });
