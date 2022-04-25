@@ -25,7 +25,7 @@ class UsersControl{
 
     public static function delete($id){
         $sql = "DELETE FROM users WHERE id='$id'";
-        mysqli_query(conn(), $sql) ? header('Location: /users') : 'something is wrong';
+        mysqli_query(conn(), $sql) ? 'success' : 'something is wrong';
     }
 
     public static function fetch_user_data($id){
