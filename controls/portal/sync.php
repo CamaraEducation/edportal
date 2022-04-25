@@ -23,7 +23,7 @@ class SysSyncController{
 	}
 
 	public static function init(){
-		if(is_connected() == true){
+		if(is_sync() == true){
 			$last = self::last();
 			$max  = self::period();
 			$page = $last['site']; $app = $last['app']; $vid = $last['vid']; $doc = $last['doc']; 
@@ -47,11 +47,11 @@ class SysSyncController{
 	}
 
 	public static function check(){
-		if(is_connected() == true){
+		if(is_sync() == true){
 			$s1 = 'ok';
-		}elseif(is_connected() == true){
+		}elseif(is_sync() == true){
 			$s2 = 'ok';
-		}elseif(is_connected() == true){
+		}elseif(is_sync() == true){
 			$s3 = 'ok';
 		}
 		return ['s1' => $s1, 's2' => $s2, 's3' => $s3];
