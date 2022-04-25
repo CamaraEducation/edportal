@@ -135,19 +135,8 @@
 													</div>
 													<div class="col">
 														<h3 class="m-b-0">{{VideosControl::views($id)}}</h3>
-														<span>ViewS</span>
+														<span>Views</span>
 													</div>
-												</div>
-												<div class="mt-4">
-													@if (VideosControl::video_bookmark($id) == 0)
-														<a href="javascript:void(0);" class="btn btn-secondary mb-1" onclick="return log_video_activity('save')">
-															<i class="flaticon-381-bookmark"></i> Bookmark
-														</a>
-													@else
-														<a href="javascript:void(0);" class="btn btn-primary mb-1" onclick="return log_video_activity('dsave')">
-															<i class="flaticon-381-bookmark"></i> Saved
-														</a>
-													@endif
 												</div>
 											</div>
 										</div>
