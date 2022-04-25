@@ -51,21 +51,6 @@
 @php $adata = '{'. $adata .'"":""}'; @endphp
 
 @php
-	// building array of variables
-	/*$content = http_build_query(array('cdata' => $cdata, 'adata' => $adata ));
-	
-	// creating the context change POST to GET if that is relevant 
-	$context = stream_context_create(array(
-		'http' => array( 'method'  => 'POST', 'content' => $content,
-			'header'  => "Content-Type: application/x-www-form-urlencoded"
-		)
-	));
-
-	$result = file_get_contents(sync_conn(), null, $context);
-
-
-	SysSyncController::update($sync['max']);*/
-
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, sync_conn());
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -82,6 +67,8 @@
 	}
 	curl_close($ch);
 
-	print_r($result);
+	if($result == 'OK'){
+		SysSyncController::update($sync['max']);
+	}
 	
 @endphp
