@@ -13,9 +13,8 @@ function conn(){
 // Test internet connection
 // TODO : Camara SyncDB to be used for this
 function is_connected($url = ''){
-
 	if(empty($url)){
-		$server = [$_ENV['SYNC_SERVER'], $_ENV['SYNC_ALTER1'], $_ENV['SYNC_ALTER2']];
+		$server = [$_ENV['SYNC_ALTER0'], $_ENV['SYNC_ALTER1'], $_ENV['SYNC_ALTER2']];
 		foreach($server as $url){
 			$conn = @fsockopen($url, 80);
 			if($conn){
@@ -30,17 +29,44 @@ function is_connected($url = ''){
 			return true;
 		}
 	}
+	return false;
+}
 
+function is_sync($url = ''){
+	if(empty($url)){
+		$server = [$_ENV['SYNC_ALTER0'], $_ENV['SYNC_ALTER1'], $_ENV['SYNC_ALTER2']];
+		foreach($server as $url){
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+			$data = curl_exec($ch);
+			curl_close($ch);
+			if($data){
+				return true;
+			}
+		}
+	}else{
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		if($data){
+			return true;
+		}
+	}
 	return false;
 }
 
 function sync_conn(){
-	if(is_connected($_ENV['SYNC_SERVER']) == true){
-		return $_ENV['SYNC_SERVER'];
-	}elseif(is_connected($_ENV['SYNC_ALTER1']) == true){
-		return $_ENV['SYNC_ALTER1'];
-	}elseif(is_connected($_ENV['SYNC_ALTER2']) == true){
-		return $_ENV['SYNC_ALTER2'];
+	if(is_sync($_ENV['SYNC_ALTER0']) == true){
+		return $_ENV['ALTER0_URL'];
+	}elseif(is_sync($_ENV['SYNC_ALTER1']) == true){
+		return $_ENV['ALTER1_URL'];
+	}elseif(is_sync($_ENV['SYNC_ALTER2']) == true){
+		return $_ENV['ALTER2_URL'];
 	}else{
 		die('connection could not be established');
 	}
