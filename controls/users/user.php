@@ -25,7 +25,16 @@ class UsersControl{
 
     public static function delete($id){
         $sql = "DELETE FROM users WHERE id='$id'";
-        mysqli_query(conn(), $sql) ? 'success' : 'something is wrong';
+        if(mysqli_query(conn(), $sql)){
+            $query[0] = "DELETE FROM page_visit WHERE visitor='$id'";
+            $query[1] = "DELETE FROM app_visits WHERE visitor='$id'";
+            $query[2] = "DELETE FROM video_views WHERE user_id='$id'";
+            $query[3] = "DELETE FROM doc_views WHERE user_id='$id'";
+
+            foreach($query as $q){
+                mysqli_query(conn(), $q);
+            }
+        }
     }
 
     public static function fetch_user_data($id){
