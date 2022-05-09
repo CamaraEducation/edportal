@@ -36,7 +36,7 @@ class SysSyncController{
 			 * @var $gdata :: general data - consists of all page visit regardless of content type *
 			 * @var $cdata :: content data - consists of specific data i.e video, apps and docs    *
 			*****************************************************************************************/
-			if($psql >= 100){
+			if($psql >= 10){
 				$gdata = self::all($page, $max['all']);
 				$cdata = array_merge(self::apps($app, $max['app']), self::video($vid, $max['vid']), self::doc($doc, $max['doc']));
 				return ['gdata' => $gdata, 'cdata' => $cdata, 'max' => $max];
