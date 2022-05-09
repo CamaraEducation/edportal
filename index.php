@@ -292,6 +292,10 @@ Route::add('/update/portal', function() {
 	return Blade::render('system.update');
 });
 
+Route::add('/update/portal/auto', function() {
+	PortalUpdate::auto();
+});
+
 Route::add('/export/portal', function() {
 	return Blade::render('system.export');
 });
