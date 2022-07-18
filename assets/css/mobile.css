@@ -1,0 +1,47 @@
+.mobilebar {
+	overflow: hidden;
+	background-color: #333;
+	position: fixed;
+	bottom: 0;
+	width:100%;
+	border-radius: 10px 10px 0 0;
+}
+  
+.mobilebar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+  
+.mobilebar a:hover {
+	background: #f1f1f1;
+	color: black;
+}
+  
+.mobilebar a.active {
+	background-color: #81bc00;
+	color: white;
+}
+  
+.main {
+	padding: 16px;
+	margin-bottom: 30px;
+}
+
+.hamburger {
+	display: none;
+}
+
+.mob-menu{
+	margin: auto !important;
+}
+
+@media(min-width: 1024px) {
+	.mobilebar {
+	  display: none;
+	}
+}

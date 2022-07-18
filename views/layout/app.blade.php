@@ -17,6 +17,7 @@
 		@css('/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')
 		@css('/assets/css/style.css')
 		@css('/assets/css/custom.css')
+		@css('/assets/css/mobile.css')
 		<script> startTime = new Date(); </script>
 
 	</head>
@@ -54,6 +55,8 @@
 					<p>© {{date('Y')}} Camara Education | All rights Reserved 2021</p>
 				</div>
 			</div>
+
+			@include('layout.mobile')
 		</div>
 		
 		@js('/assets/vendor/global/global.min.js') 
@@ -61,11 +64,10 @@
 		@js('/assets/vendor/peity/jquery.peity.min.js')
 		<!--@ js('/assets/js/dashboard/dashboard-1.js') -->
 		@if (!isset($_COOKIE['loaded']))
-			@php setcookie('loaded', 'true', time() + (86400 * 30), "/");
+			@php theme(); setcookie('loaded', 'true', time() + (180), "/");
 			header("Refresh:1"); @endphp
 			@else @js('/assets/js/custom.min.js')
 		@endif
-		@js('/assets/js/custom.min.js')
 		@js('/assets/js/deznav-init.js')
 		@js('/assets/js/demo.js')
 
