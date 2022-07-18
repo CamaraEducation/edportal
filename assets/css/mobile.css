@@ -5,6 +5,7 @@
 	bottom: 0;
 	width:100%;
 	border-radius: 10px 10px 0 0;
+	height: 60px;
 }
   
 .mobilebar a {
@@ -38,6 +39,11 @@
 
 .mob-menu{
 	margin: auto !important;
+}
+
+.menu-text{
+	font-size: 10px;
+	font-weight: bold;
 }
 
 @media(min-width: 1024px) {
