@@ -63,11 +63,7 @@
 		@js('/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')
 		@js('/assets/vendor/peity/jquery.peity.min.js')
 		<!--@ js('/assets/js/dashboard/dashboard-1.js') -->
-		@if (!isset($_COOKIE['loaded']))
-			@php theme(); setcookie('loaded', 'true', time() + (180), "/");
-			header("Refresh:1"); @endphp
-			@else @js('/assets/js/custom.min.js')
-		@endif
+		@js('/assets/js/custom.min.js')
 		@js('/assets/js/deznav-init.js')
 		@js('/assets/js/demo.js')
 
