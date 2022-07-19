@@ -64,9 +64,9 @@
                                 </label>
                             </div-->
                         </div>
-                        <div class="col-6 text-right">
+                        <!--div class="col-6 text-right">
                             <a href="/reset">Forgot password?</a>
-                        </div>
+                        </div-->
                     </div>
                     <div>
                         <button type="button" id="login" class="btn btn-primary btn-block">Login</button>

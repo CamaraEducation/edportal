@@ -3,53 +3,55 @@
 @section('content')		
         <div class="content-body">
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xl-3 col-sm-6 m-t35">
-						<div class="card card-coin">
-							<div class="card-body text-center">
-								<img src="/assets/img/pc.png" class="mb-3 vector-icon" width="80" height="80">
-								<h2 class="text-black mb-2 font-w600">118,471
-								</h2>
-								<h4 class="mb-0 fs-14">
-									Computers Installed
-								</h4>	
+				<div class="desktop">
+					<div class="row">
+						<div class="col-xl-3 col-sm-6 m-t35">
+							<div class="card card-coin">
+								<div class="card-body text-center">
+									<img src="/assets/img/pc.png" class="mb-3 vector-icon" width="80" height="80">
+									<h2 class="text-black mb-2 font-w600">118,471
+									</h2>
+									<h4 class="mb-0 fs-14">
+										Computers Installed
+									</h4>	
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 m-t35">
+							<div class="card card-coin">
+								<div class="card-body text-center">
+									<img src="/assets/img/school.png" class="mb-3 vector-icon" width="80" height="80">
+									<h2 class="text-black mb-2 font-w600">11,943</h2>
+									<h4 class="mb-0 fs-13">
+										Schools Supported
+									</h4>	
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 m-t35">
+							<div class="card card-coin">
+								<div class="card-body text-center">
+									<img src="/assets/img/teacher.png" class="mb-3 vector-icon" width="80" height="80">
+									<h2 class="text-black mb-2 font-w600">60,648</h2>
+									<p class="mb-0 fs-14">
+										Teachers Trained
+									</p>	
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 m-t35">
+							<div class="card card-coin">
+								<div class="card-body text-center">
+									<img src="/assets/img/students.png" class="mb-3 vector-icon" width="80" height="80">
+									<h2 class="text-black mb-2 font-w600">3,751,749</h2>
+									<h4 class="mb-0 fs-14">
+										Learners Impacted
+									</h4>	
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xl-3 col-sm-6 m-t35">
-						<div class="card card-coin">
-							<div class="card-body text-center">
-								<img src="/assets/img/school.png" class="mb-3 vector-icon" width="80" height="80">
-								<h2 class="text-black mb-2 font-w600">11,943</h2>
-								<h4 class="mb-0 fs-13">
-									Schools Supported
-								</h4>	
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-sm-6 m-t35">
-						<div class="card card-coin">
-							<div class="card-body text-center">
-								<img src="/assets/img/teacher.png" class="mb-3 vector-icon" width="80" height="80">
-								<h2 class="text-black mb-2 font-w600">60,648</h2>
-								<p class="mb-0 fs-14">
-									Teachers Trained
-								</p>	
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-sm-6 m-t35">
-						<div class="card card-coin">
-							<div class="card-body text-center">
-								<img src="/assets/img/students.png" class="mb-3 vector-icon" width="80" height="80">
-								<h2 class="text-black mb-2 font-w600">3,751,749</h2>
-								<h4 class="mb-0 fs-14">
-									Learners Impacted
-								</h4>	
-							</div>
-						</div>
-					</div>
-				</div>
+				</div>	
 				<div class="row">
 					<div class="col-xl-9 col-xxl-8">
 						<div class="card">

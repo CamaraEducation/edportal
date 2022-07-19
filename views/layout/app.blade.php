@@ -6,7 +6,7 @@
 	<head>
 		<!-- please do not remove this section -->
 		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="user-scalable=no, width=device-width, initial-scale=1.0" name="viewport">
 		<meta name="generator" content="Dynamic Framework">
 		<title>@yield('title')</title>
 		<meta content="{{$_ENV['AUTHOR']}}" name="description">
@@ -35,7 +35,7 @@
 			<!-- logo banner -->
 			<div class="nav-header">
 				<a href="/" class="brand-logo">
-					<img class="logo-small" src="/assets/img/favicon.png" alt="logo" width="50"/>
+					<img class="logo-small" src="/assets/img/logo.png" alt="logo" width="100px"/>
 					<img class="logo-big" src="/assets/img/logo.png" alt="logo" width="200px"/>
 				</a>
 				<div class="nav-control">
