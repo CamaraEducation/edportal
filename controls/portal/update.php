@@ -1,7 +1,7 @@
 <?php
 class PortalUpdate{
  	public static function init(){
-		echo "system version is now 1.3.0";
+		echo "system version is now 1.5.0";
  	}
 
 	public static function auto(){
