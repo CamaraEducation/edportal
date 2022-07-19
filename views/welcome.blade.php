@@ -7,8 +7,8 @@
 	<div class="content-body">
 		<div class="container-fluid">
 			
-			<h2 class="card-title mb-2 text-primary">Camara Statistics</h3>
-			<div class="row">
+			<h2 class="card-title mb-2 text-primary desktop">Camara Statistics</h3>
+			<div class="row desktop">
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="card card-coin">
 						<div class="card-body text-center">
