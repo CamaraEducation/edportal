@@ -44,7 +44,7 @@
                                 <small>{{role()}}</small>
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right desktop">
                             <!--a href="/account" class="dropdown-item ai-icon">
                                 <i class="fa fa-user"></i>
                                 <span class="ml-2">Profile </span>
