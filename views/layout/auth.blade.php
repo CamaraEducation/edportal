@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="user-scalable=no, width=device-width, initial-scale=1.0" name="viewport">
 		<meta name="generator" content="Dynamic Framework">
 		<title>@yield('title')</title>
 		<meta name="author" content="{{$_ENV['AUTHOR']}}"> 
