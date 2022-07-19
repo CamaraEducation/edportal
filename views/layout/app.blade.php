@@ -57,6 +57,7 @@
 			</div>
 
 			@include('layout.mobile')
+			@include('layout.model.menu')
 		</div>
 		
 		@js('/assets/vendor/global/global.min.js') 

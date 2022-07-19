@@ -30,7 +30,7 @@
                 </div>
             </div>
         </a>
-        <a class="col" href="javascript:void(0)">
+        <a class="col" href="javascript:void(0)" data-toggle="modal" data-target="#applets">
             <div class="row">
                 <div class="col-12">
                     <i class="flaticon-077-menu-1"></i>
@@ -40,13 +40,13 @@
                 </div>
             </div>
         </a>
-        <a class="col" href="javascript:void(0)">
+        <a class="col" href="/logout">
             <div class="row">
                 <div class="col-12">
-                    <i class="flaticon-061-puzzle"></i>
+                    <i class="fa fa-lock"></i>
                 </div>
                 <div class="col-12">
-                    <p class="menu-text">Repository</p>
+                    <p class="menu-text">Logout</p>
                 </div>
             </div>
         </a>
