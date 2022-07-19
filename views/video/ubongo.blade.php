@@ -36,7 +36,7 @@
 			<a href="/" class="w3-bar-item w3-hide-small pad-top w3-right">Home</a>
 		</div>
 		<div class="wrapper">
-			<iframe src="http://camara.portal/upload/video/ubongo/player.html" id="myFrame" onload="log_app_visit()" sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+			<iframe src="/upload/video/ubongo/player.html" id="myFrame" onload="log_app_visit()" sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
 			</iframe>
 		</div>
 		@js('/assets/js/jquery36.min')
