@@ -51,3 +51,10 @@
 	  display: none;
 	}
 }
+
+/* hide on devices with less than 575px width */
+@media (max-width: 575px) {
+	.desktop {
+	  display: none !important;
+	}
+}
