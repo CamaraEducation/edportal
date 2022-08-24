@@ -2,8 +2,8 @@
 class NMSController{
 	function conn(){
 		$servername = 'localhost';
-		$username   = 'root';
-		$password   = '';
+		$username   = 'ccnms';
+		$password   = 'ccnms';
 		$database   = 'ccnms';
 
 		$conn = new mysqli($servername, $username, $password, $database);
