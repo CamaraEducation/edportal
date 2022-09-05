@@ -1,4 +1,5 @@
 <?php
+//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 function conn(){
 	$servername = $_ENV['DB_HOST'];
