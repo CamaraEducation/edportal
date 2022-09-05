@@ -21,6 +21,9 @@
                 <li><a href="/add/document">Upload</a></li>
             </ul>
         </li>
+        <li>
+            <a href="/dropbox/add">Add to Dropbox</a>
+        </li>
         <!--li><a href="javascript:void()">Analytics</a>
             <ul aria-expanded="false">
                 <li><a href="/analytics/general">General</a></li>
