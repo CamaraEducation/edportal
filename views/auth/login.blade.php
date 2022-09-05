@@ -82,7 +82,7 @@
 
 @section('scripts')
     <script>
-        $('#login').click(function(){
+        function login(){
             $("#login").attr("disabled", true);
             var login_id = $('[name=email]').val();
             var password = $('#password').val();
@@ -107,6 +107,17 @@
             }else{
                 toastr["warning"]("One or more form field is empty, All fields are required", "Empty Fields")
                 $("#login").removeAttr("disabled");
+            }
+        }
+
+        $('#login').click(function(){
+            login();
+        });
+
+        // when enter is pressed
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                login();
             }
         });
     </script>
