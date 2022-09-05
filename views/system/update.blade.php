@@ -48,7 +48,7 @@
                         <div class="update pad-half" id="progress">
                             
                         </div>
-                </center>
+                    </center>
                 </div>
             </div>
 		</div>
