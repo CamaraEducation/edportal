@@ -258,6 +258,23 @@ Route::add('/analytics/document', function() {
 	
 });
 
+/****************************************************
+ *                THE DROPBOX ROUTES       		   	*
+ *                STARTING FROM HERE                *
+ ****************************************************/
+
+Route::add('/dropbox', function() {
+	return Blade::render('dropbox.list');
+});
+
+Route::add('/dropbox/add', function() {
+	return Blade::render('dropbox.add');
+});
+
+Route::add('/create/dropbox', function() {
+	DropboxControl::create();
+}, 'post');
+
 
 /****************************************************
  *                	  MISCALENOUS       		   	*
