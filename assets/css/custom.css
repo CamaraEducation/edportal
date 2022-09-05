@@ -87,6 +87,20 @@ p.card-title.mb-2.text-secondary {
     display: block;
 }
 
+.drop-card{
+    height: 150px;
+}
+
+.drop-image{
+    padding: 30px;
+}
+
+.dropbox-style{
+    position: absolute;
+    bottom: 15px;
+    left: 150px;
+}
+
 @-moz-keyframes spin { 
     100% { -moz-transform: rotate(360deg); } 
 }
