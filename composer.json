@@ -14,6 +14,7 @@
         "vlucas/phpdotenv": "^5.3",
         "filp/whoops": "^2.14",
         "snipworks/php-smtp": "^2.0",
-        "ddeboer/imap": "^1.12"
+        "ddeboer/imap": "^1.12",
+        "nette/database": "^3.1"
     }
 }
