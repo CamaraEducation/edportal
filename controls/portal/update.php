@@ -55,18 +55,18 @@ class PortalUpdate{
 		# Fech existing variables
 		$data = '';
 		foreach($_ENV as $key => $value){
-			$data .= $key. ' = '. $value. PHP_EOL;
+			$data .= $key. " = '". $value."'". PHP_EOL;
 		}
 
 		# check sync servers
 		if(!isset($_ENV['SYNC_ALTER0'])){
 			$url = 'https://dashboard.camara.org/sc/sync';
-			$data .= "SYNC_ALTER0 = $url".PHP_EOL."SYNC_ALTER1 = $url".PHP_EOL."SYNC_ALTER3 = $url".PHP_EOL;
+			$data .= "SYNC_ALTER0 = '$url'".PHP_EOL."SYNC_ALTER1 = '$url'".PHP_EOL."SYNC_ALTER3 = '$url'".PHP_EOL;
 		}
 
 		# Check dns records, master and master key
 		if(!isset($_ENV['MASTER'])){
-			$data .= "MASTER = cG9ydGFscm9vdA== ".PHP_EOL."MASTER_KEY = ".PHP_EOL;
+			$data .= "MASTER = 'cG9ydGFscm9vdA=='".PHP_EOL."MASTER_KEY = ".PHP_EOL;
 		}
 
 		file_put_contents('.env', $data);
