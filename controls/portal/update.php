@@ -42,13 +42,42 @@ class PortalUpdate{
 
 		foreach($sql as $query):
 			if(mysqli_query(conn(), $query)):
-				echo $res[$no]['success'].PHP_EOL;
+				echo $res[$no]['success'].'<br>';
 			else:
-				echo $res[$no]['error'] . mysqli_error(conn()).PHP_EOL;
+				echo $res[$no]['error'] . mysqli_error(conn()).'<br>';
 			endif; $no++;
 		endforeach;
 
-		echo "system version is now 2.0.0".PHP_EOL;
+		# check sync servers
+		if(!isset($_ENV['SYNC_ALTER0'])){
+			# get contents from .env
+			$data = ''; $url = 'https://dashboard.camara.org/sc/sync';
+			foreach($_ENV as $key => $value){
+				$data .= $key. ' = '. $value. PHP_EOL;
+			}
+	
+			$data .= "SYNC_ALTER0 = $url".PHP_EOL."SYNC_ALTER1 = $url".PHP_EOL."SYNC_ALTER3 = $url";
+			#echo $data;
+	
+			file_put_contents('.env', $data);
+		}
+
+		# Check dns records, master and master key
+		if(!isset($_ENV['MASTER'])){
+			# get contents from .env
+			$data = '';
+			foreach($_ENV as $key => $value){
+				$data .= $key. ' = '. $value. PHP_EOL;
+			}
+	
+			$data .= "MASTER = cG9ydGFscm9vdA== ".PHP_EOL."MASTER_KEY = ";
+			#echo $data;
+	
+			file_put_contents('.env', $data);
+		}
+
+		
+		echo "system version is now 2.0.0";
  	}
 
 	public static function auto(){
