@@ -350,8 +350,7 @@ Route::add('/sync', function() {
 
 
 Route::add('/test', function() {
-	$result = LmsController::count_course(1);
-	echo $result->courses;
+	return 0;
 }, ['get', 'post']);
 
 /****************************************************
@@ -390,9 +389,9 @@ Route::add('/lms/c/([0-9]*)', function($id) {
 
 Route::add('/backup/ccnms', function() {
 	$backup = "CCNMS-".strtoupper(ConfigsController::get('school')) ."-". date('Y-m-d-H-i-s') .".sql";
-	$command = "mysqldump --opt -h localhost -u ccnms -p ccnms ccnms --result-file=". $backup;
-	exec($command); copy($backup, upload."ccnms/" . $backup); unlink($backup);
-	echo $backup;
+	$command = "mysqldump --opt -h localhost -u ". base64_decode(str_replace('cG9ydGFs', '', $_ENV['MASTER'])) ." --password=".$_ENV['MASTER_KEY']. " ccnms --result-file=". $backup;
+	//exec($command); copy($backup, upload."ccnms/" . $backup);
+	echo $command;
 });
 
 /****************************************************
