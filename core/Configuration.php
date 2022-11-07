@@ -1,5 +1,6 @@
 <?php
 //mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+use Nette\Database\Connection;
 
 function conn(){
 	$servername = $_ENV['DB_HOST'];
@@ -9,6 +10,10 @@ function conn(){
 
 	$conn = new mysqli($servername, $username, $password, $database);
 	return $conn;
+}
+
+function db(){
+	return new Connection($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
 }
 
 // Test internet connection
@@ -94,6 +99,11 @@ function getFileCount($path) {
 		}   
 	}
 	return $size;
+}
+
+function loadColor($id){
+	$json = file_get_contents(data."colors.json");
+	return (json_decode($json, true)[$id]);
 }
 
 ?>
