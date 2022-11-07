@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('title', 'Upload video')
 @section('header')
-    <link rel="stylesheet" href="/assets/vendor/toastr/css/toastr.min.css">
+    
 @endsection
 @section('content')
 	<div class="content-body">
@@ -22,7 +22,7 @@
 										</div>
 										<div class="form-group col-md-6">
 											<label>Subject</label>
-											<select name="category" id="category" class="form-control default-select" required>
+											<select name="category" id="category" class="form-control form-select" required>
 												<option value="" hidden>select subject category</option>    
                                                 @php $categories = Category::fetch() @endphp
                                                 @foreach ($categories as $category)
@@ -32,7 +32,7 @@
 										</div>
 										<div class="form-group col-md-6">
 											<label>Class</label>
-											<select name="class" id="class" class="form-control default-select" required>
+											<select name="class" id="class" class="form-control form-select" required>
 												<option value="" hidden>select class</option>    
                                                 @php $categories = Category::fetch('class') @endphp
                                                 @foreach ($categories as $category)
@@ -79,7 +79,6 @@
 	</div>
 @endsection
 @section('footer')
-	<script src="/assets/vendor/toastr/js/toastr.min.js"></script>
 	<script>
 		function submitted(){
 			toastr.success("Please stay put the Application is being added to the system", "Please Wait", {
