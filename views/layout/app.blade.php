@@ -18,10 +18,11 @@
 		@css('/assets/css/style.css')
 		@css('/assets/css/custom.css')
 		@css('/assets/css/mobile.css')
+		@css('/assets/vendor/toastr/css/toastr.min.css')
 		<script> startTime = new Date(); </script>
 
 	</head>
-	<body>
+	<body class="deznav-scroll">
 		<div id="preloader">
 			<div class="sk-three-bounce">
 				<div class="sk-child sk-bounce1"></div>
@@ -52,7 +53,7 @@
 
 			<div class="footer">
 				<div class="copyright">
-					<p>© {{date('Y')}} Camara Education | All rights Reserved 2021</p>
+					<p>© {{date('Y')}} Camara Education | All rights Reserved</p>
 				</div>
 			</div>
 
@@ -67,6 +68,8 @@
 		@js('/assets/js/custom.min.js')
 		@js('/assets/js/deznav-init.js')
 		@js('/assets/js/demo.js')
+
+		<script src="/assets/vendor/toastr/js/toastr.min.js"></script>
 
 		<script>
 			var uri = '{{$_SERVER["REQUEST_URI"]}}';
