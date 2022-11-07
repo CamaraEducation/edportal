@@ -24,6 +24,12 @@
         <li>
             <a href="/dropbox/add">Add to Dropbox</a>
         </li>
+        <li hidden><a href="javascript:void()">Learning Studio</a>
+            <ul aria-expanded="false">
+                <li><a href="/lms/c/add">Create Course</a></li>
+                <li><a href="/lms/c/my">My Courses</a></li>
+            </ul>
+        </li>
         <!--li><a href="javascript:void()">Analytics</a>
             <ul aria-expanded="false">
                 <li><a href="/analytics/general">General</a></li>
@@ -47,8 +53,7 @@
         </li>
         <li><a href="javascript:void()">System</a>
             <ul aria-expanded="false">
-                <li><a href="/update/portal">Update</a></li>                           
-                <li><a href="/export/portal">Export Data</a></li>
+                <li><a href="/update/portal">Update & Export</a></li>
                 <li><a href="/configure/sync">Connections</a></li>
             </ul>
         </li>
