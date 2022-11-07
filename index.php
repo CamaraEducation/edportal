@@ -37,18 +37,21 @@ ConfigsController::check();
  *****************************************************/
 
 define('BASEPATH', '/');
-define('controls',	'controls');
-define('app',	    'core');
-define('views',		'views');
-define('cache', 	'cache');
-define('upload',    'upload/');
+define('app', 'core');
+define('views', 'views');
+define('cache', 'cache');
+define('upload', 'upload/');
+define('data', 'assets/data/');
+define('controls', 'controls');
+
+# config Loader
+define('country', ConfigsController::get('country'));
 
 // Define views global paths
 Blade::addPath(views.'/auth');
 Blade::addPath(views.'/errors');
 Blade::addPath(views.'/public');
 Blade::addPath(views.'/admin');
-Blade::addPath('core');
 
 /****************************************************
  *              YOU CAN DEFINE YOUR ROUTES          *
@@ -347,8 +350,50 @@ Route::add('/sync', function() {
 
 
 Route::add('/test', function() {
-	echo 'test';
+	$result = LmsController::count_course(1);
+	echo $result->courses;
 }, ['get', 'post']);
+
+/****************************************************
+ *                 	  LMS SECTION   	            *
+ *             							            *
+ ****************************************************/
+
+Route::add('/lms', function() {
+	return Blade::render('lms.index');
+});
+
+Route::add('/lms/s/([0-9]*)', function($id) {
+	return Blade::render('lms.list', ['id' => $id]);
+});
+
+Route::add('/lms/c/add', function() {
+	return Blade::render('lms.course.create');
+});
+
+Route::add('/lms/c/create', function() {
+	LmsController::create();
+}, ['get', 'post']);
+
+Route::add('/lms/c/my', function() {
+	return Blade::render('lms.course.my');
+});
+
+Route::add('/lms/c/([0-9]*)', function($id) {
+	return Blade::render('lms.course.view', ['id' => $id]);
+});
+
+/****************************************************
+ *                 	  CCNMS SECTION   	            *
+ *             							            *
+ ****************************************************/
+
+Route::add('/backup/ccnms', function() {
+	$backup = "CCNMS-".strtoupper(ConfigsController::get('school')) ."-". date('Y-m-d-H-i-s') .".sql";
+	$command = "mysqldump --opt -h localhost -u ccnms -p ccnms ccnms --result-file=". $backup;
+	exec($command); copy($backup, upload."ccnms/" . $backup); unlink($backup);
+	echo $backup;
+});
 
 /****************************************************
  *                 AUTHENTICATICATION               *
