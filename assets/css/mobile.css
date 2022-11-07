@@ -6,6 +6,7 @@
 	width:100%;
 	border-radius: 10px 10px 0 0;
 	height: 60px;
+	z-index: 1000;
 }
   
 .mobilebar a {
