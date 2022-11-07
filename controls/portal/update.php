@@ -13,7 +13,32 @@ class PortalUpdate{
 			PRIMARY KEY (`id`)
 		   ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
-		$res[0] = ['success' => 'Table dropbox created successfully', 'error' => 'Error creating table dropbox: '];
+		# create course table
+		$sql[1] = "CREATE TABLE IF NOT EXISTS `course` (
+			`id` INT NOT NULL AUTO_INCREMENT,
+			`uid` INT NOT NULL,
+			`title` TEXT NOT NULL,
+			`desc` TEXT NOT NULL,
+			`cid` INT NOT NULL DEFAULT 0,
+			`sid` INT NOT NULL DEFAULT 0,
+			`cover` TEXT NOT NULL,
+			`created` DATETIME NOT NULL DEFAULT now(),
+			PRIMARY KEY (`id`)
+		) COLLATE='latin1_swedish_ci'";
+
+		# update subject icons
+		$sql[2] = "UPDATE `subjects` SET `thumb` = '/upload/subject/thumb/et.png' WHERE `name` = 'Amharic Language'";
+		$sql[3] = "UPDATE `subjects` SET `thumb` = '/upload/subject/thumb/fr.png' WHERE `name` = 'French Language'";
+		$sql[4] = "UPDATE `subjects` SET `thumb` = '/upload/subject/thumb/cs.png' WHERE `name` = 'Computer Studies'";
+
+
+		$res = [
+			0 => ['success' => 'Table dropbox created successfully', 'error' => 'Error creating table dropbox: '],
+			1 => ['success' => 'Table course created successfully', 'error' => 'Error creating table course: '],
+			2 => ['success' => 'Amharic Language icon updated successfully', 'error' => 'Error updating subject Amharic Language icon: '],
+			3 => ['success' => 'French Language icon updated successfully', 'error' => 'Error updating subject French Language icon: '],
+			4 => ['success' => 'Computer Studies icon updated successfully', 'error' => 'Error updating subject Computer Studies icon: '],
+		];
 
 		foreach($sql as $query):
 			if(mysqli_query(conn(), $query)):
@@ -23,7 +48,7 @@ class PortalUpdate{
 			endif; $no++;
 		endforeach;
 
-		echo "system version is now 1.5.3";
+		echo "system version is now 2.0.0".PHP_EOL;
  	}
 
 	public static function auto(){
