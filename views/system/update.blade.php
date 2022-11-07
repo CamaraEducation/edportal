@@ -33,11 +33,21 @@
 		<div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-4">
-                    <center>
-                        <button id="update" class="btn btn-lg btn-primary">Start Update</button>
-                    </center>
-                    <br>
-                    <div class="log">
+                    <div class="row">
+                        <div class="col-md-12 pad-1">
+                            <button id="update" class="btn btn-lg btn-primary w-100 text-bold">Start Portal Update</button>
+                        </div>
+
+                        <div class="col-md-12 pad-1">
+                            <a href="/export/portal"  class="btn btn-lg btn-warning w-100 text-bold">Export Portal Data</a>
+                        </div>
+
+                        <div class="col-md-12 pad-1">
+                            <button id="ccnms" class="btn btn-lg btn-info w-100 text-bold">Export CCNMS Data</button>
+                        </div>
+                        
+                    </div>
+                    <div class="log" hidden>
                         <ol class="pad-half" id="log">
                             
                         </ol>
@@ -79,41 +89,52 @@
                         $('#progress').append(data);
                     }
                 }
-            });
-        }, 1000);
-
-        setTimeout(() => {
-            $.ajax({
-                url: '/update/portal/pull',
-                type: 'POST',
-                data: x,
-                success: function(data){
-                    if(data != ''){
-                        $('#log').append('<li>Pulling Changes</li>');
-                        $('#progress').append(data);
+            }).then(function(){
+                $.ajax({
+                    url: '/update/portal/pull',
+                    type: 'POST',
+                    data: x,
+                    success: function(data){
+                        if(data != ''){
+                            $('#log').append('<li>Pulling Changes</li>');
+                            $('#progress').append(data);
+                        }
                     }
-                }
-            });
-        }, 1000);
-
-        setTimeout(() => {
-            $.ajax({
-                url: '/update/portal/apply',
-                type: 'POST',
-                data: x,
-                success: function(data){
-                    if(data != ''){
-                        $('#log').append('<li>Installing Changes</li>');
-                        $('#progress').append(data);
-                        $('#update').html('Update Complete');
+                });
+            }).then(function(){
+                $.ajax({
+                    url: '/update/portal/apply',
+                    type: 'POST',
+                    data: x,
+                    success: function(data){
+                        if(data != ''){
+                            $('#log').append('<li>Installing Changes</li>');
+                            $('#progress').append(data);
+                            $('#update').html('Update Complete');
+                        }
                     }
-                }
-            });
-        }, 3000);
-
-        //enable the button
+                });
+            })
+        }, 1000);
         $('#update').prop('disabled', false);
 
+    });
+
+    //when the button ccnms is clicked
+    $('#ccnms').click(function(){
+        
+        //info toast
+        toastr.success('Please Wait, CCNMS backup sequence has been initialized', 'Exporting CCNMS Data');
+
+        $.get('/backup/ccnms', function(data){
+            //if data is not empty
+            if(data != ''){
+                // redirect to the download route
+                window.location.href = '/upload/ccnms/'+data;
+            }
+        });
+
+        $('#ccnms').prop('disabled', false);
     });
 </script>
 
