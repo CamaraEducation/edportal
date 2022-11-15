@@ -5,7 +5,6 @@
     .update{
         background: black;
         max-width: 560px;
-        color: rgb(121, 212, 107);
         min-height: 300px;
         border-radius: 10px;
     }
@@ -97,23 +96,23 @@
                         if(data != ''){
                             $('#log').append('<li>Pulling Changes</li>');
                             $('#progress').append(data);
+
+                            $.ajax({
+                                url: '/update/portal/apply',
+                                type: 'POST',
+                                data: x,
+                                success: function(data){
+                                    if(data != ''){
+                                        $('#log').append('<li>Installing Changes</li>');
+                                        $('#progress').append(data);
+                                        $('#update').html('Update Complete');
+                                    }
+                                }
+                            });
                         }
                     }
                 });
-            }).then(function(){
-                $.ajax({
-                    url: '/update/portal/apply',
-                    type: 'POST',
-                    data: x,
-                    success: function(data){
-                        if(data != ''){
-                            $('#log').append('<li>Installing Changes</li>');
-                            $('#progress').append(data);
-                            $('#update').html('Update Complete');
-                        }
-                    }
-                });
-            })
+            });
         }, 1000);
         $('#update').prop('disabled', false);
 
@@ -123,13 +122,16 @@
     $('#ccnms').click(function(){
         
         //info toast
-        toastr.success('Please Wait, CCNMS backup sequence has been initialized', 'Exporting CCNMS Data');
+        toastr.success('Please Wait, CCNMS sync sequence has been initialized', 'Exporting CCNMS Data');
 
-        $.get('/backup/ccnms', function(data){
+        $.get('/ccnms/sync', function(data){
             //if data is not empty
-            if(data != ''){
-                // redirect to the download route
-                window.location.href = '/upload/ccnms/'+data;
+            if(data == 'OK'){
+                //info toast
+                toastr.success('CCNMS sync sequence has been completed', 'Syncronization Complete');
+            }else{
+                //error toast
+                toastr.error('CCNMS sync sequence has failed', 'Syncronization Error');
             }
         });
 
