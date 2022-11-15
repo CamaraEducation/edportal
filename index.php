@@ -348,7 +348,6 @@ Route::add('/sync', function() {
 	return Blade::render('system.sync');
 }, ['get', 'post']);
 
-
 Route::add('/test', function() {
 	return 0;
 }, ['get', 'post']);
@@ -387,16 +386,8 @@ Route::add('/lms/c/([0-9]*)', function($id) {
  *             							            *
  ****************************************************/
 
-Route::add('/backup/ccnms', function() {
-	$backup = "CCNMS-".strtoupper(ConfigsController::get('school')) ."-". date('Y-m-d-H-i-s') .".sql";
-	if(PHP_OS_FAMILY == 'Windows'){ 
-		$command = "mysqldump --opt -h localhost -u ". base64_decode(str_replace('cG9ydGFs', '', $_ENV['MASTER'])) ." --password=".$_ENV['MASTER_KEY']. " ccnms --result-file=". $backup;
-		}else{ 
-			$command = "sudo mysqldump --opt -h localhost -u ". base64_decode(str_replace('cG9ydGFs', '', $_ENV['MASTER'])) ." --password=".$_ENV['MASTER_KEY']. " ccnms --result-file=". $backup;
-	}
-	
-	exec($command); copy($backup, upload."ccnms/" . $backup);
-	echo $backup;
+Route::add('/ccnms/sync', function() {
+	CCNMSSYNC::init();
 });
 
 /****************************************************
