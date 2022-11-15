@@ -28,8 +28,11 @@ class ConfigsController{
                 }
             }
         }
+    }
 
-
+    public static function all(){
+        $sql = "SELECT * FROM config";
+        return mysqli_fetch_all(mysqli_query(conn(), $sql), MYSQLI_ASSOC);
     }
 }
 
