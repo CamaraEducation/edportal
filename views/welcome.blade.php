@@ -141,9 +141,19 @@
 								<h2 class="card-title mb-2 text-primary pad-2">Camara Education Portal</h2>
 							</div>
 							<div class="card-body pb-2 px-3">
-								<p>Camara Education is a non-profit international education organisation dedicated to utilising ICT to improve educational outcomes.</p>
-								<br>
 								<p>Camara Education portal is an offline educational tools container that aims to provide ease of access to different educational resources and tools</p>
+							</div>
+						</div>
+						<div class="card col-sm-12">
+							<div class="card-header border-0">
+								<h2 class="card-title mb-2 text-primary pad-2">School Details
+									@if(viewer() == 1) <small><a class="text-danger" href="/configure/portal">(Update Details)</a></small> @endif
+								</h2>
+							</div>
+							<div class="card-body pb-2 px-3">
+								<h6>School: {{ConfigsController::get('school')}}</h6>
+								<h6>Region: {{ConfigsController::get('region')}}</h6>
+								<h6>Country: {{ConfigsController::get('country')}}</h6>
 							</div>
 						</div>
 						<div class="card col-sm-12">
