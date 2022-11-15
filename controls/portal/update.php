@@ -31,20 +31,76 @@ class PortalUpdate{
 		$sql[3] = "UPDATE `subjects` SET `thumb` = '/upload/subject/thumb/fr.png' WHERE `name` = 'French Language'";
 		$sql[4] = "UPDATE `subjects` SET `thumb` = '/upload/subject/thumb/cs.png' WHERE `name` = 'Computer Studies'";
 
-
 		$res = [
-			0 => ['success' => 'Table dropbox created successfully', 'error' => 'Error creating table dropbox: '],
-			1 => ['success' => 'Table course created successfully', 'error' => 'Error creating table course: '],
-			2 => ['success' => 'Amharic Language icon updated successfully', 'error' => 'Error updating subject Amharic Language icon: '],
-			3 => ['success' => 'French Language icon updated successfully', 'error' => 'Error updating subject French Language icon: '],
-			4 => ['success' => 'Computer Studies icon updated successfully', 'error' => 'Error updating subject Computer Studies icon: '],
+			0 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Table dropbox created successfully',
+				'error'	=> '<b class="text-danger">FAILED: </b>Error creating table dropbox: '
+			],
+			1 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Table course created successfully', 
+				'error' => '<b class="text-danger">FAILED: </b>Error creating table course: '
+			],
+			2 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Amharic Language icon updated successfully',
+				'error' => '<b class="text-danger">FAILED: </b>Error updating subject Amharic Language icon: '
+			],
+			3 => [
+				'success' => '<b class="text-success">SUCCESS: </b>French Language icon updated successfully', 
+				'error' => '<b class="text-danger">FAILED: </b>Error updating subject French Language icon: '
+			],
+			4 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Computer Studies icon updated successfully', 
+				'error' => '<b class="text-danger">FAILED: </b>Error updating subject Computer Studies icon: '
+			]
 		];
 
+		# alter uptime to bigint from varchar
+		$nms[0] = "ALTER TABLE `process` CHANGE COLUMN `user_time` `user_time` BIGINT NOT NULL DEFAULT 0 COLLATE 'utf8_unicode_ci' AFTER `up_time`";
+
+		# create process view in ccnms
+		$nms[1] = "CREATE OR REPLACE VIEW process_sum AS(
+			SELECT id, host_name, name,
+				CAST( SUBSTRING(FROM_UNIXTIME(substring(start_time, 1, 10)), 1, 19) AS DATETIME) AS started,
+				MAX(user_time) AS uptime
+			FROM `process` 
+			WHERE 
+				`name` NOT IN ('0install', '0install-win', 'snapd', 'systemd-udevd', 'svchost', 'xorg', 'sppsvc', 'mscorsvw', 'mysqld') AND
+				host_name != 'camara2004' AND
+				user_time>1000
+			GROUP by start_time, name, host_name
+			ORDER BY id ASC
+		)";
+
+		$nms[3] = "CREATE OR REPLACE VIEW pc_usage AS (
+			SELECT id, host_name, CAST(booted AS DATETIME) AS booted, MAX(TIME_TO_SEC(SUBSTRING_INDEX(uptime, ' ' , '-1'))) AS uptime 
+			FROM os_info
+			WHERE host_name != 'camara2004'
+			GROUP BY host_name, CAST(booted AS DATETIME)
+			ORDER BY id ASC
+		)";
+
+		$nms[4] = "CREATE TABLE IF NOT EXIST `sync` (
+			`id` INT NOT NULL AUTO_INCREMENT,
+			`usage` BIGINT NOT NULL DEFAULT 0,
+			`process` BIGINT NOT NULL DEFAULT 0,
+			PRIMARY KEY (`id`)
+		) COLLATE='latin1_swedish_ci'";
+
+		#applying portal queries
 		foreach($sql as $query):
 			if(mysqli_query(conn(), $query)):
 				echo $res[$no]['success'].'<br>';
 			else:
-				echo $res[$no]['error'] . mysqli_error(conn()).'<br>';
+				echo $res[$no]['error'] . '<br>';
+			endif; $no++;
+		endforeach;
+
+		# applying nms queries
+		foreach($nms as $query):
+			if(mysqli_query(ccnms(), $query)):
+				echo $res[$no]['success'].'<br>';
+			else:
+				echo $res[$no]['error'] . '<br>';
 			endif; $no++;
 		endforeach;
 
@@ -61,12 +117,10 @@ class PortalUpdate{
 		# check sync servers
 		if(!isset($_ENV['SYNC_ALTER0'])){
 			$url = 'https://dashboard.camara.org/sc/sync';
-			$data .= "SYNC_ALTER0 = '$url'".PHP_EOL."SYNC_ALTER1 = '$url'".PHP_EOL."SYNC_ALTER3 = '$url'".PHP_EOL;
-		}
-
-		# Check dns records, master and master key
-		if(!isset($_ENV['MASTER'])){
-			$data .= "MASTER = 'cG9ydGFscm9vdA=='".PHP_EOL."MASTER_KEY = ".PHP_EOL;
+			$data .= "DB_DSN = 'mysql:host=localhost;dbname=portal'".PHP_EOL;
+			$data .= "SYNC_ALTER0 = '$url'".PHP_EOL;
+			$data .= "SYNC_ALTER1 = '$url'".PHP_EOL;
+			$data .= "SYNC_ALTER3 = '$url'".PHP_EOL;
 		}
 
 		file_put_contents('.env', $data);
