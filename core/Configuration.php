@@ -12,6 +12,16 @@ function conn(){
 	return $conn;
 }
 
+function ccnms(){
+	$servername = $_ENV['DB_HOST'];
+	$username   = 'ccnms';
+	$password   = 'ccnms';
+	$database   = 'ccnms';
+
+	$conn = new mysqli($servername, $username, $password, $database);
+	return $conn;
+}
+
 function db(){
 	return new Connection($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
 }
