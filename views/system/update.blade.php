@@ -19,7 +19,6 @@
     }
 
     pre{
-        color: #72a54d !important;
         font-weight: bold !important;
         text-align: left;
         overflow: hidden !important;
