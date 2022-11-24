@@ -142,7 +142,7 @@
 													<div id="about-me" class="tab-pane fade active show">
 														<div class="profile-about-me">
 															<div class="pt-4 border-bottom-1 pb-3">
-																{{$video['descriptions']}}
+																{{$video['description']}}
 															</div>
 														</div>
 													</div>
