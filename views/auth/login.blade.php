@@ -5,7 +5,7 @@
         <div class="forny-inner">
             <div class="forny-form">
                 <div class="mb-8 text-center forny-logo">
-                    <img style="max-width:200px" src="/assets/img/logo-light.png">
+                    <img style="max-width:200px" src="/assets/img/brand/logo.png">
                 </div>
                 <div class="text-center">
                     <h4>Login into account</h4>

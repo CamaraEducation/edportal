@@ -7,7 +7,7 @@
 		<title>@yield('title')</title>
 		<meta name="author" content="{{$_ENV['AUTHOR']}}"> 
 		<meta name="description" content="{{$_ENV['DESCRIPTION']}}">
-		<link rel="icon" href="/assets/img/favicon.png">
+		<link rel="icon" href="/assets/img/brand/fav.png">
         @css('/assets/auth/css/bootstrap.min')
         @css('/assets/auth/css/common')
         @css('/assets/auth/css/auth')

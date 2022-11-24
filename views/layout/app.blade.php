@@ -11,7 +11,7 @@
 		<title>@yield('title')</title>
 		<meta content="{{$_ENV['AUTHOR']}}" name="description">
 		<meta name="description" content="{{$_ENV['DESCRIPTION']}}">
-		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/brand/fav.png">
 		<!-- please do not remove this section -->
 		@yield('header')
 		@css('/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')
@@ -36,8 +36,8 @@
 			<!-- logo banner -->
 			<div class="nav-header">
 				<a href="/" class="brand-logo">
-					<img class="logo-small" src="/assets/img/logo.png" alt="logo" width="100px"/>
-					<img class="logo-big" src="/assets/img/logo.png" alt="logo" width="200px"/>
+					<img class="logo-small" src="/assets/img/brand/mini-light.png" alt="logo" width="60px"/>
+					<img class="logo-big" src="/assets/img/brand/logo-light.png" alt="logo" width="200px"/>
 				</a>
 				<div class="nav-control">
 					<div class="hamburger">
