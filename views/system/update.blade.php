@@ -18,6 +18,7 @@
     }
 
     pre{
+        color: white;
         font-weight: bold !important;
         text-align: left;
         overflow: hidden !important;
