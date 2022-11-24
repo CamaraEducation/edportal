@@ -142,8 +142,7 @@
 													<div id="about-me" class="tab-pane fade active show">
 														<div class="profile-about-me">
 															<div class="pt-4 border-bottom-1 pb-3">
-																<h4 class="text-primary">Application Description</h4>
-																<p class="mb-2">big bunny</p>
+																{{$video['descriptions']}}
 															</div>
 														</div>
 													</div>
