@@ -18,7 +18,7 @@
     }
 
     pre{
-        color: white;
+        color: white !important;
         font-weight: bold !important;
         text-align: left;
         overflow: hidden !important;
