@@ -79,7 +79,7 @@ class PortalUpdate{
 			ORDER BY id ASC
 		)";
 
-		$nms[4] = "CREATE TABLE IF NOT EXIST `sync` (
+		$nms[4] = "CREATE TABLE IF NOT EXISTS `sync` (
 			`id` INT NOT NULL AUTO_INCREMENT,
 			`usage` BIGINT NOT NULL DEFAULT 0,
 			`process` BIGINT NOT NULL DEFAULT 0,
