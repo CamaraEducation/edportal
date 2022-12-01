@@ -11,36 +11,36 @@
             $psql = "SELECT COUNT(id) as total FROM process_sum WHERE id>'$process'";
             $psql = mysqli_fetch_assoc(mysqli_query(ccnms(), $psql));
 
-            if($psql['total'] > 0):
-                $data = [ 
-                    'config' => json_encode(ConfigsController::all()),
-                    'usage'  => json_encode(self::usage($usage, $max['usage'])),
-                    'process' => json_encode(self::process($process, $max['process']))
-                ];
+            //if($psql['total'] > 0):
+            $data = [ 
+                'config' => json_encode(ConfigsController::all()),
+                'usage'  => json_encode(self::usage($usage, $max['usage'])),
+                'process' => json_encode(self::process($process, $max['process']))
+            ];
 
-                $url = "https://dashboard.camara.org/ccnms/sync";
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch, CURLOPT_POST, 1);
-                $post = $data;
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+            $url = "https://dashboard.camara.org/ccnms/sync";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            $post = $data;
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
-                # ignore SSL verification
-                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            # ignore SSL verification
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
-                $result = curl_exec($ch);
-                if (curl_errno($ch)) {
-                    echo 'Error:' . curl_error($ch);
-                }
-                curl_close($ch);
-                
-                if($result=='OK'):
-                    self::update($max['usage'], $max['process']);
-                    echo 'OK';
-                endif;
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            }
+            curl_close($ch);
+
+            if($result=='OK'):
+                self::update($max['usage'], $max['process']);
+                echo 'OK';
             endif;
+            //endif;
         }
 
         static function update($usage, $process){
