@@ -139,8 +139,8 @@ class StatsController{
 
 	public static function count_live_time(){
 		$sql = "SELECT SUM(live) AS all_time, 
-				(SELECT SUM(live) FROM page_visit WHERE MONTH(TIME) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
-				(SELECT SUM(live) FROM page_visit WHERE DATE(TIME) = DATE(CURRENT_TIMESTAMP)) AS today
+				(SELECT SUM(live) FROM page_visit WHERE MONTH(`time`) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
+				(SELECT SUM(live) FROM page_visit WHERE DATE(`time`) = DATE(CURRENT_TIMESTAMP)) AS today
 			FROM page_visit WHERE YEAR(TIME) = YEAR(CURRENT_TIMESTAMP)";
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
