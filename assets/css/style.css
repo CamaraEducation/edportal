@@ -12367,7 +12367,7 @@ svg.pulse-svg .third-circle {
 }
 
 [data-header-position="fixed"] .content-body {
-	padding-top: 7.5rem;
+	padding-top: 3.5rem;
 }
 
 [data-header-position="fixed"] .deznav {
@@ -16571,7 +16571,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 .deznav .metismenu {
 	display: flex;
 	flex-direction: column;
-	padding-top: 0;
+	padding-top: 10vh;
 	padding-bottom: 15px;
 }
 
@@ -17671,7 +17671,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 		width: 13rem;
 		border-radius: 0.35rem;
 		border: 0;
-		padding: 10px 0;
+		padding: 20px 0;
 		top: 0px;
 	}
 	[data-theme-version="dark"][data-sidebar-style="mini"][data-layout="vertical"] .deznav .metismenu>li:hover>ul {
@@ -18787,7 +18787,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 [data-sidebar-position="fixed"][data-layout="vertical"] .deznav {
-	position: fixed;
+	position: fixed !important;
+    z-index: 10000 !important;
 }
 
 [data-sidebar-position="fixed"][data-layout="vertical"] .deznav .deznav-scroll {
@@ -21483,7 +21484,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-sibebarbg="color_6"][data-theme-version="dark"] .deznav .metismenu>li>a i,
 [data-sibebarbg="color_6"] .deznav .metismenu>li>a i {
-	color: #8d97e0;
+	color: #fff;
 }
 
 [data-sibebarbg="color_6"][data-theme-version="dark"] .deznav .metismenu>li:hover>a,

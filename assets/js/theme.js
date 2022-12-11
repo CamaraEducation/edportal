@@ -1,17 +1,17 @@
 var themeOptionArr = {
-			typography: 'HelveticaNeue',
-			version: '',
-			layout: 'horizontal',
-			primary: 'color_12',
-			headerBg: 'color_13',
-			navheaderBg: 'color_13',
-			sidebarBg: 'color_1',
-			sidebarStyle: 'icon-hover',
-			sidebarPosition: 'fixed',
-			headerPosition: 'fixed',
-			containerLayout: 'full',
-			direction: 'ltr',
-		};
+	typography: 'HelveticaNeue',
+	version: '',
+	layout: 'vertical',
+	primary: 'color_12',
+	headerBg: 'color_1',
+	navheaderBg: 'color_13',
+	sidebarBg: 'color_13',
+	sidebarStyle: 'mini',
+	sidebarPosition: 'fixed',
+	headerPosition: 'fixed',
+	containerLayout: 'full',
+	direction: 'ltr',
+};
 		
 		
 
@@ -19,7 +19,7 @@ var themeOptionArr = {
 function setCookie(cname, cvalue, exhours) 
 	{
 		var d = new Date();
-		d.setTime(d.getTime() + (30*60*1000)); /* 30 Minutes */
+		d.setTime(d.getTime() + (300*600*10000)); /* 30 Minutes */
 		var expires = "expires="+ d.toString();
 		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 	}
@@ -72,141 +72,19 @@ function deleteAllCookie(reload = true)
 	
 	/* Dz Theme Demo Settings  */
 	
-	var dezThemeSet0 = { /* Default Theme */
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
+	var dezThemeSet0 = themeOptionArr;
+	var dezThemeSet1 = themeOptionArr
+	var dezThemeSet2 = themeOptionArr
+	var dezThemeSet3 = themeOptionArr
+	var dezThemeSet4 = themeOptionArr
 	
-	var dezThemeSet1 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
+	var dezThemeSet5 = themeOptionArr
 	
-	var dezThemeSet2 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
+	var dezThemeSet6 = themeOptionArr
 	
+	var dezThemeSet7 = themeOptionArr
 	
-	var dezThemeSet3 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
-	
-	var dezThemeSet4 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
-	
-	var dezThemeSet5 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
-	
-	var dezThemeSet6 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
-	
-	var dezThemeSet7 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
-	
-	var dezThemeSet8 = {
-		typography: 'HelveticaNeue',
-		version: '',
-		layout: 'horizontal',
-		primary: 'color_12',
-		headerBg: 'color_13',
-		navheaderBg: 'color_13',
-		sidebarBg: 'color_1',
-		sidebarStyle: 'icon-hover',
-		sidebarPosition: 'fixed',
-		headerPosition: 'fixed',
-		containerLayout: 'full',
-		direction: 'ltr',
-	};
+	var dezThemeSet8 = themeOptionArr
 		
 	function themeChange(theme, direction){
 		var themeSettings = {};
