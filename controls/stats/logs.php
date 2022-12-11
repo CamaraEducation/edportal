@@ -20,12 +20,7 @@ class LogsController{
 		$page = $_POST['uri'] == '/' ? 'home' : substr($_POST['uri'], 1);
 		$sess = $_SESSION['sess_id'];
 		$duration = 2900;
-		$sql= "UPDATE page_visit SET live = live+'$duration' WHERE uri = '$page' AND visitor = '$user' AND identifier = '$sess'";
-		if(mysqli_query(conn(), $sql)){
-			echo json_encode(array('status' => 'success'));
-		}else{
-			echo json_encode(array('status' => 'error'));
-		}
+		db()->query("UPDATE page_visit SET live = live+?, `time` = now() WHERE uri = ? AND visitor = ? AND identifier = ?", $duration, $page, $user, $sess);
 	}
 
 	public static function log_app_visit(){
