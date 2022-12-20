@@ -47,9 +47,24 @@
 	font-weight: bold;
 }
 
-@media(min-width: 1024px) {
+@media(min-width: 1023px) {
 	.mobilebar {
 	  display: none;
+	}
+}
+
+@media(max-width: 1023px) {
+	.header .header-content {
+		height: 100%;
+		background: #2a2a2a;
+	}
+
+	.nav-link.bell {
+		background: aliceblue;
+	}
+
+	.header-right .header-profile>a.nav-link .header-info span{
+		color: aliceblue;
 	}
 }
 

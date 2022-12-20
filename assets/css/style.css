@@ -18789,6 +18789,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 [data-sidebar-position="fixed"][data-layout="vertical"] .deznav {
 	position: fixed !important;
     z-index: 10000 !important;
+	background: #2a2a2a;
+    height: 100%;
 }
 
 [data-sidebar-position="fixed"][data-layout="vertical"] .deznav .deznav-scroll {
