@@ -25,6 +25,7 @@ $whoops->register();
 
 use core\Route;
 use duncan3dc\Laravel\Blade;
+use Illuminate\Container\Util;
 
 include 'core/Route.php';
 include 'core/Loader.php';
@@ -285,8 +286,12 @@ Route::add('/create/dropbox', function() {
  ****************************************************/
 
 Route::add('/search/portal', function() {
-	echo "hello world";
+	return Blade::render('search');
 });
+
+Route::add('/search', function() {
+	Utilities::search();
+}, ['get', 'post']);
 
 Route::add('/update/portal/([a-z]*)', function($type) {
 	switch($type){
@@ -349,7 +354,7 @@ Route::add('/sync', function() {
 }, ['get', 'post']);
 
 Route::add('/test', function() {
-	return 0;
+	print_r(ManicController::init());
 }, ['get', 'post']);
 
 /****************************************************
@@ -381,6 +386,33 @@ Route::add('/lms/c/([0-9]*)', function($id) {
 	return Blade::render('lms.course.view', ['id' => $id]);
 });
 
+Route::add('/lms/c/edit/([0-9]*)', function($id) {
+	return Blade::render('lms.course.edit', ['id' => $id]);
+});
+
+Route::add('/lms/board', function() {
+	return Blade::render('apps.board');
+});
+
+Route::add('/lms/board/(.*)', function($id) {
+	header("Access-Control-Allow-Origin: *");
+	echo Board::view($id);
+}, ['get', 'post']);
+
+Route::add('/lms/t/add', function() {
+	Topics::createTopic();
+}, 'post');
+
+// lms/t/delete/([0-9]*): GET
+Route::add('/lms/t/delete/([0-9]*)', function($id) {
+	Topics::deleteTopic($id);
+});
+
+// /lms/t/get/([0-9]*): GET
+Route::add('/lms/t/get/([0-9]*)', function($id) {
+	header("content-type: application/json");
+	Topics::displayTopic($id);
+});
 /****************************************************
  *                 	  CCNMS SECTION   	            *
  *             							            *
