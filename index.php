@@ -353,7 +353,7 @@ Route::add('/sync', function() {
 	return Blade::render('system.sync');
 }, ['get', 'post']);
 
-Route::add('/test', function() {
+Route::add('/manic/sync', function() {
 	print_r(ManicController::init());
 }, ['get', 'post']);
 
