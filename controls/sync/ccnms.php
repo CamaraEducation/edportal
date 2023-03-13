@@ -1,71 +1,79 @@
 <?php
-    class ManicController{
-
-        static $file = '/www/wwwroot/manic/data';
-        static $jobs = '/www/wwwroot/manic/data/jobs';
-        static $data = '/www/wwwroot/manic/data/files';
-
+    class CCNMSSYNC{
         static function init(){
-            // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
-            for($i=1; $i<=3; $i++){
 
-                $file = self::load_file(self::$jobs);
+            $last = self::last();
+            $max  = self::period();
 
-                if($file == '') die('No jobs available');
+            $usage = $last['usage']>0 ? $last['usage'] : 0;
+            $process = $last['process']>0 ? $last['process'] : 0;
 
-                $jobs = file_get_contents(self::$jobs.'/'.$file);
-                $jobs = json_decode($jobs, true);
+            $psql = "SELECT COUNT(id) as total FROM process_sum WHERE id>'$process'";
+            $psql = mysqli_fetch_assoc(mysqli_query(ccnms(), $psql));
 
-                $usage = file_get_contents(self::$data.'/'.$jobs['usage']);
+            if($psql['total'] > 0):
+                $data = [ 
+                    'config' => json_encode(ConfigsController::all()),
+                    'usage'  => json_encode(self::usage($usage, $max['usage'])),
+                    'process' => json_encode(self::process($process, $max['process']))
+                ];
 
-                $deviceName = json_decode($usage, true)[0]['DeviceName'];
+                $url = "https://dashboard.camara.org/ccnms/sync";
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                $post = $data;
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
-                // replace the device name with the client name
-                $usage = str_replace($deviceName, $jobs['client'], $usage);
+                # ignore SSL verification
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
-                $apps  = str_replace($deviceName, $jobs['client'], file_get_contents(self::$data.'/'.$jobs['apps']));
-                $docs  = str_replace($deviceName, $jobs['client'], file_get_contents(self::$data.'/'.$jobs['docs']));
-
-                $school = ConfigsController::all()[0]; unset($school['id'], $school['last']); $school = json_encode($school);
-
-                $data = array(
-                    'school' => $school,
-                    'usage'  => $usage,
-                    'apps'   => $apps,
-                    'docs'   => $docs
-                );
-
-
-                if(self::upload($data) == 'success') self::unset_file($file);
-            }
-
-        }
-
-        static function upload($data){
-            // curl request to upload the data to the server
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, 'https://dashboard.camara.org/manic/v2/receive');
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $server_output = curl_exec($ch);
-            curl_close ($ch);
-
-        }
-
-        static function load_file($directory) {
-            if(is_dir($directory)) {
-                $scan = scandir($directory);
-                unset($scan[0], $scan[1]); //unset . and ..
-                foreach($scan as $file) {
-                    if(strpos($file, '.json') !== false) {
-                        return $file;
-                    }
+                $result = curl_exec($ch);
+                if (curl_errno($ch)) {
+                    echo 'Error:' . curl_error($ch);
                 }
-            }
+                curl_close($ch);
+
+                if($result=='OK'):
+                    self::update($max['usage'], $max['process']);
+                    echo 'OK';
+                endif;
+            endif;
         }
 
-        static function unset_file($file){
-            exec('sudo rm -rf '.self::$jobs.'/'.$file);
+        static function update($usage, $process){
+            $sql = "INSERT INTO sync VALUES(1, $usage, $process) ON DUPLICATE KEY UPDATE `usage`=$usage, `process`=$process";
+            mysqli_query(ccnms(), $sql);
+        }
+
+        static function last(){
+            $sql = "SELECT * FROM sync";
+            return mysqli_fetch_assoc(mysqli_query(ccnms(), $sql));
+        }
+
+        static function period(){            
+            $sql[0] = "SELECT id FROM pc_usage ORDER BY id DESC LIMIT 1"; 
+            $sql[1] = "SELECT id FROM process_sum ORDER BY id DESC LIMIT 1";
+
+            return [
+                'usage' => mysqli_fetch_assoc(mysqli_query(ccnms(), $sql[0]))['id'],
+                'process' => mysqli_fetch_assoc(mysqli_query(ccnms(), $sql[1]))['id']
+            ];
+        }
+
+        static function usage($id, $max){
+            $sql = "SELECT * FROM pc_usage WHERE id>'$id' AND id<='$max'";
+            $res = mysqli_fetch_all(mysqli_query(ccnms(), $sql), MYSQLI_ASSOC);
+
+            return $res;
+        }
+
+        static function process($id, $max){
+            $sql = "SELECT * FROM process_sum WHERE id>'$id' AND id<='$max'";
+            $res = mysqli_fetch_all(mysqli_query(ccnms(), $sql), MYSQLI_ASSOC);
+
+            return $res;
         }
     }
