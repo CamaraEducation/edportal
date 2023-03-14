@@ -5,8 +5,15 @@
         static $jobs = '/www/wwwroot/manic/data/jobs';
         static $data = '/www/wwwroot/manic/data/files';
 
+        static function check_file(){
+            exec("sudo chown -R www /www/wwwroot/manic/data/jobs && sudo chmod -R 777 /www/wwwroot/manic/data/jobs");
+            exec("sudo chown -R www /www/wwwroot/manic/data/files && sudo chmod -R 777 /www/wwwroot/manic/data/files");
+        }
+
         static function init(){
             // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
+            self::check_file();
+            
             for($i=1; $i<=3; $i++){
 
                 $file = self::load_file(self::$jobs);
