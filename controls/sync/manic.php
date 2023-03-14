@@ -11,6 +11,25 @@
         }
 
         static function init(){
+            // start a PHP server on localhost:82 in -t /www/wwwroot/default
+            $command = "php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
+            shell_exec($command);
+        
+            // wait for the server to start
+            sleep(1);
+        
+            // make a cURL request to localhost:82/manic/sync/alter
+            $url = "http://localhost:82/manic/sync/alter";
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            curl_close($ch);
+        
+            // return the response
+            return $response;
+          }
+
+        static function run(){
             // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
             self::check_file();
             

@@ -354,7 +354,12 @@ Route::add('/sync', function() {
 }, ['get', 'post']);
 
 Route::add('/manic/sync', function() {
-	print_r(ManicController::init());
+	echo ManicController::init();
+}, ['get', 'post']);
+
+// /manic/sync/alter
+Route::add('/manic/sync/alter', function() {
+	echo ManicController::run();
 }, ['get', 'post']);
 
 /****************************************************
