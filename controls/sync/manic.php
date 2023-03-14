@@ -26,6 +26,7 @@
                 $usage = file_get_contents(self::$data.'/'.$jobs['usage']);
 
                 $deviceName = json_decode($usage, true)[0]['DeviceName'];
+                $deviceName = $deviceName ?? 'CAMARAC-N03VP2M';
 
                 // replace the device name with the client name
                 $usage = str_replace($deviceName, $jobs['client'], $usage);
