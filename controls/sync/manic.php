@@ -12,7 +12,7 @@
 
         static function init(){
             // start a PHP server on localhost:82 in -t /www/wwwroot/default
-            $command = "php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
+            $command = "sudo php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
             shell_exec($command);
         
             // wait for the server to start
@@ -27,7 +27,7 @@
         
             // return the response
             return $response;
-          }
+        }
 
         static function run(){
             // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
