@@ -13,7 +13,7 @@
         static function init(){
             // start a PHP server on localhost:82 in -t /www/wwwroot/default
             $command = "sudo php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
-            shell_exec($command);
+            exec($command);
         
             // wait for the server to start
             sleep(1);
