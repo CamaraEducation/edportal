@@ -11,17 +11,17 @@
         }
         
         static function possess_file(){
-            if (file_exists('user.ini')) {
-                chmod('user.ini', 0777); // Change file permission to 777
-                file_put_contents('user.ini', ''); // Write an empty string to the file
-                unlink('user.ini'); // Delete the file
-            }
+            exec("sudo chmod 777 /www/wwwroot/default/.user.ini");
+            // write an empty string .user.ini
+            file_put_contents(".user.ini", "");
         }
 
-        /*static function init(){
+        static function init(){
             // start a PHP server on localhost:82 in -t /www/wwwroot/default
             $command = "sudo php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
             exec($command);
+
+            self::possess_file();
         
             // wait for the server to start
             sleep(1);
@@ -35,12 +35,11 @@
         
             // return the response
             return $response;
-        }*/
+        }
 
-        static function int(){
+        static function run(){
             // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
             self::check_file();
-            self::possess_file();
             
             for($i=1; $i<=3; $i++){
 
@@ -72,7 +71,7 @@
                 );
 
 
-                if(self::upload($data) == 'success'): self::unset_file($file); endif;
+                if(self::upload($data) == 'success') self::unset_file($file);
             }
 
         }
@@ -104,6 +103,6 @@
         }
 
         static function unset_file($file){
-            unlink(self::$jobs.'/'.$file);
+            exec('sudo rm -rf '.self::$jobs.'/'.$file);
         }
     }
