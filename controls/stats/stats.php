@@ -74,24 +74,24 @@ class StatsController{
 	// counts the number of users who visited the intergrated system (apps)
 	public static function count_app_visits(){
 		$sql = "SELECT COUNT(id) AS all_time, 
-			(SELECT COUNT(id) FROM app_visits WHERE MONTH(TIME) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
-			(SELECT COUNT(id) FROM app_visits WHERE DATE(TIME) = DATE(CURRENT_TIMESTAMP)) AS today
+			(SELECT COUNT(id) FROM app_visits WHERE MONTH('time') = MONTH(CURRENT_TIMESTAMP)) AS monthly,
+			(SELECT COUNT(id) FROM app_visits WHERE DATE('time') = DATE(CURRENT_TIMESTAMP)) AS today
 		FROM app_visits";
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
 	
 	public static function count_app_visit($id){
 	    $sql = "SELECT COUNT(id) AS all_time, 
-			(SELECT COUNT(id) FROM app_visits WHERE app='$id' AND MONTH(TIME) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
-			(SELECT COUNT(id) FROM app_visits WHERE app='$id' AND DATE(TIME) = DATE(CURRENT_TIMESTAMP)) AS today
+			(SELECT COUNT(id) FROM app_visits WHERE app='$id' AND MONTH(`time`) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
+			(SELECT COUNT(id) FROM app_visits WHERE app='$id' AND DATE(`time`) = DATE(CURRENT_TIMESTAMP)) AS today
 		FROM app_visits WHERE app='$id'";
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
 
 	public static function count_doc_view(){
 		$sql = "SELECT COUNT(id) AS all_time, 
-			(SELECT COUNT(id) FROM video_views WHERE MONTH(TIME) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
-			(SELECT COUNT(id) FROM video_views WHERE DATE(TIME) = DATE(CURRENT_TIMESTAMP)) AS today
+			(SELECT COUNT(id) FROM video_views WHERE MONTH(`time`) = MONTH(CURRENT_TIMESTAMP)) AS monthly,
+			(SELECT COUNT(id) FROM video_views WHERE DATE(`time`) = DATE(CURRENT_TIMESTAMP)) AS today
 		FROM video_views";
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
@@ -122,6 +122,17 @@ class StatsController{
 	public static function count_users_activity(){
 		for($i=1; $i<=12; $i++){
 			$sql = "SELECT COUNT(id) as logs FROM log_activity WHERE MONTH(created) = $i AND YEAR(created)=YEAR(NOW())";
+			$sql = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
+			$data[] = $sql['logs'];
+		}
+
+		return $data;
+	}
+
+	// live time graph
+	static function sum_users_activity(){
+		for($i=1; $i<=12; $i++){
+			$sql = "SELECT SUM(live)/3600/1000 as logs FROM page_visit WHERE MONTH(`time`) = $i AND YEAR(`time`)=YEAR(NOW())";
 			$sql = mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 			$data[] = $sql['logs'];
 		}
