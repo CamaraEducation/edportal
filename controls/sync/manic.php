@@ -9,11 +9,19 @@
             exec("sudo chown -R www /www/wwwroot/manic/data/jobs && sudo chmod -R 777 /www/wwwroot/manic/data/jobs");
             exec("sudo chown -R www /www/wwwroot/manic/data/files && sudo chmod -R 777 /www/wwwroot/manic/data/files");
         }
+        
+        static function possess_file(){
+            exec("sudo chmod 777 /www/wwwroot/default/.user.ini");
+            // write an empty string .user.ini
+            file_put_contents(".user.ini", "");
+        }
 
         static function init(){
             // start a PHP server on localhost:82 in -t /www/wwwroot/default
             $command = "sudo php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
-            shell_exec($command);
+            exec($command);
+
+            self::possess_file();
         
             // wait for the server to start
             sleep(1);
