@@ -20,7 +20,7 @@ class LogsController{
 		$page = $_POST['uri'] == '/' ? 'home' : substr($_POST['uri'], 1);
 		$sess = $_SESSION['sess_id'];
 		$duration = 2900;
-		db()->query("UPDATE page_visit SET live = live+?, `time` = now() WHERE uri = ? AND visitor = ? AND identifier = ?", $duration, $page, $user, $sess);
+		db()->query("UPDATE page_visit SET live = live+? WHERE uri = ? AND visitor = ? AND identifier = ?", $duration, $page, $user, $sess);
 	}
 
 	public static function log_app_visit(){
