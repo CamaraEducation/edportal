@@ -1,6 +1,5 @@
 @if (!empty($_SESSION))
-@php LogsController::log_page_visit(); 
-@endphp
+@php LogsController::log_page_visit(); @endphp
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,9 +20,7 @@
 		@css('/assets/css/mobile.css')
 		@css('/assets/vendor/toastr/css/toastr.min.css')
 		@css('/assets/vendor/bootstrap-icons/bootstrap-icons')
-		@css('/assets/plugins/lightbox/lightbox.css')
-		@css('/assets/icons/bicon/bootstrap-icons.css')
-		<!--script> startTime = new Date(); </script-->
+		<script> startTime = new Date(); </script>
 
 	</head>
 	<body class="deznav-scroll">
@@ -49,14 +46,11 @@
 					</div>
 				</div>
 			</div>
-
-			@include('layout.chatbox')
-			@include('layout.topbar')
+            
+            
 			@include('layout.sidebar')
 			@yield('content')
-
-			@include('layout.mobile')
-			@include('layout.model.menu')
+            
 		</div>
 		
 		@js('/assets/vendor/global/global.min.js') 
@@ -66,31 +60,39 @@
 		@js('/assets/js/deznav-init.js')
 		@js('/assets/js/theme.js')
 		@js('/assets/vendor/bootstrap/js/bootstrap.min.js')
-		@js('/assets/vendor/toastr/js/toastr.min.js')
-		@js('/assets/plugins/lightbox/lightbox.js')
-		@js('/assets/js/sweetalert.min.js')
 
-		<script>
-			var uri = '{{$_SERVER["REQUEST_URI"]}}';
+		<script>			    
+			function log_app_visit(){
+				var iframe = document.getElementById("myFrame");
+				var uri     = iframe.contentWindow.location.pathname;
+				var app_id  = "{{$id}}";
+				var user_id = "{{$_SESSION['id']}}";
+
+				$.post("/log/app", {
+					uri: uri, 
+					app_id: app_id, 
+					user_id: user_id
+				},
+				function(data, status){
+					//alert("Data: " + data + "\nStatus: " + status);
+				});
+			}
+			
 			function log_live_time(){
+				var iframe = document.getElementById("myFrame");
+				var uri     = iframe.contentWindow.location.pathname;
+				
 				$.post("/log/time", {
 					uri: uri
 				},
 				function(data, status){
-					//console.log(data);
+					//console.log(uri);
 				});
 			}
-
-			// document is ready
-			$(document).ready(function(){
-				setInterval(function(){
-					log_live_time()
-				}, 3200);
-
-				[].forEach.call(document.getElementsByClassName("iframe-lightbox-link"), function (el) {
-					el.lightbox = new IframeLightbox(el);
-				});
-			});			
+			
+			setInterval(function(){
+				log_live_time()
+			}, 3200);
 
 		</script>
 

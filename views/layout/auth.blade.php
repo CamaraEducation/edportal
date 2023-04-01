@@ -12,6 +12,7 @@
         @css('/assets/auth/css/common')
         @css('/assets/auth/css/auth')
 		@css('/assets/css/toastr.min')
+		@css('/assets/vendor/bootstrap-icons/bootstrap-icons')
 	</head>
 	<body>
 

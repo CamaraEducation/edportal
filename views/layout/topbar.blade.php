@@ -3,11 +3,15 @@
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
-                    <div class="input-group search-area right d-lg-inline-flex d-none search-box">
-                        <input type="text" class="form-control" placeholder="Find something here...">
+                    <div class="input-group search-area right d-lg-inline-flex d-none search-box iframe-lightbox-link"
+                        href="//{{$_SERVER['HTTP_HOST']}}/search/portal"
+                        data-padding-bottom="56.25%">
+                        <input type="text" class="form-control" placeholder="Find something here..." disabled 
+                            style="cursor: pointer !important;"    
+                        >
                         <div class="input-group-append">
                             <span class="input-group-text">
-                                <a href="javascript:void(0)">
+                                <a href="javascript:void">
                                     <i class="flaticon-381-search-2"></i>
                                 </a>
                             </span>

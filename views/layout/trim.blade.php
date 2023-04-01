@@ -21,9 +21,7 @@
 		@css('/assets/css/mobile.css')
 		@css('/assets/vendor/toastr/css/toastr.min.css')
 		@css('/assets/vendor/bootstrap-icons/bootstrap-icons')
-		@css('/assets/plugins/lightbox/lightbox.css')
-		@css('/assets/icons/bicon/bootstrap-icons.css')
-		<!--script> startTime = new Date(); </script-->
+		<script> startTime = new Date(); </script>
 
 	</head>
 	<body class="deznav-scroll">
@@ -50,8 +48,6 @@
 				</div>
 			</div>
 
-			@include('layout.chatbox')
-			@include('layout.topbar')
 			@include('layout.sidebar')
 			@yield('content')
 
@@ -67,8 +63,6 @@
 		@js('/assets/js/theme.js')
 		@js('/assets/vendor/bootstrap/js/bootstrap.min.js')
 		@js('/assets/vendor/toastr/js/toastr.min.js')
-		@js('/assets/plugins/lightbox/lightbox.js')
-		@js('/assets/js/sweetalert.min.js')
 
 		<script>
 			var uri = '{{$_SERVER["REQUEST_URI"]}}';
@@ -86,10 +80,6 @@
 				setInterval(function(){
 					log_live_time()
 				}, 3200);
-
-				[].forEach.call(document.getElementsByClassName("iframe-lightbox-link"), function (el) {
-					el.lightbox = new IframeLightbox(el);
-				});
 			});			
 
 		</script>
