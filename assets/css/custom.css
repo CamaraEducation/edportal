@@ -30,6 +30,17 @@ a{
 	text-decoration: none !important;
 }
 
+#subsList {
+    margin-bottom: 10px;
+}
+
+#over img {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding: 50px;
+}
+
 .bootstrap-select .btn {
 	border: 1px solid #EEEEEE !important;
 	background-color: transparent !important;
@@ -64,13 +75,6 @@ a{
 
 .text-bold {
 	font-weight: bold !important;
-}
-
-#over img {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-	padding: 50px;
 }
 
 img.play:hover {
@@ -246,6 +250,59 @@ a.popup-youtube {
 .accordion__body  {
 	max-height: 450px;
 	overflow: hidden auto;
+}
+
+.ck.ck-reset.ck-editor.ck-rounded-corners {
+    width: 100%;
+}
+
+.swal-footer {
+    text-align: center;
+}
+
+.swal-button--cancel {
+	background-color: #9c9ea5;
+}
+
+.swal-button--confirm {
+	background-color: #33531c;
+}
+
+.modal .fade .show{
+	z-index: 10001 !important;
+}
+
+.modal-dialog .modal-fullscreen{
+	width: 100vw !important;
+	height: 100vh !important;
+}
+
+.list-group-item.subtopic-item:hover {
+    background-color: #e7e7e7;
+}
+
+.list-group-item.subtopic-item {
+    cursor: pointer;
+}
+
+.end{
+	position: absolute;
+	right: 5px;
+}
+
+.start{
+	position: absolute;
+	left: 5px;
+}
+
+.top{
+	position: absolute;
+	top: 5px;
+}
+
+.bottom{
+	position: absolute;
+	bottom: 5px;
 }
 
 @-moz-keyframes spin {

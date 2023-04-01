@@ -6166,7 +6166,7 @@ a.close.disabled {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 1050;
+	z-index: 10001; /* initial value : 1050 */
 	display: none;
 	width: 100%;
 	height: 100%;
@@ -6326,7 +6326,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
 	.modal-dialog {
-		max-width: 500px;
+		/*max-width: 500px;*/
 		margin: 1.75rem auto;
 	}
 	.modal-dialog-scrollable {
@@ -6343,6 +6343,12 @@ a.close.disabled {
 	}
 	.modal-sm {
 		max-width: 300px;
+	}
+
+	.modal-fullscreen {
+		width: 100vw;
+		height: 100vh;
+		margin: 0;
 	}
 }
 

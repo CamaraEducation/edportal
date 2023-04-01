@@ -66,6 +66,10 @@
 	.header-right .header-profile>a.nav-link .header-info span{
 		color: aliceblue;
 	}
+
+	.nav-header .brand-logo{
+		padding-left: 9px;
+	}
 }
 
 /* hide on devices with less than 575px width */
