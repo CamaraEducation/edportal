@@ -6,58 +6,15 @@
 @section('content')
 	<div class="content-body">
 		<div class="container-fluid">
+
+			<a href="javascript:void" class="col-12 p-1">
+				<div class="card bd-callout bd-callout-primary">
+					<p class="text-bold">
+						{{Utilities::quote()}}
+					</p>
+				</div>
+			</a>			
 			
-			<h2 class="card-title mb-2 text-primary desktop">Camara Statistics</h3>
-			<div class="row desktop">
-				<div class="col-xl-3 col-sm-6 m-t35">
-					<div class="card card-coin">
-						<div class="card-body text-center">
-							<img src="/assets/img/pc.png" class="mb-3 vector-icon" width="70" height="70">
-							<h2 class="text-black mb-2 font-w600">118,471
-							</h2>
-							<h4 class="mb-0 fs-14">
-								Computers Installed
-							</h4>	
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 col-sm-6 m-t35">
-					<div class="card card-coin">
-						<div class="card-body text-center">
-							<img src="/assets/img/school.png" class="mb-3 vector-icon" width="70" height="70">
-							<h2 class="text-black mb-2 font-w600">11,943</h2>
-							<h4 class="mb-0 fs-13">
-								Schools Supported
-							</h4>	
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 col-sm-6 m-t35">
-					<div class="card card-coin">
-						<div class="card-body text-center">
-							<img src="/assets/img/teacher.png" class="mb-3 vector-icon" width="70" height="70">
-							<h2 class="text-black mb-2 font-w600">60,648</h2>
-							<h4 class="mb-0 fs-14">
-								Teachers Trained
-							</h4>	
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 col-sm-6 m-t35">
-					<div class="card card-coin">
-						<div class="card-body text-center">
-							<img src="/assets/img/students.png" class="mb-3 vector-icon" width="70" height="70">
-							<h2 class="text-black mb-2 font-w600">3,751,749</h2>
-							<h4 class="mb-0 fs-14">
-								Learners Impacted
-							</h4>	
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			
-			<h2 class="card-title mb-2 text-primary">Portal Statistics</h3>
 			<div class="row">
 				<div class="col-xl-3 col-sm-6 m-t35">
 					<div class="widget-stat card bg-danger">
@@ -163,7 +120,8 @@
 							<div class="card-body pb-2 px-3">
 								@if(viewer() == 1)
 									@php $livetime = StatsController::count_live_time();
-									$user_activity = StatsController::count_users_activity();  
+									$user_activity = StatsController::count_users_activity();
+									$live_activity = StatsController::sum_users_activity(); 
 									@endphp
 								@else
 									@php $livetime = StatsController::count_user_time($_SESSION['id']);
@@ -221,15 +179,19 @@
 					datasets: [
 						{
 							label: "User Activities",
-							data: [
-								@foreach($user_activity as $key => $value)
-									{{$value}},
-								@endforeach
-							],
+							data: [ @foreach($user_activity as $key => $value) {{$value}}, @endforeach ],
 							borderColor: "rgb(85, 139, 47)",
 							borderWidth: "4",
 							backgroundColor: areaChart_2gradientStroke
+						},
+						{
+							label: "Total Live Time",
+							data: [ @foreach($live_activity as $key => $value) {{round($value)}}, @endforeach ],
+							borderColor: "#6418C3",
+							borderWidth: "4",
+							backgroundColor: areaChart_2gradientStroke
 						}
+
 					]
 				},
 				options: {
@@ -237,9 +199,7 @@
 					scales: {
 						yAxes: [{
 							ticks: {
-								beginAtZero: true, 
-								max: {{$max}}, 
-								min: 0, 
+								beginAtZero: true,
 								stepSize: 50, 
 								padding: 5
 							}
