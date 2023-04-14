@@ -51,24 +51,39 @@
 @php $adata = '{'. $adata .'"":""}'; @endphp
 
 @php
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, sync_conn());
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_POST, 1);
+
+	$url = "https://dashboard.camara.org/sc/sync";
+
+	$curl = curl_init($url);
+	curl_setopt($curl, CURLOPT_URL, $url);
+	curl_setopt($curl, CURLOPT_POST, true);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+	$headers = array(
+	"Content-Type: application/x-www-form-urlencoded",
+	);
+	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
 	$post = array(
 		'cdata' => $cdata,
 		'adata' => $adata
 	);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
-	$result = curl_exec($ch);
-	if (curl_errno($ch)) {
-		echo 'Error:' . curl_error($ch);
-	}
-	curl_close($ch);
+	$data = http_build_query($post);
+
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+	//for debug only!
+	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+	$resp = curl_exec($curl);
+	curl_close($curl);
+	var_dump($resp);
 
 	if($result == 'OK'){
-		SysSyncController::update($sync['max']);
+		//SysSyncController::update($sync['max']);
+		echo 'Synced';
 	}
 	
 @endphp
