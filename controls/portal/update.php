@@ -31,26 +31,39 @@ class PortalUpdate{
 		$sql[3] = "UPDATE `subjects` SET `thumb` = '/upload/subject/thumb/fr.png' WHERE `name` = 'French Language'";
 		$sql[4] = "UPDATE `subjects` SET `thumb` = '/upload/subject/thumb/cs.png' WHERE `name` = 'Computer Studies'";
 
+		# manic time data tables - pc_apps, pc_usage, pc_docs
+
+		$sql[5] = "CREATE TABLE IF NOT EXISTS `manic_jobs` (
+			`id` INT(11) NOT NULL AUTO_INCREMENT,
+			`files` TEXT NOT NULL COLLATE 'latin1_swedish_ci',
+			`status` CHAR(50) NOT NULL DEFAULT '' COLLATE 'latin1_swedish_ci',
+			PRIMARY KEY (`id`) USING BTREE
+		) COLLATE='latin1_swedish_ci'";
+
 		$res = [
 			0 => [
-				'success' => '<b class="text-success">SUCCESS: </b>Table dropbox created successfully',
+				'success' => '<b class="text-success">SUCCESS: </b>Table dropbox created successfully'.PHP_EOL,
 				'error'	=> '<b class="text-danger">FAILED: </b>Error creating table dropbox: '
 			],
 			1 => [
-				'success' => '<b class="text-success">SUCCESS: </b>Table course created successfully', 
+				'success' => '<b class="text-success">SUCCESS: </b>Table course created successfully'.PHP_EOL, 
 				'error' => '<b class="text-danger">FAILED: </b>Error creating table course: '
 			],
 			2 => [
-				'success' => '<b class="text-success">SUCCESS: </b>Amharic Language icon updated successfully',
+				'success' => '<b class="text-success">SUCCESS: </b>Amharic Language icon updated successfully'.PHP_EOL,
 				'error' => '<b class="text-danger">FAILED: </b>Error updating subject Amharic Language icon: '
 			],
 			3 => [
-				'success' => '<b class="text-success">SUCCESS: </b>French Language icon updated successfully', 
+				'success' => '<b class="text-success">SUCCESS: </b>French Language icon updated successfully'.PHP_EOL, 
 				'error' => '<b class="text-danger">FAILED: </b>Error updating subject French Language icon: '
 			],
 			4 => [
-				'success' => '<b class="text-success">SUCCESS: </b>Computer Studies icon updated successfully', 
+				'success' => '<b class="text-success">SUCCESS: </b>Computer Studies icon updated successfully'.PHP_EOL, 
 				'error' => '<b class="text-danger">FAILED: </b>Error updating subject Computer Studies icon: '
+			],
+			5 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Table Manic Jobs created successfully'.PHP_EOL, 
+				'error' => '<b class="text-danger">FAILED: </b>Error creating table Manic Jobs: '
 			]
 		];
 
@@ -126,7 +139,7 @@ class PortalUpdate{
 		file_put_contents('.env', $data);
 
 		
-		echo "system version is now 2.0.0";
+		echo "system version is now 2.1.0";
  	}
 
 	public static function auto(){
