@@ -2,28 +2,9 @@
 @section('title', 'Update system')
 @section('header')
 <style>
-    .update{
-        background: black;
-        max-width: 560px;
-        min-height: 300px;
-        border-radius: 10px;
-    }
-
-    .log{
-        background: #9d9e9f;
-        width: 95%;
-        color: black;
-        min-height: 100px;
-        border-radius: 10px;
-    }
-
-    pre{
-        color: white !important;
-        font-weight: bold !important;
-        text-align: left;
-        overflow: hidden !important;
-        overflow-wrap: anywhere;
-    }
+    .update{ background: black; max-width: 560px; min-height: 300px; border-radius: 10px;}
+    .log{ background: #9d9e9f; width: 95%; color: black; min-height: 100px; border-radius: 10px;}
+    pre{ color: white !important; font-weight: bold !important; text-align: left; overflow: hidden !important; overflow-wrap: anywhere; }
 </style>
 @endsection
 
@@ -41,9 +22,9 @@
                             <a href="/export/portal"  class="btn btn-lg btn-warning w-100 text-bold">Export Portal Data</a>
                         </div>
 
-                        <div class="col-md-12 pad-1">
+                        <!--div class="col-md-12 pad-1">
                             <button id="ccnms" class="btn btn-lg btn-info w-100 text-bold">Export CCNMS Data</button>
-                        </div>
+                        </div-->
                         
                     </div>
                     <div class="log" hidden>
