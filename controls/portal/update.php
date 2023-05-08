@@ -153,6 +153,7 @@ class PortalUpdate{
 				foreach($scan as $file) {
 					if(strpos($file, '.json') !== false) {
 						//db()->query("INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')");
+						echo "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')".PHP_EOL;
 					}
 				}
 			}
