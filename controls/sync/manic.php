@@ -41,7 +41,7 @@
             // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
             self::check_file();
             
-            for($i=1; $i<=3; $i++){
+            for($i=1; $i<=25; $i++){
 
                 $file = self::load_file();
 
