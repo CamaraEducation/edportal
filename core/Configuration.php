@@ -23,7 +23,16 @@ function ccnms(){
 }
 
 function db(){
-	return new Connection($_ENV['DB_DSN'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
+	$hostname = $_ENV['DB_HOST'];
+	$username = $_ENV['DB_USER'];
+	$password = $_ENV['DB_PASS'];
+	$database = $_ENV['DB_DATA'];
+
+	$connector = "mysql:host=$hostname;dbname=$database";
+	
+	return new Connection(
+		$connector, $username, $password
+	);
 }
 
 // Test internet connection
