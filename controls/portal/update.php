@@ -143,6 +143,23 @@ class PortalUpdate{
 		if(ConfigsController::get('last') == 200):
 			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully'.PHP_EOL;
+
+			$directory = '/www/wwwroot/manic/data/jobs';
+
+			# log existing job_files to manic_jobs table
+			if(is_dir($directory)) {
+				$scan = scandir($directory);
+				unset($scan[0], $scan[1]); //unset . and ..
+				foreach($scan as $file) {
+					if(strpos($file, '.json') !== false) {
+						db()->query("INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')");
+					}
+				}
+			}
+
+			db()->query("UPDATE config set `last` = ? where id = 1", '201');
+
+
 		endif;
 
 		
