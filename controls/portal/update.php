@@ -152,12 +152,12 @@ class PortalUpdate{
 				unset($scan[0], $scan[1]); //unset . and ..
 				foreach($scan as $file) {
 					if(strpos($file, '.json') !== false) {
-						db()->query("INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')");
+						//db()->query("INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')");
 					}
 				}
 			}
 
-			db()->query("UPDATE config set `last` = ? where id = 1", '201');
+			//db()->query("UPDATE config set `last` = ? where id = 1", '201');
 
 
 		endif;
