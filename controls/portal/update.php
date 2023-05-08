@@ -149,7 +149,7 @@ class PortalUpdate{
 
 			# log existing job_files to manic_jobs table
 			if(is_dir($directory)) {
-				$scan = scandir($directory);
+				/*$scan = scandir($directory);
 				unset($scan[0], $scan[1]); //unset . and ..
 				foreach($scan as $file) {
 					if(strpos($file, '.json') !== false) {
@@ -163,7 +163,8 @@ class PortalUpdate{
 					else {
 						echo "no file detected".PHP_EOL;
 					}
-				}
+				}*/
+				echo $directory;
 			}
 
 			//db()->query("UPDATE config set `last` = ? where id = 1", '201');
