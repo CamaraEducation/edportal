@@ -138,8 +138,15 @@ class PortalUpdate{
 
 		file_put_contents('.env', $data);
 
+
+		# rewrite manic syncronization files
+		if(ConfigsController::get('last') == 200):
+			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
+			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully'.PHP_EOL;
+		endif;
+
 		
-		echo "system version is now 2.1.0";
+		echo "system version is now 2.2.0";
  	}
 
 	public static function auto(){
