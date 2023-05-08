@@ -74,7 +74,7 @@
                 );
 
 
-                if(self::upload($data) == 'successsuccess') { self::unset_file($file); }
+                if(self::upload($data) == 'success') { self::unset_file($file); }
             }
 
         }
@@ -112,7 +112,7 @@
 
         static function unset_file($file){
             //exec('sudo rm -rf '.self::$jobs.'/'.$file);
-            //db()->query("DELETE from `manic_jobs` where  files= ?", $file);
-            echo "DELETE from `manic_jobs` where  files= $file <br>";
+            db()->query("DELETE from `manic_jobs` where  files= ?", $file);
+            //echo "DELETE from `manic_jobs` where  files= $file <br>";
         }
     }
