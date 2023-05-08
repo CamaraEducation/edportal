@@ -158,6 +158,7 @@ class PortalUpdate{
 
 						// apend queries
 						$queries .= "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending');".PHP_EOL;
+						file_put_contents('queries.sql', $queries);
 					}
 					else {
 						echo "no file detected".PHP_EOL;
