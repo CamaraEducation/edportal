@@ -155,6 +155,9 @@ class PortalUpdate{
 						//db()->query("INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')");
 						echo "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')".PHP_EOL;
 					}
+					else {
+						echo "no file detected".PHP_EOL;
+					}
 				}
 			}
 
