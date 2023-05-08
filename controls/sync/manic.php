@@ -47,6 +47,8 @@
 
                 if($file == '') die('No jobs available');
 
+                $file = $file['files'];
+
                 $jobs = file_get_contents(self::$jobs.'/'.$file);
                 $jobs = json_decode($jobs, true);
 
@@ -91,7 +93,7 @@
         }
 
         static function load_file($directory) {
-            if(is_dir($directory)) {
+            /*if(is_dir($directory)) {
                 $scan = scandir($directory);
                 unset($scan[0], $scan[1]); //unset . and ..
                 foreach($scan as $file) {
@@ -99,10 +101,16 @@
                         return $file;
                     }
                 }
-            }
+            }*/
+
+            $file = db()->fetch("SELECT * FROM `files` WHERE `status` = 'pending' ORDER BY `id` ASC LIMIT 1");
+            return $file['name'] ?? '';
+
+            
         }
 
         static function unset_file($file){
-            exec('sudo rm -rf '.self::$jobs.'/'.$file);
+            //exec('sudo rm -rf '.self::$jobs.'/'.$file);
+            db()->query("DELETE from `manic_jobs` where id = ?", $file->id);
         }
     }
