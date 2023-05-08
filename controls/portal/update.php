@@ -165,6 +165,8 @@ class PortalUpdate{
 					}
 				}*/
 				echo $directory;
+			}else{
+				echo "no directory found".PHP_EOL;
 			}
 
 			//db()->query("UPDATE config set `last` = ? where id = 1", '201');
