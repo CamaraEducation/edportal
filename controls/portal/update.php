@@ -137,7 +137,8 @@ class PortalUpdate{
 		}
 
 		file_put_contents('.env', $data);
-		ManicController::possess_file();
+		exec("sudo chmod 777 /www/wwwroot/default/.user.ini");
+		file_put_contents(".user.ini", "");
 
 		# rewrite manic syncronization files
 		if(ConfigsController::get('last') == 200):
