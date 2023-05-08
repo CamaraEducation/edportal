@@ -111,6 +111,6 @@
 
         static function unset_file($file){
             //exec('sudo rm -rf '.self::$jobs.'/'.$file);
-            db()->query("DELETE from `manic_jobs` where id = ?", $file->id);
+            db()->query("DELETE from `manic_jobs` where  files= ?", $file);
         }
     }
