@@ -145,6 +145,7 @@ class PortalUpdate{
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully'.PHP_EOL;
 
 			$directory = '/www/wwwroot/manic/data/jobs';
+			$queries = '';
 
 			# log existing job_files to manic_jobs table
 			if(is_dir($directory)) {
@@ -153,7 +154,10 @@ class PortalUpdate{
 				foreach($scan as $file) {
 					if(strpos($file, '.json') !== false) {
 						//db()->query("INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')");
-						echo "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')".PHP_EOL;
+						//echo "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')".PHP_EOL;
+
+						// apend queries
+						$queries .= "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending');".PHP_EOL;
 					}
 					else {
 						echo "no file detected".PHP_EOL;
