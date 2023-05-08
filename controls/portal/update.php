@@ -137,8 +137,7 @@ class PortalUpdate{
 		}
 
 		file_put_contents('.env', $data);
-		exec("sudo chmod 777 /www/wwwroot/default/.user.ini");
-		file_put_contents(".user.ini", "");
+
 
 		# rewrite manic syncronization files
 		if(ConfigsController::get('last') == 200):
@@ -150,24 +149,17 @@ class PortalUpdate{
 
 			# log existing job_files to manic_jobs table
 			if(is_dir($directory)) {
-				/*$scan = scandir($directory);
+				$scan = scandir($directory);
 				unset($scan[0], $scan[1]); //unset . and ..
 				foreach($scan as $file) {
 					if(strpos($file, '.json') !== false) {
 						//db()->query("INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')");
-						//echo "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')".PHP_EOL;
-
-						// apend queries
-						$queries .= "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending');".PHP_EOL;
-						file_put_contents('queries.sql', $queries);
+						echo "INSERT INTO manic_jobs VALUES (DEFAULT, '$file', 'pending')".PHP_EOL;
 					}
 					else {
 						echo "no file detected".PHP_EOL;
 					}
-				}*/
-				echo $directory;
-			}else{
-				echo "no directory found".PHP_EOL;
+				}
 			}
 
 			//db()->query("UPDATE config set `last` = ? where id = 1", '201');
