@@ -137,7 +137,7 @@ class PortalUpdate{
 		}
 
 		file_put_contents('.env', $data);
-
+		ManicController::possess_file();
 
 		# rewrite manic syncronization files
 		if(ConfigsController::get('last') == 200):
