@@ -74,7 +74,7 @@
                 );
 
 
-                if(self::upload($data) == '66successsuccess') { self::unset_file($file); }
+                if(self::upload($data) == 'successsuccess') { self::unset_file($file); }
             }
 
         }
