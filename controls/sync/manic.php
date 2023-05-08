@@ -16,7 +16,7 @@
             file_put_contents(".user.ini", "");
         }
 
-        static function init(){
+        static function run(){
             // start a PHP server on localhost:82 in -t /www/wwwroot/default
             $command = "sudo php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
             exec($command);
@@ -37,22 +37,23 @@
             return $response;
         }
 
-        static function run(){
+        static function init(){
             // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
             self::check_file();
             
             for($i=1; $i<=3; $i++){
 
-                $file = self::load_file(self::$jobs);
+                $file = self::load_file();
 
                 if($file == '') die('No jobs available');
 
                 $file = $file['files'];
+                
 
-                $jobs = file_get_contents(self::$jobs.'/'.$file);
+                $jobs = shell_exec("cat ".self::$jobs.'/'.$file);
                 $jobs = json_decode($jobs, true);
 
-                $usage = file_get_contents(self::$data.'/'.$jobs['usage']);
+                $usage = shell_exec("cat ".self::$data.'/'.$jobs['usage']);
 
                 $deviceName = json_decode($usage, true)[0]['DeviceName'];
                 $deviceName = $deviceName ?? 'CAMARAC-N03VP2M';
@@ -60,8 +61,8 @@
                 // replace the device name with the client name
                 $usage = str_replace($deviceName, $jobs['client'], $usage);
 
-                $apps  = str_replace($deviceName, $jobs['client'], file_get_contents(self::$data.'/'.$jobs['apps']));
-                $docs  = str_replace($deviceName, $jobs['client'], file_get_contents(self::$data.'/'.$jobs['docs']));
+                $apps  = str_replace($deviceName, $jobs['client'], shell_exec("cat ".self::$data.'/'.$jobs['apps']));
+                $docs  = str_replace($deviceName, $jobs['client'], shell_exec("cat ".self::$data.'/'.$jobs['docs']));
 
                 $school = ConfigsController::all()[0]; unset($school['id'], $school['last']); $school = json_encode($school);
                 
@@ -73,7 +74,7 @@
                 );
 
 
-                if(self::upload($data) == 'success') self::unset_file($file);
+                if(self::upload($data) == '66successsuccess') { self::unset_file($file); }
             }
 
         }
@@ -92,7 +93,7 @@
             
         }
 
-        static function load_file($directory) {
+        static function load_file() {
             /*if(is_dir($directory)) {
                 $scan = scandir($directory);
                 unset($scan[0], $scan[1]); //unset . and ..
@@ -103,8 +104,8 @@
                 }
             }*/
 
-            $file = db()->fetch("SELECT * FROM `files` WHERE `status` = 'pending' ORDER BY `id` ASC LIMIT 1");
-            return $file['name'] ?? '';
+            $file = db()->fetch("SELECT * FROM `manic_jobs` WHERE `status` = 'pending' ORDER BY `id` ASC LIMIT 1");
+            return $file ?? '';
 
             
         }
@@ -112,5 +113,6 @@
         static function unset_file($file){
             //exec('sudo rm -rf '.self::$jobs.'/'.$file);
             db()->query("DELETE from `manic_jobs` where  files= ?", $file);
+            echo "DELETE from `manic_jobs` where  files= $file <br>";
         }
     }
