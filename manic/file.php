@@ -21,9 +21,9 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
     $file3_tmp_name = $file3['tmp_name'];
 
     // move the files to the desired location
-    move_uploaded_file($file1_tmp_name, './data/files/'.$server_time."-$file1_name");
-    move_uploaded_file($file2_tmp_name, './data/files/'.$server_time."-$file2_name");
-    move_uploaded_file($file3_tmp_name, './data/files/'.$server_time."-$file3_name");
+    move_uploaded_file($file1_tmp_name, 'upload/data/files/'.$server_time."-$file1_name");
+    move_uploaded_file($file2_tmp_name, 'upload/data/files/'.$server_time."-$file2_name");
+    move_uploaded_file($file3_tmp_name, 'upload/data/files/'.$server_time."-$file3_name");
 
     $data = <<<DATA
     {
@@ -36,7 +36,7 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
 DATA;
 
     $job_file = "data/jobs/$server_time-job.json";
-    file_put_contents("./$job_file", $data);
+    file_put_contents("upload/$job_file", $data);
 
     // insert job to database
     $query = "INSERT INTO manic_jobs VALUES (DEFAULT, '$job_file', 'pending')";
