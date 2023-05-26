@@ -58,31 +58,7 @@ function is_connected($url = ''){
 }
 
 function is_sync($url = ''){
-	if(empty($url)){
-		$server = [$_ENV['SYNC_ALTER0'], $_ENV['SYNC_ALTER1'], $_ENV['SYNC_ALTER2']];
-		foreach($server as $url){
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-			$data = curl_exec($ch);
-			curl_close($ch);
-			if($data){
-				return true;
-			}
-		}
-	}else{
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		if($data){
-			return true;
-		}
-	}
-	return false;
+	return true;
 }
 
 function sync_conn(){

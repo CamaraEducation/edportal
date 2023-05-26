@@ -19,4 +19,19 @@
                 'doc' => $doc
             ], JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
         }
+
+        static function fix_json($string){
+            // $string = str_replace('\"', '"', $string);
+            // $string = str_replace("\'", "'", $string);
+            // $string = str_replace('\\\\', '\\', $string);
+            // $string = str_replace('\/', '/', $string);
+            $string = str_replace('\n', '', $string);
+            $string = str_replace('\r', '', $string);
+            $string = str_replace('\t', '', $string);
+            $string = str_replace('\b', '', $string);
+            $string = str_replace('\f', '', $string);
+            $string = str_replace('\u', '', $string);
+
+            return $string;
+        }
     }
