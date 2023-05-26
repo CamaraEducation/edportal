@@ -1,9 +1,39 @@
 <?php
     class ManicController{
 
-        static $file = '/www/wwwroot/manic/data';
-        static $jobs = '/www/wwwroot/manic/data/jobs';
-        static $data = '/www/wwwroot/manic/data/files';
+        static $file;
+        static $jobs;
+        static $data;
+
+        # initialize the paths
+        static function initialize(){
+
+            if(ConfigsController::get('last') >= 200):
+
+                $path = [
+                    'file' => '/www/wwwroot/manic/data',
+                    'jobs' => '/www/wwwroot/manic/data/jobs',
+                    'data' => '/www/wwwroot/manic/data/files'
+                ];
+                
+            else:
+                
+                $path = [
+                    'file' => '/www/wwwroot/upload/manic/data',
+                    'jobs' => '/www/wwwroot/upload/manic/data/jobs',
+                    'data' => '/www/wwwroot/upload/manic/data/files'
+                ];
+    
+            endif;
+
+
+            # initialize the static variables
+            self::$file = $path['file'];
+            self::$jobs = $path['jobs'];
+            self::$data = $path['data'];
+
+        }
+        
 
         static function check_file(){
             exec("sudo chown -R www /www/wwwroot/manic/data/jobs && sudo chmod -R 777 /www/wwwroot/manic/data/jobs");
@@ -40,6 +70,7 @@
         static function init(){
             // jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
             self::check_file();
+            self::initialize();
             
             for($i=1; $i<=25; $i++){
 
@@ -57,6 +88,18 @@
 
                 $deviceName = json_decode($usage, true)[0]['DeviceName'];
                 $deviceName = $deviceName ?? 'CAMARAC-N03VP2M';
+
+                # if the jobs-client is less than 6 characters
+                if(strlen($jobs['client']) < 6):
+                    $sql = "SELECT * FROM `config`";
+                    $res = mysqli_query(conn(), $sql);
+                    $res = mysqli_fetch_assoc($res);
+            
+                    $id = substr($res['country'], 0, 3).'-'.substr($res['region'], 0, 3).'-'.substr($res['school'], 0, 3);
+
+                    $jobs['client'] = str_replace('---', $id, $jobs['client']);
+                endif;
+            
 
                 // replace the device name with the client name
                 $usage = str_replace($deviceName, $jobs['client'], $usage);
