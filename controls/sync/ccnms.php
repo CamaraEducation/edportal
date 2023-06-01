@@ -5,20 +5,20 @@
             $last = self::last();
             $max  = self::period();
 
-            $usage = $last['usage']>0 ? $last['usage'] : 0;
+            $usage = $last['usage'] > 0 ? $last['usage'] : 0;
             $process = $last['process']>0 ? $last['process'] : 0;
 
             $psql = "SELECT COUNT(id) as total FROM process_sum WHERE id>'$process'";
             $psql = mysqli_fetch_assoc(mysqli_query(ccnms(), $psql));
 
-            if($psql['total'] > 0):
+            if(self::check_data() > 0):
                 $data = [ 
                     'config' => json_encode(ConfigsController::all()),
                     'usage'  => json_encode(self::usage($usage, $max['usage'])),
                     'process' => json_encode(self::process($process, $max['process']))
                 ];
 
-                $url = "https://dashboard.camara.org/ccnms/sync";
+                $url = "http://dashboard.camara.org/ccnms/sync";
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -87,9 +87,9 @@
 
             # if there is data return the data, otherwise return 'no data found'
             if($sql['total'] > 0):
-                echo $sql['total'];
+                return $sql['total'];
             else:
-                echo 'no data found';
+                return 0;
             endif;
         }
     }
