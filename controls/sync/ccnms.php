@@ -11,7 +11,7 @@
             $psql = "SELECT COUNT(id) as total FROM process_sum WHERE id>'$process'";
             $psql = mysqli_fetch_assoc(mysqli_query(ccnms(), $psql));
 
-            if(self::check_data() > 0):
+            # if(self::check_data() > 0):
                 $data = [ 
                     'config' => json_encode(ConfigsController::all()),
                     'usage'  => json_encode(self::usage($usage, $max['usage'])),
@@ -40,7 +40,7 @@
                     self::update($max['usage'], $max['process']);
                     echo 'OK';
                 endif;
-            endif;
+            # endif;
         }
 
         static function update($usage, $process){
@@ -89,7 +89,7 @@
             if($sql['total'] > 0):
                 return $sql['total'];
             else:
-                return 0;
+                return "No data found";
             endif;
         }
     }
