@@ -89,7 +89,7 @@
             if($sql['total'] > 0):
                 return $sql['total'];
             else:
-                return "No data found";
+                return 0;
             endif;
         }
     }

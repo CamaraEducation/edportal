@@ -140,7 +140,7 @@
 								<h2 class="card-title mb-2 text-primary pad-2">Synchronization Unit</h2>
 							</div>
 							<div class="card-body pb-2 px-3">
-								<p>{{CCNMSSYNC::check_data()}}</p>
+								<h6>{{CCNMSSYNC::check_data()}} Records Found</h6>
 							</div>
 						</div>
 						@endif
