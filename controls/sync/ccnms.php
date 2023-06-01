@@ -76,4 +76,20 @@
 
             return $res;
         }
+
+        static function check_data(){
+            # view the last usage data from `sync`
+            $last = self::last();
+
+            # count from pc_usage
+            $sql = "SELECT COUNT(id) as total FROM pc_usage WHERE id>'$last[usage]'";
+            $sql = mysqli_fetch_assoc(mysqli_query(ccnms(), $sql));
+
+            # if there is data return the data, otherwise return 'no data found'
+            if($sql['total'] > 0):
+                echo $sql['total'];
+            else:
+                echo 'no data found';
+            endif;
+        }
     }

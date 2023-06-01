@@ -79,11 +79,11 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xl-9 col-xxl-8">
+				<div class="col-md-12 col-xl-9 col-xxl-8">
 					<div class="card">
 						<div class="card-header border-0 flex-wrap pb-0">
 							<div class="mb-3">
-								<h2 class="card-title mb-2 text-primary pad-2">Visitor Activity</h2>
+								<h2 class="card-title mb-2 text-primary pad-2">Usage Activity</h2>
 							</div>
 						</div>
 						<div class="card-body">
@@ -134,6 +134,16 @@
 								<div class="space"></div>
 							</div>
 						</div>
+						@if(ConfigsController::get('last') < 200)
+						<div class="card col-sm-12">
+							<div class="card-header border-0 pb-0">
+								<h2 class="card-title mb-2 text-primary pad-2">Synchronization Unit</h2>
+							</div>
+							<div class="card-body pb-2 px-3">
+								<p>{{CCNMSSYNC::check_data()}}</p>
+							</div>
+						</div>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -142,15 +152,7 @@
 @endsection	
 @section('footer') 
 @js('/assets/vendor/chart.js/Chart.bundle.min.js')
-<!--@js('/assets/js/plugins-init/chartjs-init.js')-->
 
-@php  
-    $max = max($user_activity);
-    if($max < 250){ $max = 250;
-        }else if($max < 500){ $max = 500;
-    }else{ $max = 1000;
-}
-@endphp
 
 <script>
 (function($) {
@@ -166,8 +168,6 @@
 			const areaChart_2 = document.getElementById("areaChart_2").getContext('2d');
 			//generate gradient
 			const areaChart_2gradientStroke = areaChart_2.createLinearGradient(1, 1, 0, 500);
-			areaChart_2gradientStroke.addColorStop(0, "rgb(85, 139, 47)");
-			areaChart_2gradientStroke.addColorStop(1, "rgb(85, 139, 47, 0)");
 			
 			areaChart_2.height = 100;
 
@@ -180,16 +180,16 @@
 						{
 							label: "User Activities",
 							data: [ @foreach($user_activity as $key => $value) {{$value}}, @endforeach ],
-							borderColor: "rgb(85, 139, 47)",
+							borderColor: "#6418C3",
 							borderWidth: "4",
-							backgroundColor: areaChart_2gradientStroke
+							backgroundColor: "rgb(100, 24, 195, 0.1)"
 						},
 						{
 							label: "Total Live Time",
 							data: [ @foreach($live_activity as $key => $value) {{round($value)}}, @endforeach ],
-							borderColor: "#6418C3",
+							borderColor: "rgb(85, 139, 47)",
 							borderWidth: "4",
-							backgroundColor: areaChart_2gradientStroke
+							backgroundColor: "rgb(85, 139, 47, 0.1)"
 						}
 
 					]
@@ -197,17 +197,13 @@
 				options: {
 					legend: false, 
 					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero: true,
-								stepSize: 50, 
-								padding: 5
-							}
+						yAxes: [{ 
+							ticks: { beginAtZero: true, padding: 5 },
+							title: { display: true, text: 'Sessions v Usage Time'}
 						}],
 						xAxes: [{ 
-							ticks: {
-								padding: 5
-							}
+							ticks: { padding: 5 },
+							title: { display: true, text: 'Months'}
 						}]
 					}
 				}
