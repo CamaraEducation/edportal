@@ -166,7 +166,7 @@ class PortalUpdate{
 		endif;
 
 		
-		echo "system version is now 2.2.0";
+		echo "system version is now 2.2.1";
  	}
 
 	public static function auto(){
