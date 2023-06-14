@@ -35,10 +35,50 @@ class PortalUpdate{
 
 		$sql[5] = "CREATE TABLE IF NOT EXISTS `manic_jobs` (
 			`id` INT(11) NOT NULL AUTO_INCREMENT,
-			`files` TEXT NOT NULL COLLATE 'latin1_swedish_ci',
-			`status` CHAR(50) NOT NULL DEFAULT '' COLLATE 'latin1_swedish_ci',
+			`last` INT(11) NOT NULL DEFAULT '0',
 			PRIMARY KEY (`id`) USING BTREE
-		) COLLATE='latin1_swedish_ci'";
+		)
+		COLLATE='latin1_swedish_ci'
+		ENGINE=InnoDB";
+
+		/* Version 2.0.2 */
+		$sql[6] = "CREATE TABLE IF NOT EXISTS `manic_usage` (
+			`id` INT(11) NOT NULL AUTO_INCREMENT,
+			`DeviceName` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
+			`Name` TEXT NOT NULL COLLATE 'latin1_swedish_ci',
+			`StartLocalTime` DATETIME NOT NULL,
+			`EndLocalTime` DATETIME NOT NULL,
+			`Duration` DOUBLE NOT NULL DEFAULT '0',
+			PRIMARY KEY (`id`) USING BTREE
+		)
+		COLLATE='latin1_swedish_ci'
+		ENGINE=InnoDB;";
+		
+		$sql[7] = "CREATE TABLE IF NOT EXISTS `manic_apps` (
+			`id` INT(11) NOT NULL AUTO_INCREMENT,
+			`DeviceName` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
+			`Name` TEXT NOT NULL COLLATE 'latin1_swedish_ci',
+			`StartLocalTime` DATETIME NOT NULL,
+			`EndLocalTime` DATETIME NOT NULL,
+			`Duration` DOUBLE NOT NULL DEFAULT '0',
+			PRIMARY KEY (`id`) USING BTREE
+		)
+		COLLATE='latin1_swedish_ci'
+		ENGINE=InnoDB;";
+		
+		$sql[8] = "CREATE TABLE IF NOT EXISTS `manic_docs` (
+			`id` INT(11) NOT NULL AUTO_INCREMENT,
+			`DeviceName` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
+			`Name` TEXT NOT NULL COLLATE 'latin1_swedish_ci',
+			`StartLocalTime` DATETIME NOT NULL,
+			`EndLocalTime` DATETIME NOT NULL,
+			`Duration` DOUBLE NOT NULL DEFAULT '0',
+			PRIMARY KEY (`id`) USING BTREE
+		)
+		COLLATE='latin1_swedish_ci'
+		ENGINE=InnoDB;";
+
+
 
 		$res = [
 			0 => [
@@ -64,7 +104,19 @@ class PortalUpdate{
 			5 => [
 				'success' => '<b class="text-success">SUCCESS: </b>Table Manic Jobs created successfully'.PHP_EOL, 
 				'error' => '<b class="text-danger">FAILED: </b>Error creating table Manic Jobs: '
-			]
+			],
+			6 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Table Manic Usage created successfully'.PHP_EOL, 
+				'error' => '<b class="text-danger">FAILED: </b>Error creating table Manic Usage: '
+			],
+			7 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Table Manic Apps created successfully'.PHP_EOL, 
+				'error' => '<b class="text-danger">FAILED: </b>Error creating table Manic Apps: '
+			],
+			8 => [
+				'success' => '<b class="text-success">SUCCESS: </b>Table Manic Docs created successfully'.PHP_EOL, 
+				'error' => '<b class="text-danger">FAILED: </b>Error creating table Manic Docs: '
+			],
 		];
 
 		# alter uptime to bigint from varchar
@@ -140,11 +192,11 @@ class PortalUpdate{
 
 
 		# rewrite manic syncronization files
-		if(ConfigsController::get('last') == 200):
+		if(ConfigsController::get('last') > 200):
 			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully'.PHP_EOL;
 
-			$directory = '/www/wwwroot/manic/data/jobs';
+			/*$directory = '/www/wwwroot/manic/data/jobs';
 
 			# log existing job_files to manic_jobs table
 			if(is_dir($directory)) {
@@ -158,15 +210,15 @@ class PortalUpdate{
 						echo "no file detected".PHP_EOL;
 					}
 				}
-			}
-
-			db()->query("UPDATE config set `last` = 201 where id = 1");
-
+			} */
+			
+			db()->query("ALTER TABLE `manic_jobs` CHANGE COLUMN `files` `last` INT NOT NULL DEFAULT 0 COLLATE 'latin1_swedish_ci' AFTER `id`, DROP COLUMN `status`");
+			db()->query("UPDATE config set `last` = 222 where id = 1");
 
 		endif;
 
 		
-		echo "system version is now 2.2.1";
+		echo "system version is now 2.2.2";
  	}
 
 	public static function auto(){
