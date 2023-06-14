@@ -57,29 +57,35 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
         $apps_file = json_decode(file_get_contents($data['apps']));
         $docs_file = json_decode(file_get_contents($data['docs']));
 
-        // replace device name with client name
-        foreach($usage_file as $row){
-            $DeviceName = $data['client'];
-            $sql = "INSERT INTO manic_usage VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
-            
-            mysqli_query(conn(), $sql);
+        if(is_array($usage_file)){
+            foreach($usage_file as $row){
+                $DeviceName = $data['client'];
+                $sql = "INSERT INTO manic_usage VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
+                
+                mysqli_query(conn(), $sql);
+            }
         }
 
-        foreach($apps_file as $row){
-            $DeviceName = $data['client'];
-            $sql = "INSERT INTO manic_apps VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
-            
-            mysqli_query(conn(), $sql);
+        if(is_array($apps_file)){
+            foreach($apps_file as $row){
+                $DeviceName = $data['client'];
+                $sql = "INSERT INTO manic_apps VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
+                
+                mysqli_query(conn(), $sql);
+            }
         }
-
-        foreach($docs_file as $row){
-            $DeviceName = $data['client'];
-            $sql = "INSERT INTO manic_docs VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
-            
-            mysqli_query(conn(), $sql);
-        }        
+        
+        if(is_array($docs_file)){
+            foreach($docs_file as $row){
+                $DeviceName = $data['client'];
+                $sql = "INSERT INTO manic_docs VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
+                
+                mysqli_query(conn(), $sql);
+            }
+        }      
 
     }
+
 
     insert_data($data);
 
