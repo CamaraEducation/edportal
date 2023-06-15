@@ -35,7 +35,7 @@ class PortalUpdate{
 
 		$sql[5] = "CREATE TABLE IF NOT EXISTS `manic_jobs` (
 			`id` INT(11) NOT NULL AUTO_INCREMENT,
-			`last` INT(11) NOT NULL DEFAULT '0',
+			`last` JSON NOT NULL,
 			PRIMARY KEY (`id`) USING BTREE
 		)
 		COLLATE='latin1_swedish_ci'
@@ -192,7 +192,7 @@ class PortalUpdate{
 
 
 		# rewrite manic syncronization files
-		if(ConfigsController::get('last') > 200):
+		if(ConfigsController::get('last') > 200 and ConfigsController::get('last') < 222):
 			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully'.PHP_EOL;
 
@@ -212,10 +212,12 @@ class PortalUpdate{
 				}
 			} */
 			
-			db()->query("ALTER TABLE `manic_jobs` CHANGE COLUMN `files` `last` INT NOT NULL DEFAULT 0 COLLATE 'latin1_swedish_ci' AFTER `id`, DROP COLUMN `status`");
 			db()->query("UPDATE config set `last` = 222 where id = 1");
 
 		endif;
+
+		
+		mysqli_query(conn(), "ALTER TABLE `manic_jobs` CHANGE COLUMN `last` `last` JSON NOT NULL AFTER `id`, DROP COLUMN `status`");
 
 		
 		echo "system version is now 2.2.2";
