@@ -192,7 +192,7 @@ class PortalUpdate{
 
 
 		# rewrite manic syncronization files
-		if(ConfigsController::get('last') > 200 and ConfigsController::get('last') < 222):
+		if(ConfigsController::get('last') >= 200 or ConfigsController::get('last') <= 222):
 			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully'.PHP_EOL;
 
