@@ -217,7 +217,8 @@ class PortalUpdate{
 		endif;
 
 		
-		mysqli_query(conn(), "ALTER TABLE `manic_jobs` CHANGE COLUMN `last` `last` JSON NOT NULL AFTER `id`, DROP COLUMN `status`");
+		db()->query("ALTER TABLE `manic_jobs` CHANGE COLUMN `last` `last` JSON NOT NULL AFTER `id`");
+		mysqli_query(conn(), "ALTER TABLE `manic_jobs` DROP COLUMN `status`");
 
 		
 		echo "system version is now 2.2.2";
