@@ -33,7 +33,7 @@ class PortalUpdate{
 
 		# manic time data tables - pc_apps, pc_usage, pc_docs
 
-		$sql[5] = "CREATE TABLE IF NOT EXISTS `manic_jobs` (
+		$sql[5] = "CREATE TABLE IF NOT EXISTS `manic_records` (
 			`id` INT(11) NOT NULL AUTO_INCREMENT,
 			`last` JSON NOT NULL,
 			PRIMARY KEY (`id`) USING BTREE
@@ -217,8 +217,8 @@ class PortalUpdate{
 		endif;
 
 		
-		db()->query("ALTER TABLE `manic_jobs` CHANGE COLUMN `last` `last` JSON NOT NULL AFTER `id`");
-		mysqli_query(conn(), "ALTER TABLE `manic_jobs` DROP COLUMN `status`");
+		// drop manic jobs table if exists
+		db()->query("DROP TABLE IF EXISTS `manic_jobs`");
 
 		
 		echo "system version is now 2.2.2";
