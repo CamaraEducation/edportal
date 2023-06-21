@@ -187,7 +187,7 @@
 
         static function get_usage($lastAvailableRows, $lastInsertedRows){
             
-            $sql = "SELECT DeviceName, `Name`, StartLocalTime, EndLocalTime, Duration  FROM `manic_apps` WHERE `id` > ? AND `id` <= ?";
+            $sql = "SELECT DeviceName, `Name`, StartLocalTime, EndLocalTime, Duration  FROM `manic_usage` WHERE `id` > ? AND `id` <= ?";
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
             
             
