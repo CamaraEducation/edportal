@@ -20,6 +20,16 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
     $file3_name = $file3['name'];
     $file3_tmp_name = $file3['tmp_name'];
 
+    // recursive function to create directory if not exists
+    function create_dir($path){
+        if(!is_dir($path)){
+            create_dir(dirname($path));
+            mkdir($path);
+        }
+    }
+
+    create_dir('upload/data/files');
+
     // move the files to the desired location
     move_uploaded_file($file1_tmp_name, 'upload/data/files/'.$server_time."-$file1_name");
     move_uploaded_file($file2_tmp_name, 'upload/data/files/'.$server_time."-$file2_name");
@@ -27,9 +37,9 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
 
     $data = [
     
-        "usage" => "$server_time-$file1_name",
-        "apps"  => "$server_time-$file2_name",
-        "docs"  => "$server_time-$file3_name",
+        "usage" => "upload/data/files/$server_time-$file1_name",
+        "apps"  => "upload/data/files/$server_time-$file2_name",
+        "docs"  => "upload/data/files/$server_time-$file3_name",
         "client" => "$client_name"
     ];
 
@@ -57,28 +67,29 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
         $apps_file = json_decode(file_get_contents($data['apps']));
         $docs_file = json_decode(file_get_contents($data['docs']));
 
-        if(is_array($usage_file)){
+
+        if($usage_file != ""){
             foreach($usage_file as $row){
                 $DeviceName = $data['client'];
-                $sql = "INSERT INTO manic_usage VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
+                $sql = "INSERT INTO manic_usage VALUES (DEFAULT, '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration')";
                 
                 mysqli_query(conn(), $sql);
             }
         }
 
-        if(is_array($apps_file)){
+        if($apps_file != ""){
             foreach($apps_file as $row){
                 $DeviceName = $data['client'];
-                $sql = "INSERT INTO manic_apps VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
+                $sql = "INSERT INTO manic_apps VALUES (DEFAULT, '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration')";
                 
                 mysqli_query(conn(), $sql);
             }
         }
         
-        if(is_array($docs_file)){
+        if($docs_file != ""){
             foreach($docs_file as $row){
                 $DeviceName = $data['client'];
-                $sql = "INSERT INTO manic_docs VALUES (DEFAULT '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration'";
+                $sql = "INSERT INTO manic_docs VALUES (DEFAULT, '$DeviceName', '$row->Name', '$row->StartLocalTime', '$row->EndLocalTime', '$row->Duration')";
                 
                 mysqli_query(conn(), $sql);
             }
@@ -86,10 +97,7 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
 
     }
 
-
     insert_data($data);
 
     echo 'ok';
 }
-
-
