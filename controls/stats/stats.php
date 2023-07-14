@@ -148,11 +148,13 @@ class StatsController{
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
 
-	public static function count_live_time(){
-		$sql = "SELECT SUM(live) AS all_time, 
-				(SELECT SUM(live) FROM page_visit WHERE MONTH(`time`) = MONTH(CURRENT_TIMESTAMP) and YEAR(TIME) = YEAR(CURRENT_TIMESTAMP)) AS monthly,
-				(SELECT SUM(live) FROM page_visit WHERE DATE(`time`) = DATE(CURRENT_TIMESTAMP) and YEAR(TIME) = YEAR(CURRENT_TIMESTAMP)) AS today
-			FROM page_visit WHERE YEAR(TIME) = YEAR(CURRENT_TIMESTAMP)";
+	public static function count_live_time(){		
+		$sql = "SELECT 
+				SUM(CASE WHEN DATE(time) = CURDATE() THEN live ELSE 0 END) AS today,
+				SUM(CASE WHEN YEAR(time) = YEAR(CURDATE()) AND MONTH(time) = MONTH(CURDATE()) THEN live ELSE 0 END) AS monthly,
+				SUM(CASE WHEN YEAR(time) = YEAR(CURDATE()) THEN live ELSE 0 END) AS all_time
+			FROM  page_visit
+			WHERE YEAR(time) = YEAR(CURDATE()); ";
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
 
