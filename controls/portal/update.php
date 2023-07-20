@@ -194,7 +194,10 @@ class PortalUpdate{
 		# rewrite manic syncronization files
 		if(ConfigsController::get('last') >= 200 or ConfigsController::get('last') <= 222):
 			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
-			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully'.PHP_EOL;
+			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully <br>'.PHP_EOL;
+
+			exec('sudo chmod -R 777 /www/wwwroot/default/manic');			
+			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files Permisions updated successfully <br>'.PHP_EOL;
 
 			/*$directory = '/www/wwwroot/manic/data/jobs';
 
@@ -231,7 +234,6 @@ class PortalUpdate{
 		}else{
 			shell_exec('sudo git stash');
 			shell_exec('sudo git pull origin main');
-			shell_exec('sudo chmod -R 777 /www/wwwroot/default/manic');
 		}
 	}
 }
