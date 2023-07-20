@@ -297,7 +297,9 @@ Route::add('/update/portal/([a-z]*)', function($type) {
 	switch($type){
 		case 'stash':
 			if(PHP_OS_FAMILY == 'Windows'){ $stash = shell_exec('git stash'); echo "<pre>" .$stash. "</pre>";
-				}else{ $stash = shell_exec('sudo git stash');  echo "<pre>" .$stash. "</pre>";
+				}else{ 
+					exec("sudo cp -f /www/wwwroot/default/manic/config.log /www/wwwroot/");
+					$stash = shell_exec('sudo git stash');  echo "<pre>" .$stash. "</pre>";
 			}
 		break;
 
