@@ -231,6 +231,7 @@ class PortalUpdate{
 		}else{
 			shell_exec('sudo git stash');
 			shell_exec('sudo git pull origin main');
+			shell_exec('sudo chmod -R 777 /www/wwwroot/default/manic');
 		}
 	}
 }
