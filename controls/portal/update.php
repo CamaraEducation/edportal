@@ -196,6 +196,7 @@ class PortalUpdate{
 			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully <br>'.PHP_EOL;
 
+			exec("sudo cp -f /www/wwwroot/config.log /www/wwwroot/default/manic/");
 			exec('sudo chmod -R 777 /www/wwwroot/default/manic');			
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files Permisions updated successfully <br>'.PHP_EOL;
 
