@@ -44,6 +44,8 @@ class SysSyncController{
 		}else{
 			die('connection could not be established');
 		}
+
+		ManicController::init();
 	}
 
 	public static function check(){
