@@ -359,9 +359,21 @@ Route::add('/manic/sync', function() {
 	echo ManicController::init();
 }, ['get', 'post']);
 
-// /manic/sync/alter
-Route::add('/manic/sync/alter', function() {
-	echo ManicController::run();
+Route::add('/manic/awsync', function() {
+	echo AWController::init();
+}, ['get', 'post']);
+
+Route::add('/manic/clients', function() {
+	$clients = StatsController::count_clients();
+
+	if($clients->getRowCount() > 0){
+		foreach($clients as $client){
+			echo "$client->DeviceName <br>";
+		}
+	}else{
+		echo "No device captured";
+	}
+
 }, ['get', 'post']);
 
 /****************************************************

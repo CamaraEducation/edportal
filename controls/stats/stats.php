@@ -158,5 +158,9 @@ class StatsController{
 		return mysqli_fetch_assoc(mysqli_query(conn(), $sql));
 	}
 
+	public static function count_clients(){
+		return db()->query("SELECT distinct DeviceName from manic_usage");
+	}
+
 }
 ?>
