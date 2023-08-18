@@ -134,16 +134,17 @@
 								<div class="space"></div>
 							</div>
 						</div>
-						@if(ConfigsController::get('last') < 200)
+						
 						<div class="card col-sm-12">
 							<div class="card-header border-0 pb-0">
 								<h2 class="card-title mb-2 text-primary pad-2">Synchronization Unit</h2>
 							</div>
 							<div class="card-body pb-2 px-3">
-								<h6>{{CCNMSSYNC::check_data()}} Records Found</h6>
+								<h6>Number of Clients: {{StatsController::count_clients()->getRowCount()}}</h6>
+
+								<a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#clientsModal" class="text-primary"> View All</a>
 							</div>
 						</div>
-						@endif
 					</div>
 				</div>
 			</div>
