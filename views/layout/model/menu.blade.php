@@ -39,7 +39,6 @@
 					@foreach ($clients as $client)
 						<tr>
 							<td>{{$client->DeviceName}}</td>
-							<td>{{$client->duration}}</td>
 						</tr>						
 					@endforeach
 				</tbody>
