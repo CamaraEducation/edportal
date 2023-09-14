@@ -101,4 +101,11 @@ function loadColor($id){
 	return (json_decode($json, true)[$id]);
 }
 
+function substring($string, $length){
+	if(strlen($string) > $length){
+		return substr($string, 0, $length).'...';
+	}else{
+		return $string;
+	}
+}
 ?>
