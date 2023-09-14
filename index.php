@@ -442,6 +442,16 @@ Route::add('/ccnms/sync', function() {
 });
 
 /****************************************************
+ *               SAFEGUARDING SECTION   	        *
+ *             							            *
+ ****************************************************/
+
+Route::add('/safeguarding', function() {
+	return Blade::render('safeguarding.home');
+});
+
+
+/****************************************************
  *                 AUTHENTICATICATION               *
  *             DO NOT CHANGE THIS SECTION           *
  ****************************************************/
