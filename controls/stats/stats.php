@@ -159,7 +159,7 @@ class StatsController{
 	}
 
 	public static function count_clients(){
-		return db()->query("SELECT DeviceName, sum(duration) as 'new_duration' from manic_usage group by DeviceName");
+		return db()->query("SELECT DeviceName, sum(duration) as 'duration' from manic_usage group by DeviceName");
 	}
 
 }
