@@ -48,7 +48,7 @@
         <li><a href="javascript:void()">System</a>
             <ul aria-expanded="false">
                 <li><a href="/update/portal">Update & Export</a></li>
-                <li><a href="/configure/sync">Connections</a></li>
+                <li><a href="/manic/clients">Connections</a></li>
             </ul>
         </li>
         <li>
