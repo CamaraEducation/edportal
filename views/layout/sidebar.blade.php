@@ -8,6 +8,9 @@
 					<i class="bi bi-grid-fill"></i>
 					<span class="nav-text">Dashboard</span>
 				</a>
+				<ul aria-expanded="false">
+					<li><a href="/">Dashboard</a></li>
+				</ul>
 			</li>
 
 			<li>
@@ -43,8 +46,8 @@
 					<span class="nav-text">LMS</span>
 				</a>
 				<ul aria-expanded="false">
-					<!--li><a href="/lms">Learning Studio</a></li-->					
-					<!--li><a href="/lms">Quiz & Assesment</a></li-->
+					<!--li><a href="/lms">Learning Studio</a></li>					
+					<li><a href="/lms">Quiz & Assesment</a></li-->
 					<li><a href="/lms/board">WhiteBoard</a></li>
 				</ul>
 			<li>
@@ -56,6 +59,18 @@
 					<li><a href="/dropbox">Dropbox</a></li>
 				</ul>
 			</li>
+
+			<!-- safeguarding -->
+			<li>
+				<a class="ai-icon" href="/safeguarding" aria-expanded="false">
+					<i class="bi bi-shield-fill-check"></i>
+					<span class="nav-text">Safeguarding</span>
+				</a>
+				<ul aria-expanded="false">
+					<li><a href="/safeguarding">Safeguarding</a></li>
+				</ul>
+			</li>
+
 			@if (viewer() == 1)
 				@include('layout.menu.admin')
 			@elseif (viewer() == 2)
