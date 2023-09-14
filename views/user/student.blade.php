@@ -7,7 +7,7 @@
             <th>GENDER</th>
             <th>CLASS</th>
             <th>AGE</th>
-            <th>ACTION</th>
+            <!--th>ACTION</th-->
         </tr>
     </thead>
     <tbody>
