@@ -44,7 +44,7 @@
                                 <div class="card viewContent cursor-pointer" style="height:100%"
                                     data-id = "{{$video->id}}"
                                     data-title = "{{$video->title}}"
-                                    data-content = "/upload/safeguarding/docs/{{$video->content}}"
+                                    data-content = "/upload/safeguarding/video/{{$video->content}}"
                                     data-created = "{{$video->created}}"
                                     data-updated = "{{$video->updated}}"
                                     data-type="doc"
