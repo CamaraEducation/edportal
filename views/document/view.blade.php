@@ -6,7 +6,7 @@
 @section('title', $doc['name'])
 
 @section('header')
-	<link rel="stylesheet" href="https://previews.customer.envatousercontent.com/files/308385206/css/animate.min.css" type="text/css">
+	<link rel="stylesheet" href="/assets/plugins/animatejs/animate.min.css" type="text/css">
 @endsection
 
 @section('content')
