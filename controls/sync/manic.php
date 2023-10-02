@@ -197,7 +197,7 @@
 
         static function get_apps($lastAvailableRows, $lastInsertedRows){
             // fetch the data from manic_apps
-            $sql = "SELECT DeviceName, `Name`, StartLocalTime, EndLocalTime, Duration  FROM `manic_apps` WHERE `id` > ? AND `id` <= ?";
+            $sql = "SELECT DeviceName, `Name`, StartLocalTime, EndLocalTime, Duration  FROM `manic_apps` WHERE `id` > ? AND `id` <= ? limit 1000";
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
             
             
