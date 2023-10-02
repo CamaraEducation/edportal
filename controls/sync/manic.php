@@ -68,49 +68,7 @@
         }
 
         static function init(){
-            /* jobs sample: { "usage" : "1676104147.json", "apps" : "1676104147.json", "docs" : "1676104147.json", "client" : "KEN-MOM-KHA-001" }
-            self::check_file();
-            self::initialize();
-
-            for($i=1; $i<=25; $i++){
-
-                $file = self::load_file();
-
-                if($file == '') die('No jobs available');
-
-                $file = $file['files'];
-
-
-                $jobs = shell_exec("cat ".self::$jobs.'/'.$file);
-                $jobs = json_decode($jobs, true);
-
-                $usage = shell_exec("cat ".self::$data.'/'.$jobs['usage']);
-
-                $deviceName = json_decode($usage, true)[0]['DeviceName'];
-                $deviceName = $deviceName ?? 'CAMARAC-N03VP2M';
-
-                # if the jobs-client is less than 6 characters
-                if(strlen($jobs['client']) < 6):
-                    $sql = "SELECT * FROM `config`";
-                    $res = mysqli_query(conn(), $sql);
-                    $res = mysqli_fetch_assoc($res);
-
-                    $id = substr($res['country'], 0, 3).'-'.substr($res['region'], 0, 3).'-'.substr($res['school'], 0, 3);
-
-                    $jobs['client'] = str_replace('---', $id, $jobs['client']);
-                endif;
-
-
-                // replace the device name with the client name
-                $usage = str_replace($deviceName, $jobs['client'], $usage);
-
-                $apps  = str_replace($deviceName, $jobs['client'], shell_exec("cat ".self::$data.'/'.$jobs['apps']));
-                $docs  = str_replace($deviceName, $jobs['client'], shell_exec("cat ".self::$data.'/'.$jobs['docs']));
-
-                
-
-                
-            }*/
+            
 
             
             $lastAvailableRows = self::get_last_id();       # data: {usage:int, apps:int, docs:int}
@@ -186,8 +144,8 @@
         }
 
         static function get_usage($lastAvailableRows, $lastInsertedRows){
-            
-            $sql = "SELECT DeviceName, `Name`, StartLocalTime, EndLocalTime, Duration  FROM `manic_usage` WHERE `id` > ? AND `id` <= ?";
+
+            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_usage` WHERE `id` > ? AND `id` <= ?";
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
             
             
@@ -197,7 +155,7 @@
 
         static function get_apps($lastAvailableRows, $lastInsertedRows){
             // fetch the data from manic_apps
-            $sql = "SELECT DeviceName, `Name`, StartLocalTime, EndLocalTime, Duration  FROM `manic_apps` WHERE `id` > ? AND `id` <= ? limit 1000";
+            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_apps` WHERE `id` > ? AND `id` <= ?" limit 1000;
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
             
             
@@ -207,7 +165,7 @@
 
         static function get_docs($lastAvailableRows, $lastInsertedRows){
             // fetch the data from manic_docs
-            $sql = "SELECT DeviceName, `Name`, StartLocalTime, EndLocalTime, Duration  FROM `manic_docs` WHERE `id` > ? AND `id` <= ?";
+            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_docs` WHERE `id` > ? AND `id` <= ?";
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
 
             // return the data:json
