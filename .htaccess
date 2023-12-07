@@ -9,9 +9,6 @@ RewriteEngine on
     Deny from all
 </Files>
 
-# prevent direct access to the directories :- controls, routes, views, vendor, core
-RewriteRule ^(app|routes|views|vendor|core) - [F,L,NC]
-
 # set your rewrite base
 # Edit this in your init method too if you script lives in a subfolder
 RewriteBase /
