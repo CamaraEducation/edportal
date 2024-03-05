@@ -103,9 +103,7 @@
 						</div>
 						<div class="card col-sm-12">
 							<div class="card-header border-0">
-								<h2 class="card-title mb-2 text-primary pad-2">School Details
-									@if(viewer() == 1) <small><a class="text-danger" href="/configure/portal">(Update Details)</a></small> @endif
-								</h2>
+								<h2 class="card-title mb-2 text-primary pad-2">School Details</h2>
 							</div>
 							<div class="card-body pb-2 px-3">
 								<h6>School: {{ConfigsController::get('school')}}</h6>

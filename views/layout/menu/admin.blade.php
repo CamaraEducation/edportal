@@ -25,12 +25,6 @@
         <li>
             <a href="/dropbox/add">Add to Dropbox</a>
         </li>
-        <!--li><a href="javascript:void()">Learning Studio</a>
-            <ul aria-expanded="false">
-                <li><a href="/lms/c/add">Create Course</a></li>
-                <li><a href="/lms/c/my">My Courses</a></li>
-            </ul>
-        </li-->
     </ul>
 </li>
 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false" class="admin">
@@ -45,14 +39,11 @@
                 <li><a href="/add/user">Create</a></li>
             </ul>
         </li>
-        <li><a href="javascript:void()">System</a>
-            <ul aria-expanded="false">
-                <li><a href="/update/portal">Update & Export</a></li>
-                <li><a href="/manic/clients">Connections</a></li>
-            </ul>
-        </li>
         <li>
-            <a href="/configure/portal">Configuration</a>
+            <a href="/update/portal">System Update</a>
         </li>
+        <!--li>
+            <a href="/configure/portal">Configuration</a>
+        </li-->
     </ul>
 </li>
