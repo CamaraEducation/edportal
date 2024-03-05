@@ -16577,7 +16577,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 .deznav .metismenu {
 	display: flex;
 	flex-direction: column;
-	padding-top: 10vh;
+	padding-top: 3vh;
 	padding-bottom: 15px;
 }
 
