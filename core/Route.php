@@ -1,7 +1,5 @@
 <?php
 
-namespace core;
-
 class Route {
 
   private static $routes = Array();
@@ -48,7 +46,7 @@ class Route {
     }
   }
 
-  public static function run($basepath = '', $case_matters = false, $trailing_slash_matters = false, $multimatch = false) {
+  public static function run($basepath = '/', $case_matters = false, $trailing_slash_matters = false, $multimatch = false) {
 
     // The basepath never needs a trailing slash
     // Because the trailing slash will be added using the route expressions
