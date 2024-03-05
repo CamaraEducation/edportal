@@ -11,6 +11,7 @@
 /node_modules/
 /reserved/
 /upload/
+/vendor/
 
 wiki.md
 
