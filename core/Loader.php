@@ -1,11 +1,11 @@
 <?php
-function load_classphp($directory) {
+function load_dir_files($directory) {
 	if(is_dir($directory)) {
 		$scan = scandir($directory);
 		unset($scan[0], $scan[1]); //unset . and ..
 		foreach($scan as $file) {
 			if(is_dir($directory."/".$file)) {
-				load_classphp($directory."/".$file);
+				load_dir_files($directory."/".$file);
 			} else {
 				if(strpos($file, '.php') !== false) {
 					require_once($directory."/".$file);
@@ -75,5 +75,5 @@ function viewer(){
 
 require_once 'Configuration.php';
 require_once 'Notices.php';
-load_classphp('controls');
+load_dir_files('controls');
 ?>
