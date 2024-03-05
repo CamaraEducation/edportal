@@ -12,16 +12,6 @@ function conn(){
 	return $conn;
 }
 
-function ccnms(){
-	$servername = $_ENV['DB_HOST'];
-	$username   = 'ccnms';
-	$password   = 'ccnms';
-	$database   = 'ccnms';
-
-	$conn = new mysqli($servername, $username, $password, $database);
-	return $conn;
-}
-
 function db(){
 	$hostname = $_ENV['DB_HOST'];
 	$username = $_ENV['DB_USER'];
@@ -97,7 +87,7 @@ function getFileCount($path) {
 }
 
 function loadColor($id){
-	$json = file_get_contents(data."colors.json");
+	$json = file_get_contents(getcwd()."/assets/colors.json");
 	return (json_decode($json, true)[$id]);
 }
 
