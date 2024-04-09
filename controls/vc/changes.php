@@ -13,7 +13,7 @@ class Changes{
 			exec('sudo unzip -o /www/wwwroot/default/upload/dropbox/manic.zip -d /www/wwwroot/');
 			echo '<b class="text-success">SUCCESS: </b>Manic syncronization files updated successfully <br>'.PHP_EOL;
 			
-			db()->query("UPDATE config set `last` = 223 where id = 1");
+			PortalUpdate::version(223);
 		endif;
     }
 
@@ -42,19 +42,18 @@ class Changes{
 					(4, 'Let us Talk pants', '202312090139.txt', 'text', 'all', '2023-09-13 18:20:29', '2023-09-13 18:10:52');
 			");
 
-			db()->query("UPDATE config set `last` = 224 where id = 1");
+			PortalUpdate::version(225);
         endif;
 
     }
 
     public static function v224(){
         if(ConfigsController::get('last') == 224):
-            exec("sudo cp -f /www/wwwroot/config.log /www/wwwroot/default/manic/");
-            exec('sudo chmod -R 777 /www/wwwroot/default/manic');
             
             // drop manic jobs table if exists
             db()->query("DROP TABLE IF EXISTS `manic_jobs`");
-            db()->query("UPDATE config set `last` = 225 where id = 1");
+			
+			PortalUpdate::version(226);
         endif;
     }
 
