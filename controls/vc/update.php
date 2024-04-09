@@ -37,7 +37,7 @@ class PortalUpdate{
 	}
 
 	public static function version($version){
-		db()->query("UPDATE config set `last` = ? where id = 1", $version);
+		db()->query("UPDATE config set `last` = ? where id = 1", $version); 
 	}
 }
 ?>
