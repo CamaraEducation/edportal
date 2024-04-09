@@ -7,7 +7,7 @@ class PortalUpdate{
 			LegacyChanges::init();
 			Changes::init();
 
-			echo "Update Success: Edportal Version" .ConfigsController::get('last') .PHP_EOL;
+			echo "Update Success: Edportal Version: " .ConfigsController::get('last') .PHP_EOL;
 
 		} catch (\Throwable $th) {
 			
