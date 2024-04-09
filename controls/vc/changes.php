@@ -48,7 +48,7 @@ class Changes{
     }
 
     public static function v224(){
-        if(ConfigsController::get('last') == 224):
+        if(ConfigsController::get('last') == 225):
             
             // drop manic jobs table if exists
             db()->query("DROP TABLE IF EXISTS `manic_jobs`");
