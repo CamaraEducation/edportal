@@ -19,12 +19,24 @@ class PortalUpdate{
 
 	public static function auto(){
 		if(PHP_OS_FAMILY == 'Windows'){ 
-			shell_exec('git stash');
+			echo(shell_exec('git stash'));
 			shell_exec('git pull origin main');
 		}else{
-			shell_exec('sudo git stash');
-			shell_exec('sudo git pull origin main');
+
+			// copy store a backup of config.log
+            exec("sudo cp -f /www/wwwroot/default/manic/config.log /www/wwwroot/");
+
+			echo(shell_exec('sudo git stash'));
+			echo(shell_exec('sudo git pull origin main'));
+
+			// restore config.log			
+            exec('sudo chmod -R 777 /www/wwwroot/default/manic');
+			exec("sudo cp -f /www/wwwroot/config.log /www/wwwroot/default/manic/");
 		}
+	}
+
+	public static function version($version){
+		db()->query("UPDATE config set `last` = ? where id = 1", $version);
 	}
 }
 ?>
