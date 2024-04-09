@@ -26,6 +26,7 @@ class PortalUpdate{
 			// copy store a backup of config.log
             exec("sudo cp -f /www/wwwroot/default/manic/config.log /www/wwwroot/");
 
+			// stash and pull from git
 			echo(shell_exec('sudo git stash'));
 			echo(shell_exec('sudo git pull origin main'));
 
