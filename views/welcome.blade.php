@@ -123,7 +123,8 @@
 									@endphp
 								@else
 									@php $livetime = StatsController::count_user_time($_SESSION['id']);
-									$user_activity = StatsController::count_user_activity($_SESSION['id']); 
+									$user_activity = StatsController::count_user_activity($_SESSION['id']);
+									$live_activity = $user_activity;
 									@endphp
 								@endif
 								<h6>Today 		: {{TimeController::convert_sec_min_hrs($livetime['today']/1000)}}</h6>
