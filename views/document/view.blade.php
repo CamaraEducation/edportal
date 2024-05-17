@@ -67,7 +67,6 @@
 		<!-- wow flip plugin stylesheet -->
 		@js('/assets/vendor/flipper/jquery.easing.min.js')
 		@js('/assets/vendor/flipper/jquery.fittext.js')
-		@js('/assets/vendor/flipper/wow.min.js')
 		@css('/assets/vendor/flipper/wow_book.css')
 
 		<style>
