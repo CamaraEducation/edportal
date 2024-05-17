@@ -19,7 +19,7 @@ class FileUploader{
         } else {
             if (move_uploaded_file($_FILES[$file]["tmp_name"], $target_file)) {
                 // remove getcwd() from $target_file
-                $target_file = str_replace(getcwd(), '', $target_file);
+                $target_file = str_replace(getcwd().'/', '', $target_file);
                 
                 return $target_file;
             } else {
