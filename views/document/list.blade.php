@@ -3,7 +3,7 @@
 @section('header')
 <style>
 	.subject-card {
-		height: 300px;
+        aspect-ratio: 4/5;
 		background-size: cover !important;
 		background-position: center!important;
 		background-repeat: no-repeat !important;
@@ -12,9 +12,11 @@
 	.subject-banner{
 		width: 97%;
 		background-color:white;
-		height: 70px;
+		height: 60px;
 		position: absolute;
 		bottom: 0;
+        border: 3px solid #f1f1f1;
+        left: 18px;
 	}
 
 	.subject-img{
@@ -86,7 +88,7 @@
                                                 @php $documents = DocsControl::fetch($id); @endphp
                                                 @foreach ($documents as $doc)
                                                 @php $doc_id = $doc['id'] @endphp
-                                                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" id="doc-{{$doc_id}}">
+                                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="doc-{{$doc_id}}">
                                                     <div class="subject-card" style="background:url({{$doc['thumbnail']}})">
                                                         <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}">                        
                                                         <div class="subject-banner row">
@@ -94,12 +96,8 @@
                                                         </div>
                                                         </a>
                                                     </div>
-                                                    <center>
-                                                    <div class="actions" 
-                                                        @if (viewer() != 1))
-                                                           style='display:none'; 
-                                                        @endif
-                                                    >
+                                                    <div class="actions text-center" 
+                                                        @if (viewer() != 1)) style='display:none'; @endif >
                                                         <a href="/view/document/{{$doc['id']}}/{{str_replace(' ', '-', $doc['name'])}}" title="{{$doc['name']}}" class="btn btn-primary">
                                                             <i class="fa fa-eye text-white"></i>
                                                         </a>
@@ -107,7 +105,6 @@
                                                             <i class="fa fa-trash text-white"></i>
                                                         </a>
                                                     </div>
-                                                    </center>
                                                 </div>
                                                 @endforeach
                                             </div>
