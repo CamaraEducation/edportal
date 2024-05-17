@@ -18,6 +18,9 @@ class FileUploader{
             echo "Wrong media format.";
         } else {
             if (move_uploaded_file($_FILES[$file]["tmp_name"], $target_file)) {
+                // remove getcwd() from $target_file
+                $target_file = str_replace(getcwd(), '', $target_file);
+                
                 return $target_file;
             } else {
                 echo "Sorry, there was an error uploading your file.";
