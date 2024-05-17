@@ -46,7 +46,6 @@
 				</div>
 			</div>
 
-			@include('layout.chatbox')
 			@include('layout.topbar')
 			@yield('content')
 

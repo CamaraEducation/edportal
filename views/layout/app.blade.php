@@ -50,7 +50,6 @@
 				</div>
 			</div>
 
-			@include('layout.chatbox')
 			@include('layout.topbar')
 			@include('layout.sidebar')
 			@yield('content')
