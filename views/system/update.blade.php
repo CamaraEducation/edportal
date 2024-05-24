@@ -17,14 +17,6 @@
                         <div class="col-md-12 pad-1">
                             <button id="update" class="btn btn-lg btn-primary w-100 text-bold">Start Portal Update</button>
                         </div>
-
-                        <div class="col-md-12 pad-1">
-                            <a href="/export/portal"  class="btn btn-lg btn-warning w-100 text-bold">Export Portal Data</a>
-                        </div>
-
-                        <!--div class="col-md-12 pad-1">
-                            <button id="ccnms" class="btn btn-lg btn-info w-100 text-bold">Export CCNMS Data</button>
-                        </div-->
                         
                     </div>
                     <div class="log" hidden>
