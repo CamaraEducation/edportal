@@ -65,7 +65,12 @@
 			
             // fetch last id: `manic_usage`, `manic_apps`, `manic_docs`
             $usage = db()->fetchField('SELECT id FROM manic_usage ORDER BY id DESC LIMIT 1');
+			
             $apps  = self::calculate_last()['apps']+1000;
+			$lastApps = db()->fetchField('SELECT id FROM manic_apps ORDER BY id DESC LIMIT 1');
+			if($apps > $lastApps) $apps = $lastApps;
+			
+			
             $docs  = db()->fetchField('SELECT id FROM manic_docs ORDER BY id DESC LIMIT 1');
 
             return ['usage' => $usage, 'apps' => $apps, 'docs' => $docs];
