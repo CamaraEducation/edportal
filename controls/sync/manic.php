@@ -62,9 +62,10 @@
         }
 
         static function get_last_id(){
+			
             // fetch last id: `manic_usage`, `manic_apps`, `manic_docs`
             $usage = db()->fetchField('SELECT id FROM manic_usage ORDER BY id DESC LIMIT 1');
-            $apps  = db()->fetchField('SELECT id FROM manic_apps ORDER BY id DESC LIMIT 1');
+            $apps  = $lastInsertedRows = self::calculate_last()['apps']+2500;
             $docs  = db()->fetchField('SELECT id FROM manic_docs ORDER BY id DESC LIMIT 1');
 
             return ['usage' => $usage, 'apps' => $apps, 'docs' => $docs];
@@ -83,7 +84,7 @@
         static function get_apps($lastAvailableRows, $lastInsertedRows){
             // fetch the data from manic_apps
             $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_apps` WHERE `id` > ? AND `id` <= ? ";
-            $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
+            $res = db()->fetchAll($sql, $lastInsertedRows, $lastInsertedRows+2500);
             
             
             return json_encode($res);
