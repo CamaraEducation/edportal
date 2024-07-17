@@ -5,67 +5,6 @@
         static $jobs;
         static $data;
 
-        # initialize the paths
-        static function initialize(){
-
-            if(ConfigsController::get('last') >= 200):
-
-                $path = [
-                    'file' => '/www/wwwroot/manic/data',
-                    'jobs' => '/www/wwwroot/manic/data/jobs',
-                    'data' => '/www/wwwroot/manic/data/files'
-                ];
-
-            else:
-
-                $path = [
-                    'file' => '/www/wwwroot/upload/manic/data',
-                    'jobs' => '/www/wwwroot/upload/manic/data/jobs',
-                    'data' => '/www/wwwroot/upload/manic/data/files'
-                ];
-
-            endif;
-
-
-            # initialize the static variables
-            self::$file = $path['file'];
-            self::$jobs = $path['jobs'];
-            self::$data = $path['data'];
-
-        }
-
-
-        static function check_file(){
-            exec("sudo chown -R www /www/wwwroot/manic/data/jobs && sudo chmod -R 777 /www/wwwroot/manic/data/jobs");
-            exec("sudo chown -R www /www/wwwroot/manic/data/files && sudo chmod -R 777 /www/wwwroot/manic/data/files");
-        }
-
-        static function possess_file(){
-            exec("sudo chmod 777 /www/wwwroot/default/.user.ini");
-            // write an empty string .user.ini
-            file_put_contents(".user.ini", "");
-        }
-
-        static function run(){
-            // start a PHP server on localhost:82 in -t /www/wwwroot/default
-            $command = "sudo php -S localhost:82 -t /www/wwwroot/default >/dev/null 2>&1 &";
-            exec($command);
-
-            self::possess_file();
-
-            // wait for the server to start
-            sleep(1);
-
-            // make a cURL request to localhost:82/manic/sync/alter
-            $url = "http://localhost:82/manic/sync/alter";
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $response = curl_exec($ch);
-            curl_close($ch);
-
-            // return the response
-            return $response;
-        }
 
         static function init(){
             
@@ -107,18 +46,6 @@
 
         }
 
-        static function load_file() {
-            /*if(is_dir($directory)) {
-                $scan = scandir($directory);
-                unset($scan[0], $scan[1]); //unset . and ..
-                foreach($scan as $file) {
-                    if(strpos($file, '.json') !== false) {
-                        return $file;
-                    }
-                }
-            }*/
-
-        }
 
         static function update_last($data){
             // data: {usage:int, apps:int, docs:int}
@@ -145,7 +72,7 @@
 
         static function get_usage($lastAvailableRows, $lastInsertedRows){
 
-            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_usage` WHERE `id` > ? AND `id` <= ?";
+            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_usage` WHERE `id` > ? AND `id` <= ? limit 1000";
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
             
             
@@ -155,7 +82,7 @@
 
         static function get_apps($lastAvailableRows, $lastInsertedRows){
             // fetch the data from manic_apps
-            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_apps` WHERE `id` > ? AND `id` <= ? limit 1000";
+            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_apps` WHERE `id` > ? AND `id` <= ? ";
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
             
             
@@ -165,7 +92,7 @@
 
         static function get_docs($lastAvailableRows, $lastInsertedRows){
             // fetch the data from manic_docs
-            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_docs` WHERE `id` > ? AND `id` <= ?";
+            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_docs` WHERE `id` > ? AND `id` <= ? limit 1000";
             $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
 
             // return the data:json
