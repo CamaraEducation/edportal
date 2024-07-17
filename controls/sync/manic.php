@@ -88,8 +88,8 @@
 
         static function get_apps($lastAvailableRows, $lastInsertedRows){
             // fetch the data from manic_apps
-            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_apps` WHERE `id` > ? AND `id` <= ? limit 1000";
-            $res = db()->fetchAll($sql, $lastInsertedRows, 1000);
+            $sql = "SELECT DeviceName, `Name`, DATE_FORMAT(StartLocalTime, '%Y-%m-%d %H:%i:%s') AS StartLocalTime, DATE_FORMAT(EndLocalTime, '%Y-%m-%d %H:%i:%s') AS EndLocalTime, Duration FROM `manic_apps` WHERE `id` > ? AND `id` <= ?";
+            $res = db()->fetchAll($sql, $lastInsertedRows, $lastAvailableRows);
             
             
             return json_encode($res);
