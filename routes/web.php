@@ -59,9 +59,18 @@ Route::add('/view/video/([0-9]*)/([A-Za-z\-]*)', function($id, $title) {
 	return Blade::render('video.view', ['id' => $id, 'title'=> $title]);
 });
 
+
+Route::add('/edit/video/([0-9]*)/([A-Za-z\-]*)', function($id, $title) {
+	return Blade::render('video.edit', ['id' => $id, 'title'=> $title]);
+});
+
 Route::add('/add/video', function() {
 	return Blade::render('video.create');
 });
+
+Route::add('/add/video/timestamps', function() {
+	VideosControl::addTimeStamp();
+}, 'post');
 
 Route::add('/stats/video', function() {
 	return Blade::render('video.stats');
