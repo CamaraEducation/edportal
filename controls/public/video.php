@@ -21,11 +21,14 @@ class VideosControl{
 		$class 	  = mysqli_real_escape_string(conn(), $_POST['class']);
 		$tags 	  = mysqli_real_escape_string(conn(), $_POST['tags']);
 		$description = mysqli_real_escape_string(conn(), $_POST['description']);
+		$author = $_SESSION['id'];
 
 		$banner = '/' . FileUploader::upload($file = 'thumbnail', $dir = 'video/cover/');
 		$video  = '/' . FileUploader::upload($file = 'video', $dir = 'video/source/' );
 
-		$sql = "INSERT INTO video (title, description, thumbnail, source, class, category, tags) VALUES ('$title', '$description', '$banner', '$video', '$class', '$category', '$tags')";
+		$sql = "INSERT INTO video
+			(title, description, thumbnail, source, class, category, tags, author) VALUES
+			('$title', '$description', '$banner', '$video', '$class', '$category', '$tags', '$author')";
 		if(mysqli_query(conn(), $sql)){
 			header('Location: /video');
 		}else{
@@ -85,6 +88,58 @@ class VideosControl{
 		}else{
 		   echo 'something wrong';
 		}
+	}
+
+	public static function addTimeStamp(){
+
+		header('Content-Type: application/json');
+
+		$videoId = $_POST['videoId'];
+		$timeStamps = $_POST['timestamps']; # [...[title: string, time: number, thumbnail: string-b64]]
+
+		// check if video exists
+		$video = db()->query("SELECT * FROM video WHERE id = ?", $videoId);
+		if(!$video) exit(json_encode(['status' => 'error', 'message' => 'Video not found']));
+
+		// check if timestamps is empty
+		if(!is_array($timeStamps) or !count($timeStamps))
+			exit(json_encode(['status' => 'error', 'message' => 'No timestamps found']));
+
+		// check if timestamps is valid, remove invalid timestamps
+		$validTimeStamps = [];
+		foreach($timeStamps as $timeStamp){
+			if(!is_array($timeStamp) or !isset($timeStamp['title']) or !isset($timeStamp['time']) or !isset($timeStamp['thumbnail']))
+				continue;
+
+			if(strlen($timeStamp['thumbnail']) > 100):
+				// extract and save images
+				$thumbnail = $timeStamp['thumbnail'];
+				$thumbnail = explode(';', $thumbnail)[1];
+				$thumbnail = explode(',', $thumbnail)[1];
+				$thumbnail = base64_decode($thumbnail);
+
+				$thumbnailPath = 'upload/video/timestamps/' . uniqid() . '.png';
+				file_put_contents($thumbnailPath, $thumbnail);
+
+				$thumbnailPath = '/' . $thumbnailPath;
+			
+				else: $thumbnailPath = $timeStamp['thumbnail'];
+
+			endif;
+
+			// save timestamp
+			$validTimeStamps[] = [
+				'title' => $timeStamp['title'],
+				'time' => $timeStamp['time'],
+				'thumbnail' => $thumbnailPath
+			];
+		}
+
+		// update video with timestamps
+		db()->query("UPDATE video SET timestamps = ? WHERE id = ?", json_encode($validTimeStamps), $videoId);		
+		echo json_encode(['status' => 'success', 'message'=> 'Timestamps added']);
+		
+
 	}
 }
 ?>
