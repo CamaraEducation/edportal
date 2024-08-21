@@ -6,6 +6,8 @@ class Changes{
         self::v200();
         self::v223();
         self::v224();
+		self::v227();
+		self::v228();
     }
 
     public static function v200(){
@@ -56,5 +58,32 @@ class Changes{
 			PortalUpdate::version(226);
         endif;
     }
+	
+	public static function v227() {
+		if(ConfigsController::get('last') < 227):
+			
+			PortalUpdate::version(227);
+        endif;
+	}
+
+	/**
+	 * @since 2.28
+	 * 
+	 * @return void
+	 * 		adds timestamps to videos
+	 */
+	public static function v228() {
+		if(ConfigsController::get('last') < 228):
+
+			db()->query("ALTER TABLE `video`
+				ADD COLUMN `timestamps` JSON NULL AFTER `time`,
+				ADD COLUMN `author` INT NOT NULL DEFAULT '1' AFTER `timestamps`;
+			");
+
+			mkdir('upload/video/timestamps', 0777, true);
+			
+			PortalUpdate::version(228);
+		endif;
+	}
 
 }
