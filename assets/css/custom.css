@@ -309,6 +309,10 @@ a.popup-youtube {
 	margin-bottom: 10px !important;
 }
 
+.form-control{
+	height: 50px !important;
+}
+
 @-moz-keyframes spin {
 	100% {
 		-moz-transform: rotate(360deg);
