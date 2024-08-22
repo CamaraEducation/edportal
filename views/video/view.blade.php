@@ -71,8 +71,10 @@
 										<div class="col-12 d-grid" style="min-height:350px">
 											<div class="d-flex justify-content-center align-items-center">
 												<div>
-													<i class="fa fa-clock-o fa-5x text-muted text-center"></i>
-													<h4 class="text-center">No Timestamps</h4>
+													<h4 class="text-center">
+														<i class="fa fa-clock-o fa-5x text-muted"></i><br>
+														No Timestamps
+													</h4>
 													<p class="text-center">No timestamps have been added to this video yet.</p>
 												</div>
 											</div>
