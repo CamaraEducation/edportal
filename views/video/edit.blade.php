@@ -14,6 +14,10 @@
 		input[type=range]:focus {
 			background: #bbbbbb;
 		}
+		
+		input.stamp-slider{
+			background: #000000 !important;
+		}
 	</style>
 @endsection
 @section('content')
