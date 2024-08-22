@@ -59,9 +59,6 @@
 															<span class="fw-bold">{{$timestamp->title}}</span> <br>
 															<span>{{ \Carbon\Carbon::parse(floatval($timestamp->time))->format('H:i:s') }}</span>
 														</button>
-														<!--button type="button" class="btn btn-light playStam" data-video-stamp="{{$timestamp->title}}"  style="position: absolute;left: 12px;">
-															<i class="fa fa-play"></i>
-														</button-->
 													</div>
 													<div class="col-4">
 														<img src="{{$timestamp->thumbnail}}" class="img-fluid btn mt-3 p-0 w-100 playStamp" data-video-stamp="{{$timestamp->time}}" alt="thumbnail">
@@ -74,7 +71,7 @@
 										<div class="col-12 d-grid" style="min-height:350px">
 											<div class="d-flex justify-content-center align-items-center">
 												<div>
-													<i class="fa fa-clock-o fa-5x text-muted"></i>
+													<i class="fa fa-clock-o fa-5x text-muted text-center"></i>
 													<h4 class="text-center">No Timestamps</h4>
 													<p class="text-center">No timestamps have been added to this video yet.</p>
 												</div>
