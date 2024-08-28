@@ -55,12 +55,12 @@ Route::add('/video/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id) {
 	return Blade::render('video.list', ['id' => $id]);
 });
 
-Route::add('/view/video/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id, $title) {
+Route::add('/view/video/([0-9]*)/(.*)', function($id, $title) {
 	return Blade::render('video.view', ['id' => $id, 'title'=> $title]);
 });
 
 
-Route::add('/edit/video/([0-9]*)/([A-Za-z0-9\-\&\,]*)', function($id, $title) {
+Route::add('/edit/video/([0-9]*)/(.*)', function($id, $title) {
 	return Blade::render('video.edit', ['id' => $id, 'title'=> $title]);
 });
 
