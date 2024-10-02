@@ -1,9 +1,0 @@
-img.img-skew:hover{
-  transform: rotatez(8deg);
-}
-
-img.img-skew {
-  width: 125px;
-  height: 200px
-;
-}
