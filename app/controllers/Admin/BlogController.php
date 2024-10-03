@@ -57,7 +57,8 @@ class BlogController extends Controller
 
         # fetch the article
         $article_id = Helpers::decode($id);
-        if($article_id == '') exit(response()->page(getcwd()."/app/views/errors/404.html"));
+        if($article_id == '')
+            return response()->markup(view('errors.404'), 404);
 
         $article = BlogArticle::find($article_id);
 

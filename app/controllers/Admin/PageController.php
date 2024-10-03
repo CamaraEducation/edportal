@@ -117,7 +117,7 @@ class PageController extends Controller
         # find the page
         $page = Page::find($pageId);
         if(!$page)
-            exit(response()->page(getcwd().'/app/views/errors/404.html', 404));
+            return response()->markup(view('errors.404'), 404);
 
         # allocate data
         $this->data->title = 'Edit Page';

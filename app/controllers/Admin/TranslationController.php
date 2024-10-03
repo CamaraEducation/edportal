@@ -77,7 +77,7 @@ class TranslationController extends Controller
 
         $languageId = Helpers::decode($id);
         if(!$languageId)
-            exit(response()->page('app/views/errors/404.html', 404));
+            return response()->markup(view('errors.404'), 404);
 
         $language = Language::find($languageId);
 

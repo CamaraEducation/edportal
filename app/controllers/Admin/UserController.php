@@ -32,7 +32,7 @@ class UserController extends Controller
             return response()->markup(view('errors.403'), 403);
 
         if(!in_array($role, ['all', 'moderator']))
-            return response()->page(ViewsPath('errors/404.html'), 404);
+            return response()->markup(view('errors.404'), 404);
 
         # data allocation
         ($role == 'all') ? 
@@ -122,7 +122,7 @@ class UserController extends Controller
         # decode user id
         $user_id = Helpers::decode($id);
         if($user_id == '')
-            exit(response()->page(ViewsPath('errors/404.html'), 404));
+            return response()->markup(view('errors.404'), 404);
 
         # data allocation
         $this->data->title = "Manage: " . User::find($user_id)->fullname;
@@ -151,7 +151,7 @@ class UserController extends Controller
 
         $user_id = Helpers::decode($id);
         if($user_id == '')
-            exit(response()->page(getcwd()."/app/views/errors/404.html"));
+            return response()->markup(view('errors.404'), 404);
 
         if(User::find($user_id)->role == 'admin')
             exit(response()->json(['status'=>'error', 'message'=>'You cannot delete an admin']));
@@ -179,7 +179,7 @@ class UserController extends Controller
         # decode user id
         $user_id = Helpers::decode(request()->get('user_id'));
         if($user_id == '')
-            exit(response()->page(getcwd()."/app/views/errors/404.html"));
+            return response()->markup(view('errors.404'), 404);
 
         $user = User::find($user_id);
 

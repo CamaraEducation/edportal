@@ -27,7 +27,7 @@ class ApiController extends Controller
     public function index(){
 
         if(!$this->data->modules->api)
-            exit(response()->page("app/views/errors/404.html", 404));
+            return response()->markup(view('errors.404'), 404);
 
         $this->data->title = 'API Key Management';
         $this->data->apiKeys = ApiKey::user(auth()->id());
@@ -177,7 +177,7 @@ class ApiController extends Controller
         $apiKeyID = Helpers::decode($id);
 
         if($apiKeyID == '' or !$this->data->modules->api)
-            exit(response()->page(getcwd()."/app/views/errors/404.html"));
+            return response()->markup(view('errors.404'), 404);
 
         $this->data->title = 'API Activity';
         $this->data->apiID = $id;

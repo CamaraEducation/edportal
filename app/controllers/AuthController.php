@@ -44,11 +44,11 @@ class AuthController extends Controller
 
         if($data) {
 
-            ($api) ? exit( response()->json(['status'=>'success', 'bearer'=>$data['token']])) : null;
+            ($api) ? exit( response()->json(['status'=>true, 'bearer'=>$data['token']])) : null;
 
-            $message = ['status' => 'success', 'message' => 'Welcome! Login successful'];
+            $message = ['status' => true, 'message' => 'Welcome! Login successful'];
         }else{
-            $message = ['status' => 'error', 'message' => 'Uh Ooooh! Login failed'];
+            $message = ['status' => false, 'message' => 'Uh Ooooh! Login failed'];
         }
 
         response()->json($message);
@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         // check if user exists
         if(User::where('email', request()->get('email'))->first())
-            exit(response()->json(['status'=>'error', 'message'=>'User already exists']));
+            exit(response()->json(['status'=>false, 'message'=>'User already exists']));
         
         $data = auth()->register([
             'email' => request()->get('email'),
@@ -71,9 +71,9 @@ class AuthController extends Controller
         ]);
 
         if($data) {
-            $message = ['status' => 'success', 'message' => 'Registration successful'];
+            $message = ['status' => true, 'message' => 'Registration successful'];
         }else{
-            $message = ['status' => 'error', 'message' => 'Registration failed'];
+            $message = ['status' => false, 'message' => 'Registration failed'];
         }
 
         response()->json($message);
@@ -100,11 +100,11 @@ class AuthController extends Controller
             // get user data by email
             $userData = User::where('email', $email)->first();
             if(!$userData)
-                exit(response()->json(['status'=>'error', 'message'=>'User with such email does not exist']));
+                exit(response()->json(['status'=>false, 'message'=>'User with such email does not exist']));
 
             // if reset_token is present and updated time is less than a minute
             if($userData->remember_token && (time() - strtotime($userData->updated_at)) < 60)
-                exit(response()->json(['status'=>'error', 'message'=>'Password reset link already sent, check spam folder']));
+                exit(response()->json(['status'=>false, 'message'=>'Password reset link already sent, check spam folder']));
 
             // generate reset token
             $resetToken = Password::hash($userData->id.time());
@@ -120,13 +120,13 @@ class AuthController extends Controller
                 $email, $userData->fullname
             );
 
-            response()->json(['status'=>'success', 'message'=>'Password reset link sent to your email']);
+            response()->json(['status'=>true, 'message'=>'Password reset link sent to your email']);
 
         }catch(\Exception $e){
             
             (getenv('app_debug') == 'true') ?
-                response()->json(['status'=>'error', 'message'=>$e->getMessage()]) :
-                response()->json(['status'=>'error', 'message'=>'An error occurred']);
+                response()->json(['status'=>false, 'message'=>$e->getMessage()]) :
+                response()->json(['status'=>false, 'message'=>'An error occurred']);
         }
     }
 
@@ -135,16 +135,16 @@ class AuthController extends Controller
      * @param string $token
      * @return void
      */
-    public function changePassword($token){
+    public function changePassword($token)
+    {
         $token = base64_decode($token);
         $userData = User::where('remember_token', $token)->first();
 
         if(!$userData)
-            exit(response()->page(getcwd().'/app/views/errors/400.html', 400));
+            return response()->markup(view('errors.400'), 400);
 
-        // token issued more than 2 hours ago
         if((time() - strtotime($userData->updated_at)) > 7200)
-            exit(response()->page(getcwd().'/app/views/errors/400.html', 400));
+            return response()->markup(view('errors.400'), 400);
 
         $this->data->token = $token;
 
@@ -161,11 +161,11 @@ class AuthController extends Controller
         $userData = User::where('remember_token', $token)->first();
 
         if(!$userData)
-            exit(response()->json(['status'=>'error', 'message'=>'Invalid token submitted']));
+            exit(response()->json(['status'=>false, 'message'=>'Invalid token submitted']));
 
         // token issued more than 2 hours ago
         if((time() - strtotime($userData->updated_at)) > 7200)
-            exit(response()->json(['status'=>'error', 'message'=>'Token expired']));
+            exit(response()->json(['status'=>false, 'message'=>'Token expired']));
 
         $password = request()->get('password');
         User::where('remember_token', $token)->update([
@@ -173,7 +173,7 @@ class AuthController extends Controller
             'remember_token' => null
         ]);
 
-        response()->json(['status'=>'success', 'message'=>'Password updated successfully']);
+        response()->json(['status'=>true, 'message'=>'Password updated successfully']);
     }
 
     /**
