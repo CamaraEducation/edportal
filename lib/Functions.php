@@ -148,6 +148,21 @@ function substring($string, $length, $end = '...'){
 
 }
 
+/*
+|--------------------------------------------------------------------------
+|  CSRF Token
+|--------------------------------------------------------------------------
+|
+| This function is used to get the CSRF token.
+|
+*/
+if(!function_exists('csrf_token')){
+
+    function csrf_token(){
+        return \Leaf\Anchor\CSRF::token();
+    }
+
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -160,25 +175,79 @@ function substring($string, $length, $end = '...'){
 if(!function_exists('csrf_field')){
 
     function csrf_field(){
-        return \Leaf\Anchor\CSRF::form();
+        return '<input type="hidden" name="_token" value="'.csrf_token().'">';
     }
 
 }
 
 /*
 |--------------------------------------------------------------------------
-|  CSRF Token
+|  CSRF Document Meta
 |--------------------------------------------------------------------------
 |
-| This function is used to get the CSRF token.
+| This function is used to generate a CSRF token meta tag.
 |
 */
-if(!function_exists('csrf_token')){
+if(!function_exists('csrf_meta')){
 
-    function csrf_token(){
-        return \Leaf\Anchor\CSRF::token()['_token'];
+    function csrf_meta(){
+        return '<meta name="csrf-token" content="'.csrf_token().'">';
     }
 
+}
+
+/*
+|--------------------------------------------------------------------------
+|  Carbon
+|--------------------------------------------------------------------------
+|
+| This function is used to get the Carbon instance.
+|
+*/
+if(!function_exists('carbon')){
+
+    function carbon(){
+        return \Carbon\Carbon::class;
+    }
+
+}
+
+/*
+|--------------------------------------------------------------------------
+|  Carbon Now
+|--------------------------------------------------------------------------
+|
+| This function is used to get the current time in Carbon format.
+|
+*/
+if(!function_exists('now')){
+
+    function now(){
+        return \Carbon\Carbon::now();
+    }
+
+}
+
+function active($key, $value){
+    return $key == $value ? 'active' : '';
+}
+
+/*
+|--------------------------------------------------------------------------
+|  Slugify
+|--------------------------------------------------------------------------
+|
+| This function is used to slugify a string.
+|
+*/
+if(!function_exists('slugify')){
+
+    function slugify($string){
+        
+        $string = preg_replace('/[^A-Za-z0-9-]+/', '-', $string);
+        return strtolower(trim($string, '-'));
+
+    }
 }
 
 /*
@@ -196,4 +265,30 @@ function urlPath($file){
 
     return '/storage/' . trim($file, '/');
     
+}
+
+/*
+|--------------------------------------------------------------------------
+| Data (array|object) to XML (xml_encode)
+|--------------------------------------------------------------------------
+|
+| This function is used to convert an array or object to XML.
+|
+*/
+if(!function_exists('xml_encode')){
+
+    function xml_encode($data, $rootNodeName = 'data', $xml = null) {
+        if ($xml === null) {
+            $xml = new SimpleXMLElement("<?xml version='1.0' encoding='utf-8'?><$rootNodeName></$rootNodeName>");
+        }
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                xml_encode($value, $key, $xml->addChild($key));
+            } else {
+                $xml->addChild($key, $value);
+            }
+        }
+        return $xml->asXML();
+    }
+
 }
