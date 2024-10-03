@@ -1,0 +1,174 @@
+@import url('/assets/css/fontawesome-all.css');
+
+.editor-board{
+    min-height: calc(100vh - 180px);
+    height: 100%;
+    position: relative;
+}
+
+.ck.ck-editor, .ck.ck-editor__main{
+    height: 95% !important;
+    position: absolute;
+    width: 100%;
+}
+
+.ck.ck-editor__main{
+    overflow-y: auto !important;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping{
+    margin-bottom: 10px;
+    border-bottom: solid 1px #c4c4c4 !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+}
+
+.ck.ck-editor__main>.ck-editor__editable{
+    height: 100% !important;
+    border: none !important;
+}
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused{
+    box-shadow: none !important;
+}
+
+.user-upload .img-avtar-upload{
+    opacity: 0.5;
+}
+
+/* Data Table */
+.table.dataTable[class*=table-] thead th {
+    background: transparent !important;
+}
+
+div.dt-container.dt-empty-footer tbody>tr:last-child>* {
+    border-bottom: 1px solid #e7eaee !important;
+}
+
+.dt-layout-row.dt-layout-table{
+    margin: 1rem auto;
+}
+
+.datatable-table thead th, .table thead th{
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* No border top on children of the first row */
+.datatable-table thead tr:first-child th,
+.table thead tr:first-child th{
+    border-top: none !important;
+    border-bottom: solid 2px #909090 !important;
+}
+
+/* No border bottom on children of the last row */
+.datatable-table tbody tr:last-child,
+.table tbody tr:last-child,
+.datatable-table tbody tr:last-child td,
+.table tbody tr:last-child td{
+    border-bottom: none !important;
+}
+
+/* Cursor */
+.cursor-pointer{ cursor: pointer; }
+
+.btn { border-radius: 5px !important; }
+.btn-primary { color: #fff !important; }
+.btn-light { border: solid 1px #727272 !important; }
+
+/* form select2 */
+.select2-container { display: block !important; }
+ span.select2-dropdown.select2-dropdown--below { z-index: 1100; }
+.select2-container--default .select2-selection--single .select2-selection__arrow { height: 50px; }
+.select2-container--default .select2-selection--single { border: 1px solid #bec8d0; height: 50px; }
+.select2-container--default .select2-selection--single .select2-selection__rendered { line-height: 50px; }
+.select2-container--default .select2-selection--multiple { padding: 10px 0 14px 5px !important;}
+
+/* form select2 dark theme */
+[data-pc-theme=dark] .select2-container--default .select2-selection--single,
+[data-pc-theme=dark] .select2-container--default .select2-selection--multiple,
+[data-pc-theme=dark] .select2-dropdown{
+    border-color: #303f50;
+    background-color: #263240;
+}
+[data-pc-theme=dark] .select2-container--default .select2-selection--single .select2-selection__rendered{
+    color: #b5bfc8;
+}
+
+[data-pc-layout="compact"] .theme-version {display: none;}
+[data-pc-layout="compact"] .theme-logo {width: 100%;}
+[data-pc-layout="compact"] .pc-submenu .pc-mtext { display: block; }
+
+textarea.select2-search__field ::placeholder { color: #dbe1e5 !important; }
+
+/* positioning */
+.start-10 { left: 10px; }
+.start-20 { left: 20px; }
+.start-30 { left: 30px; }
+.start-40 { left: 40px; }
+
+.end-10 { right: 10px; }
+.end-20 { right: 20px; }
+.end-30 { right: 30px; }
+.end-40 { right: 40px; }
+
+.top-10 { top: 10px; }
+.top-20 { top: 20px; }
+.top-30 { top: 30px; }
+.top-40 { top: 40px; }
+
+.bottom-10 { bottom: 10px; }
+.bottom-20 { bottom: 20px; }
+.bottom-30 { bottom: 30px; }
+.bottom-40 { bottom: 40px; }
+
+/* Form */
+.form-group{ margin-bottom: 1rem; }
+label {
+    margin: 0 0 .3rem .2rem;
+    font-weight: bold;
+}
+
+/* Color and Layers */
+.bg-success-light {
+	background-color: #d3fdd7 !important;
+}
+
+.bg-danger-light {
+	background-color: #ffdadf !important;
+}
+
+.bg-warning-light {
+	background-color: #fffbd3 !important;
+}
+
+.bg-info-light {
+    background-color: #d3f3ff !important;
+}
+
+/* Custom Width */
+.min-w25{ min-width: 25% !important; }
+.min-w50{ min-width: 50% !important; }
+.min-w75{ min-width: 75% !important; }
+.min-w100{ min-width: 100% !important; }
+
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c4c4c4;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
