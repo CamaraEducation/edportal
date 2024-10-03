@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "285a6b62aa3eaa48ec6aa2c01bc62ba6",
+    "content-hash": "3a870554bdf8df044d10b85a49e70c2b",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1441,16 +1441,16 @@
         },
         {
             "name": "leafs/anchor",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/anchor.git",
-                "reference": "debc228afd63d46d94d0c1d02629c2d912ecb4ee"
+                "reference": "2fe6dc330546ab9000e0a1fc7114d5fae5d3197e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/anchor/zipball/debc228afd63d46d94d0c1d02629c2d912ecb4ee",
-                "reference": "debc228afd63d46d94d0c1d02629c2d912ecb4ee",
+                "url": "https://api.github.com/repos/leafsphp/anchor/zipball/2fe6dc330546ab9000e0a1fc7114d5fae5d3197e",
+                "reference": "2fe6dc330546ab9000e0a1fc7114d5fae5d3197e",
                 "shasum": ""
             },
             "require-dev": {
@@ -1484,7 +1484,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/anchor/issues",
-                "source": "https://github.com/leafsphp/anchor/tree/v1.5.0"
+                "source": "https://github.com/leafsphp/anchor/tree/v1.6.0"
             },
             "funding": [
                 {
@@ -1496,7 +1496,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-07-09T00:51:55+00:00"
+            "time": "2024-10-02T00:31:19+00:00"
         },
         {
             "name": "leafs/auth",
@@ -1757,16 +1757,16 @@
         },
         {
             "name": "leafs/csrf",
-            "version": "v0.4.2",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/csrf.git",
-                "reference": "736e4098b044528f7df4dd7c92def961ee560175"
+                "reference": "78f96ebb2af853c6a692deb38e41522a79111cf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/csrf/zipball/736e4098b044528f7df4dd7c92def961ee560175",
-                "reference": "736e4098b044528f7df4dd7c92def961ee560175",
+                "url": "https://api.github.com/repos/leafsphp/csrf/zipball/78f96ebb2af853c6a692deb38e41522a79111cf8",
+                "reference": "78f96ebb2af853c6a692deb38e41522a79111cf8",
                 "shasum": ""
             },
             "require": {
@@ -1777,8 +1777,7 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "src/functions.php",
-                    "src/scripts.php"
+                    "src/functions.php"
                 ],
                 "psr-4": {
                     "Leaf\\Anchor\\": "src"
@@ -1806,7 +1805,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/csrf/issues",
-                "source": "https://github.com/leafsphp/csrf/tree/v0.4.2"
+                "source": "https://github.com/leafsphp/csrf/tree/v0.5.0"
             },
             "funding": [
                 {
@@ -1818,7 +1817,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-08-22T15:10:12+00:00"
+            "time": "2024-10-02T09:45:12+00:00"
         },
         {
             "name": "leafs/date",
@@ -2221,23 +2220,22 @@
         },
         {
             "name": "leafs/leaf",
-            "version": "v3.6.1",
+            "version": "v3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/leaf.git",
-                "reference": "fae98cef59bee332558498ddeea90f6e10f37f24"
+                "reference": "b887f2cdc0f49d56dc611229dacc41435c13d8ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/leaf/zipball/fae98cef59bee332558498ddeea90f6e10f37f24",
-                "reference": "fae98cef59bee332558498ddeea90f6e10f37f24",
+                "url": "https://api.github.com/repos/leafsphp/leaf/zipball/b887f2cdc0f49d56dc611229dacc41435c13d8ef",
+                "reference": "b887f2cdc0f49d56dc611229dacc41435c13d8ef",
                 "shasum": ""
             },
             "require": {
                 "leafs/anchor": "*",
                 "leafs/exception": "*",
                 "leafs/http": "*",
-                "leafs/router": "*",
                 "php": "^7.4|^8.0"
             },
             "require-dev": {
@@ -2265,7 +2263,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Simple, performant and powerful PHP micro-framework for rapid web app & API development",
+            "description": "Elegant PHP for modern developers",
             "homepage": "https://leafphp.dev",
             "keywords": [
                 "framework",
@@ -2277,7 +2275,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/leaf/issues",
-                "source": "https://github.com/leafsphp/leaf/tree/v3.6.1"
+                "source": "https://github.com/leafsphp/leaf/tree/v3.7"
             },
             "funding": [
                 {
@@ -2289,20 +2287,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-09-16T19:20:47+00:00"
+            "time": "2024-10-02T10:06:09+00:00"
         },
         {
             "name": "leafs/logger",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/logger.git",
-                "reference": "aee2379f484148dcff2e64e50807a2b55713b720"
+                "reference": "7134400920d10e630f39266749410914e4ec41d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/logger/zipball/aee2379f484148dcff2e64e50807a2b55713b720",
-                "reference": "aee2379f484148dcff2e64e50807a2b55713b720",
+                "url": "https://api.github.com/repos/leafsphp/logger/zipball/7134400920d10e630f39266749410914e4ec41d6",
+                "reference": "7134400920d10e630f39266749410914e4ec41d6",
                 "shasum": ""
             },
             "require": {
@@ -2340,7 +2338,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/logger/issues",
-                "source": "https://github.com/leafsphp/logger/tree/v1.3.0"
+                "source": "https://github.com/leafsphp/logger/tree/v1.4.0"
             },
             "funding": [
                 {
@@ -2352,20 +2350,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-05-17T08:55:26+00:00"
+            "time": "2024-10-02T14:50:29+00:00"
         },
         {
             "name": "leafs/mvc-core",
-            "version": "v1.5.4",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/mvc-core.git",
-                "reference": "308a24b604c5354530d188eda0dbe985e96a74ce"
+                "reference": "57a80133a79b5b5efe4782e116ba5b6a2febd5fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/mvc-core/zipball/308a24b604c5354530d188eda0dbe985e96a74ce",
-                "reference": "308a24b604c5354530d188eda0dbe985e96a74ce",
+                "url": "https://api.github.com/repos/leafsphp/mvc-core/zipball/57a80133a79b5b5efe4782e116ba5b6a2febd5fd",
+                "reference": "57a80133a79b5b5efe4782e116ba5b6a2febd5fd",
                 "shasum": ""
             },
             "require": {
@@ -2411,7 +2409,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/mvc-core/issues",
-                "source": "https://github.com/leafsphp/mvc-core/tree/v1.5.4"
+                "source": "https://github.com/leafsphp/mvc-core/tree/v1.6.0"
             },
             "funding": [
                 {
@@ -2423,7 +2421,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-09-14T07:57:56+00:00"
+            "time": "2024-10-02T11:30:49+00:00"
         },
         {
             "name": "leafs/password",
@@ -2478,70 +2476,6 @@
                 }
             ],
             "time": "2021-09-19T12:27:19+00:00"
-        },
-        {
-            "name": "leafs/router",
-            "version": "v0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leafsphp/router.git",
-                "reference": "dc3744718289975145bced2aa5c5f3e8ca022f19"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/router/zipball/dc3744718289975145bced2aa5c5f3e8ca022f19",
-                "reference": "dc3744718289975145bced2aa5c5f3e8ca022f19",
-                "shasum": ""
-            },
-            "require": {
-                "leafs/anchor": "*",
-                "leafs/http": "*"
-            },
-            "require-dev": {
-                "pestphp/pest": "^1.21"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Leaf\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Darko",
-                    "email": "mickdd22@gmail.com",
-                    "homepage": "https://mychi.netlify.app",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Leaf router module for Leaf PHP.",
-            "homepage": "https://leafphp.netlify.app/#/modules/router",
-            "keywords": [
-                "framework",
-                "leaf",
-                "php",
-                "rest",
-                "router"
-            ],
-            "support": {
-                "issues": "https://github.com/leafsphp/router/issues",
-                "source": "https://github.com/leafsphp/router/tree/v0.3.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/leafsphp",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/leaf",
-                    "type": "open_collective"
-                }
-            ],
-            "time": "2023-07-22T11:51:55+00:00"
         },
         {
             "name": "leafs/session",
