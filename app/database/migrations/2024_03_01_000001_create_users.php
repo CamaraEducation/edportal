@@ -25,8 +25,9 @@ class CreateUsers extends Database
                 $table->char('role', 50)->default('student');
                 $table->string('avatar')->default('/assets/images/user/avatar-2.jpg');
                 $table->text('about')->nullable();
-                $table->timestamp('created_at')->default(static::$capsule::raw('CURRENT_TIMESTAMP'));
-                $table->timestamp('updated_at')->default(static::$capsule::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+                $table->int('recommend')->default(1);
+                $table->timestamp('created_at')->useCurrent();
+                $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             });
         endif;
     }
