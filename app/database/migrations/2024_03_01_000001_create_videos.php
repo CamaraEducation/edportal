@@ -20,7 +20,7 @@ class CreateVideos extends Database
                 $table->text('thumbnail');
                 $table->text('source');
                 $table->text('tags')->nullable();
-                $table->integer('time')->default(0);
+                $table->integer('duration')->default(0);
                 $table->json('timestamps')->nullable();
                 $table->integer('author')->default(1);
                 $table->timestamp('created_at')->useCurrent();
