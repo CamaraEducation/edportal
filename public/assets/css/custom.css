@@ -101,6 +101,8 @@ div.dt-container.dt-empty-footer tbody>tr:last-child>* {
 
 textarea.select2-search__field ::placeholder { color: #dbe1e5 !important; }
 
+.img-brand { max-width: 150px; max-height: 80px; }
+
 /* positioning */
 .start-10 { left: 10px; }
 .start-20 { left: 20px; }
