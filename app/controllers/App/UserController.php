@@ -99,5 +99,12 @@ class UserController extends Controller
         }
 
     }
+
+    public static function routes(){        
+        app()->get('/view', ['name'=>'my.profile', 'UserController@display']);
+
+        app()->post('/update', ['name'=>'update.my-profile', 'UserController@update']);
+        app()->post('/password/update', ['name'=>'update.my-password', 'UserController@updatePassword']);
+    }
     
 }
