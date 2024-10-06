@@ -22,4 +22,8 @@ class LabSynchronization extends Model
             })
             ->count('s.id');
     }
+
+    public static function lastRecord($key){
+        return self::where('key', $key)->orderBy('id', 'desc')->first();
+    }
 }
