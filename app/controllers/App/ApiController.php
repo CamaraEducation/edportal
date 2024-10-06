@@ -206,4 +206,15 @@ class ApiController extends Controller
         ]);
     }
 
+    public static function routes(){
+        app()->get('/manage', ['name'=>'api.manage', 'ApiController@index']);
+        app()->get('/activity/{id}', ['name'=>'api.activity', 'ApiController@activity']);
+
+        app()->post('/copy', ['name'=>'api.fetch', 'ApiController@copy']);
+        app()->post('/create', ['name'=>'api.create', 'ApiController@issue']);
+        app()->post('/refresh', ['name'=>'api.refresh', 'ApiController@refresh']); 
+
+        app()->delete('/manage/{id}', ['name'=>'api.delete', 'ApiController@revoke']); 
+    }
+
 }
