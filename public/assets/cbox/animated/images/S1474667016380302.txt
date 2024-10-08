@@ -1,0 +1,12 @@
+V.I. Kulakova, A.V. Nebylov, O.A. Stepanov,
+ROBUST ESTIMATION VERSUS OPTIMAL ESTIMATION AND THEIR APPLICATION FOR AIRBORNE GRAVIMETRY,
+IFAC Proceedings Volumes,
+Volume 38, Issue 1,
+2005,
+Pages 342-347,
+ISSN 1474-6670,
+ISBN 9783902661753,
+https://doi.org/10.3182/20050703-6-CZ-1902.02018.
+(https://www.sciencedirect.com/science/article/pii/S1474667016380302)
+Abstract: The efficiency of the robust estimation approach based on the information about the variances of the signal itself and its several derivatives is analyzed. Comprehensive comparison of robust and optimal estimators is performed. It is shown that the robust estimator suggested provides the reliable and precise signal estimation in the presence of noise. The obtained theoretical results are illustrated with an example of an airborne gravimetry problem. Advantages and drawbacks of robust and optimal estimators are demonstrated for various operating conditions.
+Keywords: Optimal and robust estimation; accuracy; sensitivity; airborne gravimetry

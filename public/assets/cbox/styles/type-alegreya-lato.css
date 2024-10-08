@@ -1,0 +1,138 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap');
+
+
+.type-alegreya-lato {
+    font-family: 'Lato', sans-serif;
+    font-size: 100%; 
+    line-height: 1.6;
+    font-weight: 300;
+    text-transform: none;
+    font-style: normal;
+}
+.type-alegreya-lato p, .type-alegreya-lato td, .type-alegreya-lato li, .type-alegreya-lato label {
+    font-family: 'Lato', sans-serif;
+	font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-alegreya-lato h1, .type-alegreya-lato h2, .type-alegreya-lato h3, .type-alegreya-lato h4, .type-alegreya-lato h5, .type-alegreya-lato h6 {
+    font-family: 'Alegreya', serif;
+    font-weight: 400;
+    line-height: 1.2;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-alegreya-lato h1 {font-size: 3.75rem;margin: 0.4rem 0 0.9rem}
+.type-alegreya-lato h2 {font-size: 1.8rem;margin: 1rem 0 0.3rem;}
+.type-alegreya-lato h3 {font-size: 1.5rem;margin: 1.1rem 0 0.3rem;}
+.type-alegreya-lato h4 {font-size: 1.3rem;margin: 0.35rem 0 0.3rem;}
+.type-alegreya-lato h5 {font-size: 1.2rem;margin: 0.45rem 0 0.3rem;line-height: 1.7;}
+.type-alegreya-lato h6 {font-size: 1.1rem;margin: 0.75rem 0 0.3rem;font-weight: bold;line-height: 2;}
+.type-alegreya-lato p {margin: 0.55rem 0 1rem;}
+
+.type-alegreya-lato .display { margin-bottom: 0.5rem; }
+.type-alegreya-lato .display h1 {
+    font-family: 'Alegreya', serif;
+    font-size: 4.4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-style: normal;
+}
+.type-alegreya-lato .display p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.07rem;
+    line-height: 1.6;
+    text-transform: none;
+    font-style: italic;
+}
+
+.type-alegreya-lato .is-btn {
+    padding: 10px 50px;
+}
+.type-alegreya-lato .is-btn-small {
+    padding: 5px 25px;
+}
+
+.type-alegreya-lato .display-font1 {font-family: 'Alegreya', serif;}
+.type-alegreya-lato .display-font2 {font-family: 'Lato', sans-serif;}
+.type-alegreya-lato .default-font1 {font-family: 'Alegreya', serif;}
+.type-alegreya-lato .default-font2 {font-family: 'Lato', sans-serif;}
+
+/* h1-h6: 60 42  28  21  16  12 */
+.type-alegreya-lato h1 {font-size:60px} 
+@media all and (max-width: 1800px) { 
+    .type-alegreya-lato h1 {font-size:3.13vw; font-size:clamp(32px, 3.13vw, 3.13vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-alegreya-lato h1 {font-size:3.13vw;}
+}
+
+.type-alegreya-lato h2 {font-size:42px}
+@media all and (max-width: 1800px) { 
+    .type-alegreya-lato h2 {font-size:2.19vw; font-size:clamp(27px, 2.19vw, 2.19vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-alegreya-lato h2 {font-size:2.19vw}
+}
+
+.type-alegreya-lato h3 {font-size:28px}
+@media all and (max-width: 1800px) { 
+    .type-alegreya-lato h3 {font-size:1.56vw; font-size:clamp(23px, 1.56vw, 1.56vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-alegreya-lato h3 {font-size:1.46vw}
+}
+
+.type-alegreya-lato h4 {font-size:21px}
+@media all and (max-width: 1800px) { 
+    .type-alegreya-lato h4 {font-size:1.29vw; font-size:clamp(21px, 1.29vw, 1.29vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-alegreya-lato h4 {font-size:1.09vw}
+}
+
+.type-alegreya-lato h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-alegreya-lato h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-alegreya-lato h5 {font-size:0.83vw}
+}
+
+.type-alegreya-lato h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-alegreya-lato h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-alegreya-lato h6 {font-size:0.63vw}
+}
+
+/* 17 */
+.type-alegreya-lato p,
+.type-alegreya-lato td, 
+.type-alegreya-lato li, 
+.type-alegreya-lato label {
+    font-size: 17px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-alegreya-lato p,
+    .type-alegreya-lato td, 
+    .type-alegreya-lato li, 
+    .type-alegreya-lato label {font-size:1.05vw; font-size:clamp(16px, 1.05vw, 1.05vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-alegreya-lato .v2 p,
+    .type-alegreya-lato .v2 td, 
+    .type-alegreya-lato .v2 li, 
+    .type-alegreya-lato .v2 label {font-size:0.89vw}
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Alegreya:400,500,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900'); */

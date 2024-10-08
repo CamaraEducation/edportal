@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.type-elsie-montserrat {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100%; 
+    line-height: 2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-elsie-montserrat p, .type-elsie-montserrat td, .type-elsie-montserrat li, .type-elsie-montserrat label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; 
+    line-height: 2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-elsie-montserrat h1, .type-elsie-montserrat h2, .type-elsie-montserrat h3, .type-elsie-montserrat h4, .type-elsie-montserrat h5, .type-elsie-montserrat h6 {
+    font-family: 'Elsie', cursive;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-elsie-montserrat h1 {font-size: 3.5rem;margin: 0.04rem 0 0.3rem;}
+.type-elsie-montserrat h2 {font-size: 2.9rem;margin: 0.26rem 0 0.3rem;}
+.type-elsie-montserrat h3 {font-size: 2.43rem;margin: 0.39rem 0 0.3rem;}
+.type-elsie-montserrat h4 {font-size: 2rem;margin: 0.47rem 0 0.3rem;line-height: 1.6;}
+.type-elsie-montserrat h5 {font-size: 1.74rem;margin: 0.46rem 0 0.3rem;line-height: 1.8;}
+.type-elsie-montserrat h6 {font-size: 1.4rem;margin: 0.53rem 0 0.3rem;line-height: 2;font-weight:bold;}
+.type-elsie-montserrat p {margin:0.4rem 0 1rem;}
+
+.type-elsie-montserrat .display { margin-bottom: 0.5rem; }
+.type-elsie-montserrat .display h1 {
+	font-family: 'Elsie', cursive;
+    font-size: 4.8rem;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-style: normal;
+    margin: 0.4rem 0;
+}
+.type-elsie-montserrat .display p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    letter-spacing: 3px;
+    text-transform: none;
+    font-style: italic;
+}
+
+.type-elsie-montserrat .is-btn {
+    padding: 12px 50px 8px;
+}
+.type-elsie-montserrat .is-btn-small {
+    padding: 6px 25px 5px;
+}
+
+.type-elsie-montserrat .display-font1 {font-family: 'Elsie', cursive;}
+.type-elsie-montserrat .display-font2 {font-family: 'Montserrat', sans-serif;}
+.type-elsie-montserrat .default-font1 {font-family: 'Elsie', cursive;}
+.type-elsie-montserrat .default-font2 {font-family: 'Montserrat', sans-serif;}
+
+/* h1-h6: 54 38  28  21  17  14 */
+.type-elsie-montserrat h1 {font-size:54px} 
+@media all and (max-width: 1800px) { 
+    .type-elsie-montserrat h1 {font-size:2.81vw; font-size:clamp(31px, 2.81vw, 2.81vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-elsie-montserrat h1 {font-size:2.81vw;}
+}
+
+.type-elsie-montserrat h2 {font-size:38px}
+@media all and (max-width: 1800px) { 
+    .type-elsie-montserrat h2 {font-size:1.98vw; font-size:clamp(26px, 1.98vw, 1.98vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-elsie-montserrat h2 {font-size:1.98vw}
+}
+
+.type-elsie-montserrat h3 {font-size:28px}
+@media all and (max-width: 1800px) { 
+    .type-elsie-montserrat h3 {font-size:1.56vw; font-size:clamp(23px, 1.56vw, 1.56vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-elsie-montserrat h3 {font-size:1.46vw}
+}
+
+.type-elsie-montserrat h4 {font-size:21px}
+@media all and (max-width: 1800px) { 
+    .type-elsie-montserrat h4 {font-size:1.29vw; font-size:clamp(21px, 1.29vw, 1.29vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-elsie-montserrat h4 {font-size:1.09vw}
+}
+
+.type-elsie-montserrat h5 {font-size:17px}
+@media all and (max-width: 1800px) { 
+    .type-elsie-montserrat h5 {font-size:1.05vw; font-size:clamp(17px, 1.05vw, 1.05vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-elsie-montserrat h5 {font-size:0.89vw}
+}
+
+.type-elsie-montserrat h6 {font-size:14px}
+@media all and (max-width: 1800px) { 
+    .type-elsie-montserrat h6 {font-size:0.86vw; font-size:clamp(14px, 0.86vw, 0.86vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-elsie-montserrat h6 {font-size:0.73vw}
+}
+
+/* 19 */
+.type-elsie-montserrat p,
+.type-elsie-montserrat td, 
+.type-elsie-montserrat li, 
+.type-elsie-montserrat label {
+    font-size: 19px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-elsie-montserrat p,
+    .type-elsie-montserrat td, 
+    .type-elsie-montserrat li, 
+    .type-elsie-montserrat label {font-size:1.17vw; font-size:clamp(16px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-elsie-montserrat .v2 p,
+    .type-elsie-montserrat .v2 td, 
+    .type-elsie-montserrat .v2 li, 
+    .type-elsie-montserrat .v2 label {font-size:0.99vw}
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Elsie:400,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700'); */

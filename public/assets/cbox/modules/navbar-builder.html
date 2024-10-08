@@ -1,0 +1,1564 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <style>
+        html { height:100%; }
+        body { 
+            margin:0;
+            background:rgba(0,0,0,0); /*transparent*/
+            height:100%;
+            overflow:hidden;
+            font-family:Sans-Serif;
+            font-size:14px;
+            font-weight:300;
+            line-height:1.7; 
+            opacity:0;
+            transition: opacity 0.1s ease;
+        }
+        label {width:100%;padding-bottom:4px;display:block;}
+        input[type=text] {
+            font-size:14px;
+            font-weight:300;
+            letter-spacing:1px;
+            border:none;
+            padding:10px;
+            height:42px;
+            box-sizing:border-box
+        }
+        input[type=text]:focus {outline:none}
+        body {opacity:0}
+        svg {
+            overflow: hidden;
+            vertical-align: middle;
+            pointer-events: none;
+        }
+        .is-icon-flex {
+            width: 16px;
+            height: 16px;
+        }
+
+        .is-modal {display: none}
+
+        .is-tabs {
+            white-space: nowrap;
+            padding: 0;
+            padding-bottom: 5px;
+            padding-top: 10px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-size: 11px;
+            line-height: 1.8 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+        }
+        .is-tabs a {
+            display: inline-block;
+            padding: 3px 1px 0;
+            /* border-bottom: transparent 1px solid; */
+            text-decoration: none;
+            margin: 0 15px 13px 0;
+            transition: box-shadow ease 0.3s;
+        }
+        .is-tabs a.active {
+            background: transparent;
+            box-shadow: none;
+            cursor: default;
+            /* border-bottom: #595959 1px solid; */
+            text-decoration: underline;
+        }
+        .is-tab-content {
+            display: none;
+            padding: 10px 20px 20px;
+            flex-direction: column;
+        }
+
+
+        select {
+            font-size: 13px;
+            letter-spacing: 1px;
+            height: 35px;
+            line-height: 1.7;
+            border-radius: 5px;
+            border: none;
+            width: auto; 
+            display: inline-block;
+            background-image: none;
+            -webkit-appearance: menulist;
+            -moz-appearance: menulist;
+            appearance: menulist;
+            padding: 0 5px;
+        }
+        select:focus {
+            outline:none;
+        }
+        
+        button {
+            width: auto;
+            height: 36px;
+            line-height: 1;    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0 15px;
+            border: none;
+            cursor: pointer;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            font-size: 11px;
+            font-weight: 300;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            border-radius: 0;
+            box-shadow: 0px 3px 6px -6px rgb(0 0 0 / 32%);  
+        }
+        button span {
+            margin-left: 8px;
+            font-size: 10px;
+        }
+        svg {
+            overflow: hidden;
+            vertical-align: middle;
+            pointer-events: none;
+        }
+        .is-icon-flex {
+            width: 14px;
+            height: 14px;
+        }
+
+        button.is-btn-color {
+            border: rgba(200,200,200,0.5) 1px solid !important;
+        }
+
+        /* Scrollbar for toolbar/RTE, not modal */
+
+        .dark * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) auto;
+        }
+        .dark *::-webkit-scrollbar {
+            width: 12px;
+        }
+        .dark *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .dark *::-webkit-scrollbar-thumb {
+            background-color:rgba(255, 255, 255, 0.3);
+        } 
+
+        .colored-dark * {
+            scrollbar-width: thin;
+            scrollbar-color: rgb(100, 100, 100) auto;
+        }
+        .colored-dark *::-webkit-scrollbar {
+            width: 12px;
+        }
+        .colored-dark *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .colored-dark *::-webkit-scrollbar-thumb {
+            background-color:rgb(100, 100, 100);
+        } 
+
+        .colored * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 0, 0, 0.4) auto;
+        }
+        .colored *::-webkit-scrollbar {
+            width: 12px;
+        }
+        .colored *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .colored *::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.4);
+        } 
+
+        .light * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 0, 0, 0.4) auto;
+        }
+        .light *::-webkit-scrollbar {
+            width: 12px;
+        }
+        .light *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .light *::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.4);
+        } 
+
+        /*
+        Menu Builder
+        */
+        .sortable {
+            width: 100%;
+            padding: 10px 15px;
+            margin: 5px 0 15px;
+            min-height: 15px;
+            border: 1px dashed #000;
+        }
+        .sortable .sortable {
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 40px;
+        }
+        .sortable .placeholder {
+            width: 100%;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .sortable li {
+            list-style-type: none;
+            position:relative;
+            cursor: pointer;
+        }
+        .sortable li:hover .menu-control {display:inline-block}
+        .menutree {padding:10px 0 0;border:none !important;}
+        .menutree.sortable {margin: 5px 0 0;}
+
+    </style>
+
+	<!-- <link href="assets/scripts/menubuilder/menubuilder.css" rel="stylesheet" type="text/css" /> -->
+
+</head>
+<body>
+
+    <div style="padding:0;position:relative;z-index:1;height:100%;">
+        <div class="is-tabs clearfix" data-group="menu" style="position:relative;z-index:1">
+            <a data-lang data-lang-title title="Settings" id="tabMenuGeneral" href="" data-content="divMenuleGeneral" class="active">Settings</a>
+            <a data-lang data-lang-title title="Menu Builder" id="tabMenuBuilder" href="" data-content="divMenuBuilder">Menu Builder</a>
+        </div>
+        <div id="divMenuleGeneral" class="is-tab-content" data-group="menu" style="display:block;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow-y: auto;
+            border-top: 60px solid transparent;">
+
+
+            <label style="margin-top:0px"><span data-lang>Style</span>:
+                <select class="input-topbar-style" style="width: 100%;height:40px;">
+                    <option data-lang value="fixed">Fixed light topbar (dark text)</option>
+                    <option data-lang value="fixed dark">Fixed dark topbar (light text)</option>
+                    <option data-lang value="lighttext">Transparent topbar (light text), light topbar on scroll</option>
+                    <option data-lang value="" selected>Transparent topbar (dark text), light topbar on scroll</option>
+                    <option data-lang value="lighttext dark">Transparent topbar (light text), dark topbar on scroll</option>
+                    <option data-lang value="dark">Transparent (dark text), dark topbar on scroll</option>
+                    <option data-lang value="static">Static transparent topbar (dark text)</option>
+                    <option data-lang value="static lighttext">Static transparent topbar (light text)</option>
+                    <option data-lang value="fixed static">Static light topbar (dark text)</option>
+                    <option data-lang value="fixed dark static">Static dark topbar (light text)</option>
+                </select>
+            </label>
+    
+            <div style="display: flex; flex-flow: column;margin-top:15px">
+                <div style="display:flex;align-items:flex-end;">
+                    <div class="logo-preview">
+    
+                    </div>
+    
+                    <label for="chkLogoCircle" class="label-circle-logo" style="margin-left:15px;margin-bottom:5px;">
+                        <input id="chkLogoCircle" type="checkbox" checked="checked" /> <span data-lang>Circle</span>
+                    </label>
+                </div>
+                
+                <div style="display:flex">
+                    <button title="Add Image" class="input-add-image" style="width:100px">
+                        <svg class="is-icon-flex"><use xlink:href="#ion-image"></use></svg>
+                        <span data-lang>Logo</span>
+                    </button>
+    
+                    <button data-lang-title title="Remove Image" class="input-remove-image" style="width:60px;display:none">
+                        <svg class="is-icon-flex" style="width:12px;height:12px;"><use xlink:href="#icon-clean"></use></svg>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div style="display: flex; flex-flow: row;margin-top:15px">
+
+                <div style="display:flex;flex-direction:column;width:100%; margin-right:5px;">
+                    <label for="inpLogoText" style="width:100%;margin-top:20px;"><span data-lang>Logo Text</span>:</label>
+                    <div style="display: flex;">
+                        <input id="inpLogoText" type="text" style="width:100%;" />
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;width:100%; margin-left:5px;">
+                    <label for="inpLogoText" style="width:100%;margin-top:20px;"><span data-lang>Logo Text Css</span>:</label>
+                    <div style="display: flex;">
+                        <input id="inpLogoTextCss" type="text" style="width:100%;" />
+                    </div>
+                </div>
+
+            </div>
+            
+            <label for="inpLogoLink" style="width:100%;margin-top:20px;"><span data-lang>Logo Link</span>:</label>
+            <div style="display: flex;">
+                <input id="inpLogoLink" type="text" style="width:100%;" />
+            </div>
+
+            <div style="display:flex;margin-top:18px;">
+                <div>
+                    <label for="inpContainerWidth" style="width:auto;margin-right:5px;"><span data-lang>Container Width</span>:</label>
+                    <input id="inpContainerWidth" type="text" style="width:50px;height:38pxx;margin-right:7px;" /> <span>px</span>
+                </div>
+                <div style="margin-left:50px;">
+                    <label style="width:100%;"><span data-lang>Background Color</span>:</label>
+                    <button data-lang-title title="Background Color" class="input-bgcolor is-btn-color" style="width:36px;height:36px;"></button>
+                </div>
+                <div style="margin-left:20px;">
+                    <label style="width:100%;"><span data-lang>Sub Menu Background Color</span>:</label>
+                    <button data-lang-title title="Sub Menu Background Color" class="input-subbgcolor is-btn-color" style="width:36px;height:36px;"></button>
+                </div>
+            </div>
+            
+            <label for="inpNavbarCss" style="width:100%;margin-top:20px;"><span data-lang>Navbar Css</span>:</label>
+            <div style="display: flex;">
+                <input id="inpNavbarCss" type="text" style="width:100%;" />
+            </div>
+
+            <label for="inpMenuItemCss" style="width:100%;margin-top:20px;"><span data-lang>Menu Item Css</span>:</label>
+            <div style="display: flex;">
+                <input id="inpMenuItemCss" type="text" style="width:100%;" />
+            </div>
+
+        </div>
+        <div id="divMenuBuilder" class="is-tab-content" data-group="menu" style="display:flex;align-items:flex-end;position:absolute;top:0;width:100%;height:100%;display:none;padding:0">
+
+            <div style="display:flex;justify-content: flex-end;z-index:1;margin-right:20px;">
+
+                <button data-lang-title title="Add Menu Item" class="input-add-menu" style="width:50px;font-size:16px">
+                    +
+                </button>
+            </div>
+
+            <!-- TREE -->
+            <div style="padding:0 20px;box-sizing:border-box;position:absolute;top:0;box-sizing:border-box;border-top:50px solid transparent;height:100%;width:100%;overflow-x:hidden;overflow-y:auto;">
+                <div id="menu1" style="display:block;text-align:left;border:none"></div>
+            
+                <button data-lang-title title="Add Search" class="input-add-search" style="display:flex;width:90px;margin:20px 10px 20px 0;">
+                    <span style="font-size:16px;margin-right:5px;">+</span> <span data-lang>Search</span>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="is-modal addmenuitem" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+        <div style="max-width:650px;height:auto;padding:0;box-sizing:border-box;position:relative;">
+            <div class="is-modal-bar is-draggable" style="position: absolute;top: 0;left: 0;width: 100%;z-index:1;">&nbsp;</div>
+            <div style="margin: 40px 25px 25px;">
+                <label for="inpMenuName" style="width:100%"><span data-lang>Display Text</span>:</label>
+                <div style="display:flex;margin-bottom:10px;">
+                    <input id="inpMenuName" type="text" style="width:100%;" />
+                </div>
+        
+                <label for="inpMenuLink" style="width:100%"><span data-lang>Link</span>:</label>
+                <div style="display:flex;margin-bottom:10px;">
+                    <input id="inpMenuLink" type="text" style="width:100%;" />
+                    <button data-lang data-lang-title title="Goto" class="input-select-section" style="width:100px;height:50px;flex:none;">Goto</button>
+                </div>
+        
+                <label for="inpMenuHtml" style="width:100%"><span data-lang>HTML</span>:</label>
+                <div style="display:flex;margin-bottom:10px;">
+                    <input id="inpMenuHtml" type="text" style="width:100%;" />
+                </div>
+
+                <div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;margin-bottom: 18px;">
+                    <span class="icon-preview" style="font-size:30px;line-height:1;"></span>
+                    <button data-lang class="input-select-icon" style="width:140px;flex:none;">Select Icon</button>
+    
+                    <button data-lang-title title="Remove Icon" class="input-remove-icon" style="width:60px;flex:none;display:none">
+                        <svg class="is-icon-flex" style="width:12px;height:12px;"><use xlink:href="#icon-clean"></use></svg>
+                    </button>
+                </div>
+
+                <div style="margin-top:20px;display:flex;justify-content: flex-end;">
+                    <button data-lang class="input-add-menu classic-primary" style="width:50%">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="is-modal editmenuitem" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+        <div style="max-width:650px;height:auto;padding:0;box-sizing:border-box;position:relative;">
+            <div class="is-modal-bar is-draggable" style="position: absolute;top: 0;left: 0;width: 100%;z-index:1;">&nbsp;</div>
+            <style>
+                .icon-preview i {
+                    margin-right:20px;
+                }
+            </style>
+            <div style="margin: 40px 25px 25px;">
+                <label for="inpMenuNameUpdate" style="width:100%"><span data-lang>Display Text</span>:</label>
+                <div style="display:flex;margin-bottom:10px;">
+                    <input id="inpMenuNameUpdate" type="text" style="width:100%;" />
+                </div>
+        
+                <label for="inpMenuLinkUpdate" style="width:100%"><span data-lang>Link</span>:</label>
+                <div style="display:flex;margin-bottom:10px;">
+                    <input id="inpMenuLinkUpdate" type="text" style="width:100%;" />
+                    <button data-lang data-lang-title title="Goto" class="input-select-section" style="width:100px;flex:none;">Goto</button>
+                </div>
+        
+                <label for="inpMenuHtmlUpdate" style="width:100%"><span data-lang>HTML</span>: </label>
+                <div style="display:flex;margin-bottom:15px;">
+                    <input id="inpMenuHtmlUpdate" type="text" style="width:100%;" />
+                    <!-- <button class="input-select-icon classic-primary" style="width:50px;flex:none;background:transparent;">
+                        Use Icon
+                    </button> -->
+                </div>
+
+                <div style="display: flex;flex-direction: row;justify-content: flex-start;align-items: center;margin-bottom: 18px;">
+                    <span class="icon-preview" style="font-size:30px;line-height:1;"></span>
+                    <button data-lang class="input-select-icon" style="width:140px;flex:none;">Select Icon</button>
+    
+                    <button data-lang-title title="Remove Icon" class="input-remove-icon" style="width:60px;flex:none;display:none">
+                        <svg class="is-icon-flex" style="width:12px;height:12px;"><use xlink:href="#icon-clean"></use></svg>
+                    </button>
+                </div>
+
+                <label for="chkMenuHighlight" style="display:flex;align-items:center;width:100%;margin-top:15px">
+                    <input id="chkMenuHighlight" type="checkbox" checked="checked" /> 
+                    <span style="margin-left:5px;line-height: 1;" data-lang>Highlight</span>
+                </label>
+
+                <input id="inpMenuClassNameUpdate" type="text" style="display:none" />
+
+                <div style="margin-top:20px;display:flex;justify-content: space-around;">
+                    <button data-lang class="input-remove-menu classic-secondary" style="width:50%;margin-right:1px;">Remove</button>
+                    <button data-lang class="input-update-menu classic-primary" style="width:50%;margin-left:1px;">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="is-modal selectsection" style="z-index:10005" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+        <div style="max-width:350px;height:auto;padding:0;box-sizing:border-box;position:relative;">
+            <div class="is-modal-bar is-draggable" style="position: absolute;top: 0;left: 0;width: 100%;z-index:1;">&nbsp;</div>
+            <style>
+                .div-section-list div {
+                    width: 100%;
+                    height: 45px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    box-shadow: 0px 3px 6px -6px rgb(0 0 0 / 17%);
+                }
+            </style>
+            <div class='div-section-list is-general-options' style="margin:40px 25px 25px;">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="is-modal selecticon" style="z-index:10005" tabindex="-1" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="scroll-darker" style="max-width:500px;height:auto;padding:0;box-sizing:border-box;position:relative;">
+            <div class="is-modal-bar is-draggable" style="position: absolute;top: 0;left: 0;width: 100%;z-index:1;">&nbsp;</div>
+            <style>
+                .div-icon-list > div {
+                    width: 60px !important;
+                    height: 60px !important;
+                    flex: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                }
+                .div-icon-list > div i {
+                    font-size:20px;
+                }
+            </style>
+            <div class='div-icon-list is-general-options' style="border-top:35px transparent solid;display: flex; flex-flow: row wrap;height:400px;overflow-x:hidden;overflow-y:auto"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- <script src="assets/scripts/menubuilder/menubuilder.js" type="text/javascript"></script> -->
+
+    <script>
+        /*
+        MenuBuilder.js
+        */
+        (function (jQuery) {
+
+        jQuery.menubuilder = function (element, options) {
+            
+            var defaults = {
+                data: {"menu":[
+                    {"name": "Home", "link": "", "sub": null},
+                    {"name": "Products", "link": null, "sub": [
+                        {"name": "Product One","link": "product1", "sub": null},
+                        {"name": "Product Two","link": "product2", "sub": null},
+                        {"name": "Product Three","link": "product3", "sub": null}
+                        ]},
+                    {"name": "Support", "link": "support", "sub": null},        
+                    {"name": "About", "link": "about","sub": null}
+                    
+                ],
+                onClick: function(){}
+                }
+            };
+
+            this.settings = {};
+
+            var $element = jQuery(element),
+                        element = element;
+
+            this.init = function () {
+            
+                this.settings = jQuery.extend({}, defaults, options);		
+                
+                $element.append('<ul class="menutree"></ul>')
+
+                jQuery.each(this.settings.data.menu, function () {
+            
+                    jQuery('.menutree').append(
+                        getMenuItem(this)
+                    );
+                    
+                });
+
+                jQuery('.menutree').addClass('sortable');	
+                
+                $('ul.sortable').sortable({
+                    connectWith: 'ul.sortable',
+                    placeholder: 'placeholder',
+                    deactivate: function(e){
+                    
+                    }
+                }).disableSelection();
+                
+            };
+
+            this.getMenu = function () {
+                return JSON.parse('{"menu":' + JSON.stringify($element.data('menubuilder').parseMenu()) + '}');			
+            };
+            
+            this.parseMenu = function (){
+                jsonObj = [];
+                jQuery('.menutree').children().each(function(){
+                    item = {}
+                    item ["name"] = $(this).attr('data-name');
+                    item ["link"] = $(this).attr('data-link');
+                    item ["html"] = $(this).attr('data-html');
+                    item ["classname"] = $(this).attr('data-classname');
+                    item ["sub"] = [];
+                    jsonObj.push(item);
+                    var $ul = $(this).children('ul').first();
+                    if($ul.children('li').length>0){
+                        $element.data('menubuilder').parseMenuItem($ul, item ["sub"]);
+                    }
+                });
+                return jsonObj;
+            }
+            
+            this.parseMenuItem = function ($ul,sub){
+                $ul.children().each(function(){
+                    item = {}
+                    item ["name"] = $(this).attr('data-name');
+                    item ["link"] = $(this).attr('data-link');
+                    item ["html"] = $(this).attr('data-html');
+                    item ["classname"] = $(this).attr('data-classname');
+                    item ["sub"] = [];
+                    sub.push(item);
+                    var $ul = $(this).children('ul').first();
+                    if($ul.children('li').length>0){
+                        $element.data('menubuilder').parseMenuItem($ul, item ["sub"]);
+                    }
+                });
+            }
+            
+            this.init();
+
+        };
+
+        jQuery.fn.menubuilder = function (options) {
+            return this.each(function () {
+
+                if (undefined == jQuery(this).data('menubuilder')) {
+                    var plugin = new jQuery.menubuilder(this, options);
+                    jQuery(this).data('menubuilder', plugin);
+
+                }
+
+            });
+        };
+        })(jQuery);
+
+        function getMenuItem (itemData) {
+            var item = $('<li>');
+            item.html('<span>' + itemData.name + '</span>');
+            item.attr('data-name',itemData.name); 
+            item.attr('data-link',itemData.link); 
+            item.attr('data-classname',itemData.classname); 
+
+            if(itemData.html) item.attr('data-html',itemData.html); // already encoded
+            else item.attr('data-html','');
+
+            var subList = $('<ul class="sortable">');
+            item.append(subList);
+
+            if (itemData.sub) {
+                $.each(itemData.sub, function () {
+                    subList.append(getMenuItem(this));
+                });
+            }
+            return item;
+        };
+
+        /*! jQuery UI Touch Punch 0.2.3 | Copyright 2011–2014, Dave Furfero | Dual licensed under the MIT or GPL Version 2 licenses. */
+        eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(7(4){4.w.8=\'H\'G p;c(!4.w.8){f}d 6=4.U.D.L,g=6.g,h=6.h,a;7 5(2,r){c(2.k.F.J>1){f}2.B();d 8=2.k.q[0],l=p.N(\'O\');l.S(r,i,i,V,1,8.W,8.X,8.Y,8.A,b,b,b,b,0,C);2.z.E(l)}6.m=7(2){d 3=e;c(a||!3.I(2.k.q[0])){f}a=i;3.j=b;5(2,\'K\');5(2,\'s\');5(2,\'M\')};6.n=7(2){c(!a){f}e.j=i;5(2,\'s\')};6.o=7(2){c(!a){f}5(2,\'P\');5(2,\'Q\');c(!e.j){5(2,\'R\')}a=b};6.g=7(){d 3=e;3.u.T({v:4.9(3,\'m\'),x:4.9(3,\'n\'),y:4.9(3,\'o\')});g.t(3)};6.h=7(){d 3=e;3.u.Z({v:4.9(3,\'m\'),x:4.9(3,\'n\'),y:4.9(3,\'o\')});h.t(3)}})(4);',62,62,'||event|self|jQuery|simulateMouseEvent|mouseProto|function|touch|proxy|touchHandled|false|if|var|this|return|_mouseInit|_mouseDestroy|true|_touchMoved|originalEvent|simulatedEvent|_touchStart|_touchMove|_touchEnd|document|changedTouches|simulatedType|mousemove|call|element|touchstart|support|touchmove|touchend|target|clientY|preventDefault|null|mouse|dispatchEvent|touches|in|ontouchend|_mouseCapture|length|mouseover|prototype|mousedown|createEvent|MouseEvents|mouseup|mouseout|click|initMouseEvent|bind|ui|window|screenX|screenY|clientX|unbind'.split('|'),0,{}));
+
+
+
+
+        /*
+        The Module
+        */
+
+        var docReady = function (fn) {
+            var stateCheck = setInterval(function () {
+                if (document.readyState !== "complete") return;
+                clearInterval(stateCheck);
+                try { fn() } catch (e) { }
+            }, 1);
+        };
+        docReady(function () {
+
+            // Get custom variables by reading data-settings attribute defined on snippet => see minimalist-blocks/content.js
+            var settings = getSettings();
+
+            if (settings != 'undefined') {
+                try {
+                    var json = JSON.parse(settings);
+
+                    // Display the custom variables on the checkbox and input text
+                    document.querySelector("#inpLogoText").value = json.logotext; 
+
+                    if(json.logotextcss) document.querySelector("#inpLogoTextCss").value = json.logotextcss; 
+                    else document.querySelector("#inpLogoTextCss").value = ''; 
+
+                    if(json.navbarcss) document.querySelector("#inpNavbarCss").value = json.navbarcss; 
+                    else document.querySelector("#inpNavbarCss").value = ''; 
+
+                    if(json.menuitemcss) document.querySelector("#inpMenuItemCss").value = json.menuitemcss; 
+                    else document.querySelector("#inpMenuItemCss").value = ''; 
+
+                    document.querySelector("#inpLogoLink").value = json.logolink; 
+
+                    document.querySelector("#inpContainerWidth").value = json.maxwidth; 
+                    
+                    document.querySelector("#chkLogoCircle").checked = json.logocircle; 
+
+                    if(json.topbar) document.querySelector(".input-topbar-style").value = json.topbar; 
+                    else document.querySelector(".input-topbar-style").value = ''; 
+                    
+                    var btnRemoveImage = document.querySelector('.input-remove-image');
+                    var logoPreview = document.querySelector('.logo-preview');
+                    var labelCircleLogo = document.querySelector('.label-circle-logo');
+                    if(json.logoimage) {
+           
+                        logoPreview.innerHTML = '<img src="' + json.logoimage + '" style="height:65px;width:auto" />';
+                    
+                        btnRemoveImage.style.display = 'flex';
+                        labelCircleLogo.style.display = '';
+                    } else {
+                        logoPreview.innerHTML = '';
+                        btnRemoveImage.style.display = 'none';
+                        labelCircleLogo.style.display = 'none';
+                    }
+
+                    var btnBgColor = document.querySelector('.input-bgcolor');
+                    if(json.bgcolor==='undefined') json.bgcolor='';
+                    if(json.bgcolor) {
+                        btnBgColor.style.backgroundColor = json.bgcolor;
+                        btnBgColor.setAttribute('data-color', json.bgcolor); 
+                    } else {
+                        btnBgColor.style.backgroundColor = '';
+                        btnBgColor.setAttribute('data-color', json.bgcolor); 
+                    }
+
+                    var btnSubBgColor = document.querySelector('.input-subbgcolor');
+                    if(json.subbgcolor==='undefined') json.subbgcolor='';
+                    if(json.subbgcolor) {
+                        btnSubBgColor.style.backgroundColor = json.subbgcolor;
+                        btnSubBgColor.setAttribute('data-color', json.subbgcolor); 
+                    } else {
+                        btnSubBgColor.style.backgroundColor = '';
+                        btnSubBgColor.setAttribute('data-color', json.subbgcolor); 
+                    }
+
+                    var data = {"menu":json.menu};
+
+                } catch (e) { }
+            }
+
+            var labelCircleLogo = document.querySelector('.label-circle-logo');
+            var btnAddImage = document.querySelector('.input-add-image');
+            btnAddImage.addEventListener('click', function() {
+                var logoPreview = document.querySelector('.logo-preview');
+                var img = logoPreview.querySelector('img');
+                var src = '';
+                if(img) src = img.getAttribute('src');
+                parent._cb.openImagePicker(src, function(s){
+                    logoPreview.innerHTML = '<img src="' + s + '" style="height:65px;width:auto" />';
+
+                    var btnRemoveImage = document.querySelector('.input-remove-image');
+                    btnRemoveImage.style.display = 'flex';
+
+
+                    labelCircleLogo.style.display = '';
+                });
+            });
+            var btnRemoveImage = document.querySelector('.input-remove-image');
+            btnRemoveImage.addEventListener('click', function() {
+                var logoPreview = document.querySelector('.logo-preview');
+                var img = logoPreview.querySelector('img');
+                if(img) img.parentNode.removeChild(img);
+                btnRemoveImage.style.display = 'none';
+
+
+                labelCircleLogo.style.display = 'none';
+            });
+
+            var colorpicker = parent._cb.colorpicker();
+
+            var btnBgColor = document.querySelector('.input-bgcolor');
+            btnBgColor.addEventListener('click', function() {
+
+                let bgcolor = btnBgColor.style.backgroundColor; // default color
+
+                colorpicker.open((color)=>{
+
+                    btnBgColor.style.backgroundColor = color; // preview
+
+                    btnBgColor.setAttribute('data-color', color); // save color value for later read when needed
+
+                    parent.contentbox.refreshModule(); // refresh for preview
+
+                }, bgcolor);
+            });
+            
+            var btnSubBgColor = document.querySelector('.input-subbgcolor');
+            btnSubBgColor.addEventListener('click', function() {
+
+                let subbgcolor = btnSubBgColor.style.backgroundColor; // default color
+
+                colorpicker.open((color)=>{
+
+                    btnSubBgColor.style.backgroundColor = color; // preview
+
+                    btnSubBgColor.setAttribute('data-color', color); // save color value for later read when needed
+
+                    parent.contentbox.refreshModule(); // refresh for preview
+
+                }, subbgcolor);
+            });
+
+            /* Run the menu builder */
+            jQuery('#menu1').menubuilder({
+                data: data
+            });	
+
+            function applyTreeBehavior() {
+
+                // Allows click on item to edit
+                const elms = document.querySelectorAll('.sortable li');
+                elms.forEach(elm => {
+                    elm.addEventListener('click',(e)=>{
+                        var item = e.target.closest('li');
+
+                        // Open Modal for editing
+                        let modal = showModal('.is-modal.editmenuitem');
+
+                        modal.querySelector('.is-modal-bar').innerHTML = parent._cb.out('Edit Menu Item');
+                        var inpMenuNameUpdate = modal.querySelector('#inpMenuNameUpdate');
+                        inpMenuNameUpdate.value = item.getAttribute('data-name');
+                        var inpMenuLinkUpdate = modal.querySelector('#inpMenuLinkUpdate');
+                        inpMenuLinkUpdate.value = item.getAttribute('data-link');
+                        var inpMenuHtmlUpdate = modal.querySelector('#inpMenuHtmlUpdate');
+
+                        modal.querySelector('.input-remove-icon').style.display = 'none';
+
+                        if(item.getAttribute('data-html')) {
+                            let html = decodeURIComponent(item.getAttribute('data-html'));
+                            inpMenuHtmlUpdate.value = html;
+
+                            if(html.indexOf('class="icon')!==-1) {
+                                // an icon
+                                modal.querySelector('.icon-preview').innerHTML = html;
+                                modal.querySelector('.input-remove-icon').style.display = 'flex';
+                            }
+                        } else {
+                            inpMenuHtmlUpdate.value = '';
+
+                            modal.querySelector('.icon-preview').innerHTML = '';
+                        }
+       
+                        var inpMenuClassNameUpdate = modal.querySelector("#inpMenuClassNameUpdate");
+                        if(item.getAttribute('data-classname')) {
+                            inpMenuClassNameUpdate.value = item.getAttribute('data-classname');
+                        } else {
+                            inpMenuClassNameUpdate.value = '';
+                        }
+
+                        var inpMenuHtmlUpdate = modal.querySelector('#chkMenuHighlight');
+                        inpMenuHtmlUpdate.checked = false;
+                        if(item.getAttribute('data-classname')) {
+                            if(item.getAttribute('data-classname')==='is-bordered') {
+                                inpMenuHtmlUpdate.checked = true;
+                            } 
+                        } 
+
+                        var btnUpdateMenu = modal.querySelector('.input-update-menu');
+                        if(this.eventUpdate) btnUpdateMenu.removeEventListener('click', this.eventUpdate);
+                        btnUpdateMenu.addEventListener('click', this.eventUpdate = ()=>{
+
+                            var inpMenuNameUpdate = modal.querySelector('#inpMenuNameUpdate');
+                            item.setAttribute('data-name', inpMenuNameUpdate.value);
+                            var inpMenuLinkUpdate = modal.querySelector('#inpMenuLinkUpdate');
+                            item.setAttribute('data-link', inpMenuLinkUpdate.value);
+                            var inpMenuHtmlUpdate = modal.querySelector('#inpMenuHtmlUpdate');
+                            item.setAttribute('data-html', encodeURIComponent(inpMenuHtmlUpdate.value));
+
+                            var inpMenuClassNameUpdate = modal.querySelector('#inpMenuClassNameUpdate');
+                            item.setAttribute('data-classname', inpMenuClassNameUpdate.value);
+
+                            if(inpMenuClassNameUpdate.value!=='is-menu-search') {
+                                var inpMenuHtmlUpdate = modal.querySelector('#chkMenuHighlight');
+                                if(inpMenuHtmlUpdate.checked) {
+                                    item.setAttribute('data-classname', 'is-bordered');
+                                } else {
+                                    item.setAttribute('data-classname', '');
+                                }
+                            }
+
+                            item.querySelector('span').innerHTML = inpMenuNameUpdate.value;
+
+                            hideModal(modal);
+
+                        });
+
+                        var btnRemoveMenu = modal.querySelector('.input-remove-menu');
+                        if(this.eventRemove) btnRemoveMenu.removeEventListener('click', this.eventRemove);
+                        btnRemoveMenu.addEventListener('click', this.eventRemove = ()=>{
+
+                            item.parentNode.removeChild(item);
+
+                            hideModal(modal);
+
+                        });
+
+                        var btnGotoSection = modal.querySelector('.input-select-section');
+
+                        if(this.gotoSection) btnGotoSection.removeEventListener('click', this.gotoSection);
+                        btnGotoSection.addEventListener('click', this.gotoSection = ()=>{
+
+                            openSelectSection()
+
+                        });
+
+                        var btnSelectIcon = modal.querySelector('.input-select-icon');
+
+                        if(this.useicon) btnSelectIcon.removeEventListener('click', this.useicon);
+                        btnSelectIcon.addEventListener('click', this.useicon = ()=>{
+
+                            openSelectIcon();
+                            
+                        });
+
+                        var btnRemoveIcon = modal.querySelector('.input-remove-icon');
+
+                        if(this.removeicon) btnRemoveIcon.removeEventListener('click', this.removeicon);
+                        btnRemoveIcon.addEventListener('click', this.removeicon = ()=>{
+
+                            removeIcon();
+
+                        });
+
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                    });
+                        
+                });
+            }
+
+            applyTreeBehavior();
+
+            var btnAddMenuItem = document.querySelector('.input-add-menu');
+            btnAddMenuItem.addEventListener('click', function() {
+
+                // Open Modal for adding
+                let modal = showModal('.is-modal.addmenuitem');
+
+                modal.querySelector('.is-modal-bar').innerHTML = parent._cb.out('Add Menu Item');
+                var inpMenuName = modal.querySelector('#inpMenuName');
+                inpMenuName.value = '';
+                var inpMenuLink = modal.querySelector('#inpMenuLink');
+                inpMenuLink.value = '';
+                var inpMenuHtml = modal.querySelector('#inpMenuHtml');
+                inpMenuHtml.value = '';
+                modal.querySelector('.icon-preview').innerHTML='';
+                modal.querySelector('.input-remove-icon').style.display = 'none';
+                inpMenuName.focus();
+
+                var btnGotoSection2 = modal.querySelector('.input-select-section');
+
+                if(this.gotoSection2) btnGotoSection2.removeEventListener('click', this.gotoSection2);
+                btnGotoSection2.addEventListener('click', this.gotoSection2 = ()=>{
+
+                    openSelectSection();
+
+                });
+
+                var btnSelectIcon = modal.querySelector('.input-select-icon');
+
+                if(this.useicon2) btnSelectIcon.removeEventListener('click', this.useicon2);
+                btnSelectIcon.addEventListener('click', this.useicon2 = ()=>{
+
+                    openSelectIcon();
+                    
+                });
+
+                var btnRemoveIcon = modal.querySelector('.input-remove-icon');
+
+                if(this.removeicon2) btnRemoveIcon.removeEventListener('click', this.removeicon2);
+                btnRemoveIcon.addEventListener('click', this.removeicon2 = ()=>{
+
+                    removeIcon();
+
+                });
+
+                var btnAddMenu = modal.querySelector('.input-add-menu');
+                if(this.eventAdd) btnAddMenu.removeEventListener('click', this.eventAdd);
+                btnAddMenu.addEventListener('click', this.eventAdd = ()=>{
+
+                    var inpMenuName = modal.querySelector('#inpMenuName');
+                    var inpMenuLink = modal.querySelector('#inpMenuLink');
+                    var inpMenuHtml = modal.querySelector('#inpMenuHtml');
+
+                    var html = `<li data-name="${inpMenuName.value}" data-link="${inpMenuLink.value}" data-html="${encodeURIComponent(inpMenuHtml.value)}"><span>${inpMenuName.value}</span><ul class="sortable"></ul></li>`;
+
+                    document.querySelector('.menutree').insertAdjacentHTML('beforeend', html);
+
+                    hideModal(modal);
+                    
+                    applyTreeBehavior();
+                });
+
+            });
+
+            var btnAddSearch = document.querySelector('.input-add-search');
+            btnAddSearch.addEventListener('click', function() {
+       
+                var html = `<li data-name="Search" data-link="" data-html="${encodeURIComponent('<i class="icon ion-android-search"></i>')}" data-classname="is-menu-search"><span>Search</span><ul class="sortable"></ul></li>`;
+
+                document.querySelector('.menutree').insertAdjacentHTML('beforeend', html);
+
+                applyTreeBehavior();
+
+            });
+
+            // Tabs
+            let tabs = document.querySelectorAll('.is-tabs a');
+            Array.prototype.forEach.call(tabs, (tab) => {
+
+                tab.addEventListener('click', (e) => { 
+
+                    if(hasClass(tab, 'active')) {
+                        e.preventDefault();
+                        return false;
+                    }
+                    const id = tab.getAttribute('data-content');
+                    if(!id) {
+                        e.preventDefault();
+                        return false;
+                    }
+
+                    const group = tab.parentNode.getAttribute('data-group');
+
+                    let samegrouptabs = document.querySelectorAll('.is-tabs[data-group="' + group + '"] > a');
+                    Array.prototype.forEach.call(samegrouptabs, (samegrouptab) => {
+                        removeClass(samegrouptab, 'active');
+                    });
+                    addClass(tab, 'active');
+
+                    let samegroupcontents = document.querySelectorAll('.is-tab-content[data-group="' + group + '"]');
+                    Array.prototype.forEach.call(samegroupcontents, (samegroupcontent) => {
+                        samegroupcontent.style.display = 'none';
+                    });
+                    document.querySelector('#' + id).style.display = 'flex';
+
+                    e.preventDefault();
+                    return false;
+                });
+
+            });
+
+            function openSelectSection() {
+
+                // Open Modal
+                let modal = showModal('.is-modal.selectsection');
+
+                modal.querySelector('.is-modal-bar').innerHTML = parent._cb.out('Goto Section');
+
+                let sectionList = modal.querySelector('.div-section-list');
+
+                let sections = parent.document.querySelectorAll('.is-section');
+                let x = 1;
+                let html = '';
+                sections.forEach((section)=>{
+
+                    // if(!hasClass(section, 'is-section-sticky')) {
+                    if(!parent._cb.dom.hasClass(section, 'is-section-sticky')) {
+                        html += `<div role="button" style="width:100%;height:45px;" data-num="${x}">Section ${x}</div>`;
+                        x++;
+                    }
+                });
+
+                sectionList.innerHTML = html;
+
+                let btns = sectionList.querySelectorAll('div');
+                btns.forEach((btn)=>{
+                    btn.addEventListener('click', ()=>{
+                        let num = btn.getAttribute('data-num');
+
+                        let modalEditMenu = parent.document.querySelector('.is-modal.editmenuitem.active');
+                        if(modalEditMenu) {
+                            const inpMenuLinkUpdate = modalEditMenu.querySelector('#inpMenuLinkUpdate');
+                            inpMenuLinkUpdate.value = '#section' + num;
+                        }
+
+                        let modalAddMenu = parent.document.querySelector('.is-modal.addmenuitem.active');
+                        if(modalAddMenu) {
+                            const inpMenuLink = modalAddMenu.querySelector('#inpMenuLink');
+                            inpMenuLink.value = '#section' + num;
+                        }
+
+                        hideModal(modal);
+                    });
+                });
+
+            }
+
+            function openSelectIcon() {
+
+                // Open Modal
+                let modal = showModal('.is-modal.selecticon');
+
+                modal.querySelector('.is-modal-bar').innerHTML = parent._cb.out('Select Icon');
+
+                let iconList = modal.querySelector('.div-icon-list');
+                // if(iconList.innerHTML==='') {
+                //     iconList.innerHTML = parent._cb.getIcons();
+                // }
+                iconList.innerHTML = parent._cb.getIcons();
+
+                let icons = iconList.querySelectorAll('button');
+                icons.forEach(icon => {
+                    icon.addEventListener('click', (e)=>{
+                        
+                        let modalEditMenu = parent.document.querySelector('.is-modal.editmenuitem.active');
+                        if(modalEditMenu) {
+                            var inpMenuHtmlUpdate = modalEditMenu.querySelector('#inpMenuHtmlUpdate');
+                            inpMenuHtmlUpdate.value = icon.innerHTML;
+                            modalEditMenu.querySelector('.icon-preview').innerHTML=icon.innerHTML;
+                            modalEditMenu.querySelector('.input-remove-icon').style.display = 'flex';
+                        }
+
+                        let modalAddMenu = parent.document.querySelector('.is-modal.addmenuitem.active');
+                        if(modalAddMenu) {
+                            var inpMenuHtml = modalAddMenu.querySelector('#inpMenuHtml');
+                            inpMenuHtml.value = icon.innerHTML;
+                            modalAddMenu.querySelector('.icon-preview').innerHTML=icon.innerHTML;
+                            modalAddMenu.querySelector('.input-remove-icon').style.display = 'flex';
+                        }
+                        
+                        hideModal(modal);
+                    })
+                });
+            }
+
+            function removeIcon() {
+
+                let modalEditMenu = parent.document.querySelector('.is-modal.editmenuitem.active');
+                if(modalEditMenu) {
+                    var inpMenuHtmlUpdate = modalEditMenu.querySelector('#inpMenuHtmlUpdate');
+                    inpMenuHtmlUpdate.value = '';
+                    modalEditMenu.querySelector('.icon-preview').innerHTML='';
+                    modalEditMenu.querySelector('.input-remove-icon').style.display = 'none';
+                }
+
+                let modalAddMenu = parent.document.querySelector('.is-modal.addmenuitem.active');
+                if(modalAddMenu) {
+                    var inpMenuHtml = modalAddMenu.querySelector('#inpMenuHtml');
+                    inpMenuHtml.value = '';
+                    modalAddMenu.querySelector('.icon-preview').innerHTML='';
+                    modalAddMenu.querySelector('.input-remove-icon').style.display = 'none';
+                }
+               
+            }
+            
+        }); // Doc Ready
+
+        /*
+        Use construct() function to construct html & settings
+        */
+        function construct() {
+
+            var inpLogoText = document.querySelector('#inpLogoText');
+            var inpLogoLink = document.querySelector('#inpLogoLink');
+            var inpMaxWidth = document.querySelector('#inpContainerWidth');
+
+            var inpLogoTextCss = document.querySelector("#inpLogoTextCss");
+            var inpNavbarCss = document.querySelector("#inpNavbarCss");
+            var inpMenuItemCss = document.querySelector("#inpMenuItemCss");
+
+            var logoPreview = document.querySelector('.logo-preview');
+            var img = logoPreview.querySelector('img');
+            var logoSrc = '';
+            if(img) logoSrc = img.getAttribute('src');
+
+            var data = jQuery('#menu1').data('menubuilder').getMenu();
+
+            var logoClass = '';
+            if(document.querySelector("#chkLogoCircle").checked) {
+                logoClass = ' circle';
+            } 
+
+            var topbarStyle = document.querySelector(".input-topbar-style").value; 
+            
+            var topbarClass = '';
+            if(topbarStyle!=='') {
+                topbarClass = ' ' + topbarStyle;
+            }
+
+            var btnBgColor = document.querySelector('.input-bgcolor');
+            var bgColor = btnBgColor.getAttribute('data-color');
+
+            var btnSubBgColor = document.querySelector('.input-subbgcolor');
+            var subBgColor = btnSubBgColor.getAttribute('data-color');
+
+            if(bgColor==='undefined') bgColor='';
+            if(subBgColor==='undefined') subBgColor='';
+
+            var maxwidth = '';
+            if(inpMaxWidth.value!=='') {
+                maxwidth = inpMaxWidth.value.indexOf('%')!==-1?inpMaxWidth.value:inpMaxWidth.value+'px'
+                maxwidth = maxwidth + ';'
+            }
+
+            var logotextCss = inpLogoTextCss.value;
+
+            var navbarCss = inpNavbarCss.value;
+
+            var menuitemCss = inpMenuItemCss.value;
+
+            var html = 
+                `${bgColor||subBgColor||navbarCss?`
+                <div id="_style_{id}" style="display:none">
+                    ${bgColor||navbarCss?`
+                    .is-topbar.fixed.static.dark,
+                    .is-topbar.fixed.static,
+                    .is-topbar.dark.lighttext.shrink,
+                    .is-topbar.shrink,
+                    .is-topbar.lighttext.shrink,
+                    .is-topbar.fixed.dark,
+                    .is-topbar.fixed,
+                    .is-topbar.dark.shrink {
+                        ${bgColor?`background-color:${bgColor} !important;`:''} 
+                        ${navbarCss}
+                    }`:''}
+
+                    ${subBgColor?`
+                    .is-topbar.fixed.static.dark .is-menu li ul,
+                    .is-topbar.fixed.static .is-menu li ul,
+                    .is-topbar.dark.lighttext .is-menu li ul,
+                    .is-topbar .is-menu li ul,
+                    .is-topbar.lighttext .is-menu li ul,
+                    .is-topbar.fixed.dark .is-menu li ul,
+                    .is-topbar.fixed .is-menu li ul,
+                    .is-topbar.dark .is-menu li ul{
+                        background-color:${subBgColor} !important;
+                    }`:''}
+
+                    ${subBgColor?`
+                    @media all and (max-width: 1024px) {  
+                        .is-menu {
+                            background-color:${subBgColor};
+                        }
+                    }`:''}
+                </div>`:''}
+                <div class="is-topbar${topbarClass}" data-bgcolor="${bgColor}">
+                    <div class="is-topbar-container" style="max-width:${maxwidth};">
+                        <div class="is-topbar-logo">
+                            <a class="is-logo-link" href="${inpLogoLink.value===''?'.':inpLogoLink.value}" title="${inpLogoText.value}">
+                                ${(logoSrc? `<img class="is-photo-profile${logoClass}" src="${logoSrc}" alt="${inpLogoText.value}">` : '')}
+                                <span class="is-sitename"${logotextCss?` style="${logotextCss}"`:''}>${inpLogoText.value}</span>
+                            </a>
+                        </div>` +
+                        '<div class="is-topbar-menu">' +
+                            '<a id="is-menu-toggle" href="javascript:void(0)" title="Menu"><span class="line line-1"></span><span class="line line-2"></span><span class="line line-3"></span></a>' +
+                            '<div class="is-menu-overlay"></div>' +
+                            '<div class="is-menu">' +
+                                '<div class="is-menu-search-input"><input id="is_txtSearch" type="text" placeholder="Search" /><button id="is_btnSearch"><i class="icon ion-android-search"></i></button></div>' +
+
+                                generateMenuHtml(data, menuitemCss) +
+
+                                /* // Example:
+                                '<ul class="is-menu-links">' +
+
+                                    '<li><a href=""><i class="icon ion-android-home"></i></a></li>' +
+                                    '<li><a href="services">Services <span><span class="caret menutoggle"></span></span></a>' +
+                                        '<ul>' +
+                                            '<li><a href="product1">Service One</a></li>' +
+                                            '<li><a href="product2">Service Two</a></li>' +
+                                            '<li><a href="product3">Service Three <span><span class="caret menutoggle"></span></span></a>' +
+                                                '<ul>' +
+                                                    '<li><a href="product1">Service One</a></li>' +
+                                                    '<li><a href="product2">Service Two</a></li>' +
+                                                    '<li><a href="product3">Service Three</a></li>' +
+                                                '</ul>' +
+                                            '</li>' +
+                                            '<li><a href="product3">Service Four <span><span class="caret menutoggle"></span></span></a>' +
+                                            
+                                                '<ul>' +
+                                                    '<li><a href="product1">Service One</a></li>' +
+                                                    '<li><a href="product2">Service Two</a></li>' +
+                                                    '<li><a href="product3">Service Three</a></li>' +
+                                                '</ul>' +
+                                            '</li>' +
+                                        '</ul>' +
+                                    '</li>' +
+                                    '<li><a href="support">Support <span><span class="caret menutoggle"></span></span></a>' +
+                                        '<ul>' +
+                                            '<li><a href="product1">Service One</a></li>' +
+                                            '<li><a href="product2">Service Two</a></li>' +
+                                            '<li><a href="product3">Service Three <span><span class="caret menutoggle"></span></span></a>' +
+                                                '<ul>' +
+                                                    '<li><a href="product1">Service One</a></li>' +
+                                                    '<li><a href="product2">Service Two</a></li>' +
+                                                    '<li><a href="product3">Service Three</a></li>' +
+                                                '</ul>' +
+                                            '</li>' +
+                                            '<li><a href="product3">Service Four <span><span class="caret menutoggle"></span></span></a>' +
+                                            
+                                                '<ul>' +
+                                                    '<li><a href="product1">Service One</a></li>' +
+                                                    '<li><a href="product2">Service Two</a></li>' +
+                                                    '<li><a href="product3">Service Three</a></li>' +
+                                                '</ul>' +
+                                            '</li>' +
+                                        '</ul>' +
+                                    '</li>' +
+                                    '<li><a href="about">About</a></li>' +
+                                    '<li><a href="shop" class="is-bordered">SHOP</a></li><li><a href="javascript:" class="is-menu-search"><i class="icon ion-android-search"></i></a></li>' +
+                                    '<li><a href="javascript:"><i class="icon-menu-user"></i></a>' +
+                                        '<ul>' +
+                                            '<li><a href="#">Login</a></li>' +
+                                            '<li><a href="#">Register</a></li>' +
+                                        '</ul>' +
+                                    '</li>' +
+                                    '<li><a href="javascript:"><i class="icon ion-android-share-alt"></i></a>' +
+                                        '<ul>' +
+                                            '<li><a href="https://twitter.com">Twitter</a></li>' +
+                                            '<li><a href="https://facebook">Facebook</a></li>' +
+                                            '<li><a href="https://youtube.com">Youtube</a></li>' +
+                                        '</ul>' +
+                                    '</li>' +
+
+                                '</ul>' +
+                                */
+
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<scr' + 'ipt>' +
+
+                    `
+                    var css = '';
+                    if(document.querySelector('#_style_{id}')) css = document.querySelector('#_style_{id}').innerHTML;
+                    if(css!=='') {
+                        var head = document.getElementsByTagName('head')[0];
+                        var s = document.createElement('style');
+                        s.appendChild(document.createTextNode(css));
+                        head.appendChild(s);
+                    }
+                    ` +
+
+                    'var navbarReady = function (fn) {' +
+                        'var stateCheck = setInterval(function () {' +
+                            'if (typeof NavBar === "undefined") return;' +
+                            'clearInterval(stateCheck);' +
+                            'try { fn() } catch (e) { }' +
+                        '}, 1);' +
+                    '};' +
+                    'navbarReady(function () {' +
+                        'var obj = new NavBar({' +
+                            'onSearch: (keywords)=>{' +
+                                'var domain = window.location.hostname;' +
+                                'window.open("https://www.google.com/search?q="+keywords+" site:" + domain, "G1window");' +
+                            '}' +
+                        '});' +
+                        'obj.init();' +
+                    '});' +
+                    '' +
+                '</scr' + 'ipt>';
+
+            // html = html.replace(/{id}/g, makeid());
+
+            setHtml(html);
+
+            // We also put the custom variables on the snippet by calling setSettings() method.
+            var settings = '{' +
+                '"topbar": "' + topbarStyle + '",' +
+                '"maxwidth": "' + document.querySelector("#inpContainerWidth").value + '",' +
+                '"logotext": "' + document.querySelector("#inpLogoText").value + '",' +
+                '"logotextcss": "' + document.querySelector("#inpLogoTextCss").value + '",' +
+                '"navbarcss": "' + document.querySelector("#inpNavbarCss").value + '",' +
+                '"menuitemcss": "' + document.querySelector("#inpMenuItemCss").value + '",' +
+                '"logolink": "' + document.querySelector("#inpLogoLink").value + '",' +
+                '"logocircle": ' + document.querySelector("#chkLogoCircle").checked + ',' +
+                '"logoimage": "' + logoSrc + '",' +
+                '"bgcolor": "' + bgColor + '",' +
+                '"subbgcolor": "' + subBgColor + '",' +
+                '"menu":' + JSON.stringify(data.menu) +
+            '}';
+
+            setSettings(settings);
+
+            var activeSection = parent._cb.doc.querySelector('.is-topbar').closest('.is-section');
+            removeClass(activeSection, 'is-dark-text');
+            removeClass(activeSection, 'is-light-text');
+            activeSection.style.backgroundColor = 'transparent';
+            // activeSection.style.zIndex = '2';
+
+            if(topbarStyle.indexOf('static') !== -1) {
+                removeClass(activeSection, 'is-section-sticky');
+                activeSection.style.position = 'absolute';
+            } else {
+                addClass(activeSection, 'is-section-sticky');
+                activeSection.style.position = '';
+            }
+        }
+
+        function generateMenuHtml(data, menuitemCss) {
+            var mainList = document.createElement('ul');
+            mainList.setAttribute('class', 'is-menu-links');
+            constructMenuItem(mainList, data.menu, menuitemCss);
+            return mainList.outerHTML;
+        }
+
+        function constructMenuItem(mainList, itemData, menuitemCss) {
+
+            var sItemStyle = menuitemCss!==''? ` style="${menuitemCss}"`:'';
+
+            for(var i=0;i<itemData.length;i++) {
+                var item = document.createElement('li');	
+
+                var classAttr = '';
+
+                if(itemData[i].classname) {
+                    classAttr = ` class="${itemData[i].classname}"`
+                } 
+
+                var displaytext = (itemData[i].html? decodeURIComponent(itemData[i].html):itemData[i].name);
+                if (itemData[i].sub) {	
+                    
+                    if(itemData[i].sub.length>0) {
+
+                        if(itemData[i].html) {
+                            item.innerHTML=`<a${sItemStyle} href="${itemData[i].link}"${classAttr}>${displaytext}</a>`; // no caret for html/icon with submenu
+                        } else {
+                            item.innerHTML=`<a${sItemStyle} href="${itemData[i].link}"${classAttr}>${displaytext} <span><span class="caret menutoggle"></span></span></a>`;
+                        }
+
+                        var subList = document.createElement('ul');
+                        item.appendChild(subList);
+
+                        var itemData2 = itemData[i].sub;
+
+                        constructMenuItem(subList, itemData2, menuitemCss);
+                        
+                    } else {
+
+                        item.innerHTML=`<a${sItemStyle} href="${itemData[i].link}"${classAttr}>${displaytext}</a>`;
+
+                    }
+                
+                } else {
+
+                    item.innerHTML=`<a${sItemStyle} href="${itemData[i].link}"${classAttr}>${displaytext}</a>`;
+
+                }
+
+                mainList.appendChild(item);
+
+            }
+        }
+        
+        /* 
+        COMMON METHODS FOR MODULE.
+        */
+        function getHtml() {
+            var activeModule = parent._cb.doc.querySelector('[data-module-active]');
+            return decodeURIComponent(activeModule.getAttribute('data-html'));
+        }
+
+        function getSettings() {
+            var activeModule = parent._cb.doc.querySelector('[data-module-active]');
+            return decodeURIComponent(activeModule.getAttribute('data-settings'));
+        }
+
+        function setHtml(html) {
+            parent.document.querySelector('#hidModuleCode').value = html;
+        }
+
+        function setSettings(settings) {
+            parent.document.querySelector('#hidModuleSettings').value = settings;
+        }
+
+        function makeid() {
+            var text = '';
+            var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            for (var i = 0; i < 2; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            var text2 = '';
+            var possible2 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            for (var i = 0; i < 5; i++)
+                text2 += possible2.charAt(Math.floor(Math.random() * possible2.length));
+
+            return text + text2;
+        }
+
+        function showModal(selector) {
+            let modal = document.querySelector(selector);
+            let modalClone = modal.cloneNode(true);
+            modal = parent._cb.createModal(modalClone, selector);
+            return modal;
+        }
+        function hideModal(modal) {
+            parent._cb.hideModal(modal);
+        }
+        function hasClass(elm,classname) {
+            parent._cb.dom.hasClass(elm,classname);
+        }
+        function addClass(elm,classname) {
+            parent._cb.dom.addClass(elm,classname);
+        }
+        function removeClass(elm,classname) {
+            parent._cb.dom.removeClass(elm,classname);
+        }
+
+        // Style stuff
+
+        // Style stuff
+        function applyParentStyles() {
+            var cssString = `
+                body {
+                    color: ${parent._cb.styleModalColor};
+                }
+                a {
+                    color: ${parent._cb.styleModalColor};
+                }
+                .sortable {
+                    border: 1px dashed ${parent._cb.styleModalColor};
+                }
+                button {
+                    background-color: ${parent._cb.styleButtonClassicBackground};
+                    color: ${parent._cb.styleButtonClassicColor};         
+                }
+                button svg {
+                    fill: ${parent._cb.styleButtonClassicColor};         
+                }
+
+                input[type="text"],
+                textarea {
+                    color: ${parent._cb.styleInputColor};
+                    background-color: ${parent._cb.styleInputBackground};
+                    border-bottom: ${parent._cb.styleInputBorderBottom};
+                }
+                input:focus,
+                textarea:focus {
+                    outline: none;
+                }
+                select {
+                    color: ${parent._cb.styleSelectColor};
+                    background-color: ${parent._cb.styleSelectBackground};
+                }
+                select option {
+                    background-color: ${parent._cb.styleSelectOptionBackground};
+                }
+            `;
+            var style = document.createElement("style");
+            style.type = "text/css";
+            style.innerHTML = cssString;
+            document.getElementsByTagName("head")[0].appendChild(style);
+
+            if(parent._cb.styleColoredDark) {
+                document.body.setAttribute('class', 'colored-dark');
+            } else if(parent._cb.styleDark) {
+                document.body.setAttribute('class', 'dark');
+            } else if(parent._cb.styleColored) {
+                document.body.setAttribute('class', 'colored');
+            } else if(parent._cb.styleLight) {
+                document.body.setAttribute('class', 'light');
+            } else {
+                document.body.setAttribute('class', '');
+            }
+
+        }
+
+        applyParentStyles();
+
+        // Language file stuff
+        function applyLang() {
+            let elms = document.querySelectorAll('[data-lang]');
+            elms.forEach(function(elm){
+                elm.innerHTML = parent._cb.out(elm.innerHTML);
+            });
+
+            elms = document.querySelectorAll('[data-lang-title]');
+            elms.forEach(function(elm){
+                elm.setAttribute('title', parent._cb.out(elm.getAttribute('title')));
+            });
+        }
+        applyLang();
+
+        document.body.style.opacity = 1;
+    </script>
+
+    <svg width="0" height="0" style="position:absolute;display:none;">
+        <defs>
+            <symbol viewBox="0 0 2048.0 2048.0" id="icon-clean">
+                <g transform="matrix(1,0,0,1,1024.0,1024.0)">
+                    <path d="M75.0013,893.849 L-1030.73,900.993 L-32.1518,-880.838 L1009.54,-880.838 L75.0013,893.849 Z " fill="currentColor" />
+                    <path d="M-30.8571,780.685 L-845.2,787.828 L-508.893,193.749 L305.26,194.963 L-30.8571,780.685 Z " fill="#ffffff" fill-opacity="1.00" />
+                </g>
+            </symbol>
+            <symbol viewBox="0 0 512 512" id="ion-image"><path d="M368 224c26.5 0 48-21.5 48-48s-21.5-48-48-48-48 21.5-48 48 21.5 48 48 48z"></path><path d="M452 64H60c-15.6 0-28 12.7-28 28.3v327.4c0 15.6 12.4 28.3 28 28.3h392c15.6 0 28-12.7 28-28.3V92.3c0-15.6-12.4-28.3-28-28.3zM348.9 261.7c-3-3.5-7.6-6.2-12.8-6.2-5.1 0-8.7 2.4-12.8 5.7L304.6 277c-3.9 2.8-7 4.7-11.5 4.7-4.3 0-8.2-1.6-11-4.1-1-.9-2.8-2.6-4.3-4.1L224 215.3c-4-4.6-10-7.5-16.7-7.5-6.7 0-12.9 3.3-16.8 7.8L64 368.2V107.7c1-6.8 6.3-11.7 13.1-11.7h357.7c6.9 0 12.5 5.1 12.9 12l.3 260.4-99.1-106.7z"></path></symbol>
+            <symbol viewBox="0 0 512 512" id="ion-more"><path d="M113.7 304C86.2 304 64 282.6 64 256c0-26.5 22.2-48 49.7-48 27.6 0 49.8 21.5 49.8 48 0 26.6-22.2 48-49.8 48zM256 304c-27.5 0-49.8-21.4-49.8-48 0-26.5 22.3-48 49.8-48 27.5 0 49.7 21.5 49.7 48 0 26.6-22.2 48-49.7 48zM398.2 304c-27.5 0-49.8-21.4-49.8-48 0-26.5 22.2-48 49.8-48 27.5 0 49.8 21.5 49.8 48 0 26.6-22.2 48-49.8 48z"></path></symbol>
+        </defs>
+    </svg>
+</body>
+</html>

@@ -1,0 +1,134 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&amp;display=swap');
+
+
+.type-inconsolata {
+    font-family: 'Inconsolata', monospace;
+    font-size: 100%; 
+    line-height: 1.9;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-inconsolata p, .type-inconsolata td, .type-inconsolata li, .type-inconsolata label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.15rem; 
+    line-height: 1.9;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-inconsolata h1, .type-inconsolata h2, .type-inconsolata h3, .type-inconsolata h4, .type-inconsolata h5, .type-inconsolata h6 {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-inconsolata h1 {font-size: 3.1rem;margin: 0.03rem 0 0.3rem;}
+.type-inconsolata h2 {font-size: 2.5rem;margin: 0.16rem 0 0.3rem;}
+.type-inconsolata h3 {font-size: 2rem;margin: 0.34rem 0 0.3rem;}
+.type-inconsolata h4 {font-size: 1.7rem;margin: 0.45rem 0 0.3rem;line-height: 1.4;}
+.type-inconsolata h5 {font-size: 1.4rem;margin: 0.55rem 0 0.3rem;line-height: 1.6;}
+.type-inconsolata h6 {font-size: 1.15rem;margin: 0.7rem 0 0.3rem;font-weight: bold;line-height: 1.8;}
+.type-inconsolata p {margin:0.7rem 0 1rem;}
+
+.type-inconsolata .display { margin-bottom: 0.5rem; }
+.type-inconsolata .display h1 {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 700;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin: 0.4rem 0;
+    font-style: normal;
+}
+.type-inconsolata .display p {
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.26rem;
+    line-height: 1.6;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+.type-inconsolata .display-font1 {font-family: 'Inconsolata', monospace;}
+.type-inconsolata .display-font2 {font-family: 'Inconsolata', monospace;}
+.type-inconsolata .default-font1 {font-family: 'Inconsolata', monospace;}
+.type-inconsolata .default-font2 {font-family: 'Inconsolata', monospace;}
+
+/* h1-h6: 48 32  24  19  16  12 */
+.type-inconsolata h1 {font-size:48px} 
+@media all and (max-width: 1800px) { 
+    .type-inconsolata h1 {font-size:2.5vw; font-size:clamp(29px, 2.5vw, 2.5vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-inconsolata h1 {font-size:2.5vw}
+}
+
+.type-inconsolata h2 {font-size:32px}
+@media all and (max-width: 1800px) { 
+    .type-inconsolata h2 {font-size:1.64vw; font-size:clamp(24px, 1.64vw, 1.64vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-inconsolata h2 {font-size:1.67vw}
+}
+
+.type-inconsolata h3 {font-size:24px}
+@media all and (max-width: 1800px) { 
+    .type-inconsolata h3 {font-size:1.48vw; font-size:clamp(22px, 1.48vw, 1.48vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-inconsolata h3 {font-size:1.25vw}
+}
+
+.type-inconsolata h4 {font-size:19px}
+@media all and (max-width: 1800px) { 
+    .type-inconsolata h4 {font-size:1.17vw; font-size:clamp(19px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-inconsolata h4 {font-size:0.99vw}
+}
+
+.type-inconsolata h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-inconsolata h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-inconsolata h5 {font-size:0.83vw}
+}
+
+.type-inconsolata h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-inconsolata h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-inconsolata h6 {font-size:0.63vw}
+}
+
+/* 18 */
+.type-inconsolata p,
+.type-inconsolata td, 
+.type-inconsolata li, 
+.type-inconsolata label {
+    font-size: 18px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-inconsolata p,
+    .type-inconsolata td, 
+    .type-inconsolata li, 
+    .type-inconsolata label {font-size:1.11vw; font-size:clamp(16px, 1.11vw, 1.11vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-inconsolata .v2 p,
+    .type-inconsolata .v2 td, 
+    .type-inconsolata .v2 li, 
+    .type-inconsolata .v2 label {font-size:0.94vw}
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700'); */

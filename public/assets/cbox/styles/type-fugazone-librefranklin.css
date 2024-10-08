@@ -1,0 +1,136 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap');
+
+
+.type-fugazone-librefranklin {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 100%; 
+    line-height: 2.2;
+    font-weight: 200;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-fugazone-librefranklin p, .type-fugazone-librefranklin td, .type-fugazone-librefranklin li, .type-fugazone-librefranklin label {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.17rem;
+    line-height: 2.2;
+    font-weight: 200;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-fugazone-librefranklin h1, .type-fugazone-librefranklin h2, .type-fugazone-librefranklin h3, .type-fugazone-librefranklin h4, .type-fugazone-librefranklin h5, .type-fugazone-librefranklin h6 {
+    font-family: 'Fugaz One', cursive;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-transform: none;
+    font-style: normal;    
+}        
+
+.type-fugazone-librefranklin h1 {font-size: 3rem;margin: 0.18rem 0 0.3rem;}
+.type-fugazone-librefranklin h2 {font-size: 2.4rem;margin: 0.3rem 0 0.3rem;}
+.type-fugazone-librefranklin h3 {font-size: 2rem;margin: 0.42rem 0;}
+.type-fugazone-librefranklin h4 {font-size: 1.7rem;margin: 0.52rem 0;}
+.type-fugazone-librefranklin h5 {font-size: 1.4rem;margin: 0.58rem 0;line-height: 1.6;}
+.type-fugazone-librefranklin h6 {font-size: 1.24rem;margin: 0.63rem 0;line-height: 1.8;}
+.type-fugazone-librefranklin p {margin:0.5rem 0 1rem;}
+
+.type-fugazone-librefranklin .display { margin-bottom: 0.5rem; }
+.type-fugazone-librefranklin .display h1 {
+	font-family: 'Fugaz One', cursive;
+    font-size: 4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    margin:0.4rem 0;
+    font-style: normal;
+}
+.type-fugazone-librefranklin .display p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    letter-spacing: 3px;
+    font-style: normal;
+    text-transform: none;
+}
+
+.type-fugazone-librefranklin .display-font1 {font-family: 'Fugaz One', cursive;}
+.type-fugazone-librefranklin .display-font2 {font-family: 'Libre Franklin', sans-serif;}
+.type-fugazone-librefranklin .default-font1 {font-family: 'Fugaz One', cursive;}
+.type-fugazone-librefranklin .default-font2 {font-family: 'Libre Franklin', sans-serif;}
+
+/* h1-h6: 48 32  24  19  16  12 */
+.type-fugazone-librefranklin h1 {font-size:48px} 
+@media all and (max-width: 1800px) { 
+    .type-fugazone-librefranklin h1 {font-size:2.5vw; font-size:clamp(29px, 2.5vw, 2.5vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-fugazone-librefranklin h1 {font-size:2.5vw}
+}
+
+.type-fugazone-librefranklin h2 {font-size:32px}
+@media all and (max-width: 1800px) { 
+    .type-fugazone-librefranklin h2 {font-size:1.64vw; font-size:clamp(24px, 1.64vw, 1.64vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-fugazone-librefranklin h2 {font-size:1.67vw}
+}
+
+.type-fugazone-librefranklin h3 {font-size:24px}
+@media all and (max-width: 1800px) { 
+    .type-fugazone-librefranklin h3 {font-size:1.48vw; font-size:clamp(22px, 1.48vw, 1.48vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-fugazone-librefranklin h3 {font-size:1.25vw}
+}
+
+.type-fugazone-librefranklin h4 {font-size:19px}
+@media all and (max-width: 1800px) { 
+    .type-fugazone-librefranklin h4 {font-size:1.17vw; font-size:clamp(19px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-fugazone-librefranklin h4 {font-size:0.99vw}
+}
+
+.type-fugazone-librefranklin h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-fugazone-librefranklin h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-fugazone-librefranklin h5 {font-size:0.83vw}
+}
+
+.type-fugazone-librefranklin h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-fugazone-librefranklin h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-fugazone-librefranklin h6 {font-size:0.63vw}
+}
+
+/* 19 */
+.type-fugazone-librefranklin p,
+.type-fugazone-librefranklin td, 
+.type-fugazone-librefranklin li, 
+.type-fugazone-librefranklin label {
+    font-size: 19px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-fugazone-librefranklin p,
+    .type-fugazone-librefranklin td, 
+    .type-fugazone-librefranklin li, 
+    .type-fugazone-librefranklin label {font-size:1.17vw; font-size:clamp(16px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-fugazone-librefranklin .v2 p,
+    .type-fugazone-librefranklin .v2 td, 
+    .type-fugazone-librefranklin .v2 li, 
+    .type-fugazone-librefranklin .v2 label {font-size:0.99vw}
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Fugaz+One');
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin:200,200i,600'); */

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+.type-juliussansone-robotocondensed {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+	font-size: 100%;
+    text-transform: none;
+    font-style: normal;
+}
+.type-juliussansone-robotocondensed p, .type-juliussansone-robotocondensed td, .type-juliussansone-robotocondensed li, .type-juliussansone-robotocondensed label {
+   	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 0.93rem;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-juliussansone-robotocondensed h1, .type-juliussansone-robotocondensed h2, .type-juliussansone-robotocondensed h3, .type-juliussansone-robotocondensed h4, .type-juliussansone-robotocondensed h5, .type-juliussansone-robotocondensed h6 {
+   	font-family: 'Julius Sans One', sans-serif;
+	line-height: 1.2;
+    font-weight: 400;
+    text-transform: none;
+}        
+
+.type-juliussansone-robotocondensed h1 {font-size: 2.5rem;margin: 1.02rem 0 0.9rem;}
+.type-juliussansone-robotocondensed h2 {font-size: 1.8rem;margin: 1.2rem 0 0.6rem;}
+.type-juliussansone-robotocondensed h3 {font-size: 1.5rem;margin: 1.2rem 0 0.6rem;}
+.type-juliussansone-robotocondensed h4 {font-size: 1.3rem;margin: 0.56rem 0 0.3rem;line-height: 1.6;}
+.type-juliussansone-robotocondensed h5 {font-size: 1.2rem;margin: 0.58rem 0 0.3rem;line-height: 1.7;}
+.type-juliussansone-robotocondensed h6 {font-size: 1.1rem;margin: 0.6rem 0 0.3rem;line-height: 2;}
+.type-juliussansone-robotocondensed p {margin:0.4rem 0 1rem;}
+
+.type-juliussansone-robotocondensed .display { margin-bottom: 0.5rem; }
+.type-juliussansone-robotocondensed .display h1 {
+	font-family: 'Julius Sans One', sans-serif;
+	font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 400;
+    text-transform: none;
+    font-style: normal;
+}
+.type-juliussansone-robotocondensed .display p {
+	font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    text-transform: none;
+    font-style: normal;
+}
+
+.type-juliussansone-robotocondensed .is-btn {
+    padding: 10px 50px;
+}
+.type-juliussansone-robotocondensed .is-btn-small {
+    padding: 5px 25px;
+}
+
+.type-juliussansone-robotocondensed .display-font1 {font-family: 'Julius Sans One', sans-serif;}
+.type-juliussansone-robotocondensed .display-font2 {font-family: 'Roboto Condensed', sans-serif;}
+.type-juliussansone-robotocondensed .default-font1 {font-family: 'Julius Sans One', sans-serif;}
+.type-juliussansone-robotocondensed .default-font2 {font-family: 'Roboto Condensed', sans-serif;}
+
+/* h1-h6: 38 28  21  17  14  12 */
+.type-juliussansone-robotocondensed h1 {font-size:38px}
+@media all and (max-width: 1800px) { 
+    .type-juliussansone-robotocondensed h1 {font-size:1.98vw; font-size:clamp(26px, 1.98vw, 1.98vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-juliussansone-robotocondensed h1 {font-size:1.98vw}
+}
+
+.type-juliussansone-robotocondensed h2 {font-size:28px} 
+@media all and (max-width: 1800px) { 
+    .type-juliussansone-robotocondensed h2 {font-size:1.56vw; font-size:clamp(23px, 1.56vw, 1.56vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-juliussansone-robotocondensed h2 {font-size:1.46vw}
+}
+
+.type-juliussansone-robotocondensed h3 {font-size:21px}
+@media all and (max-width: 1800px) { 
+    .type-juliussansone-robotocondensed h3 {font-size:1.29vw; font-size:clamp(21px, 1.29vw, 1.29vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-juliussansone-robotocondensed h3 {font-size:1.09vw}
+}
+
+.type-juliussansone-robotocondensed h4 {font-size:17px} 
+@media all and (max-width: 1800px) { 
+    .type-juliussansone-robotocondensed h4 {font-size:1.05vw; font-size:clamp(17px, 1.05vw, 1.05vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-juliussansone-robotocondensed h4 {font-size:0.89vw}
+}
+
+.type-juliussansone-robotocondensed h5 {font-size:14}
+@media all and (max-width: 1800px) { 
+    .type-juliussansone-robotocondensed h5 {font-size:0.86vw; font-size:clamp(14px, 0.86vw, 0.86vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-juliussansone-robotocondensed h5 {font-size:0.73vw}
+}
+
+.type-juliussansone-robotocondensed h6 {font-size:12} 
+@media all and (max-width: 1800px) { 
+    .type-juliussansone-robotocondensed h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-juliussansone-robotocondensed h6 {font-size:0.63vw}
+}
+
+/* 16 */
+.type-juliussansone-robotocondensed p,
+.type-juliussansone-robotocondensed td, 
+.type-juliussansone-robotocondensed li, 
+.type-juliussansone-robotocondensed label {
+    font-size: 16px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-juliussansone-robotocondensed p,
+    .type-juliussansone-robotocondensed td, 
+    .type-juliussansone-robotocondensed li, 
+    .type-juliussansone-robotocondensed label {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-juliussansone-robotocondensed .v2 p,
+    .type-juliussansone-robotocondensed .v2 td, 
+    .type-juliussansone-robotocondensed .v2 li, 
+    .type-juliussansone-robotocondensed .v2 label {font-size:0.83vw}
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700'); */

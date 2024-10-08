@@ -1,0 +1,739 @@
+.is-box-tool {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: calc(50% - 80px);
+  right: auto;
+  box-sizing: border-box;
+  line-height: 30px;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0px;
+  overflow: hidden;
+}
+.is-box-tool button {
+  width: 40px !important;
+  height: 40px !important;
+  cursor: pointer;
+}
+.is-box-tool button svg {
+  fill: #fff !important;
+}
+.is-box-tool button.is-box-edit {
+  background: rgb(0, 172, 214);
+}
+.is-box-tool button.is-module-edit {
+  background: #FF9800;
+}
+
+.is-section-tool {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: 15%;
+  right: 0px;
+  left: auto;
+  width: 40px;
+  height: 80px;
+}
+.is-section-tool > button {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  line-height: 40px;
+  padding: 0px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+}
+.is-section-tool .is-section-edit {
+  background: rgb(0, 172, 214);
+}
+.is-section-tool .is-section-edit svg {
+  fill: #fff !important;
+}
+.is-section-tool .is-section-remove {
+  background: rgb(247, 99, 46);
+  color: #fff !important;
+}
+
+.is-dummy {
+  height: 0px;
+  min-height: 0px !important;
+  background: transparent !important;
+}
+
+#_cbhtml .is-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.97);
+  color: rgba(0, 0, 0, 0.8);
+  border-right: rgba(0, 0, 0, 0.05) 1px solid;
+  z-index: 10006;
+  opacity: 0.0001;
+}
+#_cbhtml .is-sidebar button.is-sidebar-button {
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  cursor: pointer;
+}
+#_cbhtml .is-sidebar button.is-sidebar-button svg {
+  width: 16px;
+  height: 16px;
+}
+#_cbhtml .is-sidebar button.is-sidebar-button span {
+  font-family: serif;
+  font-size: 20px;
+  display: inline-block;
+  width: 50px;
+}
+#_cbhtml .is-sidebar button.is-sidebar-button:hover, #_cbhtml .is-sidebar button.is-sidebar-button.active {
+  background-color: rgba(133, 133, 133, 0.13);
+}
+
+.dark #_cbhtml .is-sidebar {
+  background: #333;
+}
+
+.is-sidebar-content {
+  z-index: 10005;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.96);
+  color: rgba(0, 0, 0, 0.8);
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transform: translate3d(-120%, 0, 0);
+  outline: none;
+  display: none;
+}
+
+.is-sidebar-content.active {
+  transform: translate3d(0, 0, 0);
+}
+
+.is-sidebar-content > div {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.is-sidebar-content textarea:focus {
+  outline: none;
+}
+
+.is-sidebar-content select:focus {
+  outline: none;
+}
+
+.is-sidebar-title {
+  font-family: sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+/* 
+    Sidebar Panels: 
+        #divSidebarSections, 
+        #divSidebarSnippets, 
+        #divSidebarTypography, 
+        #divSidebarSource
+*/
+#divSidebarSnippets {
+  max-width: 290px !important;
+  border-left: 60px solid transparent !important;
+}
+
+#divSidebarTypography {
+  max-width: 320px;
+}
+
+#divSidebarSnippets > div:first-child {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  padding: 0 0 0 60px;
+  box-sizing: border-box;
+}
+
+#divSidebarSnippets > div:first-child > .is-selectbox {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+#divSidebarSections > div,
+.sidebar-sections > div {
+  padding: 0 0 0 60px;
+  box-sizing: border-box;
+}
+
+#divSidebarSource > div {
+  padding: 0 0 0 60px;
+  box-sizing: border-box;
+}
+
+#divSidebarTypography > div {
+  padding: 0 0 0 60px;
+  box-sizing: border-box;
+}
+
+#divSidebarTypography label {
+  margin: 0 20px 0 0;
+  display: flex;
+  align-items: center;
+}
+#divSidebarTypography label input {
+  margin: 0;
+}
+#divSidebarTypography label span {
+  margin-left: 5px;
+  line-height: 1;
+}
+#divSidebarTypography #btnTypoClear {
+  width: 40px;
+  height: 35px;
+  display: flex;
+  background: transparent;
+  box-shadow: none;
+  margin-right: 5px;
+}
+
+#divSidebarSections {
+  width: 100%;
+  max-width: 460px;
+}
+
+@media all and (min-width: 690px) {
+  #divSidebarSections {
+    max-width: 650px;
+  }
+}
+@media all and (min-width: 970px) {
+  #divSidebarSections {
+    max-width: 930px;
+  }
+}
+#divSidebarSections.large {
+  width: 100%;
+}
+
+@media all and (min-width: 765px) {
+  #divSidebarSections.large {
+    max-width: 615px;
+  }
+}
+@media all and (min-width: 1260px) {
+  #divSidebarSections.large {
+    max-width: 1110px;
+  }
+}
+@media all and (min-width: 1770px) {
+  #divSidebarSections.large {
+    max-width: 1620px;
+  }
+}
+#divSidebarSections.medium {
+  width: 100%;
+  max-width: 1280px;
+}
+
+@media all and (max-width: 1400px) {
+  #divSidebarSections.medium {
+    max-width: 880px;
+  }
+}
+#divSidebarSections.small {
+  width: 100%;
+  max-width: 930px;
+}
+
+#divSelector {
+  position: absolute;
+  top: 110px;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  padding: 0 0 0 60px;
+  box-sizing: border-box;
+}
+
+#divStyles {
+  border-top: #fff 40px solid;
+  padding: 35px 15px 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  top: 110px;
+  left: 60px;
+  width: calc(100% - 60px);
+  height: calc(100% - 110px);
+  position: absolute;
+}
+
+#divStyles > div {
+  width: 100%;
+  margin: 30px 0 70px;
+  display: flex;
+  border: rgba(205, 205, 205, 0.32) 1px solid;
+  box-shadow: 0px 7px 10px -6px rgba(0, 0, 0, 0.08);
+  position: relative;
+  cursor: pointer;
+}
+
+#divStyles > div div:first-child {
+  text-align: center;
+  transition: all 0.3s ease;
+  position: absolute;
+  background: transparent;
+  top: -45px;
+  right: 0;
+  width: 100%;
+  padding: 3px 10px;
+  box-sizing: border-box;
+  border: none;
+  font-family: sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  z-index: 1;
+  -webkit-transition: all 0.16s ease;
+  transition: all 0.16s ease;
+}
+
+#divStyles > div img {
+  width: 100%;
+  -webkit-transition: all 0.16s ease;
+  transition: all 0.16s ease;
+}
+
+#divStyles .is-overlay {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+#divStyles > div .is-overlay:after {
+  background: rgba(0, 0, 0, 0.03);
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+#divStyles > div:hover .is-overlay:after {
+  opacity: 0.9;
+}
+
+.dark #divStyles > div .is-overlay:after {
+  background: rgba(78, 78, 78, 0.13);
+}
+
+#divSidebarSource,
+.sidebar-sections {
+  width: 100%;
+}
+
+@media all and (min-width: 640px) {
+  #divSidebarSource, .sidebar-sections {
+    max-width: 550px;
+  }
+}
+@media all and (min-width: 1024px) {
+  #divSidebarSource, .sidebar-sections {
+    max-width: 1005px;
+  }
+}
+@media all and (min-width: 1440px) {
+  #divSidebarSource, .sidebar-sections {
+    max-width: 1005px;
+  }
+}
+#_cbhtml .editbox .is-tabs a {
+  font-size: 11px;
+  color: #000;
+}
+
+#_cbhtml .is-modal.editbox button,
+#_cbhtml .is-modal.editsection button {
+  width: auto;
+  height: 35px;
+  font-size: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  padding: 1px 20px;
+  box-sizing: border-box;
+  border: none;
+  outline-offset: -2px;
+}
+
+#_cbhtml .is-modal.editbox button span {
+  margin-left: 5px;
+}
+
+#_cbhtml .is-modal.editbox button svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+}
+
+#_cbhtml .is-modal.editbox button.input-box-bgimage {
+  margin-right: 1px;
+}
+
+#_cbhtml .is-modal.editbox button.input-box-bgimage svg {
+  width: 14px;
+  height: 14px;
+}
+
+#_cbhtml .is-modal.editbox button.input-box-bgimageadjust {
+  width: 40px;
+}
+
+#_cbhtml .is-modal.editbox .box-bgimage-preview img {
+  max-width: 120px;
+  max-height: 120px;
+}
+
+#_cbhtml .is-modal.editbox button.cmd-box-content-pos {
+  width: 40px;
+}
+
+#_cbhtml .is-modal.editbox label,
+#_cbhtml .is-modal.editsection label {
+  font-size: 13px;
+}
+
+#_cbhtml .is-modal.editsection button {
+  width: auto;
+}
+#_cbhtml .is-modal.editsection button svg {
+  flex: none;
+  width: 10px;
+  height: 10px;
+}
+
+#_cbhtml .is-modal.editsection button.cmd-section-height,
+#_cbhtml .is-modal.editsection button.cmd-box-spacing,
+#_cbhtml .is-modal.editsection button.cmd-scroll-preset,
+#_cbhtml .is-modal.editsection button.cmd-section-duplicate {
+  width: 45px;
+}
+
+#_cbhtml .is-modal.editsection button.cmd-section-duplicate {
+  padding: 0 22px;
+}
+#_cbhtml .is-modal.editsection button.cmd-section-duplicate svg {
+  margin-left: -4px;
+}
+#_cbhtml .is-modal.editsection button.cmd-section-duplicate span {
+  margin-left: 5px;
+  font-size: 12px;
+  text-transform: none;
+}
+
+#_cbhtml .label-checkbox {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+#_cbhtml .label-checkbox input {
+  margin-right: 8px;
+}
+
+.is-wrapper {
+  opacity: 0.01;
+  /* setting display=none makes initial script may not work properly */
+  transform-origin: top;
+}
+.is-wrapper.is-edit {
+  padding-left: 61px;
+  margin-top: 5rem !important;
+}
+.is-wrapper.is-container-edit > div.section-select, .is-wrapper.is-clean-edit > div.section-select {
+  overflow-x: unset !important;
+  overflow-y: unset !important;
+}
+.is-wrapper .transition-edit.is-section {
+  transition: all 0.2s ease !important;
+}
+.is-wrapper .transition-edit .is-box {
+  transition: all 0.2s ease !important;
+}
+
+#_cbhtml {
+  height: 0px;
+  float: left;
+  margin-top: -100px;
+}
+
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #000000;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+.box-active {
+  animation-name: box-active-anim;
+  animation-duration: 1s;
+}
+
+@keyframes box-active-anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.section-active {
+  animation-name: section-active-anim;
+  animation-duration: 1s;
+}
+
+@keyframes section-active-anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.page-overlay {
+  background: rgba(0, 0, 0, 0.0001);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.waiting-indicator {
+  background: rgba(0, 0, 0, 0.35);
+  position: absolute;
+  height: auto;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  width: auto;
+  color: #fff;
+  z-index: 10005;
+}
+
+.waiting-indicator-overlay {
+  background: rgba(255, 255, 255, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10005;
+}
+
+.waiting-indicator div {
+  transform: scale(1, 1);
+  animation-name: waiting-indicator-anim;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+}
+
+@keyframes waiting-indicator-anim {
+  0% {
+    transform: scale(1, 1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 0;
+  }
+}
+.is-wrapper .is-builder {
+  transition: unset;
+}
+
+/*
+
+// Navbar Fix
+.is-wrapper {
+    &.is-edit {
+        .is-section.is-section-navbar,
+        .is-section.is-section-navbar .is-topbar {
+            left: 0;
+            margin-left: 61px;
+            width: calc(100% - 61px);
+        }
+        .is-section.is-section-navbar .is-topbar.static {
+            width: 100%;
+            margin-left: unset;
+        }
+    }
+}
+
+// protected section
+.is-section.protected .is-box-tool {
+    display: none !important;
+}
+
+// manual selection during animation edit
+.hard-select {
+    .is-box-tool {
+        display: none !important;
+    }
+    .is-section-tool {
+        display: none !important;
+    }
+    .box-select {
+        outline: #00da89 1px solid; // #6e50f2 //#00da89 (green)
+        outline-offset: -1px;
+        z-index:1;
+        .is-box-tool {
+            display: flex !important;
+        }
+        .is-overlay {
+            z-index: -1;
+        }
+    }
+    .section-select {
+        .is-section-tool {
+            display: block !important;
+        }
+    }
+
+}
+
+// drop block as section
+.is-wrapper > .sortable-ghost {
+    height: 40px !important;
+    min-height: unset !important;
+    background: rgba(204, 204, 204, 0.15) !important;
+}
+
+// toggle tool
+.is-wrapper.is-clean-edit {
+    &.hard-select .box-select .is-box-tool ,
+    .box-select .is-box-tool {
+        display: none !important;
+    }
+    &.hard-select .section-select .is-section-tool,
+    .section-select .is-section-tool {
+        display: none !important;
+    }
+    &.hard-select .box-select,
+    .box-select {
+        outline: none !important;
+    }
+}
+
+// clean UI for selection only
+.selection-only:not([data-skrollrr-off]) {
+    .is-wrapper {
+        &.hard-select .box-select .is-box-tool ,
+        .box-select .is-box-tool {
+            display: none !important;
+        }
+        &.hard-select .section-select .is-section-tool,
+        .section-select .is-section-tool {
+            display: none !important;
+        }
+        .is-rowadd-tool {
+            display: none !important;
+        }
+        .is-tool {
+            display: none !important;
+        }
+    }
+    .is-tool {
+        z-index: -10000 !important;
+    }
+}
+
+// section info
+.is-wrapper {
+    .is-section-info {
+        position: absolute;
+        z-index: 1;
+        top: 3px;
+        left: 3px;
+        display: none;
+        & > div {
+            width: auto;
+            height: auto;
+            padding: 5px 20px;
+            background-color:rgb(255 239 100);
+            color: #111;
+            font-family: sans-serif;
+            letter-spacing: 2px;
+            font-size: 17px;
+        }
+    }
+    .section-select .is-section-info {
+        display: block;
+    }
+}
+
+// To make editing possible on wide content
+.is-wrapper.is-edit .section-wide-250 .is-box-centered { 
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.is-wrapper.is-edit .section-wide-250 .is-container > div > div { // To make col tool visible
+    max-height: 90vh;
+}
+
+*/

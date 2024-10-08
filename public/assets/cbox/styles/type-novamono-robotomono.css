@@ -1,0 +1,134 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap');
+
+.type-novamono-robotomono {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 100%; 
+    line-height: 2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-novamono-robotomono p, .type-novamono-robotomono td, .type-novamono-robotomono li, .type-novamono-robotomono label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.09rem; 
+    line-height: 2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-novamono-robotomono h1, .type-novamono-robotomono h2, .type-novamono-robotomono h3, .type-novamono-robotomono h4, .type-novamono-robotomono h5, .type-novamono-robotomono h6 {
+    font-family: 'Nova Mono', monospace;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;    
+}        
+
+.type-novamono-robotomono h1 {font-size: 3rem;margin: 0.11rem 0 0.3rem;}
+.type-novamono-robotomono h2 {font-size: 2.4rem;margin: 0.25rem 0 0.3rem;}
+.type-novamono-robotomono h3 {font-size: 2rem;margin: 0.38rem 0 0.3rem;}
+.type-novamono-robotomono h4 {font-size: 1.7rem;margin: 0.47rem 0 0.3rem;line-height: 1.5;}
+.type-novamono-robotomono h5 {font-size: 1.4rem;margin: 0.55rem 0 0.3rem;line-height: 1.7;}
+.type-novamono-robotomono h6 {font-size: 1.14rem;margin: 0.71rem 0 0.3rem;font-weight:bold;line-height: 1.9;}
+.type-novamono-robotomono p {margin:0.67rem 0 1rem;}
+
+.type-novamono-robotomono .display { margin-bottom: 0.5rem; }
+.type-novamono-robotomono .display h1 {
+	font-family: 'Nova Mono', monospace;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0.4rem 0;
+    font-style: normal;
+}
+.type-novamono-robotomono .display p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.23rem;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    font-style: normal;
+    text-transform: none;
+}
+
+.type-novamono-robotomono .display-font1 {font-family: 'Nova Mono', monospace;}
+.type-novamono-robotomono .display-font2 {font-family: 'Roboto Mono', monospace;}
+.type-novamono-robotomono .default-font1 {font-family: 'Nova Mono', monospace;}
+.type-novamono-robotomono .default-font2 {font-family: 'Roboto Mono', monospace;}
+
+/* h1-h6: 48 32  24  19  16  12 */
+.type-novamono-robotomono h1 {font-size:48px} 
+@media all and (max-width: 1800px) { 
+    .type-novamono-robotomono h1 {font-size:2.5vw; font-size:clamp(29px, 2.5vw, 2.5vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-novamono-robotomono h1 {font-size:2.5vw}
+}
+
+.type-novamono-robotomono h2 {font-size:32px}
+@media all and (max-width: 1800px) { 
+    .type-novamono-robotomono h2 {font-size:1.64vw; font-size:clamp(24px, 1.64vw, 1.64vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-novamono-robotomono h2 {font-size:1.67vw}
+}
+
+.type-novamono-robotomono h3 {font-size:24px}
+@media all and (max-width: 1800px) { 
+    .type-novamono-robotomono h3 {font-size:1.48vw; font-size:clamp(22px, 1.48vw, 1.48vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-novamono-robotomono h3 {font-size:1.25vw}
+}
+
+.type-novamono-robotomono h4 {font-size:19px}
+@media all and (max-width: 1800px) { 
+    .type-novamono-robotomono h4 {font-size:1.17vw; font-size:clamp(19px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-novamono-robotomono h4 {font-size:0.99vw}
+}
+
+.type-novamono-robotomono h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-novamono-robotomono h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-novamono-robotomono h5 {font-size:0.83vw}
+}
+
+.type-novamono-robotomono h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-novamono-robotomono h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-novamono-robotomono h6 {font-size:0.63vw}
+}
+
+/* 18 */
+.type-novamono-robotomono p,
+.type-novamono-robotomono td, 
+.type-novamono-robotomono li, 
+.type-novamono-robotomono label {
+    font-size: 18px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-novamono-robotomono p,
+    .type-novamono-robotomono td, 
+    .type-novamono-robotomono li, 
+    .type-novamono-robotomono label {font-size:1.11vw; font-size:clamp(16px, 1.11vw, 1.11vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-novamono-robotomono .v2 p,
+    .type-novamono-robotomono .v2 td, 
+    .type-novamono-robotomono .v2 li, 
+    .type-novamono-robotomono .v2 label {font-size:0.94vw}
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,700'); */

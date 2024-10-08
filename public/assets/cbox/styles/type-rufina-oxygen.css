@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+.type-rufina-oxygen {
+    font-family: 'Oxygen', sans-serif;
+    font-weight:300;
+	font-size: 100%;
+    text-transform: none;
+    font-style: normal;
+}
+.type-rufina-oxygen p, .type-rufina-oxygen td, .type-rufina-oxygen li, .type-rufina-oxygen label {
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 300;
+    font-size: 0.93rem;
+    letter-spacing: 0.6px;
+    line-height: 2;
+    text-transform: none;
+    font-style: normal;
+}
+.type-rufina-oxygen h1, .type-rufina-oxygen h2, .type-rufina-oxygen h3, .type-rufina-oxygen h4, .type-rufina-oxygen h5, .type-rufina-oxygen h6 {
+    font-family: 'Rufina', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-rufina-oxygen h1 {font-size: 3.2rem;margin: 0.3rem 0 0.9rem;}
+.type-rufina-oxygen h2 {font-size: 1.25rem;margin: 1.05rem 0 0.3rem;}
+.type-rufina-oxygen h3 {font-size: 1rem;margin: 1.2rem 0 0.3rem;}
+.type-rufina-oxygen h4 {font-size: 0.8rem;margin: 0.56rem 0 0.3rem;line-height: 1.6;}
+.type-rufina-oxygen h5 {font-size: 0.7rem;margin: 0.58rem 0 0.3rem;line-height: 1.7;}
+.type-rufina-oxygen h6 {font-size: 0.6rem;margin: 0.6rem 0 0.3rem;line-height: 2;}
+.type-rufina-oxygen p {margin:0.4rem 0 1rem;}
+
+.type-rufina-oxygen .display { margin-bottom: 0.5rem; }
+.type-rufina-oxygen .display h1 {
+	font-family: 'Rufina', serif;
+	font-size: 3.2rem;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: none;
+    font-style: normal;
+}
+.type-rufina-oxygen .display p {
+	font-family: 'Oxygen', sans-serif;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    font-weight: 400;
+    text-transform: none;
+    font-style: normal;
+}
+
+.type-rufina-oxygen .is-btn {
+    padding: 10px 50px;
+}
+.type-rufina-oxygen .is-btn-small {
+    padding: 5px 25px;
+}
+
+.type-rufina-oxygen .display-font1 {font-family: 'Rufina', serif;}
+.type-rufina-oxygen .display-font2 {font-family: 'Oxygen', sans-serif;}
+.type-rufina-oxygen .default-font1 {font-family: 'Rufina', serif;}
+.type-rufina-oxygen .default-font2 {font-family: 'Oxygen', sans-serif;}
+
+/* h1-h6: 50 38  28  21  16  12 */
+.type-rufina-oxygen h1 {font-size:50px} 
+@media all and (max-width: 1800px) { 
+    .type-rufina-oxygen h1 {font-size:2.61vw; font-size:clamp(30px, 2.61vw, 2.61vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-rufina-oxygen h1 {font-size:2.61vw;}
+}
+
+.type-rufina-oxygen h2 {font-size:38px}
+@media all and (max-width: 1800px) { 
+    .type-rufina-oxygen h2 {font-size:1.98vw; font-size:clamp(26px, 1.98vw, 1.98vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-rufina-oxygen h2 {font-size:1.98vw}
+}
+
+.type-rufina-oxygen h3 {font-size:28px}
+@media all and (max-width: 1800px) { 
+    .type-rufina-oxygen h3 {font-size:1.56vw; font-size:clamp(23px, 1.56vw, 1.56vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-rufina-oxygen h3 {font-size:1.46vw}
+}
+
+.type-rufina-oxygen h4 {font-size:21px}
+@media all and (max-width: 1800px) { 
+    .type-rufina-oxygen h4 {font-size:1.29vw; font-size:clamp(21px, 1.29vw, 1.29vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-rufina-oxygen h4 {font-size:1.09vw}
+}
+
+.type-rufina-oxygen h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-rufina-oxygen h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-rufina-oxygen h5 {font-size:0.83vw}
+}
+
+.type-rufina-oxygen h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-rufina-oxygen h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-rufina-oxygen h6 {font-size:0.63vw}
+}
+
+/* 18 */
+.type-rufina-oxygen p,
+.type-rufina-oxygen td, 
+.type-rufina-oxygen li, 
+.type-rufina-oxygen label {
+    font-size: 18px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-rufina-oxygen p,
+    .type-rufina-oxygen td, 
+    .type-rufina-oxygen li, 
+    .type-rufina-oxygen label {font-size:1.11vw; font-size:clamp(16px, 1.11vw, 1.11vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-rufina-oxygen .v2 p,
+    .type-rufina-oxygen .v2 td, 
+    .type-rufina-oxygen .v2 li, 
+    .type-rufina-oxygen .v2 label {font-size:0.94vw}
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Rufina:400,700');
+@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700'); */

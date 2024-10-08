@@ -1,0 +1,144 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Prata&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Waiting+for+the+Sunrise&amp;display=swap');
+
+.type-prata-hindsiliguri {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 100%; 
+    line-height: 2.2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-prata-hindsiliguri p, .type-prata-hindsiliguri td, .type-prata-hindsiliguri li, .type-prata-hindsiliguri label {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 1.18rem;
+    line-height: 2.2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-prata-hindsiliguri h1, .type-prata-hindsiliguri h2, .type-prata-hindsiliguri h3, .type-prata-hindsiliguri h4, .type-prata-hindsiliguri h5, .type-prata-hindsiliguri h6 {
+    font-family: 'Prata', serif;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: 2px;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-prata-hindsiliguri h1 {font-size: 3rem;margin: 0.1rem 0 0.3rem;}
+.type-prata-hindsiliguri h2 {font-size: 2.5rem;margin: 0.2rem 0 0.3rem;}
+.type-prata-hindsiliguri h3 {font-size: 2rem;margin: 0.37rem 0;}
+.type-prata-hindsiliguri h4 {font-size: 1.7rem;margin: 0.51rem 0;}
+.type-prata-hindsiliguri h5 {font-size: 1.4rem;margin: 0.64rem 0;font-weight:bold;line-height:1.8;}
+.type-prata-hindsiliguri h6 {font-size: 1.18rem;margin: 0.72rem 0;font-weight:bold;text-transform:none;line-height:2;}
+.type-prata-hindsiliguri p {margin:0.54rem 0 1rem;}
+
+.type-prata-hindsiliguri .display { margin-bottom: 0.5rem; }
+.type-prata-hindsiliguri .display h1 {
+	font-family: 'Prata', serif;
+    font-size: 4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 9px;
+    text-transform: uppercase;
+    margin: 0.4rem 0;
+    font-style: normal;
+}
+.type-prata-hindsiliguri .display p {
+    font-family: 'Waiting for the Sunrise', cursive;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-style: normal;
+    text-transform: none;
+}
+
+.type-prata-hindsiliguri .is-btn {
+    padding: 10px 50px;
+}
+.type-prata-hindsiliguri .is-btn-small {
+    padding: 7px 25px 4px;
+}
+
+.type-prata-hindsiliguri .display-font1 {font-family: 'Prata', serif;}
+.type-prata-hindsiliguri .display-font2 {font-family: 'Waiting for the Sunrise', cursive;}
+.type-prata-hindsiliguri .default-font1 {font-family: 'Prata', serif;}
+.type-prata-hindsiliguri .default-font2 {font-family: 'Hind Siliguri', sans-serif;}
+
+/* h1-h6: 48 32  24  19  16  12 */
+.type-prata-hindsiliguri h1 {font-size:48px} 
+@media all and (max-width: 1800px) { 
+    .type-prata-hindsiliguri h1 {font-size:2.5vw; font-size:clamp(29px, 2.5vw, 2.5vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-prata-hindsiliguri h1 {font-size:2.5vw}
+}
+
+.type-prata-hindsiliguri h2 {font-size:32px}
+@media all and (max-width: 1800px) { 
+    .type-prata-hindsiliguri h2 {font-size:1.64vw; font-size:clamp(24px, 1.64vw, 1.64vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-prata-hindsiliguri h2 {font-size:1.67vw}
+}
+
+.type-prata-hindsiliguri h3 {font-size:24px}
+@media all and (max-width: 1800px) { 
+    .type-prata-hindsiliguri h3 {font-size:1.48vw; font-size:clamp(22px, 1.48vw, 1.48vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-prata-hindsiliguri h3 {font-size:1.25vw}
+}
+
+.type-prata-hindsiliguri h4 {font-size:19px}
+@media all and (max-width: 1800px) { 
+    .type-prata-hindsiliguri h4 {font-size:1.17vw; font-size:clamp(19px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-prata-hindsiliguri h4 {font-size:0.99vw}
+}
+
+.type-prata-hindsiliguri h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-prata-hindsiliguri h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-prata-hindsiliguri h5 {font-size:0.83vw}
+}
+
+.type-prata-hindsiliguri h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-prata-hindsiliguri h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-prata-hindsiliguri h6 {font-size:0.63vw}
+}
+
+/* 19 */
+.type-prata-hindsiliguri p,
+.type-prata-hindsiliguri td, 
+.type-prata-hindsiliguri li, 
+.type-prata-hindsiliguri label {
+    font-size: 19px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-prata-hindsiliguri p,
+    .type-prata-hindsiliguri td, 
+    .type-prata-hindsiliguri li, 
+    .type-prata-hindsiliguri label {font-size:1.17vw; font-size:clamp(16px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-prata-hindsiliguri .v2 p,
+    .type-prata-hindsiliguri .v2 td, 
+    .type-prata-hindsiliguri .v2 li, 
+    .type-prata-hindsiliguri .v2 label {font-size:0.99vw}
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Prata');
+@import url('https://fonts.googleapis.com/css?family=Hind+Siliguri:300,700');
+@import url('https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise'); */

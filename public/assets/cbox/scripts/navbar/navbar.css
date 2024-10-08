@@ -1,0 +1,695 @@
+﻿/* topbar */
+
+/*
+#1  sClass = "fixed" 'Fixed light topbar
+#2  sClass = "fixed dark" 'Fixed dark topbar
+#3  sClass = "lighttext" 'Transparent (light text), light topbar on scroll
+#4  sClass = "" (DEFAULT) 'Transparent (dark text), light topbar on scroll
+#5  sClass = "lighttext dark" 'Transparent (light text), dark topbar on scroll
+#6  sClass = "dark" 'Transparent (dark text), dark topbar on scroll
+#7  sClass = "static" 'Static Transparent (dark text)
+#8	sClass = "static lighttext" 'Static Transparent (light text) 
+#9	sClass = "fixed static" 'Static light topbar
+#10	sClass = "fixed dark static" 'Static dark topbar
+*/
+
+.is-topbar {
+	width:100%;
+	height:77px;
+	box-sizing:border-box;
+	position:fixed;
+	top:0;
+	z-index:101;		
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.is-topbar-container {
+	display:table;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	box-sizing:border-box;
+}
+
+.is-topbar-logo {
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+	padding-left: 10px;
+}
+
+.is-topbar-menu {
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.is-logo-link {
+    display: inline-flex;
+    text-decoration: none;
+    align-items: center;
+}
+
+.is-photo-profile {
+	vertical-align: middle;
+	max-height:55px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.is-topbar.shrink .is-photo-profile {
+	max-height:50px;
+}
+
+.is-photo-profile.circle {
+	border-radius: 500px;
+	max-width: 55px;
+    object-fit: cover;
+    height: 55px;
+}
+.is-topbar.shrink .is-photo-profile.circle {
+	max-height:50px;
+	max-width: 50px;
+}
+
+.is-sitename {
+	display:inline-block;
+	margin:0 15px;
+	
+	font-size:15px;
+	font-weight:600;
+	letter-spacing:2px;
+	color:#000;
+	text-decoration:none;
+} 
+         
+.is-topbar.shrink {
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07); 
+}
+.is-topbar.shrink:not(.static) {
+	height: 70px;
+}
+
+@media all and (max-width: 640px) {
+    .is-photo-profile { max-height:50px; }		
+    .is-sitename { font-size:14px;letter-spacing:1px }
+}
+
+/* menu */
+.is-menu {
+	float:right;
+	position:fixed;
+	top:0;
+	z-index:100000;
+	overflow-y:auto;
+	text-align: left;
+}
+
+@media all and (max-width: 1025px) {
+	.is-menu {
+		width:80%;
+		max-width:500px;
+		height: 100%;
+		right: -1000px;
+	}
+}
+.is-menu ul {
+	list-style: none; 
+	padding: 0;
+	margin: 0;
+}
+
+.is-menu ul li a {
+	display:flex;  
+	justify-content: space-between;
+	text-decoration:none;
+	white-space:nowrap;
+	
+	font-size:15px;
+	font-weight:400;
+	letter-spacing:1px;
+	line-height:45px;
+}  
+.is-menu ul li a > span {
+	margin-left: 7px;
+}
+
+.is-menu-overlay {display:none;width:100%;height:100%;position:fixed;top:0;left:0;background:rgba(0, 0, 0, 0.09);}
+.is-menu-overlay.active {display:block;}
+
+ul:before,ul:after {content: " "; display: table; }
+ul:after {clear: both;}	
+
+.is-menu a span.caret {
+	border-bottom: 4px solid transparent;
+	border-top: 4px solid rgba(0,0,0,.65);
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	border-radius: 1px;
+	content: "";
+	display: inline-block;
+	height: 0;
+	margin: .25rem 0 0 0;
+	transition: 250ms all ease;
+	width: 0;
+	vertical-align: middle;
+}
+
+@media all and (min-width: 1025px) {
+    .is-menu {background:none;height:100%;padding-top:0px;display:inline-block;position:relative;left:0;overflow:inherit;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}            
+    
+	.is-menu > ul.is-menu-links {display:table;height:100%;float:left;} 
+	.is-menu > ul.is-menu-icons {display:table;height:100%;float:right;}
+	
+	/* topbar menu items */
+	.is-menu > ul > li {display:table-cell;height:100%;vertical-align:middle;position:relative;float:none;}
+	.is-menu > ul > li > a {/*padding:10px 20px 10px 20px !important;*/padding-left:17px;padding-right:17px;}
+	
+	/* submenu items */
+	.is-menu li ul  {
+		position: absolute;
+		box-shadow: 0px 17px 20px 0px rgb(0 0 0 / 8%);
+		border-radius:0;
+
+		-webkit-transform-origin: top center;
+		transform-origin: top center;
+		transition: 0.2s ease-out;		
+		opacity: 0;
+		-webkit-transform: translate3d(0, -2rem, 0) scale(0.8);
+		transform: translate3d(0, -2rem, 0) scale(0.8);
+		visibility: hidden;
+	}
+	/* fix: to make the sub menu shows above section */
+	.static .is-menu li ul  {
+		position: fixed;
+	}
+	.static .is-menu li ul li ul {
+		position: absolute;
+	}
+	/* /fix */
+
+	.is-menu li ul  ul{
+		-webkit-transform: none;
+		transform: none;
+	}
+	.is-menu li ul li {display:block;border-top:0;position:relative;float:none;}
+	.is-menu li ul li a {padding:5px 30px !important;}
+    .is-menu li ul ul {right:100%;top:0;}	
+	.is-menu li ul.active {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+		visibility: visible;
+		margin-top:10px;
+		/*overflow: hidden; makes sub menu cannot be displayed*/
+	}
+
+	/* submenu: color & hover */
+	.is-menu li ul { background:rgba(255, 255, 255, 0.95); }
+    .is-menu li ul  li a { color:rgba(0, 0, 0, 0.9); }
+	.is-menu li ul  li:hover { background:rgba(0,0,0,0.05); }
+	.is-menu li ul  li:hover a { color:rgba(0, 0, 0, 1)} 
+}	
+
+@media all and (max-width: 1024px) {
+	.is-menu li ul  {position:relative;}
+	.is-menu li ul {display:none;}
+	/*.is-menu li ul.active {display:block;}*/
+	
+    .is-menu > ul {padding: 0px 0px;}
+    .is-menu > ul > li > a {padding: 0 0 0 30px;} /* new */
+	.is-menu > ul:first-child {margin-top:50px;}
+	
+	.is-menu li ul a {padding-left:2.5em}
+	.is-menu li ul li ul a {padding-left:4em}
+	.is-menu li ul li ul li ul a {padding-left:6.5em}	
+	
+	/* color */
+    .is-menu  { 
+		background:rgba(255, 255, 255, 1);
+
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+    .is-menu ul li a {color:rgba(0, 0, 0, 0.9)}   
+	
+	/* new */
+
+	.is-menu li > a {
+		/* border-bottom:#eee 1px solid; */
+	}
+
+	.is-menu a > span {
+		display: inline-block !important;
+		width: 50px !important;
+		height: 50px !important;
+		/* border-left: #eee 1px solid; */
+		display: flex !important;
+		justify-content: center;
+		align-items: center;
+	}
+	.is-menu a > span > span {
+		display: inline-block;
+	}
+	.is-topbar .is-bordered {
+		margin: 0 0px !important;
+		padding: 0 0 0 30px !important;
+		line-height: 45px !important;
+		border-left: none !important;
+		border-right: none !important;
+
+	}
+
+	.is-menu ul.active {
+		display: block;
+	}
+	
+}
+
+/* Search */
+.is-menu-search *,
+#is_btnSearch * {
+	pointer-events: none;
+}
+.is-menu-search-input {display:none;width:100%;height:60px;min-width:250px;position:absolute;}
+.is-menu-search-input input {
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0;
+    padding: 0 0 0 15px;
+    box-sizing: border-box;
+    z-index: 1;
+    font-size: 19px;
+    border: rgba(0,0,0,0.2) 1px solid;
+    border-right: rgba(0,0,0,0.2) 50px solid;
+}
+.is-menu-search-input input:focus {outline:none}
+.is-menu-search-input button:focus {outline:none}
+.is-menu-search-input.active {display:block;}
+.is-menu-search-input button {
+	font-size:15px;
+	width: 50px;
+    height: 58px;
+    margin-top: 1px;
+    margin-right: 1px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: white;
+    z-index: 1;
+    cursor: pointer;
+}
+@media all and (max-width: 1024px) {  
+	.is-menu ul li a.is-menu-search {display:none !important}
+	.is-menu-search-input {display:block;position:relative;margin-top:70px;margin-bottom:20px;}
+	.is-menu-search-input input {border-left: none;border-right: none;}
+}
+.dark .is-menu-search-input input {
+background: #313131;color: #eee;
+}
+.dark .is-menu-search-input button {
+background: #313131;color: #cecece;
+}
+
+
+/* menu toggle (mobile) */
+#is-menu-toggle {float:right}
+#is-menu-toggle {display:table-cell;z-index:1000000}
+@media all and (min-width: 1025px) {
+	#is-menu-toggle {display:none}
+}		
+#is-menu-toggle {
+  width: 25px;
+  height: 14px;
+  position: relative;
+  margin: 20px 30px;
+}
+#is-menu-toggle .line {
+  display: block;
+  background: #000000;
+  width: 25px;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  border-radius: 1px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+#is-menu-toggle .line.line-1 {
+  top: 0;
+}
+#is-menu-toggle .line.line-2 {
+  top: 50%;
+}
+#is-menu-toggle .line.line-3 {
+  top: 100%;
+}
+#is-menu-toggle:hover .line-1, #is-menu-toggle:focus .line-1 {
+  transform: translateY(-1px);
+  -webkit-transform: translateY(-1px);
+  -moz-transform: translateY(-1px);
+}
+#is-menu-toggle:hover .line-3, #is-menu-toggle:focus .line-3 {
+  transform: translateY(1px);
+  -webkit-transform: translateY(1px);
+  -moz-transform: translateY(1px);
+}
+#is-menu-toggle.active .line-1 {
+  transform: translateY(7px) translateX(0) rotate(45deg);
+  -webkit-transform: translateY(7px) translateX(0) rotate(45deg);
+  -moz-transform: translateY(7px) translateX(0) rotate(45deg);
+}
+#is-menu-toggle.active .line-2 {
+  opacity: 0;
+}
+#is-menu-toggle.active .line-3 {
+  transform: translateY(-7px) translateX(0) rotate(-45deg);
+  -webkit-transform: translateY(-7px) translateX(0) rotate(-45deg);
+  -moz-transform: translateY(-7px) translateX(0) rotate(-45deg);
+}
+
+/* menu close (mobile) */
+.is-menu-close {
+	width:50px;
+	height:50px;
+	border-radius:500px;
+	position:fixed;
+	top:13px;right:25px;
+	cursor:pointer;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+	display:none;
+}
+.is-menu-close:hover { 
+	transform: rotate(90deg);
+}
+.is-menu-close span {
+	position: absolute;
+	display: inline-block;
+	width: 25px;height: 2px;	  
+	top: 22px; left: 12px;
+}
+.is-menu-close span::before, .is-menu-close span:after {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: rgba(71, 71, 71, 1);left: 0;
+	transition: transform 0.2s;
+	/* Force hardware acceleration */
+	-webkit-transform: translateZ(0); -webkit-backface-visibility: hidden;
+}
+.is-menu-close span::before {
+	-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);
+	transition: transform 0.2s;
+}
+.is-menu-close span::after {
+	-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);-o-transform: rotate(-45deg);transform: rotate(-45deg);
+	transition: transform 0.2s;
+}
+
+/* Button */
+.is-topbar .is-bordered {
+	margin: 10px 5px;
+	padding:3px 12px;
+	line-height: 1.7;    
+    text-align:center;
+	border:2px solid #111;
+}
+
+/* ok - #4 Transparent (dark text), light topbar on scroll */
+.is-topbar {background-color:rgba(255, 255, 255, 0);color:rgba(0, 0, 0, 0.9)}	
+.is-topbar .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}	
+
+.is-topbar.shrink {background-color:rgba(255, 255, 255, 0.8);color:rgba(0, 0, 0, 0.9)}
+.is-topbar.shrink .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.shrink .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}
+
+/* lighttext:ok - #3 Transparent (light text), light topbar on scroll */
+.is-topbar.lighttext {background-color:rgba(255, 255, 255, 0);color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.lighttext .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.lighttext .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.lighttext .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.lighttext .is-bordered {border:2px solid rgba(255, 255, 255, 0.8);} /* button */
+
+.is-topbar.lighttext.shrink {background-color:rgba(255, 255, 255, 0.8);color:rgba(0, 0, 0, 0.9)}
+.is-topbar.lighttext.shrink .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.lighttext.shrink .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}
+.is-topbar.lighttext.shrink .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}
+.is-topbar.lighttext.shrink .is-bordered {border:2px solid rgba(0, 0, 0, 0.9);} /* button */
+
+@media all and (max-width: 1024px) {   
+    .is-topbar.lighttext .is-menu  { background:rgba(255,255,255,1) }
+    .is-topbar.lighttext .is-menu ul li a {color:rgba(0, 0, 0, 0.8)}	    
+	.is-topbar.lighttext .is-menu ul  li  a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}	
+	.is-topbar.lighttext .is-bordered {border:2px solid rgba(0, 0, 0, 0.9);} /* button */
+    
+    .is-topbar.lighttext #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8);}
+    .is-topbar.lighttext.shrink #is-menu-toggle span {background-color:rgba(0, 0, 0, 0.8)}
+    .is-topbar.lighttext #is-menu-toggle.active span {background-color:rgba(0, 0, 0, 0.8)} /* active */
+}
+
+/* fixed - #1 Fixed light topbar */
+.is-topbar.fixed {background-color:rgba(255, 255, 255, 1);color:rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07); 
+} 	
+
+/* dark.fixed - #2 Fixed dark topbar */
+.is-topbar.dark.fixed {background-color:rgba(0, 0, 0, 0.9);color:rgba(255, 255, 255, 0.8)}
+.is-topbar.dark.fixed .is-sitename {color:rgba(255, 255, 255, 0.8)}
+.is-topbar.dark.fixed .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.fixed .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.dark.fixed .is-bordered {border:2px solid rgba(255, 255, 255, 0.8);} /* button */
+
+.is-topbar.dark.fixed .is-menu li ul {background: rgba(0,0,0,0.9);} /*submenu*/
+.is-topbar.dark.fixed .is-menu li li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.dark.fixed .is-menu li li  a {color:rgba(255, 255, 255, 0.8)}
+.is-topbar.dark.fixed.shrink .is-bordered {border:2px solid rgba(255, 255, 255, 0.8);} /* button */
+
+@media all and (max-width: 1024px) {   
+    .is-topbar.dark.fixed .is-menu  { background:rgba(0,0,0,1) }
+    .is-topbar.dark.fixed .is-menu ul li a {color:rgba(255, 255, 255, 0.8)}	    
+	.is-topbar.dark.fixed .is-menu ul  li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}	
+    
+    .is-topbar.dark.fixed #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8);}
+    .is-topbar.dark.fixed.shrink #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8)}
+    .is-topbar.dark.fixed #is-menu-toggle.active span {background-color:rgba(255, 255, 255, 0.8)} /* active */
+}
+
+/* dark.lighttext - #5 Transparent (light text), dark topbar on scroll */
+.is-topbar.dark.lighttext {background-color:rgba(0, 0, 0, 0);color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.lighttext .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.lighttext .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.lighttext .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.dark.lighttext .is-bordered {border:2px solid rgba(255, 255, 255, 0.8);} /* button */
+
+.is-topbar.dark.lighttext.shrink {background-color:rgba(0, 0, 0, 0.8);color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.lighttext.shrink .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.lighttext.shrink .is-menu   > ul > li > a {color:rgba(255, 255, 255, 0.8)}
+.is-topbar.dark.lighttext.shrink .is-menu   > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.dark.lighttext.shrink .is-bordered {border:2px solid rgba(255, 255, 255, 0.8);} /* button */
+
+.is-topbar.dark.lighttext .is-menu li ul {background: rgba(0,0,0,0.9);} /*submenu*/
+.is-topbar.dark.lighttext .is-menu li li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.dark.lighttext .is-menu li li  a {color:rgba(255, 255, 255, 0.8)}
+
+@media all and (max-width: 1024px) {
+    .is-topbar.dark.lighttext .is-menu  { background:rgba(0,0,0,1) }
+    .is-topbar.dark.lighttext .is-menu ul li a {color:rgba(255, 255, 255, 0.8)}	    
+	.is-topbar.dark.lighttext .is-menu ul  li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}	
+    
+    .is-topbar.dark.lighttext #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8);}
+    .is-topbar.dark.lighttext.shrink #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8)}
+    .is-topbar.dark.lighttext #is-menu-toggle.active span {background-color:rgba(255, 255, 255, 0.8)} /* active */
+}
+
+/* dark:ok - #6 Transparent (dark text), dark topbar on scroll */
+.is-topbar.dark {background-color:rgba(0, 0, 0, 0, 0);color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.dark .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.dark .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}
+.is-topbar.dark .is-menu   > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}
+
+.is-topbar.dark.shrink {background-color:rgba(0, 0, 0, 0.8);color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.shrink .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.dark.shrink .is-menu   > ul > li > a {color:rgba(255, 255, 255, 0.8)}
+.is-topbar.dark.shrink .is-menu   > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.dark.shrink .is-bordered {border:2px solid rgba(255, 255, 255, 0.8);} /* button */
+
+.is-topbar.dark .is-menu li ul {background: rgba(0,0,0,0.9);} /*submenu*/
+.is-topbar.dark .is-menu li li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.dark .is-menu li li  a {color:rgba(255, 255, 255, 0.8)}
+
+@media all and (max-width: 1024px) {
+    .is-topbar.dark .is-menu  { background:rgba(0,0,0,1) }
+    .is-topbar.dark .is-menu ul li a {color:rgba(255, 255, 255, 0.8)}	    
+	.is-topbar.dark .is-menu ul  li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+	.is-topbar.dark .is-bordered {border:2px solid rgba(255, 255, 255, 0.8);} /* button */
+    
+    .is-topbar.dark #is-menu-toggle span {background-color:rgba(0, 0, 0, 0.9)}
+    .is-topbar.dark.shrink #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8)}   
+    .is-topbar.dark #is-menu-toggle.active span {background-color:rgba(255, 255, 255, 0.8)} /* active */
+}
+
+/* Static */
+@media all and (min-width: 1025px) {
+	.is-topbar.static {position:relative} /* absolute */
+	.is-topbar.static.shrink { -webkit-box-shadow: none;-moz-box-shadow: none;box-shadow:none; }
+}
+
+/* static - #8 Static Transparent (dark text) */
+.is-topbar.static {background-color:rgba(255, 255, 255, 0);color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.static .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.static .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.static .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}
+
+@media all and (max-width: 1024px) {  
+	/* Make topbar fixed (not static) on mobile */
+	.is-topbar.static {background-color:rgba(255, 255, 255, 0);color:rgba(0, 0, 0, 0.8)}	
+	.is-topbar.static .is-sitename {color:rgba(0, 0, 0, 0.8)}	
+	.is-topbar.static .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.8)}	
+	.is-topbar.static .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}
+	.is-topbar.static .is-bordered {border:2px solid rgba(0, 0, 0, 0.9);} /* button */
+
+	.is-topbar.static.shrink {background-color:rgba(255, 255, 255, 0.95);color:rgba(0, 0, 0, 0.9)}
+	.is-topbar.static.shrink .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+	.is-topbar.static.shrink .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}
+	.is-topbar.static.shrink .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}	
+	/***/
+	
+    .is-topbar.static .is-menu  { background:rgba(255,255,255,1) }
+    .is-topbar.static .is-menu ul li a {color:rgba(0, 0, 0, 0.8)}	    
+	.is-topbar.static .is-menu ul  li  a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}	
+    
+    .is-topbar.static #is-menu-toggle span {background-color:rgba(0, 0, 0, 0.8);}
+    .is-topbar.static.shrink #is-menu-toggle span {background-color:rgba(0, 0, 0, 0.8)}
+    .is-topbar.static #is-menu-toggle.active span {background-color:rgba(0, 0, 0, 0.8)} /* active */
+}
+
+/* static.lighttext - #7 Static Transparent (light text) */
+.is-topbar.static.lighttext {background-color:rgba(0, 0, 0, 0);color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.static.lighttext .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.static.lighttext .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.static.lighttext .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+
+@media all and (max-width: 1024px) {  
+	/* Make topbar fixed (not static) on mobile */
+	.is-topbar.static.lighttext {background-color:rgba(255, 255, 255, 0);color:rgba(255, 255, 255, 0.8)}	
+	.is-topbar.static.lighttext .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+	.is-topbar.static.lighttext .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}	
+	.is-topbar.static.lighttext .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+
+	.is-topbar.static.lighttext.shrink {background-color:rgba(255, 255, 255, 0.95);color:rgba(0, 0, 0, 0.9)}
+	.is-topbar.static.lighttext.shrink .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+	.is-topbar.static.lighttext.shrink .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}
+	.is-topbar.static.lighttext.shrink .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}	
+	/***/
+	
+    .is-topbar.static.lighttext .is-menu  { background:rgba(255,255,255,1) }
+    .is-topbar.static.lighttext .is-menu ul li a {color:rgba(0, 0, 0, 0.8)}	    
+	.is-topbar.static.lighttext .is-menu ul  li  a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}	
+    
+    .is-topbar.static.lighttext #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8);}
+    .is-topbar.static.lighttext.shrink #is-menu-toggle span {background-color:rgba(0, 0, 0, 0.8)}
+    .is-topbar.static.lighttext #is-menu-toggle.active span {background-color:rgba(0, 0, 0, 0.8)} /* active */
+}
+
+/* fixed - #9 Static light topbar */
+.is-topbar.fixed.static {background-color:rgba(255, 255, 255, 1);color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.fixed.static .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.fixed.static .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}	
+.is-topbar.fixed.static .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}
+
+@media all and (max-width: 1024px) {  
+	/* Make topbar fixed (not static) on mobile */
+	.is-topbar.fixed.static {background-color:rgba(255, 255, 255, 1);color:rgba(0, 0, 0, 0.8)}	
+	.is-topbar.fixed.static .is-sitename {color:rgba(0, 0, 0, 0.8)}	
+	.is-topbar.fixed.static .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.8)}	
+	.is-topbar.fixed.static .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}
+
+	.is-topbar.fixed.static.shrink {background-color:rgba(255, 255, 255, 0.95);color:rgba(0, 0, 0, 0.9)}
+	.is-topbar.fixed.static.shrink .is-sitename {color:rgba(0, 0, 0, 0.9)}	
+	.is-topbar.fixed.static.shrink .is-menu > ul > li > a {color:rgba(0, 0, 0, 0.9)}
+	.is-topbar.fixed.static.shrink .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}	
+	/***/
+	
+    .is-topbar.fixed.static .is-menu  { background:rgba(255,255,255,1) }
+    .is-topbar.fixed.static .is-menu ul li a {color:rgba(0, 0, 0, 0.8)}	    
+	.is-topbar.fixed.static .is-menu ul  li  a span.caret {border-top: 4px solid rgba(0, 0, 0, 0.65)}	
+    
+    .is-topbar.fixed.static #is-menu-toggle span {background-color:rgba(0, 0, 0, 0.8);}
+    .is-topbar.fixed.static.shrink #is-menu-toggle span {background-color:rgba(0, 0, 0, 0.8)}
+    .is-topbar.fixed.static #is-menu-toggle.active span {background-color:rgba(0, 0, 0, 0.8)} /* active */
+}
+
+/* dark.fixed - #10 Static dark topbar */
+.is-topbar.fixed.static.dark {background-color:rgba(0, 0, 0, 1);color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.fixed.static.dark .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.fixed.static.dark .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}	
+.is-topbar.fixed.static.dark .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+
+.is-topbar.fixed.static.dark .is-menu li ul {background: rgba(0,0,0,0.9);} /*submenu*/
+.is-topbar.fixed.static.dark .is-menu li li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+.is-topbar.fixed.static.dark .is-menu li li  a {color:rgba(255, 255, 255, 0.8)}
+
+@media all and (max-width: 1024px) {  
+	/* Make topbar fixed (not static) on mobile */
+	.is-topbar.fixed.static.dark {background-color:rgba(0, 0, 0, 1);color:rgba(255, 255, 255, 0.8)}	
+	.is-topbar.fixed.static.dark .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+	.is-topbar.fixed.static.dark .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}	
+	.is-topbar.fixed.static.dark .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}
+
+	.is-topbar.fixed.static.dark.shrink {background-color:rgba(0, 0, 0, 1);color:rgba(255, 255, 255, 0.8)}
+	.is-topbar.fixed.static.dark.shrink .is-sitename {color:rgba(255, 255, 255, 0.8)}	
+	.is-topbar.fixed.static.dark.shrink .is-menu > ul > li > a {color:rgba(255, 255, 255, 0.8)}
+	.is-topbar.fixed.static.dark.shrink .is-menu > ul > li > a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}	
+	/***/
+	
+    .is-topbar.fixed.static.dark .is-menu  { background:rgba(0,0,0,1) }
+    .is-topbar.fixed.static.dark .is-menu ul li a {color:rgba(255, 255, 255, 0.8)}	    
+	.is-topbar.fixed.static.dark .is-menu ul  li  a span.caret {border-top: 4px solid rgba(255, 255, 255, 0.65)}	
+    
+    .is-topbar.fixed.static.dark #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8)}
+    .is-topbar.fixed.static.dark.shrink #is-menu-toggle span {background-color:rgba(255, 255, 255, 0.8)}
+    .is-topbar.fixed.static.dark #is-menu-toggle.active span {background-color:rgba(255, 255, 255, 0.8)} /* active */
+}
+
+/* Overide submenu styles (hover bg & color, border radius (corner) */
+.is-topbar .is-menu li ul  li:hover { } /* light */
+.is-topbar .is-menu li ul  li:hover a { } 
+.is-topbar.dark .is-menu li ul  li:hover { background:rgba(255, 255, 255, 0.1); } /* dark */
+.is-topbar.dark .is-menu li ul  li:hover a { }
+.is-topbar .is-menu li ul {border-radius:0px;}
+.is-topbar .is-menu li ul  li:first-child {border-top-left-radius:4px;border-top-right-radius:4px;}
+.is-topbar .is-menu li ul  li:last-child {border-bottom-left-radius:4px;border-bottom-right-radius:4px;}
+
+/* Dark sub menu
+@media (min-width: 1025px){
+    .is-menu li ul {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    .is-menu li ul li a {
+        color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .is-menu li ul li:hover a {
+        color: rgba(255, 255, 255, 0.95);
+    } 
+    .is-menu li ul li:hover {
+        background:rgba(47, 47, 47, 0.88);
+    }
+}
+*/

@@ -1,0 +1,142 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&amp;display=swap');
+
+.type-quicksand-kalam {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 100%; 
+    line-height: 2.2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-quicksand-kalam p, .type-quicksand-kalam td, .type-quicksand-kalam li, .type-quicksand-kalam label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.19rem;
+    line-height: 2.2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-quicksand-kalam h1, .type-quicksand-kalam h2, .type-quicksand-kalam h3, .type-quicksand-kalam h4, .type-quicksand-kalam h5, .type-quicksand-kalam h6 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-quicksand-kalam h1 {font-size: 3rem;margin: 0.1rem 0 0.3rem;}
+.type-quicksand-kalam h2 {font-size: 2.4rem;margin: 0.23rem 0 0.3rem;}
+.type-quicksand-kalam h3 {font-size: 1.9rem;margin: 0.41rem 0 0.3rem;}
+.type-quicksand-kalam h4 {font-size: 1.7rem;margin: 0.48rem 0 0.3rem;}
+.type-quicksand-kalam h5 {font-size: 1.4rem;margin: 0.55rem 0 0.3rem;line-height: 1.6;}
+.type-quicksand-kalam h6 {font-size: 1.19rem;margin: 0.6rem 0 0.3rem;font-weight: bold;line-height: 1.8;}
+.type-quicksand-kalam p {margin: 0.5rem 0 1rem;}
+
+.type-quicksand-kalam .display { margin-bottom: 0.5rem; }
+.type-quicksand-kalam .display h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 4rem;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+    margin: 0.4rem 0;
+    font-style: normal;
+}
+.type-quicksand-kalam .display p {
+    font-family: 'Kalam', cursive;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+.type-quicksand-kalam .is-btn {
+    padding: 10px 50px 9px;
+}
+.type-quicksand-kalam .is-btn-small {
+    padding: 5px 25px 4px;
+}
+
+.type-quicksand-kalam .display-font1 {font-family: 'Quicksand', sans-serif;}
+.type-quicksand-kalam .display-font2 {font-family: 'Kalam', cursive;}
+.type-quicksand-kalam .default-font1 {font-family: 'Quicksand', sans-serif;}
+.type-quicksand-kalam .default-font2 {font-family: 'Quicksand', sans-serif;}
+
+/* h1-h6: 48 32  24  19  16  12 */
+.type-quicksand-kalam h1 {font-size:48px} 
+@media all and (max-width: 1800px) { 
+    .type-quicksand-kalam h1 {font-size:2.5vw; font-size:clamp(29px, 2.5vw, 2.5vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-quicksand-kalam h1 {font-size:2.5vw}
+}
+
+.type-quicksand-kalam h2 {font-size:32px}
+@media all and (max-width: 1800px) { 
+    .type-quicksand-kalam h2 {font-size:1.64vw; font-size:clamp(24px, 1.64vw, 1.64vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-quicksand-kalam h2 {font-size:1.67vw}
+}
+
+.type-quicksand-kalam h3 {font-size:24px}
+@media all and (max-width: 1800px) { 
+    .type-quicksand-kalam h3 {font-size:1.48vw; font-size:clamp(22px, 1.48vw, 1.48vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-quicksand-kalam h3 {font-size:1.25vw}
+}
+
+.type-quicksand-kalam h4 {font-size:19px}
+@media all and (max-width: 1800px) { 
+    .type-quicksand-kalam h4 {font-size:1.17vw; font-size:clamp(19px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-quicksand-kalam h4 {font-size:0.99vw}
+}
+
+.type-quicksand-kalam h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-quicksand-kalam h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-quicksand-kalam h5 {font-size:0.83vw}
+}
+
+.type-quicksand-kalam h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-quicksand-kalam h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-quicksand-kalam h6 {font-size:0.63vw}
+}
+
+/* 19 */
+.type-ptserif-poppins p,
+.type-ptserif-poppins td, 
+.type-ptserif-poppins li, 
+.type-ptserif-poppins label {
+    font-size: 19px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-ptserif-poppins p,
+    .type-ptserif-poppins td, 
+    .type-ptserif-poppins li, 
+    .type-ptserif-poppins label {font-size:1.17vw; font-size:clamp(16px, 1.17vw, 1.17vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-ptserif-poppins .v2 p,
+    .type-ptserif-poppins .v2 td, 
+    .type-ptserif-poppins .v2 li, 
+    .type-ptserif-poppins .v2 label {font-size:0.99vw}
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Quicksand:300,500');
+@import url('https://fonts.googleapis.com/css?family=Kalam:300'); */

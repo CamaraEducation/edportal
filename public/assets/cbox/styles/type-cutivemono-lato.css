@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&amp;display=swap');
+
+
+.type-cutivemono-lato {
+    font-family: 'Lato', sans-serif;
+    font-size: 100%; 
+    line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-cutivemono-lato p, .type-cutivemono-lato td, .type-cutivemono-lato li, .type-cutivemono-lato label {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.13rem; 
+    line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-cutivemono-lato h1, .type-cutivemono-lato h2, .type-cutivemono-lato h3, .type-cutivemono-lato h4, .type-cutivemono-lato h5, .type-cutivemono-lato h6 {
+    font-family: 'Cutive Mono', monospace;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-cutivemono-lato h1 {font-size: 3.4rem;margin: 0.02rem 0 0.3rem;}
+.type-cutivemono-lato h2 {font-size: 3rem;margin: 0.15rem 0 0.3rem;}
+.type-cutivemono-lato h3 {font-size: 2.6rem;margin: 0.27rem 0 0.3rem;}
+.type-cutivemono-lato h4 {font-size: 2.1rem;margin: 0.5rem 0 0.3rem;}
+.type-cutivemono-lato h5 {font-size: 1.75rem;margin: 0.46rem 0 0.3rem;line-height: 1.8;}
+.type-cutivemono-lato h6 {font-size: 1.4rem;margin: 0.53rem 0 0.3rem;line-height: 2;}
+.type-cutivemono-lato p {margin:0.4rem 0 1rem;}
+
+.type-cutivemono-lato .display { margin-bottom: 0.5rem; }
+.type-cutivemono-lato .display h1 {
+	font-family: 'Cutive Mono', monospace;
+    font-size: 6.2rem;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    font-style: normal;
+    margin: 0.4rem 0;
+}
+.type-cutivemono-lato .display p {
+    font-family: 'Oranienbaum', serif;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    letter-spacing: 3px;
+    text-transform: none;
+    font-style: italic;
+}
+
+.type-cutivemono-lato .is-btn {
+    padding: 10px 50px;
+}
+.type-cutivemono-lato .is-btn-small {
+    padding: 5px 25px;
+}
+
+.type-cutivemono-lato .display-font1 {font-family: 'Cutive Mono', monospace;}
+.type-cutivemono-lato .display-font2 {font-family: 'Oranienbaum', serif;}
+.type-cutivemono-lato .default-font1 {font-family: 'Cutive Mono', monospace;}
+.type-cutivemono-lato .default-font2 {font-family: 'Lato', sans-serif;}
+
+/* h1-h6: 54 38  28  21  17  14 */
+.type-cutivemono-lato h1 {font-size:54px} 
+@media all and (max-width: 1800px) { 
+    .type-cutivemono-lato h1 {font-size:2.81vw; font-size:clamp(31px, 2.81vw, 2.81vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-cutivemono-lato h1 {font-size:2.81vw;}
+}
+
+.type-cutivemono-lato h2 {font-size:38px}
+@media all and (max-width: 1800px) { 
+    .type-cutivemono-lato h2 {font-size:1.98vw; font-size:clamp(26px, 1.98vw, 1.98vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-cutivemono-lato h2 {font-size:1.98vw}
+}
+
+.type-cutivemono-lato h3 {font-size:28px}
+@media all and (max-width: 1800px) { 
+    .type-cutivemono-lato h3 {font-size:1.56vw; font-size:clamp(23px, 1.56vw, 1.56vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-cutivemono-lato h3 {font-size:1.46vw}
+}
+
+.type-cutivemono-lato h4 {font-size:21px}
+@media all and (max-width: 1800px) { 
+    .type-cutivemono-lato h4 {font-size:1.29vw; font-size:clamp(21px, 1.29vw, 1.29vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-cutivemono-lato h4 {font-size:1.09vw}
+}
+
+.type-cutivemono-lato h5 {font-size:17px}
+@media all and (max-width: 1800px) { 
+    .type-cutivemono-lato h5 {font-size:1.05vw; font-size:clamp(17px, 1.05vw, 1.05vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-cutivemono-lato h5 {font-size:0.89vw}
+}
+
+.type-cutivemono-lato h6 {font-size:14px}
+@media all and (max-width: 1800px) { 
+    .type-cutivemono-lato h6 {font-size:0.86vw; font-size:clamp(14px, 0.86vw, 0.86vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-cutivemono-lato h6 {font-size:0.73vw}
+}
+
+/* 18 */
+.type-cutivemono-lato p,
+.type-cutivemono-lato td, 
+.type-cutivemono-lato li, 
+.type-cutivemono-lato label {
+    font-size: 18px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-cutivemono-lato p,
+    .type-cutivemono-lato td, 
+    .type-cutivemono-lato li, 
+    .type-cutivemono-lato label {font-size:1.11vw; font-size:clamp(16px, 1.11vw, 1.11vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-cutivemono-lato .v2 p,
+    .type-cutivemono-lato .v2 td, 
+    .type-cutivemono-lato .v2 li, 
+    .type-cutivemono-lato .v2 label {font-size:0.94vw}
+}
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,300i,700');
+@import url('https://fonts.googleapis.com/css?family=Oranienbaum'); */

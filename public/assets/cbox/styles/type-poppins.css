@@ -1,0 +1,133 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('../googlefonts/poppins.css'); */
+
+.type-poppins {
+    font-family: 'Poppins', sans-serif;
+    font-size: 100%; 
+    line-height: 2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-poppins p, .type-poppins td, .type-poppins li, .type-poppins label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.11rem; 
+    line-height: 2;
+    font-weight: 300;
+    letter-spacing: 0px;
+    text-transform: none;
+    font-style: normal;
+}
+.type-poppins h1, .type-poppins h2, .type-poppins h3, .type-poppins h4, .type-poppins h5, .type-poppins h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 1.5;
+    text-transform: none;
+    font-style: normal;
+}        
+
+.type-poppins h1 {font-size: 3.2rem;margin: 0.06rem 0 0.3rem;}
+.type-poppins h2 {font-size: 2.5rem;margin: 0.18rem 0 0.3rem;}
+.type-poppins h3 {font-size: 1.9rem;margin: 0.36rem 0 0.3rem;}
+.type-poppins h4 {font-size: 1.6rem;margin: 0.48rem 0 0.3rem;line-height: 1.6;}
+.type-poppins h5 {font-size: 1.3rem;margin: 0.55rem 0 0.3rem;line-height: 1.8;}
+.type-poppins h6 {font-size: 1.14rem;margin: 0.7rem 0 0.3rem;font-weight: 800;line-height: 2;}
+.type-poppins p {margin: 0.7rem 0 1rem;}
+
+.type-poppins .display { margin-bottom: 0.5rem; }
+.type-poppins .display h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 4.3rem;
+    letter-spacing: -3px;
+    line-height: 1.2;
+    text-transform: capitalize;
+    margin: 0.4rem 0;
+    font-style: normal;
+}
+.type-poppins .display p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-style: normal;
+    letter-spacing: 0px;
+    text-transform: none;
+}
+
+.type-poppins .display-font1 {font-family: 'Poppins', sans-serif;}
+.type-poppins .display-font2 {font-family: 'Poppins', sans-serif;}
+.type-poppins .default-font1 {font-family: 'Poppins', sans-serif;}
+.type-poppins .default-font2 {font-family: 'Poppins', sans-serif;}
+
+/* h1-h6: 50 38  28  21  16  12 */
+.type-poppins h1 {font-size:50px} 
+@media all and (max-width: 1800px) { 
+    .type-poppins h1 {font-size:2.61vw; font-size:clamp(30px, 2.61vw, 2.61vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-poppins h1 {font-size:2.61vw;}
+}
+
+.type-poppins h2 {font-size:38px}
+@media all and (max-width: 1800px) { 
+    .type-poppins h2 {font-size:1.98vw; font-size:clamp(26px, 1.98vw, 1.98vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-poppins h2 {font-size:1.98vw}
+}
+
+.type-poppins h3 {font-size:28px}
+@media all and (max-width: 1800px) { 
+    .type-poppins h3 {font-size:1.56vw; font-size:clamp(23px, 1.56vw, 1.56vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-poppins h3 {font-size:1.46vw}
+}
+
+.type-poppins h4 {font-size:21px}
+@media all and (max-width: 1800px) { 
+    .type-poppins h4 {font-size:1.29vw; font-size:clamp(21px, 1.29vw, 1.29vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-poppins h4 {font-size:1.09vw}
+}
+
+.type-poppins h5 {font-size:16px}
+@media all and (max-width: 1800px) { 
+    .type-poppins h5 {font-size:0.99vw; font-size:clamp(16px, 0.99vw, 0.99vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-poppins h5 {font-size:0.83vw}
+}
+
+.type-poppins h6 {font-size:12px}
+@media all and (max-width: 1800px) { 
+    .type-poppins h6 {font-size:0.74vw; font-size:clamp(12px, 0.74vw, 0.74vw)} 
+}
+@media all and (min-width: 1921px) { 
+    .type-poppins h6 {font-size:0.63vw}
+}
+
+/* 18 */
+.type-poppins p,
+.type-poppins td, 
+.type-poppins li, 
+.type-poppins label {
+    font-size: 18px; 
+}
+@media all and (max-width: 1800px) { 
+    .type-poppins p,
+    .type-poppins td, 
+    .type-poppins li, 
+    .type-poppins label {font-size:1.11vw; font-size:clamp(16px, 1.11vw, 1.11vw)}
+}
+@media all and (min-width: 1921px) { 
+    .type-poppins .v2 p,
+    .type-poppins .v2 td, 
+    .type-poppins .v2 li, 
+    .type-poppins .v2 label {font-size:0.94vw}
+}
+
+/* @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,300i,400,500,600,600i,700,800,900'); */
