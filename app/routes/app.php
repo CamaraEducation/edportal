@@ -3,27 +3,22 @@
 app()->group('app', ['namespace' => '\App\Controllers\App', function(){
 
     app()->get('home', 'HomeController@home');
-    app()->get('start', 'HomeController@start');
 
-
-    # Profile routes
-    app()->group('profile', function(){
-        app()->get('view', ['name'=>'my.profile', 'UserController@display']);
-        app()->post('update', ['name'=>'update.my-profile', 'UserController@update']);
-        app()->post('password/update', ['name'=>'update.my-password', 'UserController@updatePassword']);
-    });
+    app()->group('api', fn() => \App\Controllers\App\ApiController::routes());
+    app()->group('profile', fn() => \App\Controllers\App\UserController::routes());
     
+    # content routes
+    app()->group('videos', fn() => \App\Controllers\App\VideosController::routes());
+    app()->group('literature', fn() => \App\Controllers\App\LiteratureController::routes());
+    app()->group('whiteboard', fn() => \App\Controllers\App\WhiteboardController::routes());
 
-    # API routes
-    app()->group('api', function(){
-        app()->get('manage', ['name'=>'api.manage', 'ApiController@index']);
-        app()->get('activity/{id}', ['name'=>'api.activity', 'ApiController@activity']);
-
-        app()->post('copy', ['name'=>'api.fetch', 'ApiController@copy']);
-        app()->post('create', ['name'=>'api.create', 'ApiController@issue']);
-        app()->post('refresh', ['name'=>'api.refresh', 'ApiController@refresh']); 
-
-        app()->delete('manage/{id}', ['name'=>'api.delete', 'ApiController@revoke']);    
-    });
+    # misc routes
+    app()->group('usage', fn() => \App\Controllers\App\UsageController::routes());
 
 }]);
+
+app()->get('test', function() {
+    $data = (\App\Models\LabUsage::fullClientsMonthlyUsage());
+    return response()->json($data);
+    //echo count($data);
+});
