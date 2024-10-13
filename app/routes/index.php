@@ -13,9 +13,9 @@
 app()->set404(function() {
     $isApiRequest = strpos($_SERVER['REQUEST_URI'], 'api') == 1;
     if ($isApiRequest or request()->isAjax()) {
-        response()->json(['status' => 'error', 'message' => 'Page not found'], 404);
+        response()->json(['status' => false, 'message' => 'Page not found'], 404);
     } else {
-        response()->page("app/views/errors/404.html", 404);
+        return response()->markup(view('errors.404'), 404);
     }
 });
 
@@ -33,9 +33,9 @@ if(getenv('app_debug') == 'false'){
     app()->setErrorHandler(function() {
         $isApiRequest = strpos($_SERVER['REQUEST_URI'], '/api') !== false;
         if ($isApiRequest or request()->isAjax()) {
-            response()->json(['status' => 'error', 'message' => 'An error occurred'], 500);
+            response()->json(['status' => false, 'message' => 'An error occurred'], 500);
         } else {
-            response()->page(ViewsPath("errors/500.html", false), 500);
+            return response()->markup(view('errors.500'), 500);
         }
     });
 }
