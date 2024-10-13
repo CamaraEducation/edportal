@@ -20,7 +20,7 @@ class AuthController extends Controller
      * @return void
      */
     public function signin(){
-       render('auth.login');
+        render('auth.login');
     }
 
     /**
@@ -36,22 +36,13 @@ class AuthController extends Controller
      * @param bool $api
      * @return void
      */
-    public static function login($api = false){
+    public function login(){
         $data = auth()->login([
             'username' => request()->get('username'),
             'password' => request()->get('password')
         ]);
 
-        if($data) {
-
-            ($api) ? exit( response()->json(['status'=>true, 'bearer'=>$data['token']])) : null;
-
-            $message = ['status' => true, 'message' => 'Welcome! Login successful'];
-        }else{
-            $message = ['status' => false, 'message' => 'Uh Ooooh! Login failed'];
-        }
-
-        response()->json($message);
+        return $this->jsonResponse($data, 'Login successful', 'Invalid login credentials', '/app/home');
     }
 
     /**
@@ -183,6 +174,10 @@ class AuthController extends Controller
     public static function logout(){
         auth()->logout();
         response()->redirect('/');
+    }
+
+    public function testi(){
+        echo getenv('GOOGLE_CLIENT_ID');
     }
 
 
