@@ -246,7 +246,8 @@ class AccessController extends Controller
             $this->data->editRolePermission = Handler::can('app', 'edit_role_permissions');
             $this->data->resetRolePermission = Handler::can('app', 'delete_role_permissions');
 
-            $markup = view('admin.access.partials.role-permissions', (array) $this->data);
+            if(!isset($this->helpers)) $this->helpers = new Helpers;
+            $markup = view('admin.access.partials.role-permissions', $this->data);
 
             response()->json(['status' => 'success', 'data' => $markup]);
                             
@@ -277,7 +278,7 @@ class AccessController extends Controller
             $data = [
                 'role' => request()->params('role'),
                 'value' => request()->params('value'),
-                // 'module' => request()->params('module'),
+                'module' => request()->params('module'),
                 'permission' => request()->params('permission'),
             ];
 
@@ -296,7 +297,9 @@ class AccessController extends Controller
 
             # fetch permission and types
             $scopeId = PermissionType::where('name', $data['value'])->first()->id;
-            $permissionId = Permission::where('name', $data['permission'])->first()->id;
+            $moduleId = Module::where('name', $data['module'])->first()->id;
+            $permissionId = Permission::where('name', $data['permission'])->
+                where('module_id', $moduleId)->first()->id;
 
             # validate permission
             if(!$permissionId)
