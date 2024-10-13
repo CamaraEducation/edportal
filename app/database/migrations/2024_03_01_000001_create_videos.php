@@ -23,6 +23,7 @@ class CreateVideos extends Database
                 $table->integer('duration')->default(0);
                 $table->json('timestamps')->nullable();
                 $table->integer('author')->default(1);
+                $table->integer('views')->default(0);
                 $table->timestamp('created_at')->useCurrent();
                 $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             });
