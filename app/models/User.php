@@ -5,11 +5,8 @@ namespace App\Models;
 class User extends Model
 {
     protected $table = 'users';
-    
-    protected $fillable = [ 'fullname', 'email', 'password', 'avatar', 'role', 'phone', 'about', 'status' ];
-
+    protected $fillable = [ 'username', 'fullname', 'email', 'phone', 'password', 'remember_token', 'status', 'avatar', 'role', 'about', 'recommend' ];
     protected $hidden = [ 'password', 'remember_token' ];
-
     protected $with = ['user_role'];
 
     public $timestamps = true;
@@ -35,21 +32,6 @@ class User extends Model
 
     public static function getUser($user_id){
         return self::where('id', $user_id)->get()->first();
-    }
-
-    # has many articles
-    public function blog_article(){
-        return $this->hasMany(BlogArticle::class, 'author', 'id');
-    }
-
-    # owns many files
-    public function file_storage(){
-        return $this->hasMany(FileStorage::class, 'user_id', 'id');
-    }
-
-    # has one api key
-    public function api_key(){
-        return $this->hasOne(ApiKey::class, 'user_id', 'id');
     }
 
     # belongs to a single role
