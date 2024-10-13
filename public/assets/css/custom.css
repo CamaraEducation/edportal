@@ -154,6 +154,49 @@ label {
 .min-w75{ min-width: 75% !important; }
 .min-w100{ min-width: 100% !important; }
 
+.floating-action{
+    right: 5px;
+    top: 4px;
+}
+
+.video-actions-btns{
+    position: absolute;
+    right: 0;
+    top: -8px;
+}
+
+.text-container{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+}
+
+.tl-1{  -webkit-line-clamp: 1;  line-clamp: 1; }
+.tl-2{  -webkit-line-clamp: 2;  line-clamp: 2; }
+.tl-3{  -webkit-line-clamp: 3;  line-clamp: 3; }
+.tl-4{  -webkit-line-clamp: 4;  line-clamp: 4; }
+.tl-5{  -webkit-line-clamp: 5;  line-clamp: 5; }
+
+.tags {
+    white-space: nowrap;      /* Prevent wrapping */
+    overflow-x: auto;         /* Enable horizontal scrolling */
+    overflow-y: hidden;       /* Hide vertical scrollbar */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile devices */
+}
+  
+.tags a {
+    display: inline-block;    /* Ensure the links are inline and respect scrolling */
+    margin-right: 10px;       /* Optional: Adds space between the tags */
+}
+
+.vjs-poster {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.video
 
 /* custom scrollbar */
 ::-webkit-scrollbar {

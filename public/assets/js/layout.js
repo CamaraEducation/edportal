@@ -16,9 +16,9 @@ function isSmallScreen() {
 
 //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile/i.test(navigator.userAgent)) {
 if (isSmallScreen()) {
-    localStorage.setItem('layout', 'vertical');
+    localStorage.setItem('layout', 'tab');
 }else{
-    localStorage.setItem('layout', 'compact');
+    localStorage.setItem('layout', 'tab');
     document.addEventListener("DOMContentLoaded", function() {
     
         // Find all 'pc-link' elements

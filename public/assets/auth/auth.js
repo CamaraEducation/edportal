@@ -1,3 +1,5 @@
+const csrf_token = $('meta[name="csrf-token"]').attr('content');
+
 function submitForm(event, responseHandler = null){
     event.preventDefault();
 
@@ -23,6 +25,9 @@ function submitForm(event, responseHandler = null){
     $.ajax({
         url: form.attr('action'),
         method: form.attr('method') ?? 'POST',
+        // headers: {
+            // 'X-CSRF-TOKEN': csrf_token
+        // },
         data: formData,
         processData: !isMultipart, // Don't process the data if it's multipart (FormData handles that)
         contentType: isMultipart ? false : 'application/x-www-form-urlencoded; charset=UTF-8', // Set content type accordingly

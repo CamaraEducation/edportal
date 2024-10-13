@@ -1,3 +1,5 @@
+const csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
 layout_sidebar_change('false')
 change_box_container('false')
 layout_caption_change('true')
@@ -33,7 +35,7 @@ function change_theme_color(color){
 }
 
 // Under Development Alert
-function underDevelopment(){
+function underDevelopment(event){
     // prevent default action
     event.preventDefault();
 
@@ -74,7 +76,7 @@ function copyToClipboard(text) {
     document.body.removeChild(input);
 }
 
-function submitForm(event, responseHandler = null){
+function submitForm(event, responseHandler = null) {
     event.preventDefault();
 
     const form = $(event.target); // Get the form element
@@ -102,17 +104,33 @@ function submitForm(event, responseHandler = null){
         data: formData,
         processData: !isMultipart, // Don't process the data if it's multipart (FormData handles that)
         contentType: isMultipart ? false : 'application/x-www-form-urlencoded; charset=UTF-8', // Set content type accordingly
+        xhr: function() {
+            const xhr = new window.XMLHttpRequest();
+            
+            if (isMultipart) {
+                // Upload progress for all files
+                xhr.upload.addEventListener('progress', function(event) {
+                    if (event.lengthComputable) {
+                        const percentComplete = (event.loaded / event.total) * 100;
+                        // Update progress UI for overall progress
+                        $('#upload-progress').css('width', percentComplete + '%').text(Math.round(percentComplete) + '%');
+                    }
+                }, false);
+            }
+
+            return xhr;
+        },
         success: function(response) {
             if (responseHandler && typeof responseHandler === 'function') {
                 responseHandler(response);
-            }else{
+            } else {
                 if (response.status) {
                     toast.success({ message: response.message });
-                }else{
+                } else {
                     toast.error({ message: response.message });
                 }
 
-                if(response.redirect){
+                if (response.redirect) {
                     setTimeout(() => {
                         window.location.href = response.redirect;
                     }, 1000);
@@ -127,8 +145,19 @@ function submitForm(event, responseHandler = null){
             if (submitButton) {
                 buttonState(submitButton, 'reset', buttonLabel);
             }
-        }
+            // Hide or reset progress bar after upload completion
+            $('#upload-progress').css('width', '0%').text('');
+        },
+        // Only needed if multipart data
+        cache: false,
+        contentType: false,
+        processData: false
     });
+}
+
+function simulateClick(identifier) {
+    //document.querySelector(identifier).click();
+    $(identifier).click();
 }
 
 // initializers and settings
@@ -145,7 +174,11 @@ toast.settings({
 
 $(document).ready(function() {
     
-    $('.form-select').select2();
+    $('.form-select').addClass('d-none');
+    setTimeout(() => {
+        $('.form-select').removeClass('d-none');
+        $('.form-select').select2();
+    }, 300);
 
     if($('.datepicker').length) {
         $('.datepicker').datepicker({
@@ -180,4 +213,15 @@ $(document).ready(function() {
         });
         setTimeout(() => { location.reload();}, 1000);
     });
+
+    setTimeout(() => {
+        
+        var activateParent = $('.activate').parent();
+        if (activateParent) {
+            $('.activate').parent().addClass('active');
+            var activateParentDataTarget = activateParent.data('bs-target');
+            $(activateParentDataTarget).addClass('active show');
+        }
+        
+    }, 100);
 }); 
