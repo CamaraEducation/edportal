@@ -17,6 +17,27 @@ class LabUsage extends Model
         'updated_at' => 'datetime'
     ];
 
+    # usage today
+    public static function usageToday() {
+        return self::whereDate('start_time', Carbon::today())
+            ->where('device_state', 'active')
+            ->sum('duration');        
+    }
+
+    # usage this month
+    public static function usageThisMonth() {
+        return self::whereMonth('start_time', Carbon::now()->month)
+            ->where('device_state', 'active')
+            ->sum('duration');
+    }
+
+    # usage this year
+    public static function usageThisYear() {
+        return self::whereYear('start_time', Carbon::now()->year)
+            ->where('device_state', 'active')
+            ->sum('duration');
+    }
+
     # clients usage summary
     public static function clientsSummary() {
         return self::where('device_state', 'active')
@@ -139,4 +160,6 @@ class LabUsage extends Model
 
         self::insert($usages);
     }
+
+    
 }
