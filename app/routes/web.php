@@ -1,2 +1,2 @@
 <?php
-app()->get('/', fn() => render('welcome'));
+app()->redirect('', 'login');
