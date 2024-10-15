@@ -101,6 +101,7 @@ function submitForm(event, responseHandler = null) {
     $.ajax({
         url: form.attr('action'),
         method: form.attr('method') ?? 'POST',
+        headers: { 'X-CSRF-TOKEN': csrf_token },
         data: formData,
         processData: !isMultipart, // Don't process the data if it's multipart (FormData handles that)
         contentType: isMultipart ? false : 'application/x-www-form-urlencoded; charset=UTF-8', // Set content type accordingly
@@ -174,12 +175,16 @@ toast.settings({
 
 $(document).ready(function() {
     
+    // Kursor and Select2
+    // new kursor()
     $('.form-select').addClass('d-none');
+
     setTimeout(() => {
         $('.form-select').removeClass('d-none');
         $('.form-select').select2();
     }, 300);
 
+    // Datepicker
     if($('.datepicker').length) {
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',
@@ -214,6 +219,7 @@ $(document).ready(function() {
         setTimeout(() => { location.reload();}, 1000);
     });
 
+    // sidebar setup
     setTimeout(() => {
         
         var activateParent = $('.activate').parent();
