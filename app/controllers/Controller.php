@@ -150,7 +150,8 @@ class Controller extends \Leaf\Controller
         $this->settings = (object) Setting::all()->pluck('value', 'key')->toArray();
     }
 
-    public function sample(){
-        dd($this->data);
+    # TODO: Shutdown behavior
+    public function shutdownBehavior(){
+
     }
 }
