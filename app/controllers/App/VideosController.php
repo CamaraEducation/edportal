@@ -134,6 +134,11 @@ class VideosController extends Controller
             ->limit(10)
             ->get();
 
+        $this->videoActivity = ContentActivity::where('user_id', auth()->id())
+            ->where('content_id', $video->id)
+            ->where('content_type', 'video')
+            ->first();
+
         # sidebar state
         $this->active = 'videos';
         $this->menuLink = 'media';
@@ -142,7 +147,6 @@ class VideosController extends Controller
         # permissions allocation
         $this->canEditVideo = Handler::can('video', 'update');
         $this->canDeleteVideo = Handler::can('video', 'delete');
-        $this->canTimestamp = Handler::can('video', 'modify_timestamps');
 
         return $this->renderPage(null, 'app.videos.show');
     }
@@ -279,7 +283,6 @@ class VideosController extends Controller
                 if(is_array($value)) return $this->jsonError($key . ' is invalid');
             }
             
-            
             $video = Video::create($data);
             
             $this->redirect = route('videos.show', $video->id);
@@ -289,6 +292,82 @@ class VideosController extends Controller
         catch(\Exception $e){
             return $this->jsonException($e);
         }
+    }
+
+    # timestamp video
+    public function timestamp($id){
+
+        $video = Video::find($id);
+        if(!$video) return response()->markup(view('errors.404'), 404);
+        
+        # validate user's permission
+        $editVideoPermission = Handler::can('video', 'update');
+        if(!Handler::owns($editVideoPermission->scope, $video->author)){
+            return response()->markup(view('errors.403'), 403);
+        }
+
+        $this->video = $video;
+        $this->title = substring($video->title, 0, 30);
+
+        # sidebar state
+        $this->active = 'videos';
+        $this->menuLink = 'media';
+
+        return $this->renderPage($video->title, 'app.videos.timestamp');            
+    }
+
+    # update video timestamp
+    public function updateTimestamp($id){
+
+        try{
+
+            $video = Video::find($id);
+            if(!$video) return response()->json(['status' => false, 'message' => 'Video not found'], 404);
+
+            # validate user's permission
+            $editVideoPermission = Handler::can('video', 'update');
+            if(!Handler::owns($editVideoPermission->scope, $video->author)){
+                return response()->json(['status' => false, 'message' => 'You do not have permission to update this video'], 403);
+            }
+
+            $timesTamps = request()->params('timestamps');
+            if(!$timesTamps) return $this->jsonError('No timestamps provided');
+
+            # timestamp:array - title, time, thumbnail:base64
+            foreach($timesTamps as $timestamp){
+                if(!is_array($timestamp) or !isset($timestamp['title']) or !isset($timestamp['time']) or !isset($timestamp['thumbnail'])) continue;
+
+                if(strlen($timestamp['thumbnail']) > 100):
+                    // extract and save images
+                    $thumbnail = $timestamp['thumbnail'];
+                    $thumbnail = explode(';', $thumbnail)[1];
+                    $thumbnail = explode(',', $thumbnail)[1];
+                    $thumbnail = base64_decode($thumbnail);
+
+                    $thumbnailPath = '/videos/covers/' . uniqid() . '.png';
+                    file_put_contents(StoragePath('app/public' . $thumbnailPath), $thumbnail);
+
+				    else: $thumbnailPath = $timestamp['thumbnail'];
+                endif;
+
+                // save timestamp
+                $videoKeynotes[] = [
+                    'title' => $timestamp['title'],
+                    'time' => $timestamp['time'],
+                    'thumbnail' => $thumbnailPath
+                ];                
+            }
+
+            $video->keynotes = $videoKeynotes ?? []; 
+            if(!$video->save()) return $this->jsonError('Failed to update video timestamps');
+            
+            return $this->jsonSuccess('Video keynote updated successfully');
+        }
+
+        catch(\Exception $e){
+            return $this->jsonException($e);
+        }
+
     }
 
     /*
@@ -314,12 +393,15 @@ class VideosController extends Controller
 
         app()->get('/show/{id}', ['name'=>'videos.show', 'VideosController@show']);
         app()->get('/edit/{id}', ['name'=>'videos.edit', 'VideosController@edit']);
-        
+        app()->get('/timestamp/{id}', ['name'=>'videos.timestamp', 'VideosController@timestamp']);
+
         app()->get('/history', ['name'=>'videos.history', 'VideosController@history']);
         app()->get('/bookmarks', ['name'=>'videos.bookmarks', 'VideosController@bookmarks']);
         app()->get('/group/{tag}', ['name'=>'videos.group', 'VideosController@group']);
 
         app()->post('/search', ['name'=>'videos.search', 'VideosController@search']);
         app()->post('/upload', ['name'=>'videos.store', 'VideosController@store']);
+
+        app()->post('/timestamp/{id}', ['name'=>'videos.timestamp', 'VideosController@updateTimestamp']);
     }
 }
