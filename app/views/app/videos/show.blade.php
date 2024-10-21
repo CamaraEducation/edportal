@@ -8,8 +8,11 @@
                     <div class="card border-0">
                         <div class="card-body pt-2 pb-3 px-2">
                             <div class="video-player border rounded-3 overflow-hidden">
-                                <video id="video-player" class="video-js vjs-big-play-centered vjs-fluid rounded-3 overflow-hidden" controls
-                                    preload="auto" width="640" height="264" data-setup='{"poster": "{{ urlPath($video->thumbnail) }}"}'>
+                                <video autoplay id="video-player" class="video-js vjs-big-play-centered vjs-fluid rounded-3 overflow-hidden trackStamp" controls
+                                    preload="auto" width="640" height="264"  allow="autoplay"
+                                    data-video-resume="{{ $videoActivity->resume }}"
+                                    data-setup='{"poster": "{{ urlPath($video->thumbnail) }}"}' >
+                                    
                                     <source src="{{ urlPath($video->source) }}" type="video/mp4">
                                 </video>
                             </div>
@@ -26,24 +29,24 @@
                                 @endforeach
 
                                 <div class="video-actions-btns text-end p-0">
-
-                                    <a href="javascript:void(0)" class="btn btn-light-warning btn-sm border">
-                                        <i class="ph-duotone ph-pencil"></i>
-                                    </a>
-
-                                    <a href="javascript:void(0)" class="btn btn-light-danger btn-sm border">
-                                        <i class="ph-duotone ph-trash"></i>
-                                    </a>
-
                                     <a href="javascript:void(0)" class="btn btn-light-info btn-sm border">
                                         <i class="ph-duotone text-primary ph-bookmark"></i>
                                     </a>
 
-                                    <!-- enhance -->
-                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">
-                                        <i class="ph-duotone ph-magic-wand"></i> &nbsp;
-                                        <span class="d-none d-md-inline"> {{ __('Enhance') }}</span>
-                                    </a>
+                                    @if($handler::owns($canEditVideo->scope, $video->author == $loggedUser->id))
+                                        <a href="javascript:void(0)" class="btn btn-light-warning btn-sm border">
+                                            <i class="ph-duotone ph-pencil"></i>
+                                        </a>
+
+                                        <a href="javascript:void(0)" class="btn btn-light-danger btn-sm border">
+                                            <i class="ph-duotone ph-trash"></i>
+                                        </a>
+
+                                        <a href="{{ route('videos.timestamp', $video->id) }}" class="btn btn-primary btn-sm">
+                                            <i class="ph-duotone ph-magic-wand"></i> &nbsp;
+                                            <span class="d-none d-md-inline"> {{ __('Enhance') }}</span>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="video-description col-12 pt-3 border-top">
@@ -73,7 +76,22 @@
                                     <div class="card-body">
                                         @if(count($video->keynotes))
                                             @foreach($video->keynotes as $keynote)
-                                                s
+                                                <a href="javascript:void(0)" class="keynoteSeek" data-time="{{ $keynote['time'] }}">
+                                                    <div class="row mb-3 position-relative">
+                                                        <div class="col-md-4 col-sm-3 col-4 px-2 position-relative">
+                                                            <div class="video-thumb rounded-3 col-4 ratio ratio-16x9"
+                                                                style="width:100%; background: url('{{ urlPath($keynote['thumbnail']) }}') center center / cover no-repeat">     
+                                                            </div>
+                                                            <span class="badge rounded-pill bg-light-primary video-duration position-absolute"
+                                                                style="bottom: 5px; right: 12px;">
+                                                                {{ carbon()::parse(floatval($keynote['time']))->format('H:i:s') }}
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-8 col-sm-9 col-8 pt-2">
+                                                            <h6 class="fw-bold mb-0">{{ $keynote['title'] }}</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             @endforeach
                                         @else
                                             @include('app.partials.empty', [
