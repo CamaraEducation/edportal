@@ -67,8 +67,41 @@ class ContentMonitor
             default:
                 return;
         }
+    }
 
 
+    /**
+     * Record current Content State
+     * 
+    */
 
+    public static function recordState(){
+        $userId = auth()->id();
+        $data = [
+            'content_id' => request()->params('content_id'),
+            'content_type' => request()->params('content_type'),
+            'state' => request()->params('current_state'),
+        ];
+
+        if(in_array(null, $data)) response()->json(['status' => false, 'message' => 'Invalid request']);
+
+        $content = ContentActivity::where('user_id', $userId)
+            ->where('content_id', $data['content_id'])
+            ->where('content_type', $data['content_type'])
+            ->first();
+
+        if(!$content)
+            response()->json(['status' => false, 'message' => 'Content not found']);
+
+        // if type is document, state must be even number, convert
+        if($data['content_type'] == 'document' && $data['state'] % 2 != 0) $data['state'] += 1;
+        $content = ContentActivity::where('user_id', $userId)
+            ->where('content_id', $data['content_id'])
+            ->where('content_type', $data['content_type'])
+            ->update([
+                'resume' => $data['state']
+            ]);
+
+        if($content) response()->json(['status' => true, 'message' => 'State recorded successfully']);
     }
 }
