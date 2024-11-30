@@ -178,20 +178,16 @@ class DocsController extends Controller
     public function bookmark($docId)
     {
         try{
-            $doc = Document::with('user_activity')->find($docId);
-            if(!$doc) return response()->json(['status' => false, 'message' => 'Document not found'], 404);
+            $document = ContentActivity::where('content_id', $docId)->where('user_id', auth()->id())->first();
+            if(!$document)
+                return response()->json(['status' => false, 'message' => 'To bookmark a document, you must first view it']);
 
-            $state = (false != $doc->user_activity->bookmarked);
-            if(Document::bookmark($docId, auth()->id(), $state)){
-                return response()->json([
-                    'status' => true,
-                    'message' => 'Content Added to bookmark'
-                ]);
-            }
-
+            $state = !$document->bookmarked;
+            Document::bookmark($docId, auth()->id(), $state);
+            
             return response()->json([
-                'status' => false,
-                'message' => 'Content could not be added to bookmark'
+                'status' => true,
+                'message' => $state ? 'Document bookmarked' : 'Bookmark removed'
             ]);
         }
 
