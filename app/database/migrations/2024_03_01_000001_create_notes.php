@@ -18,7 +18,6 @@ class CreateNotes extends Database
                 $table->string('title', 50);
                 $table->string('description', 50)->nullable();
                 $table->text('source')->nullable();
-                $table->text('draft')->nullable();
                 $table->integer('author');
                 $table->integer('is_public')->default(0);
                 $table->json('shared_to')->nullable();
