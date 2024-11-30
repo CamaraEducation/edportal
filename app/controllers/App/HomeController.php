@@ -48,9 +48,6 @@ class HomeController extends Controller
     }
 
     public function start(){ 
-        $this->data->title = 'Start';
-        $this->data->current_user = auth()->user();
-
-        render('app.start', $this->data);
+        //echo "Welcome to the home page";
     }
 }
