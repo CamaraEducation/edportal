@@ -6,7 +6,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="author" content="{{getenv('app_author')}}">
+		<meta name="author" content="{{_env('app_author')}}">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		
 		<link rel="icon" href="{{ $settings->favicon }}" type="image/x-icon">
 		<link rel="stylesheet" href="/assets/fonts/inter/inter.css" id="main-font-link" />
@@ -17,10 +18,14 @@
 		<link rel="stylesheet" href="/assets/fonts/material.css" />
 		<link rel="stylesheet" href="/assets/css/plugins/toastr.min.css" />
 		<link rel="stylesheet" href="/assets/css/plugins/select2.min.css">
+		<link rel="stylesheet" href="/assets/css/plugins/kursor.css" />
+		<link rel="stylesheet" href="/assets/css/plugins/contextmenu.min.css" />
 		
 		<link rel="stylesheet" href="/assets/css/style.css" id="main-style-link" />
 		<link rel="stylesheet" href="/assets/css/style-preset.css" />
 		<link rel="stylesheet" href="/assets/css/custom.css" />
+
+		@stack('styles')
 		
 	</head>
 	
@@ -39,10 +44,8 @@
 		
 		@include('layouts.app.sidebar')
 		@include('layouts.app.topbar')
-		
 
         @yield('content')
-
 		
 		@include('app.partials.announcements')
 		@include('layouts.app.basebar')
@@ -60,10 +63,12 @@
         <script src="/assets/js/plugins/sweetalert2.all.min.js"></script>
         <script src="/assets/js/plugins/toastr.min.js"></script>
 		<script src="/assets/js/plugins/select2.min.js"></script>
+		<script src="/assets/js/plugins/kursor.js"></script>
+		<script src="/assets/js/plugins/contextmenu.min.js"></script>
+
 		<script src="/assets/js/app.js"></script>
 		<script src="/assets/js/layout.js"></script>
 
-		@yield('scripts') <!-- leaving it for backward compatibility -->
 		@stack('scripts')
 
 	</body>
