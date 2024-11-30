@@ -83,7 +83,7 @@ class ContentMonitor
             'state' => request()->params('current_state'),
         ];
 
-        if(in_array(null, $data)) response()->json(['status' => false, 'message' => 'Invalid request']);
+        if(in_array(null, $data)) return response()->json(['status' => false, 'message' => 'Invalid request']);
 
         $content = ContentActivity::where('user_id', $userId)
             ->where('content_id', $data['content_id'])
@@ -91,17 +91,19 @@ class ContentMonitor
             ->first();
 
         if(!$content)
-            response()->json(['status' => false, 'message' => 'Content not found']);
+            return response()->json(['status' => false, 'message' => 'Content not found']);
 
         // if type is document, state must be even number, convert
-        if($data['content_type'] == 'document' && $data['state'] % 2 != 0) $data['state'] += 1;
-        $content = ContentActivity::where('user_id', $userId)
-            ->where('content_id', $data['content_id'])
-            ->where('content_type', $data['content_type'])
-            ->update([
-                'resume' => $data['state']
-            ]);
+        // if($data['content_type'] == 'document' && $data['state'] % 2 != 0) $data['state'] += 1;
+        if($data['state']){
+            $content = ContentActivity::where('user_id', $userId)
+                ->where('content_id', $data['content_id'])
+                ->where('content_type', $data['content_type'])
+                ->update([
+                    'resume' => $data['state']
+                ]);
+        }
 
-        if($content) response()->json(['status' => true, 'message' => 'State recorded successfully']);
+        if($content) return response()->json(['status' => true, 'message' => 'State recorded successfully']);
     }
 }
