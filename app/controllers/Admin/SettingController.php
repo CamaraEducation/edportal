@@ -59,7 +59,7 @@ class SettingController extends Controller
             response()->json(['status' => 'success', 'message' => 'Settings updated successfully']);
             
         } catch (\Exception $e) {
-            (getenv('app_debug') == "true")? 
+            (_env('APP_DEBUG') == "true")? 
                 response()->json(['status' => 'error', 'message' => $e->getMessage()]) :
                 response()->json(['status' => 'error', 'message' => 'Failed to update settings']);
         }
@@ -107,7 +107,7 @@ class SettingController extends Controller
             response()->json(['status' => 'success', 'message' => 'Settings updated successfully']);
 
         }catch (\Exception $e) {
-            (getenv('app_debug') == "true")? 
+            (_env('APP_DEBUG') == "true")? 
                 response()->json(['status' => 'error', 'message' => $e->getMessage()]) :
                 response()->json(['status' => 'error', 'message' => 'Failed to update settings']);
         }
@@ -146,7 +146,7 @@ class SettingController extends Controller
             response()->json(['status' => 'success', 'message' => 'Settings updated successfully']);
 
         }catch (\Exception $e) {
-            (getenv('app_debug') == "true")? 
+            (_env('APP_DEBUG') == "true")? 
                 response()->json(['status' => 'error', 'message' => $e->getMessage()]) :
                 response()->json(['status' => 'error', 'message' => 'Failed to update settings']);
         }

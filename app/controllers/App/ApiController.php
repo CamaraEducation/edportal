@@ -72,7 +72,7 @@ class ApiController extends Controller
 
         } catch (\Exception $e) {
 
-            (getenv('app_debug') == "true")? $message = $e->getMessage() : $message = "Failed to generate an Api key";
+            (_env('APP_DEBUG') == "true")? $message = $e->getMessage() : $message = "Failed to generate an Api key";
             response()->json(['status' => 'error', 'message' => $message]);
         }
         
@@ -125,7 +125,7 @@ class ApiController extends Controller
             response()->json(['status' => 'success', 'message' => 'API key revoked']);
             
         } catch (\Throwable $e) {
-            (getenv('app_debug') == "true")? $message = $e->getMessage() : $message = "Failed to revoke the API key";
+            (_env('APP_DEBUG') == "true")? $message = $e->getMessage() : $message = "Failed to revoke the API key";
             response()->json(['status' => 'error', 'message' => $message]);
         }
    
