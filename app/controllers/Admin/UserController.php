@@ -82,12 +82,12 @@ class UserController extends Controller
             # send onboarding email
             $mail = new MailSender();
             $mail->sendHtml(
-                'Welcome to '.getenv('app_name'),
+                'Welcome to '._env('APP_NAME'),
                 view('mail.welcome', [
                     'name' => request()->get('fullname'),
                     'username' => request()->get('email'),
                     'password' => 'Reset your password to get started',
-                    'loginLink' => getenv('app_url').'/login'
+                    'loginLink' => _env('app_url').'/login'
                 ]),
                 request()->get('email'),
                 request()->get('fullname')
@@ -98,7 +98,7 @@ class UserController extends Controller
         } catch (\Throwable $e) {
             
             $message = ['status'=>'error', 'message'=> __('An Unkown error occurred')];
-            (getenv('app_debug') == 'false') ?: $message['debug'] = [
+            (_env('APP_DEBUG') == 'false') ?: $message['debug'] = [
                 'message' => $e->getMessage(),
                 'line' => $e->getLine(),
                 'file' => $e->getFile()
@@ -211,7 +211,7 @@ class UserController extends Controller
         } catch (\Throwable $e) {
 
             $message = ['status'=>'error', 'message'=> __('An Unkown error occurred')];
-            (getenv('app_debug') == 'false') ?: $message['debug'] = [
+            (_env('APP_DEBUG') == 'false') ?: $message['debug'] = [
                 'message' => $e->getMessage(),
                 'line' => $e->getLine(),
                 'file' => $e->getFile()
