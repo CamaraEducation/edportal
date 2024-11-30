@@ -1,0 +1,73 @@
+.wowbook-right .wowbook-gutter-shadow {
+    background-image: url("/assets/js/plugins/flipper/gutter_shadow_right.png");
+    background-position: 0 0;
+    width: 75px;
+}
+.wowbook-left .wowbook-gutter-shadow {
+    background-image: url("/assets/js/plugins/flipper/gutter_shadow_left.png");
+    opacity: 0.5;
+    width: 60px;
+}
+.wowbook-control-currentPage {
+    font-family: "Segoe UI",Helvetica,Arial,sans-serif;
+}
+.wowbook-lightbox > .wowbook-close {
+    background: transparent !important;
+    border: none !important;
+    color: #222 !important;
+    font-size: 2em;
+}
+.wowbook-lightbox > .wowbook-close:hover {
+    background: #444 !important;
+    color: white !important;
+    border-radius: 3px;
+    margin: 5px;
+}
+.lightbox-images1 .wowbook-book-container {
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #6d6b92 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#6d6b92 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #ffffff 0%,#6d6b92 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.lightbox-images1 > .wowbook-close,
+.lightbox-images2 > .wowbook-close {
+    color: #ccc !important;
+}
+.lightbox-images2 .wowbook-book-container {
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #1E2831 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#1E2831 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #ffffff 0%,#1E2831 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+
+
+.lightbox-pdf  .wowbook-book-container {
+    background: #e5e5e5 url(./img/bg-lightbox-pdf.png); /* Old browsers */
+    background: #e5e5e5 -moz-radial-gradient(center, ellipse cover, #ffffff 20%, #bbbbbb 100%); /* FF3.6-15 */
+    background: #e5e5e5 -webkit-radial-gradient(center, ellipse cover, #ffffff 20%,#bbbbbb 100%); /* Chrome10-25,Safari5.1-6 */
+    background: #e5e5e5 radial-gradient(ellipse at center, #ffffff 20%,#bbbbbb 100%); /* W3C, IE10+, FF16+, Chrome26+,Opera12+, Safari7+*/
+}
+
+
+.lightbox-html  .wowbook-book-container {
+    background: url(img/book_html/wood.jpg);
+}
+.lightbox-html .wowbook-toolbar {
+    margin-top: 1em; /* FIXME */
+    box-sizing: content-box !important;
+}
+
+.lightbox-html .wowbook-controls {
+    border-radius: 6px;
+    width: auto;
+}
+
+.lightbox-html.wowbook-mobile .wowbook-toolbar {
+    margin: 0;
+}
+
+.lightbox-html.wowbook-mobile .wowbook-controls {
+    border-radius: 0;
+    width: 100%;
+}
