@@ -67,3 +67,8 @@
 .slide-info h5, .slide-info p {
     margin: 0;
 }
+
+.book-info h5 {
+    text-shadow: -1px 0px black;
+    font-weight: 600;
+}
