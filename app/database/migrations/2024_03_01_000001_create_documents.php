@@ -20,6 +20,7 @@ class CreateDocuments extends Database
                 $table->string('source', 150);
                 $table->text('tags');
                 $table->integer('author');
+                $table->integer('views')->default(0);
                 $table->timestamp('created_at')->useCurrent();
                 $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             });
