@@ -23,9 +23,33 @@ class Document extends Model
             ->get();
     }
 
+    # viewed
+    public static function viewed($documentId, $userId){
+        $contentActivity = ContentActivity::record($userId, $documentId, 'document');
+        
+        if($contentActivity->wasRecentlyCreated || $contentActivity->updated_at->diffInDays(now()) > 0){
+            $document = self::find($documentId);
+            $document->views += 1;
+            $document->save();
+        }
+    }
+
+    # bookmark
+    public static function bookmark($documentId, $userId, $state=true){
+        return ContentActivity::record($userId, $documentId, 'document', $state);
+    }
+
     # belongs to user
     public function user()
     {
         return $this->belongsTo(User::class, 'author');
+    }
+
+    # has single user contentActivity per document
+    public function user_activity()
+    {
+        return $this->hasOne(ContentActivity::class, 'content_id')
+            ->where('content_type', 'document')
+            ->where('user_id', auth()->id());
     }
 }
