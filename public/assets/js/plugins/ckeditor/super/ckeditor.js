@@ -1,3 +1,5 @@
+let editorInstance;
+
 import {
 	ClassicEditor,
 	AccessibilityHelp,
@@ -271,7 +273,7 @@ const editorConfig = {
 			'resizeImage'
 		]
 	},
-	initialData:'',
+	initialData: initialData ?? '',
 	link: {
 		addTargetToExternalLinks: true,
 		defaultProtocol: 'https://',
@@ -350,4 +352,9 @@ const editorConfig = {
 	}
 };
 
-ClassicEditor.create(document.querySelector('#editor'), editorConfig);
+ClassicEditor.create(document.querySelector('#editor'), editorConfig).then(editor => {
+		editorInstance = editor;
+		window.editor = editor;
+	}) .catch(error => {
+		console.error(error);
+});
