@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a870554bdf8df044d10b85a49e70c2b",
+    "content-hash": "d9e11abcfa75e8924a944d56b1ad76b7",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -170,16 +170,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.9.1",
+            "version": "3.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "d7dc08f98cba352b2bab5d32c5e58f7e745c11a7"
+                "reference": "61446f07fcb522414d6cfd8b1c3e5f9e18c579ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/d7dc08f98cba352b2bab5d32c5e58f7e745c11a7",
-                "reference": "d7dc08f98cba352b2bab5d32c5e58f7e745c11a7",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/61446f07fcb522414d6cfd8b1c3e5f9e18c579ba",
+                "reference": "61446f07fcb522414d6cfd8b1c3e5f9e18c579ba",
                 "shasum": ""
             },
             "require": {
@@ -195,7 +195,7 @@
                 "doctrine/coding-standard": "12.0.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2023.1",
-                "phpstan/phpstan": "1.12.0",
+                "phpstan/phpstan": "1.12.6",
                 "phpstan/phpstan-strict-rules": "^1.6",
                 "phpunit/phpunit": "9.6.20",
                 "psalm/plugin-phpunit": "0.18.4",
@@ -263,7 +263,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.9.1"
+                "source": "https://github.com/doctrine/dbal/tree/3.9.3"
             },
             "funding": [
                 {
@@ -279,7 +279,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-01T13:49:23+00:00"
+            "time": "2024-10-10T17:56:43+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1441,16 +1441,16 @@
         },
         {
             "name": "leafs/anchor",
-            "version": "v1.6.0",
+            "version": "v1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/anchor.git",
-                "reference": "2fe6dc330546ab9000e0a1fc7114d5fae5d3197e"
+                "reference": "f4508398e87045b946b7e83f709790b491b0bb04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/anchor/zipball/2fe6dc330546ab9000e0a1fc7114d5fae5d3197e",
-                "reference": "2fe6dc330546ab9000e0a1fc7114d5fae5d3197e",
+                "url": "https://api.github.com/repos/leafsphp/anchor/zipball/f4508398e87045b946b7e83f709790b491b0bb04",
+                "reference": "f4508398e87045b946b7e83f709790b491b0bb04",
                 "shasum": ""
             },
             "require-dev": {
@@ -1484,7 +1484,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/anchor/issues",
-                "source": "https://github.com/leafsphp/anchor/tree/v1.6.0"
+                "source": "https://github.com/leafsphp/anchor/tree/v1.6.2"
             },
             "funding": [
                 {
@@ -1496,7 +1496,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-10-02T00:31:19+00:00"
+            "time": "2024-10-10T13:55:24+00:00"
         },
         {
             "name": "leafs/auth",
@@ -1757,16 +1757,16 @@
         },
         {
             "name": "leafs/csrf",
-            "version": "v0.5.0",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/csrf.git",
-                "reference": "78f96ebb2af853c6a692deb38e41522a79111cf8"
+                "reference": "cd8afdcb949139f51b7075d314e1f60e18d002b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/csrf/zipball/78f96ebb2af853c6a692deb38e41522a79111cf8",
-                "reference": "78f96ebb2af853c6a692deb38e41522a79111cf8",
+                "url": "https://api.github.com/repos/leafsphp/csrf/zipball/cd8afdcb949139f51b7075d314e1f60e18d002b1",
+                "reference": "cd8afdcb949139f51b7075d314e1f60e18d002b1",
                 "shasum": ""
             },
             "require": {
@@ -1805,7 +1805,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/csrf/issues",
-                "source": "https://github.com/leafsphp/csrf/tree/v0.5.0"
+                "source": "https://github.com/leafsphp/csrf/tree/v0.5.2"
             },
             "funding": [
                 {
@@ -1817,7 +1817,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-10-02T09:45:12+00:00"
+            "time": "2024-10-10T13:54:41+00:00"
         },
         {
             "name": "leafs/date",
@@ -2220,16 +2220,16 @@
         },
         {
             "name": "leafs/leaf",
-            "version": "v3.7",
+            "version": "v3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafsphp/leaf.git",
-                "reference": "b887f2cdc0f49d56dc611229dacc41435c13d8ef"
+                "reference": "362352fe3934dcd045371e46eed8ee39b337b840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafsphp/leaf/zipball/b887f2cdc0f49d56dc611229dacc41435c13d8ef",
-                "reference": "b887f2cdc0f49d56dc611229dacc41435c13d8ef",
+                "url": "https://api.github.com/repos/leafsphp/leaf/zipball/362352fe3934dcd045371e46eed8ee39b337b840",
+                "reference": "362352fe3934dcd045371e46eed8ee39b337b840",
                 "shasum": ""
             },
             "require": {
@@ -2275,7 +2275,7 @@
             ],
             "support": {
                 "issues": "https://github.com/leafsphp/leaf/issues",
-                "source": "https://github.com/leafsphp/leaf/tree/v3.7"
+                "source": "https://github.com/leafsphp/leaf/tree/v3.7.1"
             },
             "funding": [
                 {
@@ -2287,7 +2287,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-10-02T10:06:09+00:00"
+            "time": "2024-10-10T13:53:21+00:00"
         },
         {
             "name": "leafs/logger",
@@ -2720,22 +2720,22 @@
         },
         {
             "name": "nette/mail",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/mail.git",
-                "reference": "c0b81124284bee573ee968de98fe3dcf2c2a9b5e"
+                "reference": "d99839701c48031d6f35e3be95bdd9418f66ad2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/mail/zipball/c0b81124284bee573ee968de98fe3dcf2c2a9b5e",
-                "reference": "c0b81124284bee573ee968de98fe3dcf2c2a9b5e",
+                "url": "https://api.github.com/repos/nette/mail/zipball/d99839701c48031d6f35e3be95bdd9418f66ad2d",
+                "reference": "d99839701c48031d6f35e3be95bdd9418f66ad2d",
                 "shasum": ""
             },
             "require": {
                 "ext-iconv": "*",
                 "nette/utils": "^4.0",
-                "php": "8.0 - 8.3"
+                "php": "8.0 - 8.4"
             },
             "require-dev": {
                 "nette/di": "^3.1 || ^4.0",
@@ -2774,7 +2774,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "📧 Nette Mail: handy email creation and transfer library for PHP with both text and MIME-compliant support.",
+            "description": "📧 Nette Mail: A handy library for creating and sending emails in PHP.",
             "homepage": "https://nette.org",
             "keywords": [
                 "mail",
@@ -2785,9 +2785,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/mail/issues",
-                "source": "https://github.com/nette/mail/tree/v4.0.2"
+                "source": "https://github.com/nette/mail/tree/v4.0.3"
             },
-            "time": "2023-10-02T20:59:33+00:00"
+            "time": "2024-10-05T03:15:12+00:00"
         },
         {
             "name": "nette/utils",
@@ -2930,6 +2930,167 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.19.4"
             },
             "time": "2024-09-29T15:01:53+00:00"
+        },
+        {
+            "name": "phpoffice/math",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/Math.git",
+                "reference": "fc2eb6d1a61b058d5dac77197059db30ee3c8329"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/Math/zipball/fc2eb6d1a61b058d5dac77197059db30ee3c8329",
+                "reference": "fc2eb6d1a61b058d5dac77197059db30ee3c8329",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-xml": "*",
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.88 || ^1.0.0",
+                "phpunit/phpunit": "^7.0 || ^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpOffice\\Math\\": "src/Math/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Progi1984",
+                    "homepage": "https://lefevre.dev"
+                }
+            ],
+            "description": "Math - Manipulate Math Formula",
+            "homepage": "https://phpoffice.github.io/Math/",
+            "keywords": [
+                "MathML",
+                "officemathml",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPOffice/Math/issues",
+                "source": "https://github.com/PHPOffice/Math/tree/0.2.0"
+            },
+            "time": "2024-08-12T07:30:45+00:00"
+        },
+        {
+            "name": "phpoffice/phpword",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPWord.git",
+                "reference": "8392134ce4b5dba65130ba956231a1602b848b7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPWord/zipball/8392134ce4b5dba65130ba956231a1602b848b7f",
+                "reference": "8392134ce4b5dba65130ba956231a1602b848b7f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-xml": "*",
+                "php": "^7.1|^8.0",
+                "phpoffice/math": "^0.2"
+            },
+            "require-dev": {
+                "dompdf/dompdf": "^2.0",
+                "ext-gd": "*",
+                "ext-libxml": "*",
+                "ext-zip": "*",
+                "friendsofphp/php-cs-fixer": "^3.3",
+                "mpdf/mpdf": "^8.1",
+                "phpmd/phpmd": "^2.13",
+                "phpstan/phpstan-phpunit": "@stable",
+                "phpunit/phpunit": ">=7.0",
+                "symfony/process": "^4.4 || ^5.0",
+                "tecnickcom/tcpdf": "^6.5"
+            },
+            "suggest": {
+                "dompdf/dompdf": "Allows writing PDF",
+                "ext-gd2": "Allows adding images",
+                "ext-xmlwriter": "Allows writing OOXML and ODF",
+                "ext-xsl": "Allows applying XSL style sheet to headers, to main document part, and to footers of an OOXML template",
+                "ext-zip": "Allows writing OOXML and ODF"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpOffice\\PhpWord\\": "src/PhpWord"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com",
+                    "homepage": "http://gabrielbull.com/"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "https://rootslabs.net/blog/"
+                },
+                {
+                    "name": "Ivan Lanin",
+                    "homepage": "http://ivan.lanin.org"
+                },
+                {
+                    "name": "Roman Syroeshko",
+                    "homepage": "http://ru.linkedin.com/pub/roman-syroeshko/34/a53/994/"
+                },
+                {
+                    "name": "Antoine de Troostembergh"
+                }
+            ],
+            "description": "PHPWord - A pure PHP library for reading and writing word processing documents (OOXML, ODF, RTF, HTML, PDF)",
+            "homepage": "https://phpoffice.github.io/PHPWord/",
+            "keywords": [
+                "ISO IEC 29500",
+                "OOXML",
+                "Office Open XML",
+                "OpenDocument",
+                "OpenXML",
+                "PhpOffice",
+                "PhpWord",
+                "Rich Text Format",
+                "WordprocessingML",
+                "doc",
+                "docx",
+                "html",
+                "odf",
+                "odt",
+                "office",
+                "pdf",
+                "php",
+                "reader",
+                "rtf",
+                "template",
+                "template processor",
+                "word",
+                "writer"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPOffice/PHPWord/issues",
+                "source": "https://github.com/PHPOffice/PHPWord/tree/1.3.0"
+            },
+            "time": "2024-08-30T18:03:42+00:00"
         },
         {
             "name": "phpoption/phpoption",

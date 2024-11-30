@@ -21,8 +21,8 @@
         "leafs/aloe": "*",
         "illuminate/console": "^8.75",
         "leafs/blade": "*",
-        "leafs/mvc-core": "*",
-        "leafs/leaf": "^3.3",
+        "leafs/mvc-core": "^1.6",
+        "leafs/leaf": "^3.7",
         "leafs/logger": "*",
         "leafs/cors": "*",
         "leafs/auth": "*",
@@ -31,7 +31,8 @@
         "leafs/cookie": "^1.1",
         "hashids/hashids": "^5.0",
         "nette/mail": "^4.0",
-        "leafs/csrf": "^0.5.0"
+        "leafs/csrf": "^0.5.2",
+        "phpoffice/phpword": "^1.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.16"
