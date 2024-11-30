@@ -128,7 +128,7 @@ function submitForm(event, responseHandler = null) {
                 if (response.status) {
                     toast.success({ message: response.message });
                 } else {
-                    toast.error({ message: response.message });
+                    toast.error({ message: response.message ?? 'An Unknown error occurred' });
                 }
 
                 if (response.redirect) {
@@ -175,8 +175,7 @@ toast.settings({
 
 $(document).ready(function() {
     
-    // Kursor and Select2
-    // new kursor()
+    new kursor()
     $('.form-select').addClass('d-none');
 
     setTimeout(() => {
