@@ -149,5 +149,15 @@ return [
     | This config tells leaf where to save cached and compiled views.
     |
     */
-    'views.cachePath' => StoragePath('framework/views')
+    'views.cachePath' => StoragePath('framework/views'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Camara Managed
+    |--------------------------------------------------------------------------
+    |
+    | This tells whether the portal instance is managed by Camara.
+    |
+    */
+    'camara.managed' => false
 ];
