@@ -46,6 +46,25 @@ class ContentActivity extends Model
         }
     }
 
+    public static function fetch($userId, $contentType, $limit=16) :object
+    {
+        return self::with($contentType)->where('user_id', $userId)
+            ->where('content_type', $contentType)
+            ->orderBy('updated_at', 'desc')
+            ->limit($limit)
+            ->get();
+    }
+
+    public static function bookmarks($userId, $contentType, $limit=16) :object
+    {
+        return self::with($contentType)->where('user_id', $userId)
+            ->where('content_type', $contentType)
+            ->where('bookmarked', true)
+            ->orderBy('updated_at', 'desc')
+            ->limit($limit)
+            ->get();
+    }
+
     # belongs to user
     public function user()
     {
