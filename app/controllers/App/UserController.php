@@ -58,7 +58,7 @@ class UserController extends Controller
             response()->json(['status' => 'success', 'message' => 'Profile updated successfully']);
         } catch (\Exception $e) {
 
-            (getenv('app_debug') == "true")? $message = $e->getMessage() : $message = "Failed to update profile";
+            (_env('APP_DEBUG') == "true")? $message = $e->getMessage() : $message = "Failed to update profile";
             response()->json(['status' => 'error', 'message' => $message]);
         }
 
@@ -90,7 +90,7 @@ class UserController extends Controller
 
             } catch (\Exception $e) {
 
-                (getenv('app_debug') == "true")? $message = $e->getMessage() : $message = "Failed to update password";
+                (_env('APP_DEBUG') == "true")? $message = $e->getMessage() : $message = "Failed to update password";
                 response()->json(['status' => 'error', 'message' => $message]);
             }
 

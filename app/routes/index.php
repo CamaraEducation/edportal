@@ -29,7 +29,7 @@ app()->set404(function() {
 | you set here will be called when a 500 error is encountered
 |
 */
-if(getenv('app_debug') == 'false'){
+if(_env('APP_DEBUG') == 'false'){
     app()->setErrorHandler(function() {
         $isApiRequest = strpos($_SERVER['REQUEST_URI'], '/api') !== false;
         if ($isApiRequest or request()->isAjax()) {
