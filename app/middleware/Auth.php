@@ -91,7 +91,7 @@ class Auth
         if($bearerToken) $bearerToken = explode(' ', $bearerToken)[1];
         
         // get secret key from token
-        $key = $this->apiKeys->getSecret($bearerToken)->secret ?? getenv('app_key');
+        $key = $this->apiKeys->getSecret($bearerToken)->secret ?? _env('app_key');
 
         $data = Authentication::validateToken($key);
 

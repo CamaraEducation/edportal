@@ -115,7 +115,7 @@ class AuthController extends Controller
 
         }catch(\Exception $e){
             
-            (getenv('app_debug') == 'true') ?
+            (_env('APP_DEBUG') == 'true') ?
                 response()->json(['status'=>false, 'message'=>$e->getMessage()]) :
                 response()->json(['status'=>false, 'message'=>'An error occurred']);
         }
@@ -174,10 +174,6 @@ class AuthController extends Controller
     public static function logout(){
         auth()->logout();
         response()->redirect('/');
-    }
-
-    public function testi(){
-        echo getenv('GOOGLE_CLIENT_ID');
     }
 
 
