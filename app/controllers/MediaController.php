@@ -73,7 +73,7 @@ class MediaController extends Controller
                 return [ 'error' => true, 'message' => 'Error uploading file' ];
             }
         }catch (\Exception $e) {
-            (getenv('app_debug') == "true")? $message = $e->getMessage() : $message = "Invalid file submitted";
+            (_env('APP_DEBUG') == "true")? $message = $e->getMessage() : $message = "Invalid file submitted";
             return ['error' => true, 'message' => $message];
         }
 

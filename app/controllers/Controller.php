@@ -37,6 +37,11 @@ class Controller extends \Leaf\Controller
         return render($view, $this->data);
     }
 
+    protected function render404()
+    {
+        return render('errors.404');
+    }
+
     protected function jsonResponse($state, $successMsg, $errorMsg, $redirect = null)
     {
         if ($state) {
@@ -69,7 +74,7 @@ class Controller extends \Leaf\Controller
         $this->status = false;
         $this->message = "An unexpected error occurred";
 
-        if (getenv('app_debug') != 'false') {
+        if (_env('APP_DEBUG') != 'false') {
             $this->debug = [
                 'message' => $e->getMessage(),
                 'line' => $e->getLine(),
@@ -148,10 +153,5 @@ class Controller extends \Leaf\Controller
     {
         if(isset($this->settings)) return;
         $this->settings = (object) Setting::all()->pluck('value', 'key')->toArray();
-    }
-
-    # TODO: Shutdown behavior
-    public function shutdownBehavior(){
-
     }
 }
