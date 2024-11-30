@@ -26,12 +26,40 @@ class UsageController extends Controller
                 ],
             'usageThisMonth' =>
                 [ 'icon' => 'ph-calendar text-warning', 'title' => 'Monthly', 'value' => gmdate("H:i:s", LabUsage::usageThisMonth()) ],
-            'usageThisYear' =>
-                [ 'icon' => 'ph-cloud-sun text-info', 'title' => 'Yearly', 'value' => gmdate("H:i:s", LabUsage::usageThisYear()) ],
+            'averagePerDay' =>
+                [ 'icon' => 'ph-cloud-sun text-info', 'title' => 'Client/Day (Monthly %)', 'value' => gmdate("H:i:s", ceil(LabUsage::usageThisMonth()/22/25)) ],
         ];
 
         $this->renderPage('General Usage', 'app.usage.general');
     }
+
+    /**
+     * Client Usage Summary
+     * 
+     * This function returns a render of usage
+     * summary for each client active time.
+     * The data rendered includes
+     *  - Name of the Client
+     *  - Summary Usage of Active Time
+     *  - Last date of synchronization
+     * 
+     */
+    public function clientsSummary(){
+        try{
+            $this->clientsSummary = LabUsage::clientsSummary();
+            return response()->json([
+                'status' => true,
+                'message' => null,
+                'html' => view('app.usage.partials.clients-summary', $this->data)
+            ]);
+        }
+        
+        catch(\Exception $e){
+            return $this->jsonException($e);
+        }
+    }
+
+    
 
     /**
      * General Summary Graph
@@ -60,26 +88,27 @@ class UsageController extends Controller
     }
 
     /**
-     * Client Usage Summary
+     * General Full Graph
      * 
-     * This function returns a render of usage
-     * summary for each client active time.
-     * The data rendered includes
-     *  - Name of the Client
-     *  - Summary Usage of Active Time
-     *  - Last date of synchronization
+     * This function returns a render of the general
+     * usage graph for the grouped in months.
+     * The data rendered includes the total usage
+     *  - Active Time
+     *  - Idle Time
+     *  - Number of Clients
      * 
      */
-    public function clientsSummary(){
+
+    public function generalFullGraph(){
         try{
-            $this->clientsSummary = LabUsage::clientsSummary();
+            $this->fullUsageGraph = LabUsage::fullClientsMonthlyUsage();
             return response()->json([
                 'status' => true,
                 'message' => null,
-                'html' => view('app.usage.partials.clients-summary', $this->data)
+                'html' => view('app.usage.partials.clients-full', $this->data)
             ]);
         }
-        
+
         catch(\Exception $e){
             return $this->jsonException($e);
         }
@@ -90,6 +119,7 @@ class UsageController extends Controller
 
         # fetch usage partials
         app()->get('/clients/summary', ['name'=>'clients.summary', 'UsageController@clientsSummary']);
+        app()->get('/general/full/graph', ['name'=>'full.summary.graph', 'UsageController@generalFullGraph']);
         app()->get('/general/summary/graph', ['name'=>'general.summary.graph', 'UsageController@generalSummaryGraph']);
     }
 }
