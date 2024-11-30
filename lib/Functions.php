@@ -86,7 +86,7 @@ function __($key){
     $translation = json_decode(file_get_contents($directory), true);
 
     // if key is not found, push the key to the language file
-    if(!isset($translation[$key]) and getenv('app_env') == 'development'):
+    if(!isset($translation[$key]) and _env('app_env') == 'development'):
 
         $translation[$key] = $key;
         file_put_contents($directory, json_encode($translation, JSON_PRETTY_PRINT));
@@ -228,8 +228,17 @@ if(!function_exists('now')){
 
 }
 
+/*
+|--------------------------------------------------------------------------
+|  Active Tab
+|--------------------------------------------------------------------------
+|
+| This function is used to check if a tab is active.
+|
+*/
+
 function active($key, $value){
-    return $key == $value ? 'active' : '';
+    return $key == $value ? 'activate active' : null;
 }
 
 /*
@@ -291,4 +300,49 @@ if(!function_exists('xml_encode')){
         return $xml->asXML();
     }
 
+}
+
+/*
+|--------------------------------------------------------------------------
+| XML to Data (xml_decode)
+|--------------------------------------------------------------------------
+|
+| This function is used to convert XML to an array or object.
+|
+*/
+
+/*
+|--------------------------------------------------------------------------
+|  Sanitize HTML Content (xss filter)
+|--------------------------------------------------------------------------
+|
+| This function is used to sanitize HTML content.
+| Remove Inline JavaScript: Strip out <script> tags and their content.
+| Remove JavaScript Event Handlers: Remove attributes starting with on (e.g., onclick, onload).
+| Remove All Attributes: Remove all HTML attributes except for style.
+|
+*/
+
+function sanitizeHtml($html, $purgeAttributes = false) {
+    // 1. Remove <script> tags and their content
+    $html = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
+
+    // 2. Remove attributes starting with "on" (event handlers)
+    $html = preg_replace('#\s*on\w+="[^"]*"#i', '', $html);
+
+    // 3. Remove all attributes except "style"
+    if($purgeAttributes){
+        $html = preg_replace_callback('#<([a-z]+)([^>]*)>#i', function ($matches) {
+            // Only keep the style attribute
+            if (preg_match('/style="[^"]*"/i', $matches[2], $styleAttr)) {
+                return "<{$matches[1]} {$styleAttr[0]}>";
+            }
+            return "<{$matches[1]}>";
+        }, $html);
+    }
+    
+    // 4. Remove svg tags
+    $html = preg_replace('#<svg(.*?)>(.*?)</svg>#is', '', $html);
+
+    return $html;
 }
