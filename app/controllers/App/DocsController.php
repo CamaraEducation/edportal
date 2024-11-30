@@ -5,9 +5,12 @@ namespace App\Controllers\App;
 use App\Models\Document;
 use App\Models\ContentHistory;
 use App\Models\ContentCategory;
+use App\Models\ContentActivity;
 
 use App\Helpers\Pagination;
+use App\Helpers\ContentMonitor;
 use App\Controllers\Controller;
+use PhpOffice\PhpWord\Reader\ODText\Content;
 
 class DocsController extends Controller
 {
@@ -38,7 +41,7 @@ class DocsController extends Controller
 
             if (!empty($visitedTags)) {
                 // Fetch documents matching the user's most visited tags
-                $documents = Document::where(function($query) use ($visitedTags) {
+                $documents = Document::with('user_activity')->where(function($query) use ($visitedTags) {
                     foreach ($visitedTags as $tag) {
                         $query->orWhere('tags', 'like', '%' . $tag . '%');
                     }
@@ -51,7 +54,7 @@ class DocsController extends Controller
             $relevantDocIds = $documents->pluck('id')->toArray(); // Get already fetched document IDs
 
             // Fetch additional random documents excluding already fetched ones
-            $randomDocs = Document::whereNotIn('id', $relevantDocIds)
+            $randomDocs = Document::with('user_activity')->whereNotIn('id', $relevantDocIds)
                 ->inRandomOrder() // Fetch random documents
                 ->take($docsPerPage - $documents->count())
                 ->get();
@@ -78,9 +81,11 @@ class DocsController extends Controller
         return $this->renderPage('Documents', 'app.docs.index');
     }
 
-    # show the document
     public function show($docId){
-        
+        $document = Document::find($docId);
+        if(!$document) return response()->json(['status' => false, 'message' => 'Document not found'], 404);
+
+        Document::viewed($docId, auth()->id());
     }
 
     # search documents
@@ -170,16 +175,78 @@ class DocsController extends Controller
         }
     }
 
+    public function bookmark($docId)
+    {
+        try{
+            $doc = Document::with('user_activity')->find($docId);
+            if(!$doc) return response()->json(['status' => false, 'message' => 'Document not found'], 404);
+
+            $state = (false != $doc->user_activity->bookmarked);
+            if(Document::bookmark($docId, auth()->id(), $state)){
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Content Added to bookmark'
+                ]);
+            }
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Content could not be added to bookmark'
+            ]);
+        }
+
+        catch(\Exception $e){
+            return $this->jsonException($e);
+        }
+    }
+
+    public function delete($docId)
+    {
+        try{
+            $doc = Document::find($docId);
+            if(!$doc) return response()->json(['status' => false, 'message' => 'Document not found'], 404);
+
+            if($doc->author != auth()->id() && auth()->id() > 2) 
+                return response()->json(['status' => false, 'message' => 'You are not authorized to delete this document'], 403);
+
+            $docFile = StoragePath('app/public') . $doc->source;
+            if(file_exists($docFile)) unlink($docFile);
+
+            if($doc->delete()){
+
+                // purge content activity
+                ContentActivity::where('content_id', $docId)->delete();
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Document deleted successfully'
+                ]);
+            }
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Document could not be deleted'
+            ]);
+        }
+
+        catch(\Exception $e){
+            return $this->jsonException($e);
+        }
+    }
+
     public static function routes()
     {
         app()->get('/', ['name' => 'books.list', 'DocsController@index']);
         app()->get('/create', ['name' => 'docs.create', 'DocsController@create']);
 
-        app()->get('/show/{id}', ['name' => 'docs.show', 'DocsController@show']);
         app()->get('/edit/{id}', ['name' => 'docs.edit', 'DocsController@edit']);
+        app()->get('/delete/{id}', ['name' => 'docs.delete', 'DocsController@delete']);
+        app()->get('/bookmark/{id}', ['name' => 'docs.bookmark', 'DocsController@bookmark']);
         
         app()->post('/create', ['name' => 'docs.store', 'DocsController@store']);
         app()->post('/search', ['name' => 'docs.search', 'DocsController@search']);
+        
+        app()->post('/show/{id}', ['name' => 'docs.show', 'DocsController@show']);
         app()->post('/edit/{id}', ['name' => 'docs.edit', 'DocsController@update']);
     }
 }
