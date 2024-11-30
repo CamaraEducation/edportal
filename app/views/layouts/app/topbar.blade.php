@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="pc-h-item pt-3">
-                    <h5> {{ $title }} </h5>
+                    <h5 id="pageTitle"> {{ $title }} </h5>
                 </li>
             </ul>
         </div>
