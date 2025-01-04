@@ -14,13 +14,11 @@ class CreateBlogCategories extends Database
     {
         if (!static::$capsule::schema()->hasTable('blog_categories')) :
             static::$capsule::schema()->create('blog_categories', function (Blueprint $table) {
-                
                 $table->id();
                 $table->string('name', 50);
                 $table->string('description', 160)->nullable();
                 $table->timestamp('created_at')->default(static::$capsule::raw('CURRENT_TIMESTAMP'));
                 $table->timestamp('updated_at')->default(static::$capsule::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));;
-
             });
         endif;
     }
