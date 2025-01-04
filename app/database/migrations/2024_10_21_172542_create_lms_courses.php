@@ -21,6 +21,7 @@ class CreateLmsCourses extends Database
                 $table->string('cover');
                 $table->integer('category_id');
                 $table->integer('is_live')->default(0);
+                $table->integer('is_featured')->default(0);
                 $table->timestamp('created_at')->useCurrent();
                 $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             });
