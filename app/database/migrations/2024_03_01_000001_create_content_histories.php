@@ -4,7 +4,7 @@ use Leaf\Schema;
 use Leaf\Database;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateContentHistory extends Database
+class CreateContentHistories extends Database
 {
     /**
      * Run the migrations.
@@ -29,6 +29,6 @@ class CreateContentHistory extends Database
      */
     public function down()
     {
-        static::$capsule::schema()->dropIfExists('content_histories');
+        static::$capsule::schema()->dropIfExists('content_history');
     }
 }
