@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\ApiKey;
 
 use Leaf\Helpers\Authentication;
-use App\Controllers\App\ApiController;
+use App\Controllers\Base\ApiController;
 
 class Auth
 {
