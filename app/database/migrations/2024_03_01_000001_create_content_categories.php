@@ -4,20 +4,6 @@ use Leaf\Schema;
 use Leaf\Database;
 use Illuminate\Database\Schema\Blueprint;
 
-/*
-CREATE TABLE `content_categories` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`slug` CHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
-	`name` CHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
-	`created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (`id`) USING BTREE
-)
-COLLATE='latin1_swedish_ci'
-ENGINE=InnoDB
-;
-*/
-
 class CreateContentCategories extends Database
 {
     /**
