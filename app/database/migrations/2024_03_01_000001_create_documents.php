@@ -14,7 +14,7 @@ class CreateDocuments extends Database
     {
         if (!static::$capsule::schema()->hasTable('documents')) :
             static::$capsule::schema()->create('documents', function (Blueprint $table) {
-                $table->increments('id');
+                $table->id();
                 $table->string('name', 150);
                 $table->text('description')->nullable();
                 $table->string('source', 150);
