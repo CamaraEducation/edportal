@@ -13,8 +13,7 @@ class CreateFileStorages extends Database
     public function up()
     {
         if (!static::$capsule::schema()->hasTable('file_storages')) :
-            static::$capsule::schema()->create('file_storages', function (Blueprint $table) {
-                
+            static::$capsule::schema()->create('file_storages', function (Blueprint $table) {       
                 $table->id();
                 $table->string('name');
                 $table->text('path');
@@ -24,8 +23,7 @@ class CreateFileStorages extends Database
                 $table->string('mime')->nullable();
                 $table->integer('user_id');
                 $table->timestamp('created_at')->default(static::$capsule::raw('CURRENT_TIMESTAMP'));
-                $table->timestamp('updated_at')->default(static::$capsule::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));;
-                
+                $table->timestamp('updated_at')->default(static::$capsule::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));;     
             });
         endif;
     }
