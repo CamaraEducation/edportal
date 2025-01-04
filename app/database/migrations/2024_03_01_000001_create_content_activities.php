@@ -12,13 +12,13 @@ class CreateContentActivities extends Database
      */
     public function up()
     {
-        if (!static::$capsule::schema()->hasTable('content_activities')) :
-            static::$capsule::schema()->create('content_activities', function (Blueprint $table) {
+        if (!static::$capsule::schema()->hasTable('content_activity')) :
+            static::$capsule::schema()->create('content_activity', function (Blueprint $table) {
                 $table->bigInteger('user_id')->unsigned();
                 $table->bigInteger('content_id')->unsigned();
                 $table->string('content_type', 50);
-                $table->interger('bookmarked')->default(0);
-                $table->interger('resume')->default(0);
+                $table->integer('bookmarked')->default(0);
+                $table->integer('resume')->default(0);
                 $table->timestamps();
                 $table->unique(['user_id', 'content_id', 'content_type']);
             });
@@ -31,6 +31,6 @@ class CreateContentActivities extends Database
      */
     public function down()
     {
-        static::$capsule::schema()->dropIfExists('content_activities');
+        static::$capsule::schema()->dropIfExists('content_activity');
     }
 }
