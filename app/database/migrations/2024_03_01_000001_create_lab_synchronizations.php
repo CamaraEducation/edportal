@@ -4,7 +4,7 @@ use Leaf\Schema;
 use Leaf\Database;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateLabSynchronization extends Database
+class CreateLabSynchronizations extends Database
 {
     /**
      * Run the migrations.
@@ -29,6 +29,6 @@ class CreateLabSynchronization extends Database
      */
     public function down()
     {
-        static::$capsule::schema()->dropIfExists('lab_synchronizations');
+        static::$capsule::schema()->dropIfExists('lab_synchronization');
     }
 }
