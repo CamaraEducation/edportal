@@ -22,6 +22,9 @@ class CreateLabUsage extends Database
                 $table->double('duration', 15, 8)->default(0);
                 $table->timestamp('created_at')->useCurrent();
                 $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+
+                # keys and indexes
+                $table->unique(['device_name', 'device_state', 'start_time']);
             });
         endif;
     }
