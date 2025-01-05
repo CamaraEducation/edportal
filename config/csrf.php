@@ -35,7 +35,9 @@ return [
     | in dynamic routes like '/items/{id}' or '/items/(\d+)'.
     |
     */
-    'except' => [],
+    'except' => [
+        '/api/sync/lab/pull'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -84,5 +86,6 @@ return [
     | }
     |
     */
+    
     'onError' => null,
 ];
