@@ -24,6 +24,8 @@ return [
     
     'admin' => [ 'session' => true, 'access' => $adminRoles ],
     'admin/{wild}' => [ 'session' => true, 'access' => $adminRoles ],
+
+    'api/sync/lab/{any}' => [ 'session' => false, 'access' => 'all' ],
         
     'api/auth/{wild}' => [ 'session' => false, 'access' => 'guest' ],
     'api/{wild}' => [ 'session' =>true, 'access' => 'all' ],
