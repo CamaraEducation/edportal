@@ -12,7 +12,7 @@
     </a>
 </li>
 
-<li class="pc-item">
+<!--li class="pc-item">
     <a href="" class="pc-link">
         <span class="pc-micon">
             <i class="ph-duotone ph-puzzle-piece"></i>
@@ -28,7 +28,7 @@
         </span>
         <span class="pc-mtext">{{__('Reports')}}</span>
     </a>
-</li>
+</li-->
 
 <li class="pc-item {{ active($active, 'my-courses') }}">
     <a href="@route('courses.mine')" class="pc-link">

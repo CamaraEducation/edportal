@@ -15,7 +15,7 @@
                 @include('layouts.app.menu.media')
                 @include('layouts.app.menu.literature')
                 @include('layouts.app.menu.lms')
-                @include('layouts.app.menu.applets')                
+                <?php /* @include('layouts.app.menu.applets') */ ?>
             </ul>
         </div>
     </div>

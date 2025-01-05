@@ -14,7 +14,7 @@
 
 <!-- TODO: Safeguarding -->
 <li class="pc-item">
-    <a href="javascript:void(0)" class="pc-link">
+    <a href="@route('content.safeguard')" class="pc-link">
         <span class="pc-micon">
             <i class="ph-duotone ph-shield-check"></i>
         </span>
@@ -22,14 +22,14 @@
     </a>
 </li>
 
-<li class="pc-item">
+<!--li class="pc-item">
     <a href="javascript:void(0)" class="pc-link" onclick="underDevelopment(event)">
         <span class="pc-micon">
             <i class="ph-duotone ph-cloud"></i>
         </span>
         <span class="pc-mtext">{{__('Remote Content')}}</span>
     </a>
-</li>
+</li-->
 
 @if($modules->sync)
     <li class="pc-item">
