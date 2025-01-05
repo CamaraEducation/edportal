@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\App;
+namespace App\Controllers\Base;
 
 use App\Models\Notification;
 use App\Controllers\Controller;
