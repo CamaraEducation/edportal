@@ -103,6 +103,8 @@ class LmsController extends Controller
         // check if file $lesson->content exists
         if(file_exists($lesson->content)){
             $this->content = file_get_contents($lesson->content);
+        }else{
+            $this->content = "# {$lesson->title}\n\n{$lesson->description}";
         }
 
         return $this->renderPage($lesson->course->title, 'app.lms.lesson.show');
@@ -237,6 +239,9 @@ class LmsController extends Controller
     {
         $lesson = LmsLesson::find($lessonId);
         if(!$lesson) return $this->jsonError('Lesson not found');
+
+        if(!$this->isAdmin && $lesson->course->author != auth()->id())
+            return $this->jsonError('You are not authorized to delete this lesson');
 
         if(file_exists($lesson->content)) unlink($lesson->content);
         $lesson->delete();
