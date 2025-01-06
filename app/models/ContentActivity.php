@@ -65,6 +65,14 @@ class ContentActivity extends Model
             ->get();
     }
 
+    public static function deleteContent($contentId, $contentType, $userId)
+    {
+        return self::where('content_id', $contentId)
+            ->where('content_type', $contentType)
+            ->where('user_id', $userId)
+            ->delete();
+    }
+
     # belongs to user
     public function user()
     {
