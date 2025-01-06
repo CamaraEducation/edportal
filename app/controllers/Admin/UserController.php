@@ -72,37 +72,36 @@ class UserController extends Controller
 
             # insert user records
             User::create([
+                'username' => request()->get('username'),
                 'fullname' => request()->get('fullname'),
-                'email' => request()->get('email'),
-                'password' => Password::hash(random_bytes(8)),
+                'email' => request()->params('email'),
+                'password' => Password::hash(request()->get('username')),
                 'role' => request()->get('user_role'),
                 'status' => 'active'
             ]);
 
             # send onboarding email
-            $mail = new MailSender();
-            $mail->sendHtml(
-                'Welcome to '._env('APP_NAME'),
-                view('mail.welcome', [
-                    'name' => request()->get('fullname'),
-                    'username' => request()->get('email'),
-                    'password' => 'Reset your password to get started',
-                    'loginLink' => _env('app_url').'/login'
-                ]),
-                request()->get('email'),
-                request()->get('fullname')
-            );
+            if(!PortalConfig('lan')){
+                $mail = new MailSender();
+                $mail->sendHtml(
+                    'Welcome to '._env('APP_NAME'),
+                    view('mail.welcome', [
+                        'name' => request()->get('fullname'),
+                        'username' => request()->get('email'),
+                        'password' => 'Reset your password to get started',
+                        'loginLink' => _env('APP_URL').'/login'
+                    ]),
+                    request()->get('email'),
+                    request()->get('fullname')
+                );
+            }
 
             response()->json(['status'=>'success', 'message'=>'User created successfully']);
 
-        } catch (\Throwable $e) {
-            
-            $message = ['status'=>'error', 'message'=> __('An Unkown error occurred')];
-            (_env('APP_DEBUG') == 'false') ?: $message['debug'] = [
-                'message' => $e->getMessage(),
-                'line' => $e->getLine(),
-                'file' => $e->getFile()
-            ];
+        }
+        
+        catch (\Throwable $e) {
+            return $this->jsonException($e);
         }
     }
 
@@ -208,15 +207,10 @@ class UserController extends Controller
 
             response()->json(['status'=>'success', 'message'=> __('User updated successfully')]);
 
-        } catch (\Throwable $e) {
-
-            $message = ['status'=>'error', 'message'=> __('An Unkown error occurred')];
-            (_env('APP_DEBUG') == 'false') ?: $message['debug'] = [
-                'message' => $e->getMessage(),
-                'line' => $e->getLine(),
-                'file' => $e->getFile()
-            ];
-            
+        } 
+        
+        catch (\Throwable $e) {
+            return $this->jsonException($e);            
         }
     }
 }
