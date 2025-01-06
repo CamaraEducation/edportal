@@ -26,10 +26,12 @@
         @endforeach
 
     @else
-        @include('app.partials.empty', [
-            'title' => 'No documents found',
-            'message' => 'There are no documents available at the moment.'
-        ])
+        <div class="p5">
+            @include('app.partials.empty', [
+                'emptyTitle' => 'No documents found',
+                'emptyText' => 'There are no documents available at the moment.'
+            ])
+        </div>
     @endif
 </div>
 
