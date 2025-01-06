@@ -7,13 +7,16 @@
             </div>
             <div class="modal-body">
 
-                <div class="alert bg-light-warning text-warning" role="alert">
-                    {{__('User registered by admin will automatically be active')}}
-                </div>
-
                 <form action="post" name="userRegistrationForm">
                     @csrf
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" class='form-control' placeholder="johndoe, regId, etc" required>
+                            </div>
+                        </div>
+
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label class="form-label">Full Name</label>
@@ -29,14 +32,21 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="form-label">User role</label>
-                                <select name="user_role" class="form-select">
-                                    <option value="subscriber" hidden>{{__('Subscriber')}}</option>
+                                <select name="user_role" class="form-select" data-placeholder="Select user role" required>
+                                    @php $adminRoles = \App\Models\Role::admins() @endphp
                                     @foreach (\App\Models\Role::all() as $role)
-                                        <option value="{{ $role->name }}">{{ $role->name }}</option>                                                        
+                                        @if(!in_array($loggedUser->role, $adminRoles) && in_array($role->name, $adminRoles))
+                                            @continue @endif
+
+                                        @if($role->name == 'admin' && $loggedUser->role != 'admin')
+                                            @continue @endif
+
+                                        <option value="{{ $role->name }}">{{ $role->description }}</option>                                                        
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-md-12 col-sm-12">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary rounded w-100 ">{{__('Create User')}}</button>

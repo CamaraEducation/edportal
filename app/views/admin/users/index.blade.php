@@ -33,7 +33,7 @@
                                         <thead>
                                             <tr>
                                                 <th>{{__('Name')}}</th>
-                                                <th>{{__('Email')}}</th>
+                                                <th>{{__('Username')}}</th>
                                                 <th>{{__('Role')}}</th>
                                                 <th>{{__('Status')}}</th>
                                                 @if($canUpdateUser->status || $canDeleteUser->status)
@@ -47,12 +47,9 @@
 
                                                 <tr>
                                                     <td>
-                                                        <!-- TODO: view user profile -->
-                                                        <!--a href="/admin/user/{{ $helpers::encode($user->id) }}"-->
-                                                            {{ $user->fullname }}
-                                                        <!--/a-->
+                                                        {{ $user->fullname }}
                                                     </td>
-                                                    <td> {{ $user->email }} </td>
+                                                    <td> {{ $user->username }} </td>
                                                     <td> {{ $user->user_role->description }} </td>
                                                     <td> {{ $user->status ?? 'Inactive' }} </td>
                                                     <td class="text-end">
