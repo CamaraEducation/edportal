@@ -4,12 +4,14 @@ namespace App\Controllers;
 
 use App\Models\Module;
 use App\Models\Setting;
+use App\Models\Role;
 
 class Controller extends \Leaf\Controller
 {
 
     protected $data;
     protected $permission;
+    protected $isAdmin = false;
 
     public function __construct()
     {
@@ -31,10 +33,21 @@ class Controller extends \Leaf\Controller
         $this->data->$name = $value;
     }
 
+    public function checkIfAdmin()
+    {
+        $admins = Role::admins();
+        $this->isAdmin = in_array(auth()->user()['role'], $admins);
+    }
+
     protected function renderPage($title, $view)
     {
         $this->title = $title;
         return render($view, $this->data);
+    }
+
+    protected function errorPage($code)
+    {
+        return response()->markup(view("errors.$code"), $code);
     }
 
     protected function render404()
@@ -55,11 +68,11 @@ class Controller extends \Leaf\Controller
         return response()->json($this->data);
     }
 
-    protected function jsonError($message)
+    protected function jsonError($message, $code = 200)
     {
         $this->status = false;
         $this->message = $message;
-        return response()->json($this->data);
+        return response()->json($this->data, $code);
     }
 
     protected function jsonSuccess($message)
