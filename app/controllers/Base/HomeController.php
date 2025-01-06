@@ -6,8 +6,6 @@ use App\Controllers\Controller;
 
 use App\Models\Video;
 use App\Models\Document;
-use App\Models\Slide;
-use App\Models\Notes;
 use App\Models\LmsCourse;
 
 class HomeController extends Controller
@@ -36,13 +34,9 @@ class HomeController extends Controller
                 'icon' => 'ph-book text-warning',
                 'total' => Document::count()
             ],
-            'slides' => [
+            'courses' => [
                 'icon' => 'ph-cards text-info',
-                'total' => Slide::count()
-            ],
-            'notes' => [
-                'icon' => 'ph-pencil-circle text-danger',
-                'total' => 0
+                'total' => LmsCourse::count()
             ]
         ];
     }
