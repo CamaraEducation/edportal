@@ -27,6 +27,7 @@ class LabUsage extends Model
     # usage this month
     public static function usageThisMonth() {
         return self::whereMonth('start_time', Carbon::now()->month)
+            ->whereYear('start_time', Carbon::now()->year)
             ->where('device_state', 'active')
             ->sum('duration');
     }
@@ -159,6 +160,15 @@ class LabUsage extends Model
         }
 
         self::insert($usages);
+    }
+
+    # safe insert
+    public static function safeInsert($data)
+    {
+        return self::upsert($data,
+            ['device_name', 'device_state', 'start_time'],
+            ['end_time', 'duration']
+        );
     }
 
     
