@@ -3,6 +3,7 @@
 namespace App\Controllers\Base;
 
 use App\Models\Document;
+use App\Models\DocumentType;
 use App\Models\ContentHistory;
 use App\Models\ContentCategory;
 use App\Models\ContentActivity;
@@ -10,7 +11,8 @@ use App\Models\ContentActivity;
 use App\Helpers\Pagination;
 use App\Helpers\ContentMonitor;
 use App\Controllers\Controller;
-use PhpOffice\PhpWord\Reader\ODText\Content;
+
+use App\Middleware\Handler;
 
 class DocsController extends Controller
 {
@@ -19,54 +21,51 @@ class DocsController extends Controller
         parent::__construct();
     }
 
-    public function index()
+    public function index($docType = 'docs')
     {
         $docsPerPage = 24;
         $docViewPage = (int) request()->params('page') ?? 1;
         $userId = auth()->id();
-        $recommendationEnabled = $this->loggedUser['recommendation'] ?? false; // Check if user has agreed to recommendations
+        $recommendationEnabled = $this->loggedUser['recommendation'] ?? false;
 
-        $docCount = Document::count();
+        $query = Document::query();
 
-        // Step 1: Fetch tag-relevant documents based on recommendation preference
-        $documents = collect(); 
+        if ($docType) {
+            $query->where('type', $docType);
+        }
+
+        $docCount = $query->count();
+
+        $documents = collect();
 
         if ($recommendationEnabled) {
-            // Fetch the user's tag history
             $contentHistory = ContentHistory::where('user_id', $userId)->first();
             $tagHistory = $contentHistory ? json_decode($contentHistory->tag_history, true) : [];
 
-            // Get the most visited tags from the user's history
             $visitedTags = array_keys($tagHistory);
 
             if (!empty($visitedTags)) {
-                // Fetch documents matching the user's most visited tags
-                $documents = Document::with('user_activity')->where(function($query) use ($visitedTags) {
+                $documents = $query->with('user_activity')->where(function($q) use ($visitedTags) {
                     foreach ($visitedTags as $tag) {
-                        $query->orWhere('tags', 'like', '%' . $tag . '%');
+                        $q->orWhere('tags', 'like', '%' . $tag . '%');
                     }
                 })->take($docsPerPage)->get();
             }
         }
 
-        // Step 2: If recommendation is disabled or tag-based docs don't fill the page, fetch random documents
         if (!$recommendationEnabled || $documents->count() < $docsPerPage) {
-            $relevantDocIds = $documents->pluck('id')->toArray(); // Get already fetched document IDs
+            $relevantDocIds = $documents->pluck('id')->toArray();
 
-            // Fetch additional random documents excluding already fetched ones
-            $randomDocs = Document::with('user_activity')->whereNotIn('id', $relevantDocIds)
-                ->inRandomOrder() // Fetch random documents
+            $randomDocs = $query->with('user_activity')->whereNotIn('id', $relevantDocIds)
+                ->inRandomOrder()
                 ->take($docsPerPage - $documents->count())
                 ->get();
-            
-            // Combine existing relevant documents (if any) with random documents
+
             $documents = $documents->merge($randomDocs);
         }
 
-        // Pagination logic
         $pagination = new Pagination($docCount, $docsPerPage, $docViewPage);
 
-        // If request is ajax, return JSON
         if (request()->isAjax()) {
             return response()->json([
                 'status' => true,
@@ -75,7 +74,6 @@ class DocsController extends Controller
             ]);
         }
 
-        // Render the page with the documents and pagination
         $this->documents = $documents;
         $this->pagination = $pagination;
         return $this->renderPage('Documents', 'app.docs.index');
@@ -110,18 +108,27 @@ class DocsController extends Controller
     # create new document
     public function create(){
 
+        if(!Handler::can('book', 'create')->status)
+            return $this->errorPage(403);
+
         $this->active = 'docs'; 
         $this->menuLink = 'literature';
         $this->tags = ContentCategory::all();
+        $this->docTypes = DocumentType::all();
 
         return $this->renderPage('Upload Document', 'app.docs.create');
     }
 
     # store document
     public function store(){
+
+        if(!Handler::can('book', 'create')->status)
+            return $this->jsonError('You are not authorized to upload documents');
+
         try{
             $data = [
                 'name' => request()->params('doc-name'),
+                'type' => request()->params('doc-type'),
                 'tags' => request()->params('doc-tags'),
                 'source' => request()->params('doc-file'),
                 'author' =>auth()->id()
@@ -139,13 +146,24 @@ class DocsController extends Controller
                 ]);
 
                 if(!$file) return $this->jsonError(__('Failed to upload document'));
-
                 return str_replace(StoragePath('app/public'), '', $file['path']);
             })();
 
-            $doc = Document::create($data);
+            # upload thumbnail
+            if(request()->params('doc-thumbnail')){
+                $data['thumbnail'] = (function(){
+                    $file = request()->uploadAs('doc-thumbnail', StoragePath('app/public/docs/covers'), uniqid(), [
+                        'extensions' => ['jpg', 'jpeg', 'png']
+                    ]);
+
+                    if(!$file) return $this->jsonError(__('Failed to upload thumbnail'));
+                    return str_replace(StoragePath('app/public'), '', $file['path']);
+                })();
+            }
+
+            Document::create($data);
             
-            $this->redirect = route('books.list');
+            $this->redirect = route('books.list', $data['type']);
             return $this->jsonSuccess(__('Document uploaded successfully'));
         }
 
@@ -156,18 +174,68 @@ class DocsController extends Controller
 
     # edit document details
     public function edit($docId){
+
+        if(!Handler::can('book', 'update')->status)
+            return $this->jsonError('You don\'t have permission to edit document');
+
         try{
             $doc = Document::find($docId);
-            if(!$doc) return response()->json(['status' => false, 'message' => 'Document not found'], 404);
+            if(!$doc) return $this->jsonError('Document not found');
+
+            // check ownership
+            if($doc->author != auth()->id() && auth()->id() > 1) 
+                return $this->jsonError('You are not authorized to edit this document');
 
             $this->doc = $doc;
             $this->tags = ContentCategory::all();
+            $this->docTypes = DocumentType::all();
             $this->documentTags = array_map('trim', explode(',', $doc->tags));
             
             return response()->json([
                 'status' => true,
                 'html' => view('app.docs.partials.edit', $this->data)
             ]);
+        }
+
+        catch(\Exception $e){
+            return $this->jsonException($e);
+        }
+    }
+
+    
+    public function update($id)
+    {
+        try{
+            $document = Document::find($id);
+            if(!$document) return $this->jsonError('Document not found');
+
+            // check ownership
+            if($document->author != auth()->id() && auth()->id() > 2) 
+                return $this->jsonError('You are not authorized to edit this document');
+
+            $data = [
+                'name' => request()->params('name', $document->name),
+                'tags' => request()->params('tags') ? implode(',', request()->params('tags')) : $document->tags,
+                'type' => request()->params('type', $document->type),
+                'description' => request()->params('description', $document->description),
+            ];
+
+            if(request()->params('thumbnail')){
+                $data['thumbnail'] = (function() use ($document){
+                    $file = request()->uploadAs('thumbnail', StoragePath('app/public/docs/covers'), uniqid(), [
+                        'extensions' => ['jpg', 'jpeg', 'png']
+                    ]);
+
+                    if(!$file) return $document->thumbnail;
+                    return str_replace(StoragePath('app/public'), '', $file['path']);
+                })();
+            }
+
+            $document->fill($data);
+            if(!$document->save())
+                return $this->jsonError('Failed to update document');
+
+            return $this->jsonSuccess('Document updated successfully');            
         }
 
         catch(\Exception $e){
@@ -232,7 +300,7 @@ class DocsController extends Controller
 
     public static function routes()
     {
-        app()->get('/', ['name' => 'books.list', 'DocsController@index']);
+        app()->get('/list/{type}', ['name' => 'books.list', 'DocsController@index']);
         app()->get('/create', ['name' => 'docs.create', 'DocsController@create']);
 
         app()->get('/edit/{id}', ['name' => 'docs.edit', 'DocsController@edit']);
