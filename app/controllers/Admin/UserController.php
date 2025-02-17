@@ -64,24 +64,19 @@ class UserController extends Controller
         if(!$canCreateUser->status)
             return response()->markup(view('errors.403'), 403);
 
-        # check if user exists
-        if(User::where('email', request()->get('email'))->first())
-            exit(response()->json(['status'=>'error', 'message'=>'User already exists']));
-
         try {
 
             # insert user records
             User::create([
                 'username' => request()->get('username'),
                 'fullname' => request()->get('fullname'),
-                'email' => request()->params('email'),
                 'password' => Password::hash(request()->get('username')),
                 'role' => request()->get('user_role'),
                 'status' => 'active'
             ]);
 
             # send onboarding email
-            if(!PortalConfig('lan')){
+            /*if(!PortalConfig('lan')){
                 $mail = new MailSender();
                 $mail->sendHtml(
                     'Welcome to '._env('APP_NAME'),
@@ -94,7 +89,7 @@ class UserController extends Controller
                     request()->get('email'),
                     request()->get('fullname')
                 );
-            }
+            }*/
 
             response()->json(['status'=>'success', 'message'=>'User created successfully']);
 
@@ -198,8 +193,6 @@ class UserController extends Controller
             # update user records
             $user->update([
                 'fullname' => request()->get('fullname'),
-                'email' => request()->get('email'),
-                'phone' => $phone,
                 'role' => request()->get('user_role'),
                 'status' => request()->get('user_status'),
                 'about' => request()->get('bio')
