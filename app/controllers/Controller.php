@@ -16,16 +16,18 @@ class Controller extends \Leaf\Controller
     public function __construct()
     {
         $this->data = new \stdClass();
+        
+        $this->checkIfAdmin();
         $this->inializeRegistras();
 
         // application constants
         if(!defined('modules')) define('modules', $this->data->modules ?? null);
         if(!defined('settings')) define('settings', $this->data->settings ?? null);
 
+        $this->title = null;
         $this->active = null;
         $this->sidebar = true;
         $this->menuLink = null;
-
     }
 
     public function __set($name, $value)
@@ -36,7 +38,15 @@ class Controller extends \Leaf\Controller
     public function checkIfAdmin()
     {
         $admins = Role::admins();
-        $this->isAdmin = in_array(auth()->user()['role'], $admins);
+        $this->isAdmin = in_array(auth()->user()['role'] ?? 'guest', $admins);
+
+        if($this->isAdmin){
+            $schoolData = Setting::school()->toArray();
+            if(in_array('', $schoolData)  && $_SERVER['REQUEST_URI'] != '/admin/settings/school' && !request()->isAjax()){
+                header("Location: /admin/settings/school");
+                exit;
+            }
+        }
     }
 
     protected function renderPage($title, $view)
@@ -97,6 +107,18 @@ class Controller extends \Leaf\Controller
         }
 
         return response()->json($this->data);
+    }
+
+    protected function requestData($data) {
+
+        if(is_null($data)) return null;
+        
+        if (is_array($data) && count($data) > 0) {
+            parse_str(html_entity_decode($data[0]), $result);
+            return $result;
+        }
+        
+        return null;
     }
 
     protected function inializeRegistras(){
