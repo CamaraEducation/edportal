@@ -48,8 +48,6 @@ class UserController extends Controller
                 auth()->id(),
                 [
                     'fullname' => request()->params('name', auth()->user()['fullname']),
-                    'email' => request()->params('email', auth()->user()['email']),
-                    'phone' => request()->params('phone', auth()->user()['phone']),
                     'about' => request()->params('bio', auth()->user()['about']),
                     'avatar' => $file ?? auth()->user()['avatar'],
                     'remember_token' => null
