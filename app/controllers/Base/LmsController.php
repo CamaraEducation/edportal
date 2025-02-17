@@ -7,6 +7,7 @@ use App\Controllers\Controller;
 use App\Models\LmsCourse;
 use App\Models\LmsLesson;
 use App\Models\ContentCategory;
+use App\Middleware\Handler;
 
 class LmsController extends Controller
 {
@@ -37,12 +38,18 @@ class LmsController extends Controller
 
     public function myCourses()
     {
+        if(!Handler::can('lms', 'add_courses')->status)
+            return $this->errorPage(403);
+
         $this->courses = LmsCourse::myCourses();
         return $this->renderPage("My Courses", 'app.lms.course.my');
     }
 
     public function create()
     {
+        if(!Handler::can('lms', 'add_courses')->status)
+            return $this->errorPage(403);
+
         $this->active = 'my-courses';
         $this->menuLink = 'lms';
 
@@ -52,6 +59,9 @@ class LmsController extends Controller
 
     public function store()
     {
+        if(!Handler::can('lms', 'add_courses')->status)
+            return $this->jsonError('You do not have permission to create courses');
+
         try{
             $data = [
                 'title' => request()->params('course-title'),
@@ -83,7 +93,11 @@ class LmsController extends Controller
 
     public function edit($courseId)
     {
-        $this->course = LmsCourse::find($courseId);
+        if(!Handler::can('lms', 'update_courses')->status)
+            return $this->errorPage(403);
+
+        $course = LmsCourse::find($courseId);
+
         $this->categories = ContentCategory::all();
         return $this->renderPage("Edit Course", 'app.lms.course.edit');
     }
